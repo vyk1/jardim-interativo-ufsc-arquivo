@@ -22,7 +22,7 @@ function Tabs() {
   const [pills, setPills] = React.useState("1");
   return (
     <>
-      <div className="section">
+      <div className="section section-tabs">
         <Container>
           <Row>
             <Col className="ml-auto mr-auto" md="10" xl="6">

@@ -1881,7 +1881,7 @@ fieldset[disabled]
   filter: alpha(opacity=80); }
 
 .form-control {
-  background-color: transparent;
+  background-color: #FFF;
   border: 1px solid #E3E3E3;
   border-radius: 30px;
   color: #2c2c2c;
@@ -3356,7 +3356,7 @@ Created using IcoMoon - icomoon.io
   background-color: #2CA8FF !important; }
 
 .bg-success {
-  background-color: #18ce0f !important; }
+  background-color: #4BE87F !important; }
 
 .bg-danger {
   background-color: #FF3636 !important; }
@@ -5955,7 +5955,7 @@ td.rdtYear:hover {
 @media screen and (max-width: 991px) {
   .sidebar-collapse .navbar-collapse:before {
     background: #2CA8FF;
-    background: linear-gradient(#2CA8FF, #2c2c2c 80%); } }
+    background: linear-gradient(#ffffff, #000, 80%); } }
 
 @media screen and (max-width: 768px) {
   .nav-tabs {

@@ -1,0 +1,66 @@
+import React from "react";
+// react plugin used to create switch buttons
+import Switch from "react-bootstrap-switch";
+// plugin that creates slider
+import Slider from "nouislider";
+
+// reactstrap components
+import {
+    Button,
+    Label,
+    FormGroup,
+    Input,
+    InputGroupAddon,
+    InputGroupText,
+    InputGroup,
+    Container,
+    Row,
+    Col
+} from "reactstrap";
+
+function SearchBar() {
+    const [rightFocus, setRightFocus] = React.useState(false);
+    React.useEffect(() => {
+        if (
+            !document
+                .getElementById("sliderRegular")
+                .classList.contains("noUi-target")
+        ) {
+            Slider.create(document.getElementById("sliderRegular"), {
+                start: [50],
+                connect: [true, false],
+                step: 0.5,
+                range: { min: 0, max: 100 }
+            });
+        }
+        if (
+            !document.getElementById("sliderDouble").classList.contains("noUi-target")
+        ) {
+            Slider.create(document.getElementById("sliderDouble"), {
+                start: [20, 80],
+                connect: [false, true, false],
+                step: 1,
+                range: { min: 0, max: 100 }
+            });
+        }
+    });
+    return (
+        <Col lg="9" sm="9">
+            <InputGroup className={rightFocus ? "input-group-focus" : ""}>
+                <Input
+                    style={{ backgroundColor: "#fff" }}
+                    placeholder="Buscar planta (científico/popular)"
+                    type="text"
+                    onFocus={() => setRightFocus(true)}
+                    onBlur={() => setRightFocus(false)}
+                ></Input>
+                <InputGroupAddon addonType="append">
+                    <InputGroupText>
+                        <i className="fas fa-search"></i>
+                    </InputGroupText>
+                </InputGroupAddon>
+            </InputGroup>
+        </Col>
+    )
+}
+export default SearchBar;

@@ -18,8 +18,6 @@ import {
   Col
 } from "reactstrap";
 
-// core components
-
 function BasicElements() {
   const [leftFocus, setLeftFocus] = React.useState(false);
   const [rightFocus, setRightFocus] = React.useState(false);
