@@ -6,21 +6,20 @@ import Slider from "nouislider";
 
 // reactstrap components
 import {
-    Button,
-    Label,
-    FormGroup,
     Input,
     InputGroupAddon,
     InputGroupText,
     InputGroup,
-    Container,
-    Row,
     Col
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 function SearchBar() {
     const [rightFocus, setRightFocus] = React.useState(false);
+    const [word, setWord] = React.useState("");
+
     React.useEffect(() => {
+
         if (
             !document
                 .getElementById("sliderRegular")
@@ -44,6 +43,7 @@ function SearchBar() {
             });
         }
     });
+
     return (
         <Col lg="10" sm="10">
             <InputGroup className={rightFocus ? "input-group-focus" : ""}>
@@ -51,12 +51,26 @@ function SearchBar() {
                     style={{ backgroundColor: "#fff" }}
                     placeholder="Buscar planta (científico/popular)"
                     type="text"
+                    value={word}
                     onFocus={() => setRightFocus(true)}
                     onBlur={() => setRightFocus(false)}
+                    onChange={e => setWord(e.target.value)}
+                // onChange={e => setWord(e.target.value)}
+                // >{word}</Input>
                 ></Input>
                 <InputGroupAddon addonType="append">
                     <InputGroupText>
-                        <i style={{ margin: "3px" }} className="fas fa-search"></i>
+                        <Link
+                            to={{
+                                pathname: `/pesquisa`,
+                                state: {
+                                    word
+                                }
+                            }}
+                        // to={`/pesquisa/${encodeURI(word)}`}
+                        >
+                            <i style={{ margin: "3px", color: "black" }} className="fas fa-search"></i>
+                        </Link>
                     </InputGroupText>
                 </InputGroupAddon>
             </InputGroup>

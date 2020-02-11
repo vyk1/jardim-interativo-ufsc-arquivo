@@ -29,6 +29,7 @@ import "assets/demo/nucleo-icons-page-styles.css";
 // pages for this kit
 import Index from "views/Index.js";
 import NucleoIcons from "views/NucleoIcons.js";
+import Read from "views/Read.js";
 import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
@@ -37,11 +38,15 @@ import Home from "views/Admin/components/home/Home";
 import AllPlants from "views/Admin/components/plants/AllPlants";
 import NewPlant from "views/Admin/components/plants/NewPlant";
 import Logout from "views/Admin/components/logout/Logout";
+import Search from "views/Search";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Switch>
+        <Route path='/leitura/:id' render={props => <Read {...props} />} />
+        {/* <Route path='/pesquisa/:word' render={props => <Search {...props} />} /> */}
+        <Route path='/pesquisa' render={props => <Search {...props} />} />
         {/* <Routes /> */}
         <Route exact path='/admin' render={Home} />
         <Route path='/admin/plantas' render={props => <AllPlants {...props} />} />

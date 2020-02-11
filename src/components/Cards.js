@@ -45,7 +45,8 @@ export default class Cards extends Component {
                                 if (count > this.state.limit) {
                                     return false
                                 }
-                                rows.push(<Items key={key} content={this.state.plants[key]} />)
+                                // rows.push(<Items key={key} content={this.state.plants} />)
+                                rows.push(<Items key={key} ch={key} content={this.state.plants[key]} />)
                             })
                     }
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card, CardImg, CardBody, CardTitle, CardText, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 const Items = props => {
-
     return (
         <div className="col-sm-4 col-md-4">
-            <Card >
+            <Card key={props.ch}>
                 <CardImg alt={props.content.scientificName}
                     src={props.content.image}
                     top>
@@ -13,14 +13,16 @@ const Items = props => {
                 <CardBody>
                     <CardTitle tag="h4">{props.content.popularName}</CardTitle>
                     <CardText>Também conhecido como <i>{props.content.scientificName}</i></CardText>
-                    {/* <CardText>{JSON.stringify(props)}</CardText> */}
+
                     <Button
+                        className="btn btn-success"
                         color="success"
-                        href="#pablo"
-                        onClick={e => e.preventDefault()}
+                        to={`/leitura/${props.ch}`}
+                        tag={Link}
+                        target="_blank"
                     >
-                        Mais informações
-            </Button>
+                        Info
+                </Button>
                 </CardBody>
             </Card>
         </div>
