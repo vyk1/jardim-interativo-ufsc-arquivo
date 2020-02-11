@@ -45,7 +45,7 @@ function SearchBar() {
         }
     });
     return (
-        <Col lg="9" sm="9">
+        <Col lg="10" sm="10">
             <InputGroup className={rightFocus ? "input-group-focus" : ""}>
                 <Input
                     style={{ backgroundColor: "#fff" }}
@@ -56,7 +56,7 @@ function SearchBar() {
                 ></Input>
                 <InputGroupAddon addonType="append">
                     <InputGroupText>
-                        <i className="fas fa-search"></i>
+                        <i style={{ margin: "3px" }} className="fas fa-search"></i>
                     </InputGroupText>
                 </InputGroupAddon>
             </InputGroup>

@@ -20,6 +20,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // styles for this kit
+import './index.css';
+import 'views/Admin/main/App.css'
 import "assets/css/bootstrap.min.css";
 import "assets/scss/now-ui-kit.scss";
 import "assets/demo/demo.css";
@@ -30,13 +32,23 @@ import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
-import Routes from "views/Admin/main/Routes";
+// import Routes from "views/Admin/main/Routes";
+import Home from "views/Admin/components/home/Home";
+import AllPlants from "views/Admin/components/plants/AllPlants";
+import NewPlant from "views/Admin/components/plants/NewPlant";
+import Logout from "views/Admin/components/logout/Logout";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Switch>
-        <Routes />
+        {/* <Routes /> */}
+        <Route exact path='/admin' render={Home} />
+        <Route path='/admin/plantas' render={props => <AllPlants {...props} />} />
+        <Route path='/admin/nova-planta' render={props => <NewPlant {...props} />} />
+        {/* <Route path='/admin/editar-planta' render={EditPlant} /> */}
+        <Route path='/admin/logout' render={Logout} />
+
         <Route path="/index" render={props => <Index {...props} />} />
         <Route
           path="/nucleo-icons"

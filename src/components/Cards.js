@@ -1,20 +1,12 @@
-import React, { useState, Component } from "react";
+import React, { Component } from "react";
 // reactstrap components
 import {
-    Card,
-    CardImg,
-    CardBody,
-    CardTitle,
-    CardText,
-    Button,
-    CardGroup,
     CardDeck
 } from "reactstrap";
 
 import Items from "./Items.js"
 import config from "../config.js";
 
-// function Cards() {
 export default class Cards extends Component {
 
     constructor(props) {
@@ -37,32 +29,29 @@ export default class Cards extends Component {
         if (this.state.plants.length <= 0) {
             return (
                 <h1>
-                    <i class="now-ui-icons loader_gear spin"></i>
+                    <i className="now-ui-icons loader_gear spin"></i>
                 </h1>
             )
         } else {
             let rows = []
+            let count = 0
+
             return (
                 <>
                     {
                         Object.keys(this.state.plants)
                             .map(key => {
-                                console.log(key);
-
-                                // return <Items key={key} content={this.state.plants[key]} />
+                                count++
+                                if (count > this.state.limit) {
+                                    return false
+                                }
                                 rows.push(<Items key={key} content={this.state.plants[key]} />)
                             })
-                        // for (let index = 1; index < this.state.limit; index++) {
-                        //     //     return (<p>1</p>)
-                        // }
-                        //     const element = this.state.plants[index];
-                        //     console.log("element");
-                        //     console.log(element);
-                        //     rows.push(<Items key={index} content={element} />)
-                        // }
                     }
 
-                    <CardDeck>{rows}</CardDeck>
+                    <div className="col-lg-12 col-sm-12">
+                        <CardDeck>{rows}</CardDeck>
+                    </div>
                 </>
             )
         }

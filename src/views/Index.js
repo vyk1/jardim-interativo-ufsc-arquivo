@@ -58,6 +58,9 @@ function Index() {
         <div className="section">
           <Container>
             <Cards limit={6} />
+            <p>
+              https://tylermcginnis.com/react-router-url-parameters/
+  </p>
             {/* <Tabs /> */}
             {/* <div className="button-container">
               <Button className="btn-round" color="info" size="lg">

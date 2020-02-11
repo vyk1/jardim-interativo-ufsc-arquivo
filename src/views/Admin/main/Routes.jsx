@@ -5,12 +5,11 @@ import './App.css'
 import { isAuthenticated } from '../components/auth'
 
 import Home from '../components/home/Home'
-import UserCrud from '../components/users/UserCrud'
-import AllPlants from '../components/users/AllPlants'
-import AllNotActMembers from '../components/users/AllNotActMembers'
+import AllPlants from "../components/plants/AllPlants";
+// import EditPlant from "../components/plants/EditPlant";
+import NewPlant from "../components/plants/NewPlant";
 import Login from '../components/login/Login'
 import Logout from '../components/logout/Logout'
-import NewInternship from '../components/internship/NewInternship'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -30,8 +29,7 @@ export default props =>
         <Route path='/sign-in' component={Login} />
         <PrivateRoute exact path='/admin' component={Home} />
         <PrivateRoute path='/admin/plantas' component={AllPlants} />
-        <PrivateRoute path='/admin/editar-membro' component={UserCrud} />
-        <PrivateRoute path='/admin/nao-verificados' component={AllNotActMembers} />
-        <PrivateRoute path='/admin/novo-estagio' component={NewInternship} />
+        <PrivateRoute path='/admin/nova-planta' component={NewPlant} />
+        {/* <PrivateRoute path='/admin/editar-planta' component={EditPlant} /> */}
         <PrivateRoute path='/admin/logout' component={Logout} />
     </Switch>

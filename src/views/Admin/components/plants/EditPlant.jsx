@@ -1,4 +1,7 @@
-// import React, { Component } from 'react'
+import React, { Component } from 'react'
+
+import config, { storage } from "../../../../config"
+
 // import Main from '../template/Main'
 // import Logo from '../template/Logo'
 // import Nav from '../template/Nav'
@@ -19,7 +22,7 @@
 //     list: [],
 // }
 
-// export default class UserCrud extends Component {
+// export default class EditPlant extends Component {
 
 //     state = { ...initialState }
 
