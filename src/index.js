@@ -1,20 +1,3 @@
-/*
-
-=========================================================
-* Now UI Kit React - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/now-ui-kit-react
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/now-ui-kit-react/blob/master/LICENSE.md)
-
-* Designed by www.invisionapp.com Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
@@ -39,6 +22,7 @@ import AllPlants from "views/Admin/components/plants/AllPlants";
 import NewPlant from "views/Admin/components/plants/NewPlant";
 import Logout from "views/Admin/components/logout/Logout";
 import Search from "views/Search";
+import EditPlants from "views/Admin/components/plants/EditPlant";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -51,7 +35,7 @@ ReactDOM.render(
         <Route exact path='/admin' render={Home} />
         <Route path='/admin/plantas' render={props => <AllPlants {...props} />} />
         <Route path='/admin/nova-planta' render={props => <NewPlant {...props} />} />
-        {/* <Route path='/admin/editar-planta' render={EditPlant} /> */}
+        <Route path='/admin/editar-planta' render={props => <EditPlants {...props} />} />
         <Route path='/admin/logout' render={Logout} />
 
         <Route path="/index" render={props => <Index {...props} />} />

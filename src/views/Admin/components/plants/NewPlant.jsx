@@ -39,6 +39,11 @@ export default class NewPlant extends Component {
         const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep } = this.state
         const image = e.target.image.files[0]
         const { name } = image
+        console.log(e.target);
+        console.log(image);
+
+        return
+        debugger
         try {
 
             const ref = storage.ref(name)
@@ -154,12 +159,12 @@ export default class NewPlant extends Component {
 
                                 <div className="col-12">
                                     {/* <input accept="image/*" type="file" name="image" id="image" name="image" placeholder="Selecione a imagem" onChange={e => this.setState({ image: e.target.value })} value={this.state.image} required ref={(ref) => this.image = ref} /> */}
-                                    <input accept="image/*" type="file" name="image" id="image" name="image" placeholder="Selecione a imagem" onChange={e => this.setState({ image: e.target.value })} value={this.state.image} required />
+                                    <input accept="image/*" type="file" name="image" id="image" placeholder="Selecione a imagem" onChange={e => this.setState({ image: e.target.value })} value={this.state.image} required />
                                 </div>
 
 
                                 <div className="col-12 d-flex justify-content-end">
-                                    <button type="submit" className="btn btn-primary" disabled={this.state.disabled}>
+                                    <button type="submit" className="btn btn-primary">
                                         Salvar
                                         </button>
                                     <button className="btn btn-secondary ml-2"

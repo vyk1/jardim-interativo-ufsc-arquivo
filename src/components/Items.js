@@ -16,7 +16,6 @@ const Items = props => {
 
                     <Button
                         className="btn btn-success"
-                        color="success"
                         to={`/leitura/${props.ch}`}
                         tag={Link}
                         target="_blank"

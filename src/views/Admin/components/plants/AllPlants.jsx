@@ -3,16 +3,15 @@ import Main from '../template/Main'
 import Logo from '../template/Logo'
 import Nav from '../template/Nav'
 import Footer from '../template/Footer'
-import { getToken } from '../auth'
-import api from '../../Server'
 import '../template/Tables.css'
 import config from "config.js";
-import { Button, UncontrolledPopover, PopoverHeader, PopoverBody, UncontrolledTooltip } from 'reactstrap'
+import { Button } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 const headerProps = {
     icon: 'users',
-    title: 'Todos os Membros',
-    subtitle: 'Aqui estão listados todos os membros.'
+    title: 'Todas as plantas',
+    subtitle: 'Aqui estão listados todas as plantas.'
 }
 
 const initialState = {
@@ -65,7 +64,7 @@ export default class AllPlants extends Component {
         }
     }
     renderRows() {
-        
+
         return Object.keys(this.state.plants)
             .map(key => {
                 // console.log(key);
@@ -76,10 +75,13 @@ export default class AllPlants extends Component {
                         <td data-label="Nome Científico">{this.state.plants[key].scientificName}</td>
                         <td data-label="Mais informações">
                             <Button
-                                color="info"
-                                className="mr-1"
-                            // onClick={() => setModal1(true)}
-                            >Visitar</Button>
+                                className="btn btn-info"
+                                to={`/leitura/${key}`}
+                                tag={Link}
+                                target="_blank"
+                            >
+                                Info
+                </Button>
                         </td>
                         <td data-label="QR Code">
                             <Button
