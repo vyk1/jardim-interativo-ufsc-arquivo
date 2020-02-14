@@ -4,8 +4,9 @@ import Logo from '../template/Logo'
 import Nav from '../template/Nav'
 import Footer from '../template/Footer'
 import '../template/Tables.css'
-import firebase, { firestore } from 'firebase'
+import firebase from 'firebase'
 import config, { storage } from 'config'
+import { Alert } from 'reactstrap'
 
 const headerProps = {
     icon: 'edit',
@@ -17,7 +18,10 @@ const initialState = {
     plants: [],
     plant: {},
     limit: 5,
-    loaded: false
+    loaded: false,
+    visible: true,
+    sucess: false,
+    error: false
 }
 
 export default class EditPlants extends Component {
@@ -27,19 +31,16 @@ export default class EditPlants extends Component {
         super(props)
 
         this.state = initialState
+        this.onDismiss = this.onDismiss.bind(this);
     }
-    //     config.syncState('plantapedia', {
-    //         context: this,
-    //         state: 'plants',
-    //         asArray: false
-    //     })
-    // }
 
+    onDismiss() {
+        this.setState({ visible: false });
+    }
 
-    getPlantsWithPagination() {
+    async getPlantsWithPagination() {
 
         // firestore
-
         const plants = firebase.database().ref('plantapedia/')
             .limitToFirst(this.state.limit)
             .orderByChild('scientificName')
@@ -54,71 +55,68 @@ export default class EditPlants extends Component {
         this.setState({ plant: initialState.plant, id: null })
     }
 
-    async check(e) {
+    check(e) {
         e.preventDefault()
+        this.setState({ loaded: false })
 
-        const { id, scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep } = this.state
+        const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep } = this.state.plant
+        const { id } = this.state
+
+        const data = { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep }
 
         // SE TEM IMAGEM NOVA
+        const oldImage = e.target.imagemAntiga.value
         if (e.target.image2.files[0]) {
             const newImage = e.target.image2.files[0]
-            const { name } = newImage
-            // url
-            const oldImage = e.target.imagemAntiga.value
-            console.log(oldImage);
-            console.log(storage);
+
             try {
-                const ref = storage.ref().child(oldImage)
-                console.log(ref);
+                // solve storage 1st
+                const ref = storage.refFromURL(oldImage)
+                ref.put(newImage)
+                    .then(img => {
+                        // console.log(img);
+                        img.ref.getDownloadURL()
+                            .then(dURL => {
+                                console.log(dURL);
+                                data['image'] = dURL
+                                console.log(data);
 
-                ref.delete().then(() => {
+                                config.update(`plantapedia/${id}`, {
+                                    data
+                                })
+                                    .then(() => {
+                                        this.clear()
+                                        return this.setState({ success: true, loaded: true })
+                                    })
 
-                })
+                            })
+                    })
+
             } catch (error) {
                 console.log(error);
+                return this.setState({ error: true, loaded: true })
             }
 
-            // SENÃO TEM IMAGEM NOVA
+            // SE NÃO TEM IMAGEM NOVA
         } else {
-            console.log('no img');
+            data['image'] = oldImage
+
             try {
-                config.update('plantapedia/' + id, {
-                    data: { popularName: "novoNome" }
+                config.update(`plantapedia/${id}`, {
+                    data
                 })
                     .then(() => {
-                        console.log('alterado');
+                        this.clear()
+                        return this.setState({ success: true, loaded: true })
                         // https://github.com/tylermcginnis/re-base#updateendpoint-options
                         // https://imasters.com.br/desenvolvimento/git-para-corajosos-rebase-parte-01
                         // https://stackoverflow.com/questions/47375945/delete-firebase-storage-image-url-with-download-url
                         // https://firebase.google.com/docs/database/web/read-and-write
 
                     })
-
-                // const ref = storage.ref()
-                // ref.put(image)
-                //     .then(img => {
-                //         // console.log(img);
-                //         img.ref.getDownloadURL()
-                //             .then(dURL => {
-                //                 console.log(dURL);
-                //                 const plant = {
-                //                     scientificName,
-                //                     popularName,
-                //                     description,
-                //                     geoDistrib,
-                //                     regionForTreatment,
-                //                     activeIngredient,
-                //                     utilizationAndPrep,
-                //                     image: dURL
-                //                 }
-                //                 console.log(plant);
-                //                 config.push('plantapedia', {
-                //                     data: plant
-                //                 })
-                //             })
-                //     })
             } catch (error) {
                 console.log(error);
+                return this.setState({ error: true, loaded: true })
             }
         }
 
@@ -142,7 +140,7 @@ export default class EditPlants extends Component {
     }
 
     renderForm() {
-        if (Object.keys(this.state.plant).length) {
+        if (this.state.loaded && Object.keys(this.state.plant).length) {
             return (
                 <div className="form">
                     <form onSubmit={this.check.bind(this)}>
@@ -239,6 +237,8 @@ export default class EditPlants extends Component {
     }
 
     load(plant, id) {
+        console.log(plant);
+
         this.setState({ plant, id })
     }
 
@@ -302,6 +302,17 @@ export default class EditPlants extends Component {
                 <Logo />
                 <Nav />
                 <Main {...headerProps}>
+                    {this.state.success && (
+                        <Alert color="success" isOpen={this.state.visible} toggle={this.onDismiss}>
+                            Operação Concluída com Sucesso!
+                    </Alert>
+                    )}
+                    {this.state.error && (
+                        <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
+                            Ocorreu um erro, tente novamente mais tarde...
+                    </Alert>
+                    )}
+                    {/* This is a primary alert with <a href="#" className="alert-link">an example link</a>. Give it a click if you like. */}
                     {this.renderForm()}
                     {this.renderTable()}
                 </Main>
