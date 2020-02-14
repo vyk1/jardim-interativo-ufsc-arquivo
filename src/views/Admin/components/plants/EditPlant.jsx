@@ -1,3 +1,8 @@
+// https://github.com/tylermcginnis/re-base#updateendpoint-options
+// https://imasters.com.br/desenvolvimento/git-para-corajosos-rebase-parte-01
+// https://stackoverflow.com/questions/47375945/delete-firebase-storage-image-url-with-download-url
+// https://firebase.google.com/docs/database/web/read-and-write
+
 import React, { Component } from 'react'
 import Main from '../template/Main'
 import Logo from '../template/Logo'
@@ -17,7 +22,8 @@ const headerProps = {
 const initialState = {
     plants: [],
     plant: {},
-    limit: 5,
+    image2: "",
+    limit: 3,
     loaded: false,
     visible: true,
     sucess: false,
@@ -35,19 +41,21 @@ export default class EditPlants extends Component {
     }
 
     onDismiss() {
-        this.setState({ visible: false });
+        let newView = !(this.state.visible)
+        this.setState({ visible: newView });
     }
 
-    async getPlantsWithPagination() {
+    getPlantsWithPagination() {
 
         // firestore
         const plants = firebase.database().ref('plantapedia/')
             .limitToFirst(this.state.limit)
-            .orderByChild('scientificName')
+            // .orderByChild('scientificName')
+            .orderByKey()
 
         plants.on('value', (snap) => {
             let p = snap.val()
-            this.setState({ plants: p, loaded: true })
+            return this.setState({ plants: p, loaded: true })
         })
     }
 
@@ -66,6 +74,7 @@ export default class EditPlants extends Component {
 
         // SE TEM IMAGEM NOVA
         const oldImage = e.target.imagemAntiga.value
+
         if (e.target.image2.files[0]) {
             const newImage = e.target.image2.files[0]
 
@@ -74,19 +83,16 @@ export default class EditPlants extends Component {
                 const ref = storage.refFromURL(oldImage)
                 ref.put(newImage)
                     .then(img => {
-                        // console.log(img);
                         img.ref.getDownloadURL()
                             .then(dURL => {
-                                console.log(dURL);
                                 data['image'] = dURL
-                                console.log(data);
 
                                 config.update(`plantapedia/${id}`, {
                                     data
                                 })
                                     .then(() => {
                                         this.clear()
-                                        return this.setState({ success: true, loaded: true })
+                                        return this.setState({ success: true, loaded: true, visible: true })
                                     })
 
                             })
@@ -94,7 +100,7 @@ export default class EditPlants extends Component {
 
             } catch (error) {
                 console.log(error);
-                return this.setState({ error: true, loaded: true })
+                return this.setState({ error: true, loaded: true, visible: true })
             }
 
             // SE NÃO TEM IMAGEM NOVA
@@ -107,16 +113,12 @@ export default class EditPlants extends Component {
                 })
                     .then(() => {
                         this.clear()
-                        return this.setState({ success: true, loaded: true })
-                        // https://github.com/tylermcginnis/re-base#updateendpoint-options
-                        // https://imasters.com.br/desenvolvimento/git-para-corajosos-rebase-parte-01
-                        // https://stackoverflow.com/questions/47375945/delete-firebase-storage-image-url-with-download-url
-                        // https://firebase.google.com/docs/database/web/read-and-write
+                        return this.setState({ success: true, loaded: true, visible: true })
 
                     })
             } catch (error) {
                 console.log(error);
-                return this.setState({ error: true, loaded: true })
+                return this.setState({ error: true, loaded: true, visible: true })
             }
         }
 
@@ -124,9 +126,9 @@ export default class EditPlants extends Component {
 
     onNextPage = () => {
         this.setState(
-            state => ({ limit: state.limit + 5 }),
-            this.getPlantsWithPagination,
+            state => ({ limit: state.limit * 2 })
         )
+        this.getPlantsWithPagination()
     }
 
     updateField(event) {
@@ -213,10 +215,12 @@ export default class EditPlants extends Component {
                             <div className="col-6">
                                 <div className="form-group">
                                     <label htmlFor="image2">Seleção de Nova Imagem</label>
-                                    {/* <input accept="image/*" type="file" id="image" name="image" placeholder="Selecione a imagem" onChange={e => this.updateField(e)} value={this.state.plant.image} required /> */}
+                                    {this.state.image2 && (
+                                        <p>Imagem Carregada</p>
+                                    )}
+                                    <input accept="image/*" type="file" id="image2" name="image2" placeholder="Selecione a imagem" onChange={e => this.setState({ image2: e.target.value })} value={this.state.image2} />
+                                    <input type="hidden" name="imagemAntiga" id="imagemAntiga" value={this.state.plant.image} />
                                 </div>
-                                <input accept="image/*" type="file" id="image2" name="image2" placeholder="Selecione a imagem" onChange={e => this.setState({ image2: e.target.value })} value={this.state.image2} />
-                                <input type="hidden" name="imagemAntiga" id="imagemAntiga" value={this.state.plant.image} />
 
                             </div>
 
@@ -226,7 +230,7 @@ export default class EditPlants extends Component {
                                         </button>
                                 <button className="btn btn-secondary ml-2"
                                     onClick={e => this.clear(e)}>
-                                    Cancelar
+                                    Limpar
                                         </button>
                             </div>
                         </div>
@@ -237,8 +241,6 @@ export default class EditPlants extends Component {
     }
 
     load(plant, id) {
-        console.log(plant);
-
         this.setState({ plant, id })
     }
 
@@ -266,7 +268,7 @@ export default class EditPlants extends Component {
                         </tbody>
                     </table>
                     {loaded && plants && (
-                        <button type="button" onClick={this.onNextPage}>
+                        <button className="btn btn-info" type="button" onClick={this.onNextPage}>
                             Mais
                         </button>
                     )}

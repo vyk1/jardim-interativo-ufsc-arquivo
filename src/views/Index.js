@@ -1,20 +1,7 @@
 import React from "react";
 
-// reactstrap components
-// import {
-// } from "reactstrap";
-
 import {
-  Button,
-  NavItem,
-  NavLink,
-  Nav,
-  TabContent,
-  TabPane,
   Container,
-  Row,
-  Col,
-  UncontrolledTooltip,
 } from "reactstrap";
 
 // core components
@@ -22,8 +9,6 @@ import Cards from "components/Cards.js";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import DarkFooter from "components/Footers/DarkFooter.js";
 
-// sections for this page
-import Images from "./index-sections/Images.js";
 import BasicElements from "./index-sections/BasicElements.js";
 import Navbars from "./index-sections/Navbars.js";
 // // import Tabs from "./index-sections/Tabs.js";
@@ -32,15 +17,13 @@ import Notifications from "./index-sections/Notifications.js";
 import Typography from "./index-sections/Typography.js";
 import Javascript from "./index-sections/Javascript.js";
 import Carousel from "./index-sections/Carousel.js";
-import NucleoIcons from "./index-sections/NucleoIcons.js";
 import CompleteExamples from "./index-sections/CompleteExamples.js";
 import SignUp from "./index-sections/SignUp.js";
 import Examples from "./index-sections/Examples.js";
-import Download from "./index-sections/Download.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 
 function Index() {
-  const [pills, setPills] = React.useState("2");
+  const [] = React.useState("2");
   React.useEffect(() => {
     document.body.classList.add("profile-page");
     document.body.classList.add("sidebar-collapse");

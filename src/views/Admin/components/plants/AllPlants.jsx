@@ -7,6 +7,7 @@ import '../template/Tables.css'
 import config from "config.js";
 import { Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import firebase from 'firebase'
 
 const headerProps = {
     icon: 'users',
@@ -16,24 +17,42 @@ const headerProps = {
 
 const initialState = {
     plants: [],
-    message: 'Carregando'
+    // pageSize: 3,
+    // field: "popularName"
 }
 
 export default class AllPlants extends Component {
-
 
     constructor(props) {
         super(props)
 
         this.state = initialState
 
-        config.syncState('plantapedia', {
+        // ref = firebase.database().ref('plantapedia/')
+        // query = ref.orderByChild(this.state.field).limitToLast(this.state.pageSize)
+
+
+        config.syncState('plantapedia/', {
             context: this,
             state: 'plants',
-            asArray: false
+            asArray: true,
+            queries: {
+                orderByChild: 'popularName',
+                limitToFirst: 3
+            }
         })
     }
 
+    // nextPage(last) {
+    //     return ref.orderByChild(this.state.field)
+    //         .startAt(last['field'])
+    //         .limitToFirst(this.state.pageSize)
+    // }
+    // previousPage(first) {
+    //     return ref.orderByChild(this.state.field)
+    //         .endAt(first['field'])
+    //         .limitToLast(this.state.pageSize)
+    // }
 
     renderTable() {
         if (this.state.plants.length <= 0) {
@@ -59,15 +78,31 @@ export default class AllPlants extends Component {
                             {this.renderRows()}
                         </tbody>
                     </table>
+                    <button className="btn btn-info" onClick={this.nextPage.bind(this)}>Próxima página</button>
                 </div>
             )
         }
     }
+    nextPage() {
+        this.setState({ loaded: false })
+        let last = this.state.plants[this.state.plants.length - 1]
+        console.log('====================================');
+        console.log(last);
+        console.log('====================================');
+        let ref = firebase.database().ref('plantapedia/')
+        let query = ref.orderByChild("popularName").limitToLast(3).startAt(last['key'])
+        query.on('value', (snap) => {
+            let p = snap.val()
+            console.log('p')
+            console.log(p)
+            return this.setState({ plants: p, loaded: true })
+        })
+    }
     renderRows() {
-
         return Object.keys(this.state.plants)
             .map(key => {
                 // console.log(key);
+                // console.log(this.state.plants[key]);
                 return (
                     <tr key={key}>
                         {/* <td data-label="id">{this.state.plants[key].id}</td> */}
@@ -76,7 +111,7 @@ export default class AllPlants extends Component {
                         <td data-label="Mais informações">
                             <Button
                                 className="btn btn-info"
-                                to={`/leitura/${key}`}
+                                to={`/leitura/${this.state.plants[key].key}`}
                                 tag={Link}
                                 target="_blank"
                             >

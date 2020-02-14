@@ -1,13 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 // reactstrap components
 import {
-  Button,
   Collapse,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
   NavbarBrand,
   Navbar,
   NavItem,
@@ -62,7 +56,7 @@ function IndexNavbar() {
               Jardim Universitário
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
-              Designed by Invision. Coded by Creative Tim
+              Layout by Creative Tim &amp; Invision<br /> Coded by Victoria Botelho Martins
             </UncontrolledTooltip>
             <button
               className="navbar-toggler navbar-toggler"
@@ -84,7 +78,7 @@ function IndexNavbar() {
             navbar
           >
             <Nav navbar>
-            <SearchBar />
+              <SearchBar />
               <NavItem>
                 <NavLink
                   href="https://twitter.com/CreativeTim?ref=creativetim"
