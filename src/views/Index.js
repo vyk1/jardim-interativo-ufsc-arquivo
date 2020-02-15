@@ -21,6 +21,7 @@ import CompleteExamples from "./index-sections/CompleteExamples.js";
 import SignUp from "./index-sections/SignUp.js";
 import Examples from "./index-sections/Examples.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
+import FullNav from "./FullNav.js";
 
 function Index() {
   const [] = React.useState("2");
@@ -35,9 +36,11 @@ function Index() {
   });
   return (
     <>
-      <IndexNavbar />
+      {/* <IndexNavbar />
       <div className="wrapper">
-        <ProfilePageHeader />
+    <ProfilePageHeader /> */}
+      <FullNav />
+      <div className="wrapper">
         <div className="section">
           <Container>
             <Cards limit={6} />
@@ -74,17 +77,17 @@ function Index() {
         {/* <IndexHeader /> */}
         <div className="main">
           {/* <Images /> */}
-          <BasicElements />
-          <Navbars />
-          <Pagination />
-          <Notifications />
-          <Typography />
-          <Javascript />
-          <Carousel />
+          {/* <BasicElements /> */}
+          {/* <Navbars /> */}
+          {/* <Pagination /> */}
+          {/* <Notifications /> */}
+          {/* <Typography /> */}
+          {/* <Javascript /> */}
+          {/* <Carousel /> */}
           {/* <NucleoIcons /> */}
-          <CompleteExamples />
-          <SignUp />
-          <Examples />
+          {/* <CompleteExamples /> */}
+          {/* <SignUp /> */}
+          {/* <Examples /> */}
           {/* <Download /> */}
         </div>
         <DarkFooter />

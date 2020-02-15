@@ -12,27 +12,27 @@ function TransparentFooter() {
           <ul>
             <li>
               <a
-                href="https://www.creative-tim.com?ref=nukr-transparent-footer"
+                href="/"
                 target="_blank"
               >
-                Creative Tim
+               Jardim Universitário
               </a>
             </li>
             <li>
               <a
-                href="http://presentation.creative-tim.com?ref=nukr-transparent-footer"
+                href="/#sobre"
                 target="_blank"
               >
-                About Us
+                Sobre
               </a>
             </li>
             <li>
-              <a
+              {/* <a
                 href="http://blog.creative-tim.com?ref=nukr-transparent-footer"
                 target="_blank"
               >
                 Blog
-              </a>
+              </a> */}
             </li>
           </ul>
         </nav>

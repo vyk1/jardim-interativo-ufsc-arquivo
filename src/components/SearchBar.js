@@ -1,6 +1,5 @@
 import React from "react";
-// react plugin used to create switch buttons
-// plugin that creates slider
+
 import Slider from "nouislider";
 
 // reactstrap components
@@ -61,6 +60,7 @@ function SearchBar() {
                     <InputGroupText>
                         <Link
                             to={{
+                                target: "_blank",
                                 pathname: `/pesquisa`,
                                 state: {
                                     word

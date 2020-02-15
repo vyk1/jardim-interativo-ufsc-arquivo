@@ -1,25 +1,32 @@
 import React from 'react';
 import firebase from 'firebase'
+import FullNav from './FullNav';
+import { CardDeck } from 'reactstrap';
+import Items from 'components/Items';
+import LoadingCog from './LoadingCog';
 
 export default class Search extends React.Component {
     constructor(props) {
         super(props)
-        console.log(props.location.state.word);
 
         this.state = {
-            word: props.location.state.word
+            word: props.location.state.word,
+            plants: ""
         }
     }
 
-    // componentDidMount() {
-    //     const plants = firebase.database().ref('plantapedia/' + this.props.match.params.id)
-    //     plants.on('value', (snap) => {
-    //         let p = snap.val()
-    //         console.log(p);
-    //         this.setState({ word: p })
-    //     })
+    componentDidMount() {
+        const { word } = this.state
+        const plants = firebase.database().ref('plantapedia/').startAt(word).endAt(word + "\uf8ff").orderByChild('popularName')
+        plants.once('value', (snap) => {
+            let p = snap.val()
+            console.log(p);
+            console.log(word);
+            debugger
+            this.setState({ plants: p })
+        })
 
-    // }
+    }
 
     // state = {
     //   user: null
@@ -33,12 +40,30 @@ export default class Search extends React.Component {
     //     })
     // }
     render() {
+        let rows = []
+        if (!this.state.word || this.state.plants) {
+            return (
+                <LoadingCog />
+            )
+        }
         return (
+
             <div>
-                <p>{JSON.stringify(this.props.location.state)}</p>
-                <p>{JSON.stringify(this.state.word)}</p>
-                <p>https://sebhastian.com/react-firebase-real-time-database-guide</p>
-                <p>https://tylermcginnis.com/react-router-pass-props-to-link/</p>
+                <FullNav />
+                <div className="container">
+                    <h2>Resultados da busca para: "{this.state.word}"</h2>
+                    {
+                        Object.keys(this.state.plants)
+                            .map(key => {
+                                rows.push(<Items key={key} ch={key} content={this.state.plants[key]} />)
+                            })
+                    }
+                    <div className="col-lg-12 col-sm-12">
+                        <CardDeck>{rows}</CardDeck>
+                    </div>
+                    {/* <p>https://sebhastian.com/react-firebase-real-time-database-guide</p>
+                <p>https://tylermcginnis.com/react-router-pass-props-to-link/</p> */}
+                </div>
             </div>
         )
     }
