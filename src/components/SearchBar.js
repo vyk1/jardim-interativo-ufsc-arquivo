@@ -53,27 +53,38 @@ function SearchBar() {
                     onFocus={() => setRightFocus(true)}
                     onBlur={() => setRightFocus(false)}
                     onChange={e => setWord(e.target.value)}
-                // onChange={e => setWord(e.target.value)}
-                // >{word}</Input>
+                // onChange={e => { setWord(e.target.value); console.log(word) }}
                 ></Input>
                 <InputGroupAddon addonType="append">
                     <InputGroupText>
-                        <Link
+                        <a
+                            href={`/pesquisa/${word}`}
+                            // target="_blank"
+                        // to={{
+                        //     // pathname: `/pesquisa?word=${word}`,
+                        //     pathname: `/pesquisa/${word}`,
+                        //     // search: `?word=${word}`
+                        //     // state: {
+                        //     //     word
+                        //     // }
+                        // }}
+                        >
+                            {/* <a
                             to={{
                                 target: "_blank",
-                                pathname: `/pesquisa`,
+                                pathname: `/pesquisa/${word}`,
                                 state: {
                                     word
                                 }
                             }}
                         // to={`/pesquisa/${encodeURI(word)}`}
-                        >
-                            <i style={{ margin: "3px", color: "black" }} className="fas fa-search"></i>
-                        </Link>
+                        > */}
+                            < i style={{ margin: "3px", color: "black" }} className="fas fa-search"></i>
+                        </a>
                     </InputGroupText>
                 </InputGroupAddon>
-            </InputGroup>
-        </Col>
+            </InputGroup >
+        </Col >
     )
 }
 export default SearchBar;

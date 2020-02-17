@@ -50,7 +50,7 @@ export default class Cards extends Component {
                             })
                     }
 
-                    <div className="col-lg-12 col-sm-12">
+                    <div className="col-12">
                         <CardDeck>{rows}</CardDeck>
                     </div>
                 </>

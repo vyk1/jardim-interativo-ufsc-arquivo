@@ -10,38 +10,46 @@ export default class Search extends React.Component {
         super(props)
 
         this.state = {
-            word: props.location.state.word,
-            plants: ""
+            plants: "",
+            message: "",
+            word: this.props.match.params.word
+
         }
     }
 
-    componentDidMount() {
+    getCards() {
         const { word } = this.state
         const plants = firebase.database().ref('plantapedia/').startAt(word).endAt(word + "\uf8ff").orderByChild('popularName')
         plants.once('value', (snap) => {
             let p = snap.val()
-            console.log(p);
-            console.log(word);
-            debugger
+            if (!p) {
+                return this.setState({ message: "Não foram encontrados parâmetros para esta pesquisa." })
+            }
             this.setState({ plants: p })
         })
 
     }
+    componentDidMount() {
+        this.getCards()
+    }
 
-    // state = {
-    //   user: null
-    // }
-    // componentDidMount () {
-    //   const { handle } = this.props.match.params
-
-    //   fetch(`https://api.twitter.com/user/${handle}`)
-    //     .then((user) => {
-    //       this.setState(() => ({ user }))
-    //     })
-    // }
-    render() {
+    renderCards() {
         let rows = []
-        if (!this.state.word || this.state.plants) {
+        if (this.state.message) {
+            return (
+                <div>
+                    <FullNav />
+                    <div className="container">
+                        {/* <h2>Resultados da busca para: "{this.props.match.params.word}"</h2> */}
+                        <h2>Resultados da busca para: "{this.state.word}"</h2>
+                        <div className="col-lg-12 col-sm-12">
+                            {this.state.message}
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+        if (!this.state.plants) {
             return (
                 <LoadingCog />
             )
@@ -55,16 +63,19 @@ export default class Search extends React.Component {
                     {
                         Object.keys(this.state.plants)
                             .map(key => {
+
                                 rows.push(<Items key={key} ch={key} content={this.state.plants[key]} />)
                             })
                     }
                     <div className="col-lg-12 col-sm-12">
                         <CardDeck>{rows}</CardDeck>
                     </div>
-                    {/* <p>https://sebhastian.com/react-firebase-real-time-database-guide</p>
-                <p>https://tylermcginnis.com/react-router-pass-props-to-link/</p> */}
                 </div>
             </div>
         )
+    }
+
+    render() {
+        return this.renderCards()
     }
 }

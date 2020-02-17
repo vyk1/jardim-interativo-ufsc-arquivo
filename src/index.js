@@ -29,8 +29,10 @@ ReactDOM.render(
     <Switch>
       <Switch>
         <Route path='/leitura/:id' render={props => <Read {...props} />} />
-        {/* <Route path='/pesquisa/:word' render={props => <Search {...props} />} /> */}
-        <Route path='/pesquisa' render={props => <Search {...props} />} />
+        {/* <Route path='/pesquisa' render={props => <Search {...props} />} /> */}
+        <Route path='/pesquisa/:word' render={props => <Search {...props} />} />
+        {/* <Route path='/pesquisa?word=:word' render={props => <Search {...props} />} /> */}
+        {/* <Route path='/pesquisa?word=:word' render={props => <Search word={props.match.params.word} {...props} />} /> */}
         {/* <Routes /> */}
         <Route exact path='/admin' render={Home} />
         <Route path='/admin/plantas' render={props => <AllPlants {...props} />} />
