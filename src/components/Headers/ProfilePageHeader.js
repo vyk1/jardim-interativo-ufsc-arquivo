@@ -1,7 +1,7 @@
 import React from "react";
 
 // reactstrap components
-import { Container } from "reactstrap";
+import { Container, Row } from "reactstrap";
 
 // core components
 
@@ -37,22 +37,13 @@ function ProfilePageHeader() {
         <Container>
           <h3 className="title">Jardim Universitário</h3>
           <p className="category">Um projeto UFSC</p>
-          <p className="category">Imagem: Photo by icon0.com from Pexels</p>
-          <p className="category">Referenciar templates</p>
-          {/* <div className="content">
-            <div className="social-description">
-              <h2>26</h2>
-              <p>Comments</p>
+          <div className="row align-items-end">
+            <div id="col-4"></div>
+            <div id="col-4"></div>
+            <div id="col-4">
+              <span className="category">Photo by icon0.com from Pexels</span>
             </div>
-            <div className="social-description">
-              <h2>26</h2>
-              <p>Comments</p>
-            </div>
-            <div className="social-description">
-              <h2>48</h2>
-              <p>Bookmarks</p>
-            </div>
-          </div> */}
+          </div>
         </Container>
       </div>
     </>

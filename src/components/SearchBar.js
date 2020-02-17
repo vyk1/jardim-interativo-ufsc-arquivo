@@ -2,7 +2,6 @@ import React from "react";
 
 import Slider from "nouislider";
 
-// reactstrap components
 import {
     Input,
     InputGroupAddon,
@@ -10,7 +9,6 @@ import {
     InputGroup,
     Col
 } from "reactstrap";
-import { Link } from "react-router-dom";
 
 function SearchBar() {
     const [rightFocus, setRightFocus] = React.useState(false);
@@ -18,28 +16,28 @@ function SearchBar() {
 
     React.useEffect(() => {
 
-        if (
-            !document
-                .getElementById("sliderRegular")
-                .classList.contains("noUi-target")
-        ) {
-            Slider.create(document.getElementById("sliderRegular"), {
-                start: [50],
-                connect: [true, false],
-                step: 0.5,
-                range: { min: 0, max: 100 }
-            });
-        }
-        if (
-            !document.getElementById("sliderDouble").classList.contains("noUi-target")
-        ) {
-            Slider.create(document.getElementById("sliderDouble"), {
-                start: [20, 80],
-                connect: [false, true, false],
-                step: 1,
-                range: { min: 0, max: 100 }
-            });
-        }
+        // if (
+        //     !document
+        //         .getElementById("sliderRegular")
+        //         .classList.contains("noUi-target")
+        // ) {
+        //     Slider.create(document.getElementById("sliderRegular"), {
+        //         start: [50],
+        //         connect: [true, false],
+        //         step: 0.5,
+        //         range: { min: 0, max: 100 }
+        //     });
+        // }
+        // if (
+        //     !document.getElementById("sliderDouble").classList.contains("noUi-target")
+        // ) {
+        //     Slider.create(document.getElementById("sliderDouble"), {
+        //         start: [20, 80],
+        //         connect: [false, true, false],
+        //         step: 1,
+        //         range: { min: 0, max: 100 }
+        //     });
+        // }
     });
 
     return (
@@ -47,7 +45,7 @@ function SearchBar() {
             <InputGroup className={rightFocus ? "input-group-focus" : ""}>
                 <Input
                     style={{ backgroundColor: "#fff" }}
-                    placeholder="Buscar planta (científico/popular)"
+                    placeholder="Buscar planta (nome popular)"
                     type="text"
                     value={word}
                     onFocus={() => setRightFocus(true)}

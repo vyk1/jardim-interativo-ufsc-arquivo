@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Items = props => {
     return (
         <div className="col-sm-4 col-md-4">
-            <Card key={props.ch} style={{ width: "20rem" }}>
+            <Card key={props.ch}>
                 <CardImg alt={props.content.scientificName}
                     src={props.content.image}
                     top>

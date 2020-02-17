@@ -21,8 +21,8 @@ export default function FullNav() {
                 <ProfilePageHeader />
             </div>
             {/* trocar o id para outro id="end" */}
-            <div className="slider" id="sliderRegular"></div>
-            <div className="slider slider-primary" id="sliderDouble"></div>
+            {/* <div id="sliderRegular"></div>
+            <div id="sliderDouble"></div> */}
         </>
 
     )

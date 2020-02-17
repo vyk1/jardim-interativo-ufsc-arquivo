@@ -22,6 +22,7 @@ import SignUp from "./index-sections/SignUp.js";
 import Examples from "./index-sections/Examples.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import FullNav from "./FullNav.js";
+import DefaultFooter from "components/Footers/DefaultFooter.js";
 
 function Index() {
   const [] = React.useState("2");
@@ -90,7 +91,7 @@ function Index() {
           {/* <Examples /> */}
           {/* <Download /> */}
         </div>
-        <DarkFooter />
+        <DefaultFooter />
       </div>
     </>
   );

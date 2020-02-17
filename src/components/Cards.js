@@ -6,6 +6,7 @@ import {
 
 import Items from "./Items.js"
 import config from "../config.js";
+import LoadingCog from "views/LoadingCog.js";
 
 export default class Cards extends Component {
 
@@ -28,9 +29,8 @@ export default class Cards extends Component {
 
         if (this.state.plants.length <= 0) {
             return (
-                <h1>
-                    <i className="now-ui-icons loader_gear spin"></i>
-                </h1>
+                <LoadingCog />
+
             )
         } else {
             let rows = []

@@ -207,6 +207,7 @@ export default class EditPlants extends Component {
                             <div className="col-6">
                                 <div className="form-group">
                                     <label htmlFor="pImage">Preview da Imagem Anterior</label>
+                                    <br/>
                                     <img src={this.state.plant.image} />
                                 </div>
                                 {/* </img> alt={this.state.plant.scientificName} /> */}
