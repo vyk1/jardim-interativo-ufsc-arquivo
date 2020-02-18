@@ -33,17 +33,17 @@ function ProfilePageHeader() {
             backgroundImage: "url(" + require("assets/img/garden.jpg") + ")"
           }}
           ref={pageHeader}
-        ></div>
+        >
+           <div className="d-flex flex-row-reverse">
+            <div class="d-flex flex-column-reverse">
+              <small className="mutted">Photo by icon0.com from Pexels</small>
+            </div>
+          </div>
+        </div>
         <Container>
           <h3 className="title">Jardim Universitário</h3>
           <p className="category">Um projeto UFSC</p>
-          <div className="row align-items-end">
-            <div id="col-4"></div>
-            <div id="col-4"></div>
-            <div id="col-4">
-              <span className="category">Photo by icon0.com from Pexels</span>
-            </div>
-          </div>
+         
         </Container>
       </div>
     </>

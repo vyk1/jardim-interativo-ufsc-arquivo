@@ -67,7 +67,6 @@ export default class Search extends React.Component {
                     {
                         Object.keys(this.state.plants)
                             .map(key => {
-
                                 rows.push(<Items key={key} ch={key} content={this.state.plants[key]} />)
                             })
                     }
