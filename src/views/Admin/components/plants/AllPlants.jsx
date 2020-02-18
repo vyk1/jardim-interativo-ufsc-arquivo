@@ -101,11 +101,8 @@ export default class AllPlants extends Component {
     renderRows() {
         return Object.keys(this.state.plants)
             .map(key => {
-                // console.log(key);
-                // console.log(this.state.plants[key]);
                 return (
                     <tr key={key}>
-                        {/* <td data-label="id">{this.state.plants[key].id}</td> */}
                         <td data-label="Nome Popular">{this.state.plants[key].popularName}</td>
                         <td data-label="Nome Científico">{this.state.plants[key].scientificName}</td>
                         <td data-label="Mais informações">
@@ -121,8 +118,10 @@ export default class AllPlants extends Component {
                         <td data-label="QR Code">
                             <Button
                                 color="success"
+                                to={`/admin/qrcode/${this.state.plants[key].key}`}
                                 className="mr-1"
-                            // onClick={() => setModal1(true)}
+                                tag={Link}
+                                target="_blank"
                             >QR Code</Button>
                         </td>
                     </tr >

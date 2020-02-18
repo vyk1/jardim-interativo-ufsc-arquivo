@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // reactstrap components
 import {
-    CardDeck
+    CardDeck, Button
 } from "reactstrap";
 
 import Items from "./Items.js"
@@ -51,7 +51,12 @@ export default class Cards extends Component {
                     }
 
                     <div className="col-12">
-                        <CardDeck>{rows}</CardDeck>
+                        <h3 className="title" id="sobre">(Um pouco do) Catálogo</h3>
+                        <CardDeck>{rows}
+                        </CardDeck>
+                        <div className="d-flex flex-column-reverse">
+                            <Button color="info" size="lg">Mais</Button>
+                        </div>
                     </div>
                 </>
             )

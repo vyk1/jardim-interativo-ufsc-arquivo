@@ -1,5 +1,5 @@
 {
-  "name": "now-ui-kit-react",
+  "name": "jardim-universitario-ufsc",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -10,6 +10,7 @@
     "moment": "2.24.0",
     "node-sass": "4.12.0",
     "nouislider": "14.0.2",
+    "qrcode.react": "^1.0.0",
     "re-base": "^4.0.0",
     "react": "16.8.6",
     "react-bootstrap-switch": "15.5.3",

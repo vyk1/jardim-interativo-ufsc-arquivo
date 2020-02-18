@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Items = props => {
     return (
-        <div className="col-sm-4 col-md-4">
+        <div className="col-sm-12 col-md-6 col-lg-4">
             <Card key={props.ch}>
                 <CardImg alt={props.content.scientificName}
                     src={props.content.image}
@@ -20,8 +20,8 @@ const Items = props => {
                         tag={Link}
                         target="_blank"
                     >
-                        Info
-                </Button>
+                        <i className="fas fa-info"></i>
+                    </Button>
                 </CardBody>
             </Card>
         </div>

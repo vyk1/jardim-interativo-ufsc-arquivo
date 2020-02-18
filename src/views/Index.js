@@ -37,14 +37,15 @@ function Index() {
   });
   return (
     <>
-      {/* <IndexNavbar />
-      <div className="wrapper">
-    <ProfilePageHeader /> */}
       <FullNav />
       <div className="wrapper">
         <div className="section">
           <Container>
-            <Cards limit={6} />
+            <h3 className="title" id="sobre">Sobre</h3>
+            <h5 className="description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium maiores perferendis ipsam commodi fugiat vel praesentium porro alias, quaerat repudiandae illum, voluptatibus perspiciatis. Inventore fugit, totam blanditiis nesciunt quisquam tenetur.
+            </h5>
+            <Cards limit={3} />
             {/* <Tabs /> */}
             {/* <div className="button-container">
               <Button className="btn-round" color="info" size="lg">

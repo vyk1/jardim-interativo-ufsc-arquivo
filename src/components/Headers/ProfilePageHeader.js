@@ -35,7 +35,7 @@ function ProfilePageHeader() {
           ref={pageHeader}
         >
            <div className="d-flex flex-row-reverse">
-            <div class="d-flex flex-column-reverse">
+            <div className="d-flex flex-column-reverse">
               <small className="mutted">Photo by icon0.com from Pexels</small>
             </div>
           </div>

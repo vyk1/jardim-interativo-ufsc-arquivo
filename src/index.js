@@ -17,6 +17,7 @@ import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 // import Routes from "views/Admin/main/Routes";
 import Home from "views/Admin/components/home/Home";
+import QRCodeClass from "views/Admin/components/qrcode/QRCode";
 import AllPlants from "views/Admin/components/plants/AllPlants";
 import NewPlant from "views/Admin/components/plants/NewPlant";
 import Logout from "views/Admin/components/logout/Logout";
@@ -38,6 +39,7 @@ ReactDOM.render(
         <Route path='/admin/plantas' render={props => <AllPlants {...props} />} />
         <Route path='/admin/nova-planta' render={props => <NewPlant {...props} />} />
         <Route path='/admin/editar-planta' render={props => <EditPlants {...props} />} />
+        <Route path='/admin/qrcode/:id' render={props => <QRCodeClass {...props} />} />
         <Route path='/admin/logout' render={Logout} />
 
         <Route path="/index" render={props => <Index {...props} />} />
