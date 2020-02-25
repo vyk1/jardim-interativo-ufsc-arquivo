@@ -17,8 +17,8 @@ const headerProps = {
 
 const initialState = {
     plants: [],
-    // pageSize: 3,
-    // field: "popularName"
+    limit: 3,
+    loaded: false
 }
 
 export default class AllPlants extends Component {
@@ -27,32 +27,27 @@ export default class AllPlants extends Component {
         super(props)
 
         this.state = initialState
+    }
 
-        // ref = firebase.database().ref('plantapedia/')
-        // query = ref.orderByChild(this.state.field).limitToLast(this.state.pageSize)
+    componentDidMount() {
+        this.getPlantsWithPagination()
+    }
 
+    getPlantsWithPagination() {
 
-        config.syncState('plantapedia/', {
-            context: this,
-            state: 'plants',
-            asArray: true,
-            queries: {
-                orderByChild: 'popularName',
-                limitToFirst: 3
-            }
+        const plants = firebase.database().ref('plantapedia/')
+            .limitToFirst(this.state.limit)
+            .orderByKey()
+
+        console.log('====================================');
+
+        plants.on('value', (snap) => {
+            let p = snap.val()
+            console.log(p);
+            return this.setState({ plants: p, loaded: true })
         })
     }
 
-    // nextPage(last) {
-    //     return ref.orderByChild(this.state.field)
-    //         .startAt(last['field'])
-    //         .limitToFirst(this.state.pageSize)
-    // }
-    // previousPage(first) {
-    //     return ref.orderByChild(this.state.field)
-    //         .endAt(first['field'])
-    //         .limitToLast(this.state.pageSize)
-    // }
 
     renderTable() {
         if (this.state.plants.length <= 0) {
@@ -78,26 +73,19 @@ export default class AllPlants extends Component {
                             {this.renderRows()}
                         </tbody>
                     </table>
-                    <button className="btn btn-info" onClick={this.nextPage.bind(this)}>Próxima página</button>
+                    <button className="btn btn-info" type="button" onClick={this.onNextPage}>
+                        Mais
+                        </button>
                 </div>
             )
         }
     }
-    nextPage() {
-        this.setState({ loaded: false })
-        let last = this.state.plants[this.state.plants.length - 1]
-        console.log('====================================');
-        console.log(last);
-        console.log('====================================');
-        let ref = firebase.database().ref('plantapedia/')
-        let query = ref.orderByChild("popularName").limitToLast(3).startAt(last['key'])
-        query.on('value', (snap) => {
-            let p = snap.val()
-            console.log('p')
-            console.log(p)
-            return this.setState({ plants: p, loaded: true })
-        })
+
+    onNextPage = async () => {
+        await this.setState({ limit: this.state.limit * 2 })    
+        this.getPlantsWithPagination()
     }
+
     renderRows() {
         return Object.keys(this.state.plants)
             .map(key => {
@@ -108,7 +96,7 @@ export default class AllPlants extends Component {
                         <td data-label="Mais informações">
                             <Button
                                 className="btn btn-info"
-                                to={`/leitura/${this.state.plants[key].key}`}
+                                to={`/leitura/${key}`}
                                 tag={Link}
                                 target="_blank"
                             >
@@ -118,7 +106,7 @@ export default class AllPlants extends Component {
                         <td data-label="QR Code">
                             <Button
                                 color="success"
-                                to={`/admin/qrcode/${this.state.plants[key].key}`}
+                                to={`/admin/qrcode/${key}`}
                                 className="mr-1"
                                 tag={Link}
                                 target="_blank"

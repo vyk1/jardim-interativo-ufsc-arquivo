@@ -1,6 +1,5 @@
 // https://github.com/tylermcginnis/re-base#updateendpoint-options
 // https://imasters.com.br/desenvolvimento/git-para-corajosos-rebase-parte-01
-// https://stackoverflow.com/questions/47375945/delete-firebase-storage-image-url-with-download-url
 // https://firebase.google.com/docs/database/web/read-and-write
 
 import React, { Component } from 'react'
@@ -11,7 +10,7 @@ import Footer from '../template/Footer'
 import '../template/Tables.css'
 import firebase from 'firebase'
 import config, { storage } from 'config'
-import { Alert } from 'reactstrap'
+import { Alert, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
 
 const headerProps = {
     icon: 'edit',
@@ -25,19 +24,37 @@ const initialState = {
     image2: "",
     limit: 3,
     loaded: false,
-    visible: true,
     sucess: false,
-    error: false
+    error: false,
+    visible: true
 }
 
 export default class EditPlants extends Component {
-
 
     constructor(props) {
         super(props)
 
         this.state = initialState
         this.onDismiss = this.onDismiss.bind(this);
+
+        this.toggle = this.toggle.bind(this);
+        this.toggle2 = this.toggle2.bind(this);
+        this.clear = this.clear.bind(this);
+    }
+
+    toggle() {
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
+
+    toggle2() {
+        this.setState({
+            modal2: !this.state.modal2
+        });
+    }
+    componentDidMount() {
+        this.getPlantsWithPagination()
     }
 
     onDismiss() {
@@ -50,7 +67,6 @@ export default class EditPlants extends Component {
         // firestore
         const plants = firebase.database().ref('plantapedia/')
             .limitToFirst(this.state.limit)
-            // .orderByChild('scientificName')
             .orderByKey()
 
         plants.on('value', (snap) => {
@@ -72,15 +88,16 @@ export default class EditPlants extends Component {
 
         const data = { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep }
 
-        // SE TEM IMAGEM NOVA
         const oldImage = e.target.imagemAntiga.value
 
+        // SE TEM IMAGEM NOVA
         if (e.target.image2.files[0]) {
             const newImage = e.target.image2.files[0]
 
             try {
                 // solve storage 1st
                 const ref = storage.refFromURL(oldImage)
+                // config.updateDoc()
                 ref.put(newImage)
                     .then(img => {
                         img.ref.getDownloadURL()
@@ -91,8 +108,7 @@ export default class EditPlants extends Component {
                                     data
                                 })
                                     .then(() => {
-                                        this.clear()
-                                        return this.setState({ success: true, loaded: true, visible: true })
+                                        return this.setState({ modal: true })
                                     })
 
                             })
@@ -112,9 +128,7 @@ export default class EditPlants extends Component {
                     data
                 })
                     .then(() => {
-                        this.clear()
-                        return this.setState({ success: true, loaded: true, visible: true })
-
+                        return this.setState({ modal: true })
                     })
             } catch (error) {
                 console.log(error);
@@ -124,10 +138,8 @@ export default class EditPlants extends Component {
 
     }
 
-    onNextPage = () => {
-        this.setState(
-            state => ({ limit: state.limit * 2 })
-        )
+    onNextPage = async () => {
+        await this.setState({ limit: this.state.limit * 2 })
         this.getPlantsWithPagination()
     }
 
@@ -137,14 +149,11 @@ export default class EditPlants extends Component {
         this.setState({ plant })
     }
 
-    componentDidMount() {
-        this.getPlantsWithPagination()
-    }
 
     renderForm() {
         if (this.state.loaded && Object.keys(this.state.plant).length) {
             return (
-                <div className="form">
+                <div className="form" id="form">
                     <form onSubmit={this.check.bind(this)}>
                         <div className="row">
                             <div className="col-lg-6 col-sm-12">
@@ -207,12 +216,11 @@ export default class EditPlants extends Component {
                             <div className="col-6">
                                 <div className="form-group">
                                     <label htmlFor="pImage">Preview da Imagem Anterior</label>
-                                    <br/>
+                                    <br />
                                     <img src={this.state.plant.image} />
                                 </div>
-                                {/* </img> alt={this.state.plant.scientificName} /> */}
-                                {/* <input accept="image/*" type="file" name="image" id="image" name="image" placeholder="Selecione a imagem" onChange={e=>this.updateField(e)} value={this.state.plant.image} required ref={(ref) => this.image = ref} /> */}
                             </div>
+
                             <div className="col-6">
                                 <div className="form-group">
                                     <label htmlFor="image2">Seleção de Nova Imagem</label>
@@ -243,10 +251,15 @@ export default class EditPlants extends Component {
 
     load(plant, id) {
         this.setState({ plant, id })
+        window.location.href = "#logo"
+    }
+    confirm(plant, id) {
+        this.setState({ name: plant.popularName, modal2: true })
+
     }
 
     renderTable() {
-        const { loaded, plants } = this.state
+        const { loaded, plants, erase } = this.state
         if (!loaded) {
             return (
                 <h1>
@@ -261,7 +274,7 @@ export default class EditPlants extends Component {
                             <tr>
                                 <th scope="col">Nome Popular</th>
                                 <th scope="col">Nome Científico</th>
-                                <th scope="col">Editar</th>
+                                <th scope="col">Operações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -290,8 +303,16 @@ export default class EditPlants extends Component {
                         <td data-label="Editar">
                             <button className="btn btn-warning"
                                 onClick={() => this.load(this.state.plants[key], key)}>
-                                {/* <i className="fa fa-edit"></i> */}
                                 <i className="now-ui-icons ui-1_settings-gear-63"></i>
+                            </button>
+                        </td>
+                        <td data-label="Apagar">
+                            {/* 
+// https://stackoverflow.com/questions/47375945/delete-firebase-storage-image-url-with-download-url
+                             */}
+                            <button className="btn btn-danger"
+                                onClick={() => this.confirm(this.state.plants[key], key)}>
+                                <i className="now-ui-icons design_scissors"></i>
                             </button>
                         </td>
                     </tr >
@@ -315,7 +336,31 @@ export default class EditPlants extends Component {
                             Ocorreu um erro, tente novamente mais tarde...
                     </Alert>
                     )}
-                    {/* This is a primary alert with <a href="#" className="alert-link">an example link</a>. Give it a click if you like. */}
+                    {/* modal */}
+                    <div>
+                        <Modal isOpen={this.state.modal} toggle={this.toggle} centered={true}>
+                            <ModalHeader toggle={this.toggle}>Sucesso!</ModalHeader>
+                            <ModalBody>
+                                Visitar a página?
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={() => { return this.props.history.push('/leitura/' + this.state.id) }}>Visitar</Button>{' '}
+                                <Button color="secondary" onClick={() => { this.toggle(); this.clear() }}>Cancelar</Button>
+                            </ModalFooter>
+                        </Modal>
+                    </div>
+                    <div>
+                        <Modal isOpen={this.state.modal2} toggle={this.toggle2} centered={true}>
+                            <ModalHeader toggle={this.toggle2}>Apagar Planta</ModalHeader>
+                            <ModalBody>Deseja apagar "{this.state.name}"<br />
+                                Atenção: Esta ação é irreversível
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={() => console.log('apag')}>Apagar</Button>
+                                <Button color="secondary" onClick={this.toggle2}>Cancelar</Button>
+                            </ModalFooter>
+                        </Modal>
+                    </div>
                     {this.renderForm()}
                     {this.renderTable()}
                 </Main>
