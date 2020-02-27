@@ -27,11 +27,7 @@ const initialState = {
 
 export default class NewPlant extends Component {
     state = { ...initialState }
-
-    constructor(props) {
-        super(props)
-    }
-
+    
     onDismiss() {
         let newView = !(this.state.visible)
         this.setState({ visible: newView });

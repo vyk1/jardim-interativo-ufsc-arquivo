@@ -20,16 +20,36 @@ export default class Search extends React.Component {
 
     getCards() {
         const { word } = this.state
-        // const plants = firebase.database().ref('plantapedia/').orderByChild('popularName').startAt(word).endAt(word + "\uf8ff")
-        const plants = firebase.database().ref('plantapedia/').orderByChild('popularName').equalTo(word)
-        plants.once('value', (snap) => {
+        let split = word.split("")
+        split[0] = split[0].toUpperCase()
+        let capital = split.join("")
+
+        //igual
+        const plantsEqualTo = firebase.database().ref('plantapedia/').orderByChild('popularName').equalTo(capital)
+        plantsEqualTo.on('value', (snap) => {
             let p = snap.val()
             if (!p) {
-                return this.setState({ message: "Não foram encontrados parâmetros para esta pesquisa." })
-            }
-            this.setState({ plants: p })
-        })
+                // return this.setState({ message: "Não foram encontrados parâmetros para esta pesquisa." })
+                // podemos pensar em um sistema de busca "inteligente"
+                // se não achar pega a primeira letra, sei lá
 
+                const plantsStartAt = firebase.database().ref('plantapedia/').orderByChild('popularName').startAt(capital)
+                plantsStartAt.on('value', (snap) => {
+                    let p = snap.val()
+                    if (!p) {
+                        return this.setState({ message: "Não foram encontrados parâmetros para esta pesquisa." })
+                        // podemos pensar em um sistema de busca "inteligente"
+                        // se não achar pega a primeira letra, sei lá
+                    }
+                    return this.setState({ plants: p })
+                })
+            }
+            return this.setState({ plants: p })
+        })
+        // começando por 
+
+
+        // const plants = firebase.database().ref('plantapedia/').orderByChild('popularName').startAt(word).endAt(word + "\uf8ff")
     }
     componentDidMount() {
         this.getCards()
@@ -44,7 +64,6 @@ export default class Search extends React.Component {
                     <div className="container">
                         {/* <h2>Resultados da busca para: "{this.props.match.params.word}"</h2> */}
                         <h2>Resultados da busca para: "{this.state.word}"</h2>
-                        <h2>to upper na primeira casa!</h2>
                         <div className="col-lg-12 col-sm-12">
                             {this.state.message}
                         </div>
@@ -67,6 +86,7 @@ export default class Search extends React.Component {
                     {
                         Object.keys(this.state.plants)
                             .map(key => {
+                                // se colocar return, retorna o índice :hmm
                                 rows.push(<Items key={key} ch={key} content={this.state.plants[key]} />)
                             })
                     }

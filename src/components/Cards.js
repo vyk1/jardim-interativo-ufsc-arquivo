@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // reactstrap components
 import {
-    CardDeck, Button
+    Button, CardGroup
 } from "reactstrap";
 
 import Items from "./Items.js"
@@ -15,7 +15,8 @@ export default class Cards extends Component {
 
         this.state = {
             plants: [],
-            limit: props.limit
+            limit: props.limit,
+            disabled: false
         }
 
         config.syncState('plantapedia', {
@@ -24,7 +25,13 @@ export default class Cards extends Component {
             asArray: false
         })
     }
-
+    
+    onNextPage = async () => {
+        await this.setState({ limit: this.state.limit * 2 })
+        if (this.state.limit >= Object.keys(this.state.plants).length) {
+            return this.setState({ disabled: true })
+        }
+    }
     render() {
 
         if (this.state.plants.length <= 0) {
@@ -51,12 +58,14 @@ export default class Cards extends Component {
                     }
 
                     <div className="col-12">
-                        <h3 className="title" id="sobre">(Um pouco do) Catálogo</h3>
-                        <CardDeck>{rows}
-                        </CardDeck>
-                        <div className="d-flex flex-column-reverse">
-                            <Button color="info" size="lg">Mais</Button>
-                        </div>
+                        <h3 className="title" id="sobre">Catálogo <i className="fa fa-leaf"></i></h3>
+                        <CardGroup>{rows}
+                        </CardGroup>
+                        {!this.state.disabled && (
+                            <div className="d-flex flex-column-reverse">
+                                <Button color="info" size="lg" onClick={this.onNextPage}>Mais</Button>
+                            </div>
+                        )}
                     </div>
                 </>
             )

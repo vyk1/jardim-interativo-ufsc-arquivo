@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase'
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col, Container, CardHeader, CardBody } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Col, CardHeader, CardBody } from 'reactstrap';
 import FullNav from './FullNav.js';
 import LoadingCog from './LoadingCog';
 import DefaultFooter from 'components/Footers/DefaultFooter.js';

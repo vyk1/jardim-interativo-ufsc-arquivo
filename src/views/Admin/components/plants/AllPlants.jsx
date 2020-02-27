@@ -7,7 +7,6 @@ import '../template/Tables.css'
 import config from "config.js";
 import { Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import firebase from 'firebase'
 
 const headerProps = {
     icon: 'users',
@@ -18,7 +17,8 @@ const headerProps = {
 const initialState = {
     plants: [],
     limit: 3,
-    loaded: false
+    loaded: true,
+    disabled2: false
 }
 
 export default class AllPlants extends Component {
@@ -27,30 +27,23 @@ export default class AllPlants extends Component {
         super(props)
 
         this.state = initialState
-    }
 
-    componentDidMount() {
-        this.getPlantsWithPagination()
-    }
-
-    getPlantsWithPagination() {
-
-        const plants = firebase.database().ref('plantapedia/')
-            .limitToFirst(this.state.limit)
-            .orderByKey()
-
-        console.log('====================================');
-
-        plants.on('value', (snap) => {
-            let p = snap.val()
-            console.log(p);
-            return this.setState({ plants: p, loaded: true })
+        config.syncState('plantapedia', {
+            context: this,
+            state: 'plants',
+            asArray: false
         })
     }
 
+    onNextPage = async () => {
+        await this.setState({ limit: this.state.limit * 2 })
+        if (this.state.limit >= Object.keys(this.state.plants).length) {
+            return this.setState({ disabled2: true })
+        }
+    }
 
     renderTable() {
-        if (this.state.plants.length <= 0) {
+        if (this.state.plants.length <= 0 || this.state.loaded === false) {
             return (
                 <h1>
                     <i className="now-ui-icons loader_gear spin"></i>
@@ -73,22 +66,32 @@ export default class AllPlants extends Component {
                             {this.renderRows()}
                         </tbody>
                     </table>
-                    <button className="btn btn-info" type="button" onClick={this.onNextPage}>
-                        Mais
+                    {this.state.plants && !this.state.disabled2 && (
+                        <button className="btn btn-info" type="button" onClick={this.onNextPage}>
+                            Mais
                         </button>
+                    )}
                 </div>
             )
         }
     }
 
     onNextPage = async () => {
-        await this.setState({ limit: this.state.limit * 2 })    
-        this.getPlantsWithPagination()
+        await this.setState({ limit: this.state.limit * 2 })
+        if (this.state.limit >= Object.keys(this.state.plants).length) {
+            return this.setState({ disabled2: true })
+        }
     }
 
     renderRows() {
+        let count = 0
+
         return Object.keys(this.state.plants)
             .map(key => {
+                count++
+                if (count > this.state.limit) {
+                    return false
+                }
                 return (
                     <tr key={key}>
                         <td data-label="Nome Popular">{this.state.plants[key].popularName}</td>
