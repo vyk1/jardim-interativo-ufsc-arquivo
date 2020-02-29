@@ -93,9 +93,9 @@ export default class EditPlants extends Component {
             return this.setState({ error: true })
 
         } finally {
-            window.location.href = "#topo"
             this.toggle2()
             this.clear()
+            window.location.href = "#root"
             return this.setState({ loaded: true, visible: true })
         }
 
@@ -275,7 +275,7 @@ export default class EditPlants extends Component {
 
     load(plant, id) {
         this.setState({ plant, id })
-        return window.location.href = "#topo"
+        return window.location.href = "#root"
     }
 
     confirm(plant, id) {
