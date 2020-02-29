@@ -27,7 +27,9 @@ export default class AllPlants extends Component {
         super(props)
 
         this.state = initialState
+    }
 
+    componentDidMount() {
         config.syncState('plantapedia', {
             context: this,
             state: 'plants',

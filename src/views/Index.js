@@ -7,21 +7,11 @@ import {
 // core components
 import Cards from "components/Cards.js";
 
-import BasicElements from "./index-sections/BasicElements.js";
-// // import Tabs from "./index-sections/Tabs.js";
-import Pagination from "./index-sections/Pagination.js";
-import Typography from "./index-sections/Typography.js";
-import Javascript from "./index-sections/Javascript.js";
-import Carousel from "./index-sections/Carousel.js";
-import CompleteExamples from "./index-sections/CompleteExamples.js";
-import SignUp from "./index-sections/SignUp.js";
-import Examples from "./index-sections/Examples.js";
-import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import FullNav from "./FullNav.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
 
 function Index() {
-  const [] = React.useState("2");
+  // const [] = React.useState("2");
   React.useEffect(() => {
     document.body.classList.add("profile-page");
     document.body.classList.add("sidebar-collapse");

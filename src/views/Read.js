@@ -23,7 +23,6 @@ export default class Read extends React.Component {
         plants.on('value', (snap) => {
             let p = snap.val()
             this.setState({ result: p })
-            console.log(p);
 
         })
     }
@@ -121,7 +120,7 @@ export default class Read extends React.Component {
                                             <h6>
                                                 Descrição:
                                             </h6>
-                                            {result.description}
+                                            <p>{result.description}</p>
                                         </TabPane>
                                         <TabPane tabId="2">
 

@@ -8,6 +8,7 @@ import Logo from '../template/Logo'
 import Nav from '../template/Nav'
 import Footer from '../template/Footer'
 import '../template/Tables.css'
+import firebase from 'firebase'
 import config, { storage } from 'config'
 import { Alert, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
 
@@ -22,7 +23,7 @@ const initialState = {
     plant: {},
     image2: "",
     limit: 3,
-    loaded: true,
+    loaded: false,
     sucess: false,
     error: false,
     visible: true,
@@ -35,70 +36,48 @@ export default class EditPlants extends Component {
         super(props)
 
         this.state = initialState
+        this.onDismiss = this.onDismiss.bind(this);
 
-        this.onDismiss = this.onDismiss.bind(this)
-        this.toggle = this.toggle.bind(this)
-        this.toggle2 = this.toggle2.bind(this)
-        this.clear = this.clear.bind(this)
-        this.erase = this.erase.bind(this)
-    }
-
-    componentDidMount() {
-        config.syncState('plantapedia', {
-            context: this,
-            state: 'plants',
-            asArray: false
-        })
+        this.toggle = this.toggle.bind(this);
+        this.toggle2 = this.toggle2.bind(this);
+        this.clear = this.clear.bind(this);
     }
 
     toggle() {
         this.setState({
             modal: !this.state.modal
-        })
+        });
     }
 
     toggle2() {
         this.setState({
             modal2: !this.state.modal2
-        })
+        });
+    }
+    componentDidMount() {
+        this.getPlantsWithPagination()
     }
 
     onDismiss() {
-        this.setState({
-            visible: !this.state.visible
+        let newView = !(this.state.visible)
+        this.setState({ visible: newView });
+    }
+
+    async getPlantsWithPagination() {
+
+        // firestore
+        const plants = firebase.database().ref('plantapedia/')
+            .limitToFirst(this.state.limit)
+            .orderByKey()
+
+        await plants.on('value', (snap) => {
+            let p = snap.val()
+            return this.setState({ plants: p, loaded: true })
         })
     }
 
     clear() {
         this.setState({ plant: initialState.plant, id: null })
-    }
-
-    erase() {
-        this.setState({ loaded: false })
-        const { id, plant } = this.state
-        const image = plant.image
-
-        try {
-            const ref = storage.refFromURL(image)
-            ref.delete()
-                .then(() => {
-                    config.remove(`plantapedia/${id}`)
-                        .then(() => {
-                            return this.setState({ success: true })
-                        })
-                })
-
-        } catch (error) {
-            console.log(error)
-            return this.setState({ error: true })
-
-        } finally {
-            window.location.href = "#topo"
-            this.toggle2()
-            this.clear()
-            return this.setState({ loaded: true, visible: true })
-        }
-
     }
 
     check(e) {
@@ -137,7 +116,7 @@ export default class EditPlants extends Component {
                     })
 
             } catch (error) {
-                console.log(error)
+                console.log(error);
                 return this.setState({ error: true, loaded: true, visible: true })
             }
 
@@ -153,7 +132,7 @@ export default class EditPlants extends Component {
                         return this.setState({ modal: true })
                     })
             } catch (error) {
-                console.log(error)
+                console.log(error);
                 return this.setState({ error: true, loaded: true, visible: true })
             }
         }
@@ -161,8 +140,12 @@ export default class EditPlants extends Component {
     }
 
     onNextPage = async () => {
+
         await this.setState({ limit: this.state.limit * 2 })
-        if (this.state.limit >= Object.keys(this.state.plants).length) {
+        await this.getPlantsWithPagination()
+
+        if (this.state.limit > Object.keys(this.state.plants).length) {
+            console.log('acabou');
             return this.setState({ disabled2: true })
         }
     }
@@ -175,7 +158,7 @@ export default class EditPlants extends Component {
 
 
     renderForm() {
-        if (this.state.plant && Object.keys(this.state.plant).length) {
+        if (this.state.loaded && Object.keys(this.state.plant).length) {
             return (
                 <div className="form" id="form">
                     <form onSubmit={this.check.bind(this)}>
@@ -241,7 +224,7 @@ export default class EditPlants extends Component {
                                 <div className="form-group">
                                     <label htmlFor="pImage">Preview da Imagem Anterior</label>
                                     <br />
-                                    <img src={this.state.plant.image} alt={this.state.plant.popularName} />
+                                    <img src={this.state.plant.image} />
                                 </div>
                             </div>
 
@@ -263,7 +246,7 @@ export default class EditPlants extends Component {
                                         </button>
                                 <button className="btn btn-secondary ml-2"
                                     onClick={e => this.clear(e)}>
-                                    Cancelar
+                                    Limpar
                                         </button>
                             </div>
                         </div>
@@ -275,16 +258,16 @@ export default class EditPlants extends Component {
 
     load(plant, id) {
         this.setState({ plant, id })
-        return window.location.href = "#topo"
+        window.location.href = "#logo"
     }
-
     confirm(plant, id) {
-        this.setState({ modal2: true, plant, id })
+        this.setState({ name: plant.popularName, modal2: true })
+
     }
 
     renderTable() {
         const { loaded, plants, disabled2 } = this.state
-        if (this.state.plants.length <= 0 || loaded === false) {
+        if (!loaded) {
             return (
                 <h1>
                     <i className="now-ui-icons loader_gear spin"></i>
@@ -305,7 +288,7 @@ export default class EditPlants extends Component {
                             {this.renderRows()}
                         </tbody>
                     </table>
-                    {plants && !disabled2 && (
+                    {loaded && plants && !disabled2 && (
                         <button className="btn btn-info" type="button" onClick={this.onNextPage}>
                             Mais
                         </button>
@@ -317,14 +300,9 @@ export default class EditPlants extends Component {
     }
 
     renderRows() {
-        let count = 0
 
         return Object.keys(this.state.plants)
             .map(key => {
-                count++
-                if (count > this.state.limit) {
-                    return false
-                }
                 return (
                     <tr key={key}>
                         <td data-label="Nome Popular">{this.state.plants[key].popularName}</td>
@@ -373,19 +351,19 @@ export default class EditPlants extends Component {
                                 Visitar a página?
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="info" onClick={() => { return this.props.history.push('/leitura/' + this.state.id) }}>Visitar</Button>{' '}
-                                <Button color="secondary" onClick={() => { this.clear(); this.toggle(); this.setState({ loaded: true }) }}>Cancelar</Button>
+                                <Button color="primary" onClick={() => { return this.props.history.push('/leitura/' + this.state.id) }}>Visitar</Button>{' '}
+                                <Button color="secondary" onClick={() => { this.toggle(); this.clear() }}>Cancelar</Button>
                             </ModalFooter>
                         </Modal>
                     </div>
                     <div>
                         <Modal isOpen={this.state.modal2} toggle={this.toggle2} centered={true}>
                             <ModalHeader toggle={this.toggle2}>Apagar Planta</ModalHeader>
-                            <ModalBody>Deseja apagar "{this.state.plant.popularName}"?<br />
+                            <ModalBody>Deseja apagar "{this.state.name}"<br />
                                 Atenção: Esta ação é irreversível
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.erase}>Apagar</Button>
+                                <Button color="primary" onClick={() => console.log('apag')}>Apagar</Button>
                                 <Button color="secondary" onClick={this.toggle2}>Cancelar</Button>
                             </ModalFooter>
                         </Modal>

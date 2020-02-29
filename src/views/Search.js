@@ -88,6 +88,7 @@ export default class Search extends React.Component {
                             .map(key => {
                                 // se colocar return, retorna o índice :hmm
                                 rows.push(<Items key={key} ch={key} content={this.state.plants[key]} />)
+                                return true
                             })
                     }
                     <div className="col-lg-12 col-sm-12">

@@ -1,7 +1,0 @@
-Podes começar com uma tabela com:
-Nome popular
-Nome científico
-Distribuição geográfica
-parte da planta utilizada para tratamento, 
-princípios ativos, 
-utilização e modos de preparo

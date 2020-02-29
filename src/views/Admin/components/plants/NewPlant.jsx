@@ -45,7 +45,6 @@ export default class NewPlant extends Component {
             const ref = storage.ref(name)
             ref.put(image)
                 .then(img => {
-                    // console.log(img);
                     img.ref.getDownloadURL()
                         .then(dURL => {
                             const plant = {
@@ -61,10 +60,6 @@ export default class NewPlant extends Component {
                             config.push('plantapedia', {
                                 data: plant
                             }).then((s) => {
-                                console.log('====================================');
-                                console.log(s);
-                                console.log('====================================');
-                                // tentar levar a pessoa p/ a página
                                 this.clear()
                                 return this.setState({ success: true, loaded: true, visible: true })
                             })

@@ -6,9 +6,7 @@ var React = require('react');
 export default class QRCodeClass extends React.Component {
     constructor(props) {
         super(props)
-        // console.log(props);
-        // console.log(window.location.hostname);
-        // console.log(window.location.host);
+
         var protocol = window.location.protocol;
         var slashes = protocol.concat("//");
         // var host = slashes.concat(window.location.host);
@@ -31,12 +29,10 @@ export default class QRCodeClass extends React.Component {
             imageExcavate: true,
             centerImage: true,
         }
-        console.log(this.state.value);
 
     }
 
     toDownload(e) {
-        console.log('e')
         let img = document.getElementById('image').toDataURL('image/png')
         let link = document.createElement('a');
         link.download = 'qr-code.png';
