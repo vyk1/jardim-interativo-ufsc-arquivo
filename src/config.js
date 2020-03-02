@@ -13,13 +13,12 @@ const config = {
     measurementId: "G-2RVMJHZMY9"
 };
 
-//   firebase.analytics();
-
 const app = firebase.initializeApp(config);
 const firebaseConfig = rebase.createClass(app.database())
 const firestore = app.firestore()
 
 export const storage = app.storage()
 export const base = rebase.createClass(firestore)
+export const auth = app.auth()
 
 export default firebaseConfig

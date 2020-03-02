@@ -24,42 +24,67 @@ import Logout from "views/Admin/components/logout/Logout";
 import Search from "views/Search";
 import EditPlants from "views/Admin/components/plants/EditPlant";
 import Read from "views/Read";
+import { auth } from "./config";
+import LoadingCog from "views/LoadingCog";
 
-ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Switch>
-        <Route path='/leitura/:id' render={props => <Read {...props} />} />
-        {/* <Route path='/pesquisa' render={props => <Search {...props} />} /> */}
-        <Route path='/pesquisa/:word' render={props => <Search {...props} />} />
-        {/* <Route path='/pesquisa?word=:word' render={props => <Search {...props} />} /> */}
-        {/* <Route path='/pesquisa?word=:word' render={props => <Search word={props.match.params.word} {...props} />} /> */}
-        {/* <Routes /> */}
-        <Route exact path='/admin' render={Home} />
-        <Route path='/admin/plantas' render={props => <AllPlants {...props} />} />
-        <Route path='/admin/nova-planta' render={props => <NewPlant {...props} />} />
-        <Route path='/admin/editar-planta' render={props => <EditPlants {...props} />} />
-        <Route path='/admin/qrcode/:id' render={props => <QRCodeClass {...props} />} />
-        <Route path='/admin/logout' render={Logout} />
+class Starter extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { loaded: false }
+  }
 
-        <Route path="/index" render={props => <Index {...props} />} />
-        <Route
-          path="/nucleo-icons"
-          render={props => <NucleoIcons {...props} />}
-        />
-        <Route
-          path="/landing-page"
-          render={props => <LandingPage {...props} />}
-        />
-        <Route
-          path="/profile-page"
-          render={props => <ProfilePage {...props} />}
-        />
-        <Route path="/login-page" render={props => <LoginPage {...props} />} />
-        <Redirect to="/index" />
-        <Redirect from="/" to="/index" />
-      </Switch>
-    </Switch>
-  </BrowserRouter>,
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      this.setState({
+        isAuthenticated: !!user,
+        user,
+        loaded: true
+      })
+    })
+  }
+
+  render() {
+    const PrivateRoute = ({ component: Component, ...rest }) => (
+      <Route
+        {...rest}
+        render={props =>
+          this.state.isAuthenticated ? (
+            <Component {...props} />
+          ) : (
+              <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+            )
+        }
+      />
+    )
+
+    if (!this.state.loaded) {
+      return <LoadingCog />
+    }
+
+    return (
+      <BrowserRouter>
+        <Switch>
+          <PrivateRoute exact path='/admin' component={Home} />
+          <PrivateRoute path='/admin/plantas' component={AllPlants} />
+          <PrivateRoute path='/admin/nova-planta' component={NewPlant} />
+          <PrivateRoute path='/admin/editar-planta' component={EditPlants} />
+          <PrivateRoute path='/admin/qrcode/:id' component={QRCodeClass} />
+          <PrivateRoute path='/admin/logout' component={Logout} />
+
+          <Route path="/index" component={Index} />
+          <Route path='/leitura/:id' component={Read} />
+          <Route path='/pesquisa/:word' component={Search} />
+          <Route path="/login" component={LoginPage} />
+          <Redirect from="/" to="/index" />
+          <Redirect to="/index" />
+          {/* <Redirect from="/login" to="/admin" /> */}
+        </Switch>
+      </BrowserRouter>
+    )
+  }
+}
+
+ReactDOM.render(<Starter />
+  ,
   document.getElementById("root")
 );

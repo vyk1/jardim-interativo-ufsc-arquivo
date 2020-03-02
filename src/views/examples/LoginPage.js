@@ -1,5 +1,6 @@
-import React from "react";
-
+// Xiqu3Xiqu3Firestor3
+// admin.jduniversitario@gmail.com
+import React from "react"
 // reactstrap components
 import {
   Button,
@@ -13,51 +14,94 @@ import {
   InputGroupText,
   InputGroup,
   Container,
-  Col
-} from "reactstrap";
+  Col,
+  Alert
+} from "reactstrap"
 
-// core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import TransparentFooter from "components/Footers/TransparentFooter.js";
+import { Redirect } from 'react-router-dom'
+import useLoginForm from '../Admin/customHooks/useLoginForm'
+import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js"
+import { auth } from 'config'
+import LoadingCog from "views/LoadingCog"
 
-function LoginPage() {
-  const [firstFocus, setFirstFocus] = React.useState(false);
-  const [lastFocus, setLastFocus] = React.useState(false);
+function LoginPage(props) {
+  const [firstFocus, setFirstFocus] = React.useState(false)
+  const [lastFocus, setLastFocus] = React.useState(false)
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false)
+  const [error, setError] = React.useState(false)
+  const [loaded, setLoaded] = React.useState(true)
+  const [visible, setVisible] = React.useState(true)
+
+
+  const login = async () => {
+    setLoaded(false)
+    setVisible(true)
+
+    const { email, password } = inputs
+    await auth.signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        console.log(user);
+        setIsAuthenticated(true)
+        return props.history.push("/admin")
+      }).catch(err => {
+        console.log(err);
+        setError(true)
+        setLoaded(true)
+        return
+      })
+    // .finally(() => {
+    // setLoaded(true)
+    // })
+  }
+
+  const { inputs, handleInputChange, handleSubmit } = useLoginForm({ email: "admin.jduniversitario@gmail.com", password: "Xiqu3Xiqu3Firestor3" }, login)
+
   React.useEffect(() => {
-    document.body.classList.add("login-page");
-    document.body.classList.add("sidebar-collapse");
-    document.documentElement.classList.remove("nav-open");
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
+    document.body.classList.add("login-page")
+    document.body.classList.add("sidebar-collapse")
+    document.documentElement.classList.remove("nav-open")
+    window.scrollTo(0, 0)
+    document.body.scrollTop = 0
     return function cleanup() {
-      document.body.classList.remove("login-page");
-      document.body.classList.remove("sidebar-collapse");
-    };
-  });
+      document.body.classList.remove("login-page")
+      document.body.classList.remove("sidebar-collapse")
+    }
+  })
+
   return (
     <>
       <ExamplesNavbar />
-      <div className="page-header clear-filter" filter-color="blue">
+      <div className="page-header clear-filter" filter-color="green">
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/login.jpg") + ")"
+            backgroundImage: "url(" + require("assets/img/burlemarx.jpg") + ")"
           }}
         ></div>
         <div className="content">
           <Container>
             <Col className="ml-auto mr-auto" md="4">
               <Card className="card-login card-plain">
-                <Form action="" className="form" method="">
-                  <CardHeader className="text-center">
-                    <div className="logo-container">
-                      <img
+                <Form onSubmit={handleSubmit}>
+                  <CardHeader className="text-center pt-4">
+                    <h3 className="text-uppercase">administrativo</h3>
+                    {/*
+                    <div className="logo-container" style={{ marginTop: "55px" }}>
+                       <img
                         alt="..."
                         src={require("assets/img/now-logo.png")}
-                      ></img>
+                      ></img> 
                     </div>
+                      */}
                   </CardHeader>
-                  <CardBody>
+                  {!loaded && (<LoadingCog />)}
+                  {error && (
+                    <Alert color="danger" isOpen={visible} toggle={() => setVisible(!visible)}>
+                      Senha ou E-mail inválidos
+                    </Alert>
+                  )}
+
+                  <CardBody className="pb-0">
                     <InputGroup
                       className={
                         "no-border input-lg" +
@@ -66,12 +110,15 @@ function LoginPage() {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          {/* <i className="now-ui-icons users_circle-08"></i> */}
                           <i className="now-ui-icons ui-1_email-85"></i>
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
                         placeholder="Email..."
+                        onChange={handleInputChange}
+                        required
+                        value={inputs.email}
+                        name="email"
                         type="text"
                         onFocus={() => setFirstFocus(true)}
                         onBlur={() => setFirstFocus(false)}
@@ -90,7 +137,11 @@ function LoginPage() {
                       </InputGroupAddon>
                       <Input
                         placeholder="Senha..."
-                        type="text"
+                        onChange={handleInputChange}
+                        required
+                        value={inputs.password}
+                        name="password"
+                        type="password"
                         onFocus={() => setLastFocus(true)}
                         onBlur={() => setLastFocus(false)}
                       ></Input>
@@ -99,15 +150,14 @@ function LoginPage() {
                   <CardFooter className="text-center">
                     <Button
                       block
+                      type="submit"
                       className="btn-round"
                       color="info"
-                      href="#pablo"
-                      onClick={e => e.preventDefault()}
                       size="lg"
                     >
                       Logar
                     </Button>
-                    <div className="pull-left">
+                    {/* <div className="pull-left">
                       <h6>
                         <a
                           className="link"
@@ -128,17 +178,17 @@ function LoginPage() {
                           Need Help?
                         </a>
                       </h6>
-                    </div>
+                    </div> */}
                   </CardFooter>
                 </Form>
               </Card>
             </Col>
           </Container>
         </div>
-        <TransparentFooter />
+        {/* <DefaultFooter /> */}
       </div>
     </>
-  );
+  )
 }
 
-export default LoginPage;
+export default LoginPage
