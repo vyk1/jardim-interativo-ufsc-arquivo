@@ -15,7 +15,7 @@ function TransparentFooter() {
                 href="/"
                 target="_blank"
               >
-               Jardim Universitário
+               Jardim Unificado
               </a>
             </li>
             <li>

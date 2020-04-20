@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
-import Main from '../template/Main'
-import Logo from '../template/Logo'
-import Nav from '../template/Nav'
-import Footer from '../template/Footer'
-import '../template/Tables.css'
+
+import Main from '../template/Main/Main'
+import Logo from '../template/Logo/Logo'
+import Nav from '../template/Nav/Nav'
+import Footer from '../template/Footer/Footer'
+import '../template/Tables/Tables.css'
+
 import config from "config.js";
 import { Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 const headerProps = {
-    icon: 'users',
+    icon: 'leaf',
     title: 'Todas as plantas',
-    subtitle: 'Aqui estão listados todas as plantas.'
+    subtitle: 'Aqui estão listados todas as plantas.',
+    type: 'planta',
 }
 
 const initialState = {

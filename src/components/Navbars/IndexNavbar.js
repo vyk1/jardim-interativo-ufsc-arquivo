@@ -53,7 +53,7 @@ function IndexNavbar() {
               target="_blank"
               id="navbar-brand"
             >
-              Jardim Universitário
+              Jardim Unificado
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
               Layout by Creative Tim &amp; Invision<br /> Coded by Victoria Botelho Martins

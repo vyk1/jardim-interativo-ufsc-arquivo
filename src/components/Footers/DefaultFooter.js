@@ -15,7 +15,7 @@ function DefaultFooter() {
                 <a
                   href="/"
                 >
-                  Jardim Universitário
+                  Jardim Unificado
                 </a>
               </li>
               <li>

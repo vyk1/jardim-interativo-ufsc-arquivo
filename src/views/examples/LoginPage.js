@@ -18,7 +18,6 @@ import {
   Alert
 } from "reactstrap"
 
-import { Redirect } from 'react-router-dom'
 import useLoginForm from '../Admin/customHooks/useLoginForm'
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js"
 import { auth } from 'config'
@@ -32,26 +31,27 @@ function LoginPage(props) {
   const [loaded, setLoaded] = React.useState(true)
   const [visible, setVisible] = React.useState(true)
 
+  
 
   const login = async () => {
     setLoaded(false)
     setVisible(true)
 
     const { email, password } = inputs
-    await auth.signInWithEmailAndPassword(email, password)
-      .then((user) => {
-        console.log(user);
-        setIsAuthenticated(true)
-        return props.history.push("/admin")
-      }).catch(err => {
-        console.log(err);
-        setError(true)
-        setLoaded(true)
-        return
-      })
-    // .finally(() => {
-    // setLoaded(true)
-    // })
+    try {
+      await auth.signInWithEmailAndPassword(email, password)
+        .then((user) => {
+          setIsAuthenticated(true)
+          console.log("user")
+          console.log(user)
+          return props.history.push("/admin")
+        })
+    } catch (err) {
+      console.log("err")
+      console.log(err)
+      setError(true)
+      setLoaded(true)
+    }
   }
 
   const { inputs, handleInputChange, handleSubmit } = useLoginForm({ email: "admin.jduniversitario@gmail.com", password: "Xiqu3Xiqu3Firestor3" }, login)

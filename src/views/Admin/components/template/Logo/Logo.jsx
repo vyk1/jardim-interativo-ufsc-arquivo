@@ -6,7 +6,7 @@ export default props =>
     <aside className="logo">
         <Link to="/" className="logo" id="logo">
             <p className="text-success">
-                Jardim Universitário
+                Jardim Unificado
               </p>
         </Link>
     </aside>

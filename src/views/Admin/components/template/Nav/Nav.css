@@ -1,6 +1,6 @@
 aside.menu-area {
     background-color: var(--bg-dark);
-    box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.12), 2px 0 15px 0 rgba(0, 0, 0, 0.09);
+    overflow: hidden;
 }
 
 .menu a {
@@ -8,7 +8,14 @@ aside.menu-area {
     text-decoration: none;
     color: #FFF;
     font-weight: 300;
-    padding: 15px;
+    padding: 10px;
+    /* float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px; */
 }
 
 .menu a:hover {
@@ -23,11 +30,17 @@ aside.menu-area {
     }
     .menu a {
         display: inline;
-        padding: 10px;
         margin: 0px;
+        padding-right: 6px;
     }
     .menu {
-        height: 70%;
+        height: 60%;
         justify-content: space-around;
     }
 }
+
+/* 
+.vl {
+    border-left: 6px  #fff;
+    height: 500px;
+  } */

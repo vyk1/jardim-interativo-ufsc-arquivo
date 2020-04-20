@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
-import Main from '../template/Main'
-import Logo from '../template/Logo'
-import Nav from '../template/Nav'
-import Footer from '../template/Footer'
+import Main from '../template/Main/Main'
+import Logo from '../template/Logo/Logo'
+import Nav from '../template/Nav/Nav'
+import Footer from '../template/Footer/Footer'
 import config, { storage } from 'config'
 import { Alert } from 'reactstrap'
+import imageCompression from 'browser-image-compression';
 
 const headerProps = {
     icon: 'plus-circle',
     title: 'Nova Planta',
-    subtitle: 'Preencha o formulário para completar a operação.'
+    subtitle: 'Preencha o formulário.',
+    type: 'planta',
 }
 
 const initialState = {
@@ -27,11 +29,12 @@ const initialState = {
 
 export default class NewPlant extends Component {
     state = { ...initialState }
-    
+
     onDismiss() {
         let newView = !(this.state.visible)
         this.setState({ visible: newView });
     }
+
     async check(e) {
         e.preventDefault()
         this.setState({ loaded: false })
@@ -40,10 +43,17 @@ export default class NewPlant extends Component {
         const image = e.target.image.files[0]
         const { name } = image
 
-        try {
+        var options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 1920,
+            useWebWorker: true
+        }
 
+        try {
+            const compressedImage = await imageCompression(image, options)
             const ref = storage.ref(name)
-            ref.put(image)
+
+            ref.put(compressedImage)
                 .then(img => {
                     img.ref.getDownloadURL()
                         .then(dURL => {
@@ -171,12 +181,12 @@ export default class NewPlant extends Component {
                     {this.state.success && (
                         <Alert color="success" isOpen={this.state.visible} toggle={this.onDismiss}>
                             Operação Concluída com Sucesso!
-                    </Alert>
+                        </Alert>
                     )}
                     {this.state.error && (
                         <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
                             Ocorreu um erro, tente novamente mais tarde...
-                    </Alert>
+                        </Alert>
                     )}
                     {this.renderForm()}
 

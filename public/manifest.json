@@ -1,6 +1,6 @@
 {
-  "short_name": "jardim-universitario-ufsc",
-  "name": "Jardim Universitário",
+  "short_name": "jardim-unificado-ufsc",
+  "name": "Jardim Unificado",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#fff",
   "background_color": "#4be87f"
 }

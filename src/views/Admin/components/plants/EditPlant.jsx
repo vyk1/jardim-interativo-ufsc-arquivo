@@ -3,18 +3,19 @@
 // https://firebase.google.com/docs/database/web/read-and-write
 
 import React, { Component } from 'react'
-import Main from '../template/Main'
-import Logo from '../template/Logo'
-import Nav from '../template/Nav'
-import Footer from '../template/Footer'
-import '../template/Tables.css'
+import Main from '../template/Main/Main'
+import Logo from '../template/Logo/Logo'
+import Nav from '../template/Nav/Nav'
+import Footer from '../template/Footer/Footer'
+import '../template/Tables/Tables.css'
 import config, { storage } from 'config'
 import { Alert, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
 
 const headerProps = {
     icon: 'edit',
     title: 'Edição de Planta',
-    subtitle: 'Clique no botão de edição para começar.'
+    subtitle: 'Clique na opção desejada.',
+    type: 'planta',
 }
 
 const initialState = {
@@ -358,12 +359,12 @@ export default class EditPlants extends Component {
                     {this.state.success && (
                         <Alert color="success" isOpen={this.state.visible} toggle={this.onDismiss}>
                             Operação Concluída com Sucesso!
-                    </Alert>
+                        </Alert>
                     )}
                     {this.state.error && (
                         <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
                             Ocorreu um erro, tente novamente mais tarde...
-                    </Alert>
+                        </Alert>
                     )}
                     {/* modal */}
                     <div>
