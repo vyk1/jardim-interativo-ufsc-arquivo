@@ -10,18 +10,19 @@ import "./assets/scss/now-ui-kit.scss";
 import "./assets/demo/demo.css";
 import "./assets/demo/nucleo-icons-page-styles.css";
 // pages for this kit
-import Index from "views/Index.js";
-import LoginPage from "views/examples/LoginPage.js";
-import Home from "views/Admin/components/home/Home";
-import QRCodeClass from "views/Admin/components/qrcode/QRCode";
-import AllPlants from "views/Admin/components/plants/AllPlants";
-import NewPlant from "views/Admin/components/plants/NewPlant";
-import Logout from "views/Admin/components/logout/Logout";
-import Search from "views/Search";
-import EditPlants from "views/Admin/components/plants/EditPlant";
-import Read from "views/Read";
+import Index from "./views/Index.js";
+import LoginPage from "./views/examples/LoginPage.js";
+import Home from "./views/Admin/components/home/Home";
+import QRCodeClass from "./views/Admin/components/qrcode/QRCode";
+import AllPlants from "./views/Admin/components/plants/AllPlants";
+import NewPlant from "./views/Admin/components/plants/NewPlant";
+import Logout from "./views/Admin/components/logout/Logout";
+import Search from "./views/Search";
+import EditPlants from "./views/Admin/components/plants/EditPlant";
+import Read from "./views/Read";
 import { auth } from "./config";
-import LoadingCog from "views/LoadingCog";
+import LoadingCog from "./views/LoadingCog";
+import AllCategories from "./views/Admin/components/categories/AllCategories";
 
 class Starter extends React.Component {
   constructor(props) {
@@ -67,6 +68,8 @@ class Starter extends React.Component {
           <PrivateRoute path='/admin/editar-planta' component={EditPlants} />
           <PrivateRoute path='/admin/qrcode/:id' component={QRCodeClass} />
           <PrivateRoute path='/admin/logout' component={Logout} />
+
+          <PrivateRoute path='/admin/categorias' component={AllCategories} />
 
           <Route path="/index" component={Index} />
           <Route path='/leitura/:id' component={Read} />

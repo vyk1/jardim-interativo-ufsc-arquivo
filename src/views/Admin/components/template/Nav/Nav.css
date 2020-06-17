@@ -9,13 +9,6 @@ aside.menu-area {
     color: #FFF;
     font-weight: 300;
     padding: 10px;
-    /* float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px; */
 }
 
 .menu a:hover {
@@ -38,9 +31,3 @@ aside.menu-area {
         justify-content: space-around;
     }
 }
-
-/* 
-.vl {
-    border-left: 6px  #fff;
-    height: 500px;
-  } */

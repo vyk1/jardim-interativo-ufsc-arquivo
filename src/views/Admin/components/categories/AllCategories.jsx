@@ -4,18 +4,17 @@ import Main from '../template/Main/Main'
 import Logo from '../template/Logo/Logo'
 import Nav from '../template/Nav/Nav'
 import Footer from '../template/Footer/Footer'
-import '../template/Tables/Tables.css'
-
 import config from "config.js";
+
 import TableS from '../table/Index'
 import { Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 const headerProps = {
-    icon: 'leaf',
-    title: 'Todas as plantas',
-    subtitle: 'Aqui estão listados todas as plantas.',
-    type: 'planta',
+    icon: 'tag',
+    title: 'Todas as categorias',
+    subtitle: 'Aqui estão listados todas as categorias.',
+    type: 'categoria',
 }
 
 const initialState = {
@@ -25,7 +24,7 @@ const initialState = {
     disabled2: false
 }
 
-export default class AllPlants extends Component {
+export default class AllCategories extends Component {
 
     constructor(props) {
         super(props)
@@ -36,7 +35,7 @@ export default class AllPlants extends Component {
     componentDidMount() {
         config.syncState('plantapedia', {
             context: this,
-            state: 'plants',
+            state: 'categories',
             asArray: true
         })
     }

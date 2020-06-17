@@ -1,7 +1,3 @@
-// https://github.com/tylermcginnis/re-base#updateendpoint-options
-// https://imasters.com.br/desenvolvimento/git-para-corajosos-rebase-parte-01
-// https://firebase.google.com/docs/database/web/read-and-write
-
 import React, { Component } from 'react'
 import Main from '../template/Main/Main'
 import Logo from '../template/Logo/Logo'
@@ -10,6 +6,7 @@ import Footer from '../template/Footer/Footer'
 import '../template/Tables/Tables.css'
 import config, { storage } from 'config'
 import { Alert, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
+import TableS from '../table/Index'
 
 const headerProps = {
     icon: 'edit',
@@ -48,7 +45,7 @@ export default class EditPlants extends Component {
         config.syncState('plantapedia', {
             context: this,
             state: 'plants',
-            asArray: false
+            asArray: true
         })
     }
 
@@ -161,19 +158,30 @@ export default class EditPlants extends Component {
 
     }
 
-    onNextPage = async () => {
-        await this.setState({ limit: this.state.limit * 2 })
-        if (this.state.limit >= Object.keys(this.state.plants).length) {
-            return this.setState({ disabled2: true })
-        }
-    }
+    displayActionItems = props => {
+        return (
+            <>
+                <Button
+                    className="btn btn-warning"
+                    onClick={() => this.load(props.row.original, props.cell)}
+                >
+                    <i className="now-ui-icons ui-1_settings-gear-63"></i>
+                </Button>
 
+                <Button
+                    className="btn btn-danger"
+                    onClick={() => this.confirm(props.row.original, props.cell)}
+                >
+                    <i className="now-ui-icons design_scissors"></i>
+                </Button>
+            </>
+        );
+    }
     updateField(event) {
         const plant = { ...this.state.plant }
         plant[event.target.name] = event.target.value
         this.setState({ plant })
     }
-
 
     renderForm() {
         if (this.state.plant && Object.keys(this.state.plant).length) {
@@ -275,7 +283,8 @@ export default class EditPlants extends Component {
     }
 
     load(plant, id) {
-        this.setState({ plant, id })
+        let tableId = id.value
+        this.setState({ plant, id: tableId })
         return window.location.href = "#root"
     }
 
@@ -284,7 +293,7 @@ export default class EditPlants extends Component {
     }
 
     renderTable() {
-        const { loaded, plants, disabled2 } = this.state
+        const { loaded } = this.state
         if (this.state.plants.length <= 0 || loaded === false) {
             return (
                 <h1>
@@ -292,27 +301,31 @@ export default class EditPlants extends Component {
                 </h1>
             )
         } else {
+            const columns = [
+                {
+                    Header: "Plantas",
+                    columns: [
+                        {
+                            Header: "Nome Popular",
+                            accessor: "popularName",
+                            sortType: "basic"
+                        },
+                        {
+                            Header: "Nome Científico",
+                            accessor: "scientificName",
+                            sortType: "basic"
+                        },
+                        {
+                            Header: "Mais Informações",
+                            accessor: d => d.key,
+                            Cell: props => this.displayActionItems(props),
+                            sortable: false,
+                        },
+                    ]
+                }
+            ];
             return (
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Nome Popular</th>
-                                <th scope="col">Nome Científico</th>
-                                <th scope="col">Operações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.renderRows()}
-                        </tbody>
-                    </table>
-                    {plants && !disabled2 && (
-                        <button className="btn btn-info" type="button" onClick={this.onNextPage}>
-                            Mais
-                        </button>
-                    )}
-
-                </div>
+                <TableS data={this.state.plants} columns={columns} />
             )
         }
     }
