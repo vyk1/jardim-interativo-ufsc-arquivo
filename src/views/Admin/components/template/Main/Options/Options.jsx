@@ -23,11 +23,11 @@ const optionsArray = [{
 
 export default props => {
 
-    const find = (props) => {
+    const find = async props => {
         for (let i = 0; i < optionsArray.length; i++) {
             const element = optionsArray[i];
             if (props.type === element.type) {
-                return element
+                return await element
             }
 
         }
