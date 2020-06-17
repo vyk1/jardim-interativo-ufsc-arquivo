@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import "./styles.css";
 const optionsArray = [{
@@ -18,36 +18,42 @@ const optionsArray = [{
     main: '/admin/tipos',
     add: '/admin/novo-tipo',
     edit: '/admin/editar-tipo',
-}
-]
+}]
 
 export default props => {
 
-    const find = async props => {
-        for (let i = 0; i < optionsArray.length; i++) {
-            const element = optionsArray[i];
-            if (props.type === element.type) {
-                return await element
+    const [loaded, setLoaded] = useState(false)
+    const [element, setElement] = useState({})
+
+    useEffect(() => {
+        const find = async props => {
+            for (let i = 0; i < optionsArray.length; i++) {
+                const element = optionsArray[i];
+                if (props.type === element.type) {
+                    setLoaded(true)
+                    setElement(element)
+                }
+
             }
-
         }
-    }
-
-    const el = find(props)
+        find(props)
+    }, [])
     return (
-        <React.Fragment>
-            <div className="options-menu">
-                <Link to={el.main}>
-                    <i className={`fa fa-leaf`}></i>Listar
-                </Link>
-                <Link to={el.add}>
-                    <i className={`fa fa-plus-circle`}></i>Adicionar
-                </Link>
-                <Link to={el.edit}>
-                    <i className={`fa fa-edit`}></i>Editar ou Deletar
-                </Link>
-            </div>
+        !loaded ? (<></>)
+            :
+            (
+                <>
+                    <div className="options-menu">
+                        <Link to={element.main}>
+                            <i className={`fa fa-leaf`}></i>Listar</Link>
+                        <Link to={element.add}>
+                            <i className={`fa fa-plus-circle`}></i>Adicionar</Link>
+                        <Link to={element.edit}>
+                            <i className={`fa fa-edit`}></i>Editar ou Deletar</Link>
+                    </div>
 
-        </React.Fragment>
+                </>
+            )
     )
+
 }
