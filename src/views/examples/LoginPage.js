@@ -31,21 +31,17 @@ function LoginPage(props) {
   const [loaded, setLoaded] = React.useState(true)
   const [visible, setVisible] = React.useState(true)
 
-  
-
   const login = async () => {
     setLoaded(false)
     setVisible(true)
 
     const { email, password } = inputs
     try {
+      // const res = await auth.signInWithEmailAndPassword(email, password)
       await auth.signInWithEmailAndPassword(email, password)
-        .then((user) => {
-          setIsAuthenticated(true)
-          console.log("user")
-          console.log(user)
-          return props.history.push("/admin")
-        })
+      setIsAuthenticated(true)
+      return props.history.push("/admin")
+
     } catch (err) {
       console.log("err")
       console.log(err)
@@ -57,6 +53,8 @@ function LoginPage(props) {
   const { inputs, handleInputChange, handleSubmit } = useLoginForm({ email: "admin.jduniversitario@gmail.com", password: "Xiqu3Xiqu3Firestor3" }, login)
 
   React.useEffect(() => {
+    console.log(isAuthenticated);
+
     document.body.classList.add("login-page")
     document.body.classList.add("sidebar-collapse")
     document.documentElement.classList.remove("nav-open")

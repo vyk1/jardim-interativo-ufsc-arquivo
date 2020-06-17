@@ -20,7 +20,7 @@ export default class Logout extends Component {
         } catch (error) {
             console.log(error);
         } finally {
-            return < Redirect to="/index" />
+            return <Redirect to="/index" />
         }
 
     }

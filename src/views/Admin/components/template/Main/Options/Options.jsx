@@ -1,24 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import "./styles.css";
-const optionsArray = [{
-    type: 'planta',
-    main: '/admin/plantas',
-    add: '/admin/nova-planta',
-    edit: '/admin/editar-planta',
-},
-{
-    type: 'categoria',
-    main: '/admin/categorias',
-    add: '/admin/nova-categoria',
-    edit: '/admin/editar-categoria',
-},
-{
-    type: 'tipo',
-    main: '/admin/tipos',
-    add: '/admin/novo-tipo',
-    edit: '/admin/editar-tipo',
-}]
+import OptionsArray from './OptionsArray'
 
 export default props => {
 
@@ -26,18 +9,18 @@ export default props => {
     const [element, setElement] = useState({})
 
     useEffect(() => {
-        const find = async props => {
-            for (let i = 0; i < optionsArray.length; i++) {
-                const element = optionsArray[i];
-                if (props.type === element.type) {
+        const find = async array => {
+            for (let i = 0; i < OptionsArray.length; i++) {
+                const element = OptionsArray[i];
+                if (array.type === element.type) {
                     setLoaded(true)
                     setElement(element)
                 }
-
             }
         }
         find(props)
-    }, [])
+    }, [props])
+    
     return (
         !loaded ? (<></>)
             :

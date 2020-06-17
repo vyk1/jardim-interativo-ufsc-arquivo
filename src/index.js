@@ -4,15 +4,14 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // styles for this kit
 import './index.css';
-import 'views/Admin/main/App.css'
-import "assets/css/bootstrap.min.css";
-import "assets/scss/now-ui-kit.scss";
-import "assets/demo/demo.css";
-import "assets/demo/nucleo-icons-page-styles.css";
+import './views/Admin/main/App.css'
+import "./assets/css/bootstrap.min.css";
+import "./assets/scss/now-ui-kit.scss";
+import "./assets/demo/demo.css";
+import "./assets/demo/nucleo-icons-page-styles.css";
 // pages for this kit
 import Index from "views/Index.js";
 import LoginPage from "views/examples/LoginPage.js";
-// import Routes from "views/Admin/main/Routes";
 import Home from "views/Admin/components/home/Home";
 import QRCodeClass from "views/Admin/components/qrcode/QRCode";
 import AllPlants from "views/Admin/components/plants/AllPlants";
@@ -61,6 +60,7 @@ class Starter extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
+          {/* Loop aqui */}
           <PrivateRoute exact path='/admin' component={Home} />
           <PrivateRoute path='/admin/plantas' component={AllPlants} />
           <PrivateRoute path='/admin/nova-planta' component={NewPlant} />
@@ -74,7 +74,6 @@ class Starter extends React.Component {
           <Route path="/login" component={LoginPage} />
           <Redirect from="/" to="/index" />
           <Redirect to="/index" />
-          {/* <Redirect from="/login" to="/admin" /> */}
         </Switch>
       </BrowserRouter>
     )

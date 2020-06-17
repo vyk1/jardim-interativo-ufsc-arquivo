@@ -1,22 +1,25 @@
 import './Nav.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
-export default props =>
+import OptionsArray from '../Main/Options/OptionsArray'
 
-    <aside className="menu-area">
-        <nav className="menu">
+export default props => {
 
-            <Link to="/admin/plantas">
-                <i className="fa fa-leaf"></i><br />Plantas
-            </Link>
-            <Link to="/admin/categorias">
-                <i className="fa fa-tags"></i><br />Categorias
-            </Link>
-            <Link to="/admin/tipos">
-                <i className="fa fa-receipt"></i><br />Tipos
-            </Link>
-            <Link to="/admin/logout">
-                <i className="fas fa-sign-out-alt"></i><br />Logout
-            </Link>
-        </nav>
-    </aside>
+    return (
+
+        <aside className="menu-area">
+            <nav className="menu">
+                {
+                    OptionsArray.map((el, i) => (
+                        <Link to={el.main} key={i}>
+                            <i className={el.icon}></i><br />{el.name}
+                        </Link>
+                    ))
+                }
+                <Link to="/admin/logout">
+                    <i className="fas fa-sign-out-alt"></i><br />Logout
+                </Link>
+            </nav>
+        </aside>
+    )
+}
