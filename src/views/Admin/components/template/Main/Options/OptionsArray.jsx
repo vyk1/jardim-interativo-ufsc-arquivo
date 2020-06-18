@@ -16,7 +16,7 @@ export default [{
     icon: 'fa fa-tags',
 },
 {
-    name: "Tipos",
+    name: "Hab. Cresc.",
     type: 'tipo',
     main: '/admin/tipos',
     add: '/admin/novo-tipo',

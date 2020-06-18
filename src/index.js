@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // styles for this kit
-import './index.css';
 import './views/Admin/main/App.css'
 import "./assets/css/bootstrap.min.css";
 import "./assets/scss/now-ui-kit.scss";
