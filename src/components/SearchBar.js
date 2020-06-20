@@ -13,8 +13,8 @@ function SearchBar() {
     const [word, setWord] = React.useState("");
 
     return (
-        <Col lg="10" sm="10">
-            <InputGroup className={rightFocus ? "input-group-focus" : ""}>
+        <Col lg="10" sm="10" style={{ marginTop: '12px' }}>
+            <InputGroup className={rightFocus ? "input-group-focus" : ""} style={{ height: "20px" }}>
                 <Input
                     style={{ backgroundColor: "#fff" }}
                     placeholder="Buscar planta (nome popular)"
@@ -23,11 +23,11 @@ function SearchBar() {
                     onFocus={() => setRightFocus(true)}
                     onBlur={() => setRightFocus(false)}
                     onChange={e => setWord(e.target.value)}
-                ></Input>
-                <InputGroupAddon addonType="append">
+                />
+                <InputGroupAddon addonType="append" style={{ height: "38px" }}>
                     <InputGroupText>
                         <a href={`/pesquisa/${word}`}>
-                            < i style={{ margin: "3px", color: "black" }} className="fas fa-search"></i>
+                            < i style={{ margin: "3px", color: "black", height: '20px' }} className="fas fa-search"></i>
                         </a>
                     </InputGroupText>
                 </InputGroupAddon>
