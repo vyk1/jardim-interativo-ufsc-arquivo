@@ -21,7 +21,8 @@ import EditPlants from "./views/Admin/components/plants/EditPlant";
 import Read from "./views/Read";
 import { auth } from "./config";
 import LoadingCog from "./views/LoadingCog";
-import AllCategories from "./views/Admin/components/categories/AllCategories";
+import AllHabCresc from "./views/Admin/components/habCresc/AllHabCresc";
+import AllMdTx from "./views/Admin/components/MdTx/AllMdTx";
 
 class Starter extends React.Component {
   constructor(props) {
@@ -68,7 +69,8 @@ class Starter extends React.Component {
           <PrivateRoute path='/admin/qrcode/:id' component={QRCodeClass} />
           <PrivateRoute path='/admin/logout' component={Logout} />
 
-          <PrivateRoute path='/admin/categorias' component={AllCategories} />
+          <PrivateRoute path='/admin/habitos-crescimento' component={AllHabCresc} />
+          <PrivateRoute path='/admin/md-tx' component={AllMdTx} />
 
           <Route path="/index" component={Index} />
           <Route path='/leitura/:id' component={Read} />

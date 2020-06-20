@@ -4,8 +4,10 @@ import Logo from '../template/Logo/Logo'
 import Nav from '../template/Nav/Nav'
 import Footer from '../template/Footer/Footer'
 import config, { storage } from 'config'
-import { Alert } from 'reactstrap'
-import imageCompression from 'browser-image-compression';
+import { Alert, FormGroup, Label, Input } from 'reactstrap'
+import imageCompression from 'browser-image-compression'
+import habCrescs from '../habCresc/IndexHabCresc'
+import mdtxs from '../MdTx/IndexMdTx'
 
 const headerProps = {
     icon: 'plus-circle',
@@ -24,6 +26,8 @@ const initialState = {
     regionForTreatment: "",
     activeIngredient: "",
     utilizationAndPrep: "",
+    habit: [],
+    mdtx: [],
     image: "",
 }
 
@@ -32,21 +36,21 @@ export default class NewPlant extends Component {
 
     onDismiss() {
         let newView = !(this.state.visible)
-        this.setState({ visible: newView });
+        this.setState({ visible: newView })
     }
 
     async check(e) {
         e.preventDefault()
         this.setState({ loaded: false })
 
-        const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep } = this.state
+        const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep, habit } = this.state
         const image = e.target.image.files[0]
         const { name } = image
 
         var options = {
             maxSizeMB: 1,
             maxWidthOrHeight: 1920,
-            useWebWorker: true
+            // useWebWorker: true
         }
 
         try {
@@ -65,7 +69,8 @@ export default class NewPlant extends Component {
                                 regionForTreatment,
                                 activeIngredient,
                                 utilizationAndPrep,
-                                image: dURL
+                                image: dURL,
+                                habit
                             }
                             config.push('plantapedia', {
                                 data: plant
@@ -76,12 +81,38 @@ export default class NewPlant extends Component {
                         })
                 })
         } catch (error) {
-            console.log(error);
+            console.log(error)
             return this.setState({ error: true, loaded: true, visible: true })
         }
     }
+
     clear() {
         this.setState({ ...initialState, loaded: true })
+    }
+
+    handleChangeHabit(e) {
+        let id = e.target.value
+
+        const alreadySelected = this.state.habit.includes(id)
+
+        if (alreadySelected) {
+            const filtered = this.state.habit.filter(item => item !== id)
+            this.setState({ habit: filtered })
+        } else {
+            this.setState({ habit: [...this.state.habit, id] })
+        }
+    }
+    handleChangeMdTx(e) {
+        let id = e.target.value
+
+        const alreadySelected = this.state.mdtx.includes(id)
+
+        if (alreadySelected) {
+            const filtered = this.state.mdtx.filter(item => item !== id)
+            this.setState({ mdtx: filtered })
+        } else {
+            this.setState({ mdtx: [...this.state.mdtx, id] })
+        }
     }
     renderForm() {
         if (!this.state.loaded) {
@@ -151,7 +182,39 @@ export default class NewPlant extends Component {
                                     <textarea placeholder="Digite a Utilização e Modos De Preparo..." required name="utilizationAndPrep" id="utilizationAndPrep" cols="30" rows="10" className="form-control" onChange={e => this.setState({ utilizationAndPrep: e.target.value })} value={this.state.utilizationAndPrep}></textarea>
                                 </div>
                             </div>
-
+                            <div className="col-12">
+                                <label htmlFor="habit">Hábito de Crescimento</label>
+                                {
+                                    habCrescs.map(el => (
+                                        <FormGroup key={el.id} check onChange={e => this.handleChangeHabit(e)}>
+                                            <Label key={el.id} check>
+                                                <Input type="checkbox" value={el.id} name="habit" id="habit"></Input>
+                                                {el.name}{" "}
+                                                <span className="form-check-sign">
+                                                    <span className="check"></span>
+                                                </span>
+                                            </Label>
+                                        </FormGroup>
+                                    ))
+                                }
+                            </div>
+                            <br />
+                            <div className="col-12 mt-2">
+                                <label htmlFor="mdtx">Tóxica, medicinal ou ambas?</label>
+                                {
+                                    mdtxs.map(el => (
+                                        <FormGroup key={el.id} check onChange={e => this.handleChangeMdTx(e)}>
+                                            <Label key={el.id} check>
+                                                <Input type="checkbox" value={el.id} name="mdtx" id="mdtx"></Input>
+                                                {el.name}{" "}
+                                                <span className="form-check-sign">
+                                                    <span className="check"></span>
+                                                </span>
+                                            </Label>
+                                        </FormGroup>
+                                    ))
+                                }
+                            </div>
                             <div className="col-12">
                                 {/* <input accept="image/*" type="file" name="image" id="image" name="image" placeholder="Selecione a imagem" onChange={e => this.setState({ image: e.target.value })} value={this.state.image} required ref={(ref) => this.image = ref} /> */}
                                 <input accept="image/*" type="file" name="image" id="image" placeholder="Selecione a imagem" onChange={e => this.setState({ image: e.target.value })} value={this.state.image} required />
@@ -164,7 +227,7 @@ export default class NewPlant extends Component {
                                 <button className="btn btn-secondary ml-2"
                                     onClick={e => this.clear(e)}>
                                     Limpar
-                                        </button>
+                                </button>
                             </div>
                         </div>
                     </form>

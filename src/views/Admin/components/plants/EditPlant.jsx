@@ -5,8 +5,9 @@ import Nav from '../template/Nav/Nav'
 import Footer from '../template/Footer/Footer'
 import '../template/Tables/Tables.css'
 import config, { storage } from 'config'
-import { Alert, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
+import { Alert, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, FormGroup, Label } from 'reactstrap'
 import TableS from '../table/Index'
+import data from '../habCresc/IndexHabCresc';
 
 const headerProps = {
     icon: 'edit',
@@ -19,12 +20,10 @@ const initialState = {
     plants: [],
     plant: {},
     image2: "",
-    limit: 3,
     loaded: true,
     sucess: false,
     error: false,
     visible: true,
-    disabled2: false
 }
 
 export default class EditPlants extends Component {
@@ -101,6 +100,9 @@ export default class EditPlants extends Component {
 
     check(e) {
         e.preventDefault()
+        console.log(this.state.plant);
+
+        return
         this.setState({ loaded: false })
 
         const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep } = this.state.plant
@@ -181,6 +183,19 @@ export default class EditPlants extends Component {
         const plant = { ...this.state.plant }
         plant[event.target.name] = event.target.value
         this.setState({ plant })
+
+    }
+    handleChangeHabit(e) {
+        let id = e.target.value
+
+        const alreadySelected = this.state.plant.habit.includes(id)
+
+        if (alreadySelected) {
+            const filtered = this.state.plant.habit.filter(item => item !== id)
+            this.setState({ habit: filtered })
+        } else {
+            this.setState({ habit: [...this.state.plant.habit, id] })
+        }
     }
 
     renderForm() {
@@ -245,6 +260,24 @@ export default class EditPlants extends Component {
                                     <textarea placeholder="Digite a Utilização e Modos De Preparo..." required name="utilizationAndPrep" id="utilizationAndPrep" cols="30" rows="10" className="form-control" onChange={e => this.updateField(e)} value={this.state.plant.utilizationAndPrep}></textarea>
                                 </div>
                             </div>
+
+                            <div className="col-12">
+                                {
+                                    data.map(el => (
+                                        <FormGroup key={el.id} check onChange={e => this.handleChangeHabit(e)}>
+                                            <Label key={el.id} check>
+                                                {/* this.state.plant.habit.includes(el.id); */}
+                                                <Input defaultChecked={true ? true : false} type="checkbox" value={el.id} name="habit" id="habit"></Input>
+                                                {el.name}{" "}
+                                                <span className="form-check-sign">
+                                                    <span className="check"></span>
+                                                </span>
+                                            </Label>
+                                        </FormGroup>
+                                    ))
+                                }
+                            </div>
+
 
                             <div className="col-6">
                                 <div className="form-group">

@@ -2,6 +2,7 @@ import React from "react";
 import { useTable, useSortBy } from "react-table";
 
 import './style.css';
+import SortIcon from "../SortIcon";
 const Table = ({ columns, data }) => {
   const {
     getTableProps,
@@ -26,7 +27,7 @@ const Table = ({ columns, data }) => {
               <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                 {column.render("Header")}
                 <span>
-                  {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
+                  {column.isSorted ? (column.isSortedDesc ? <SortIcon type="up" /> : <SortIcon type="down" />) : ""}
                 </span>
               </th>
             ))}

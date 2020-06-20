@@ -1,0 +1,67 @@
+import React, { Component } from 'react'
+
+import Main from '../template/Main/Main'
+import Logo from '../template/Logo/Logo'
+import Nav from '../template/Nav/Nav'
+import Footer from '../template/Footer/Footer'
+import data from './IndexHabCresc';
+import TableS from '../table/Index'
+
+const headerProps = {
+    icon: 'seedling',
+    title: 'Todos os hábitos de crescimento',
+    subtitle: 'Aqui estão listados todos os hábitos de crescimento.',
+    type: 'habCresc',
+    show: true
+}
+
+const initialState = {
+    loaded: true,
+}
+
+export default class AllHabCresc extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = initialState
+    }
+
+    renderTable() {
+
+
+        const columns = [
+            {
+                Header: "Listagem",
+                columns: [
+                    {
+                        Header: "#",
+                        accessor: "id",
+                        sortType: "basic"
+                    },
+                    {
+                        Header: "Nome",
+                        accessor: "name",
+                        sortType: "basic"
+                    },
+                ]
+            }
+        ];
+        return (
+            <TableS data={data} columns={columns} />
+        )
+    }
+
+    render() {
+        return (
+            <div className="app">
+                <Logo />
+                <Nav />
+                <Main {...headerProps}>
+                    {this.renderTable()}
+                </Main>
+                <Footer />
+            </div>
+        )
+    }
+}
