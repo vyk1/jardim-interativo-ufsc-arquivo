@@ -7,8 +7,8 @@ import '../template/Tables/Tables.css'
 import config, { storage } from 'config'
 import { Alert, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, FormGroup, Label } from 'reactstrap'
 import TableS from '../table/Index'
-import habits from '../habCresc/IndexHabCresc';
-import mdtxs from '../MdTx/IndexMdTx';
+import habits from '../../../../data/HabCresc';
+import mdtxs from '../../../../data/MdTx';
 
 const headerProps = {
     icon: 'edit',
@@ -326,7 +326,6 @@ export default class EditPlants extends Component {
                                     <input accept="image/*" type="file" id="image2" name="image2" placeholder="Selecione a imagem" onChange={e => this.setState({ image2: e.target.value })} value={this.state.image2} />
                                     <input type="hidden" name="imagemAntiga" id="imagemAntiga" value={this.state.plant.image} />
                                 </div>
-
                             </div>
 
                             <div className="col-12 d-flex justify-content-end">

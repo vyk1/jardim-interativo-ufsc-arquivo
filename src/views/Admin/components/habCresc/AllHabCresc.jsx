@@ -4,8 +4,8 @@ import Main from '../template/Main/Main'
 import Logo from '../template/Logo/Logo'
 import Nav from '../template/Nav/Nav'
 import Footer from '../template/Footer/Footer'
-import data from './IndexHabCresc';
 import TableS from '../table/Index'
+import data from '../../../../data/HabCresc';
 
 const headerProps = {
     icon: 'seedling',

@@ -36,7 +36,7 @@ function DefaultFooter() {
           </nav>
           <div className="copyright" id="copyright">
             © {new Date().getFullYear()},
-            Layout by Creative Tim &amp; Invision<br /> Coded by Victoria Botelho Martins.
+            Layout by Creative Tim &amp; Invision<br /> Coded by <a href="https://vyk1.github.io">Victoria Botelho Martins</a>
           </div>
         </Container>
       </footer>

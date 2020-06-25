@@ -4,7 +4,7 @@ import Main from '../template/Main/Main'
 import Logo from '../template/Logo/Logo'
 import Nav from '../template/Nav/Nav'
 import Footer from '../template/Footer/Footer'
-import data from './IndexMdTx';
+import data from '../../../../data/MdTx';
 
 import TableS from '../table/Index'
 

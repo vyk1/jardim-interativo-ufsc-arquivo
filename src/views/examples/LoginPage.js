@@ -19,7 +19,7 @@ import {
 } from "reactstrap"
 
 import useLoginForm from '../Admin/customHooks/useLoginForm'
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js"
+// import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js"
 import { auth } from 'config'
 import LoadingCog from "views/LoadingCog"
 
@@ -68,7 +68,7 @@ function LoginPage(props) {
 
   return (
     <>
-      <ExamplesNavbar />
+      {/* <ExamplesNavbar /> */}
       <div className="page-header clear-filter" filter-color="green">
         <div
           className="page-header-image"
@@ -155,35 +155,12 @@ function LoginPage(props) {
                     >
                       Logar
                     </Button>
-                    {/* <div className="pull-left">
-                      <h6>
-                        <a
-                          className="link"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          Create Account
-                        </a>
-                      </h6>
-                    </div>
-                    <div className="pull-right">
-                      <h6>
-                        <a
-                          className="link"
-                          href="#pablo"
-                          onClick={e => e.preventDefault()}
-                        >
-                          Need Help?
-                        </a>
-                      </h6>
-                    </div> */}
                   </CardFooter>
                 </Form>
               </Card>
             </Col>
           </Container>
         </div>
-        {/* <DefaultFooter /> */}
       </div>
     </>
   )

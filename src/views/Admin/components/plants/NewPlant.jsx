@@ -6,8 +6,9 @@ import Footer from '../template/Footer/Footer'
 import config, { storage } from 'config'
 import { Alert, FormGroup, Label, Input } from 'reactstrap'
 import imageCompression from 'browser-image-compression'
-import habCrescs from '../habCresc/IndexHabCresc'
-import mdtxs from '../MdTx/IndexMdTx'
+import habits from '../../../../data/HabCresc';
+import mdtxs from '../../../../data/MdTx';
+
 
 const headerProps = {
     icon: 'plus-circle',
@@ -188,7 +189,7 @@ export default class NewPlant extends Component {
                             <div className="col-12">
                                 <label htmlFor="habit">Hábito de Crescimento</label>
                                 {
-                                    habCrescs.map(el => (
+                                    habits.map(el => (
                                         <FormGroup key={el.id} check onChange={e => this.handleChangeHabit(e)}>
                                             <Label key={el.id} check>
                                                 <Input type="checkbox" value={el.id} name="habit" id="habit"></Input>

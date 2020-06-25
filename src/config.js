@@ -1,7 +1,6 @@
 const firebase = require('firebase')
 const rebase = require('re-base')
 
-
 const config = {
     apiKey: "AIzaSyCRZBRZ6E4ro-eHo1FwlXFi9iz5FIpyg0Q",
     authDomain: "jardim-universitario.firebaseapp.com",

@@ -8,7 +8,7 @@ import {
 import Cards from "components/Cards.js";
 
 import FullNav from "./FullNav.js";
-import DefaultFooter from "components/Footers/DefaultFooter.js";
+import DefaultFooter from "../components/Footers/DefaultFooter.js";
 
 function Index() {
   // const [] = React.useState("2");

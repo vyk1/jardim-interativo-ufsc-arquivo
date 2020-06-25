@@ -1,9 +1,11 @@
 import React from 'react';
 import firebase from 'firebase'
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Col, CardHeader, CardBody } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Col, CardHeader, CardBody, FormGroup, Label, Input } from 'reactstrap';
 import FullNav from './FullNav.js';
 import LoadingCog from './LoadingCog';
-import DefaultFooter from 'components/Footers/DefaultFooter.js';
+import DefaultFooter from '../components/Footers/DefaultFooter.js';
+import habits from '../data/HabCresc';
+import mdtxs from '../data/MdTx';
 
 export default class Read extends React.Component {
     constructor(props) {
@@ -26,6 +28,7 @@ export default class Read extends React.Component {
 
         })
     }
+
     toggle = tab => {
         if (this.state.activeTab !== tab) this.setState({ activeTab: tab });
     }
@@ -54,8 +57,7 @@ export default class Read extends React.Component {
                                     <Nav
                                         className="justify-content-center"
                                         role="tablist"
-                                        tabs
-                                    >
+                                        tabs>
                                         <NavItem>
                                             <NavLink
                                                 className={this.state.activeTab === "1" ? "active" : ""}
@@ -63,11 +65,10 @@ export default class Read extends React.Component {
                                                 onClick={e => {
                                                     e.preventDefault();
                                                     this.toggle("1");
-                                                }}
-                                            >
+                                                }}>
                                                 <i className="now-ui-icons business_badge"></i>
                                                 Informações Gerais
-        </NavLink>
+                                            </NavLink>
                                         </NavItem>
                                         <NavItem>
                                             <NavLink
@@ -80,7 +81,7 @@ export default class Read extends React.Component {
                                             >
                                                 <i className="now-ui-icons location_compass-05"></i>
                                                 Mais Detalhes
-        </NavLink>
+                                            </NavLink>
                                         </NavItem>
                                         <NavItem>
                                             <NavLink
@@ -93,26 +94,13 @@ export default class Read extends React.Component {
                                             >
                                                 <i className="now-ui-icons design-2_ruler-pencil"></i>
                                                 Uso
-        </NavLink>
+                                            </NavLink>
                                         </NavItem>
-                                        {/* <NavItem>
-                                            <NavLink
-                                                className={this.state.activeTab === "4" ? "active" : ""}
-                                                href="#pablo"
-                                                onClick={e => {
-                                                    e.preventDefault();
-                                                    this.toggle("4");
-                                                }}
-                                            >
-                                                Settings
-        </NavLink>
-                                        </NavItem> */}
                                     </Nav>
                                 </CardHeader>
                                 <CardBody>
                                     <TabContent activeTab={this.state.activeTab}
-                                        className="text-center"
-                                    >
+                                        className="text-center">
                                         <TabPane tabId="1">
                                             <p>
                                                 <img src={result.image} alt={result.popularName} />
@@ -123,8 +111,6 @@ export default class Read extends React.Component {
                                             <p>{result.description}</p>
                                         </TabPane>
                                         <TabPane tabId="2">
-
-
                                             <div className="typography-line">
                                                 {/* <span>Descrição</span> */}
                                                 <blockquote>
@@ -132,12 +118,42 @@ export default class Read extends React.Component {
                                                         {result.geoDistrib}
                                                         <br></br>
                                                         <br></br>
-                                                        <small>--Distribuição Geográfica</small>
+                                                        <small>Distribuição Geográfica</small>
                                                     </p>
                                                 </blockquote>
                                             </div>
-
-
+                                            <div>
+                                                <h4>Hábito de Crescimento</h4>
+                                                {
+                                                    habits.map(el => (
+                                                        <FormGroup aria-disabled key={el.id} check>
+                                                            <Label key={el.id} check>
+                                                                <Input disabled defaultChecked={result.habit.includes(el.id.toString()) ? true : false} type="checkbox" value={el.id} name="habit" id="habit" />
+                                                                {el.name}{" "}
+                                                                <span className="form-check-sign">
+                                                                    <span className="check"></span>
+                                                                </span>
+                                                            </Label>
+                                                        </FormGroup>
+                                                    ))
+                                                }
+                                            </div>
+                                            <div>
+                                                <h4>Tóxica, medicinal ou ambas?</h4>
+                                                {
+                                                    mdtxs.map(el => (
+                                                        <FormGroup aria-disabled key={el.id} check>
+                                                            <Label key={el.id} check>
+                                                                <Input disabled defaultChecked={result.mdtx.includes(el.id.toString()) ? true : false} type="checkbox" value={el.id} name="mdtx" id="mdtx" />
+                                                                {el.name}{" "}
+                                                                <span className="form-check-sign">
+                                                                    <span className="check"></span>
+                                                                </span>
+                                                            </Label>
+                                                        </FormGroup>
+                                                    ))
+                                                }
+                                            </div>
                                         </TabPane>
                                         <TabPane tabId="3">
                                             <h6>
@@ -145,7 +161,6 @@ export default class Read extends React.Component {
                                             </h6>
                                             <p>
                                                 {result.regionForTreatment}
-
                                             </p>
                                             <h6>
                                                 Utilização e Preparo:
@@ -154,15 +169,6 @@ export default class Read extends React.Component {
                                                 {result.utilizationAndPrep}
                                             </p>
                                         </TabPane>
-                                        {/* <TabPane tabId="4">
-                                            <p>
-                                                "I will be the leader of a company that ends up being
-                                                worth billions of dollars, because I got the answers. I
-                                                understand culture. I am the nucleus. I think that’s a
-                                                responsibility that I have, to push possibilities, to
-                                                show people, this is the level that things could be at."
-        </p>
-                                        </TabPane> */}
                                     </TabContent>
                                 </CardBody>
                             </Card>
@@ -171,7 +177,6 @@ export default class Read extends React.Component {
                     <DefaultFooter />
                 </div>
             </>
-
         )
     }
 }
