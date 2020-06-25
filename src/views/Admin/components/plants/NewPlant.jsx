@@ -43,14 +43,14 @@ export default class NewPlant extends Component {
         e.preventDefault()
         this.setState({ loaded: false })
 
-        const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep, habit } = this.state
+        const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep, habit, mdtx } = this.state
         const image = e.target.image.files[0]
         const { name } = image
 
         var options = {
             maxSizeMB: 1,
             maxWidthOrHeight: 1920,
-            // useWebWorker: true
+            useWebWorker: false
         }
 
         try {
@@ -70,7 +70,8 @@ export default class NewPlant extends Component {
                                 activeIngredient,
                                 utilizationAndPrep,
                                 image: dURL,
-                                habit
+                                habit,
+                                mdtx
                             }
                             config.push('plantapedia', {
                                 data: plant
@@ -102,6 +103,7 @@ export default class NewPlant extends Component {
             this.setState({ habit: [...this.state.habit, id] })
         }
     }
+
     handleChangeMdTx(e) {
         let id = e.target.value
 
@@ -114,6 +116,7 @@ export default class NewPlant extends Component {
             this.setState({ mdtx: [...this.state.mdtx, id] })
         }
     }
+
     renderForm() {
         if (!this.state.loaded) {
             return (
@@ -198,8 +201,8 @@ export default class NewPlant extends Component {
                                     ))
                                 }
                             </div>
-                            <br />
-                            <div className="col-12 mt-2">
+
+                            <div className="col-12 mt-2 mb-2 mt-2">
                                 <label htmlFor="mdtx">Tóxica, medicinal ou ambas?</label>
                                 {
                                     mdtxs.map(el => (
@@ -215,7 +218,7 @@ export default class NewPlant extends Component {
                                     ))
                                 }
                             </div>
-                            <div className="col-12">
+                            <div className="col-12 mt-2 mb-2 mt-2">
                                 {/* <input accept="image/*" type="file" name="image" id="image" name="image" placeholder="Selecione a imagem" onChange={e => this.setState({ image: e.target.value })} value={this.state.image} required ref={(ref) => this.image = ref} /> */}
                                 <input accept="image/*" type="file" name="image" id="image" placeholder="Selecione a imagem" onChange={e => this.setState({ image: e.target.value })} value={this.state.image} required />
                             </div>

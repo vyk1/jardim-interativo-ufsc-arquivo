@@ -7,7 +7,8 @@ import '../template/Tables/Tables.css'
 import config, { storage } from 'config'
 import { Alert, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, FormGroup, Label } from 'reactstrap'
 import TableS from '../table/Index'
-import data from '../habCresc/IndexHabCresc';
+import habits from '../habCresc/IndexHabCresc';
+import mdtxs from '../MdTx/IndexMdTx';
 
 const headerProps = {
     icon: 'edit',
@@ -68,6 +69,32 @@ export default class EditPlants extends Component {
 
     clear() {
         this.setState({ plant: initialState.plant, id: null })
+    }
+
+    handleChangeHabit(e) {
+        let id = e.target.value
+
+        const alreadySelected = this.state.plant.habit.includes(id)
+
+        if (alreadySelected) {
+            const filtered = this.state.plant.habit.filter(item => item !== id)
+            this.setState({ habit: filtered })
+        } else {
+            this.setState({ habit: [...this.state.plant.habit, id] })
+        }
+    }
+
+    handleChangeMdTx(e) {
+        let id = e.target.value
+
+        const alreadySelected = this.state.plant.mdtx.includes(id)
+
+        if (alreadySelected) {
+            const filtered = this.state.plant.mdtx.filter(item => item !== id)
+            this.setState({ mdtx: filtered })
+        } else {
+            this.setState({ mdtx: [...this.state.plant.mdtx, id] })
+        }
     }
 
     erase() {
@@ -185,18 +212,6 @@ export default class EditPlants extends Component {
         this.setState({ plant })
 
     }
-    handleChangeHabit(e) {
-        let id = e.target.value
-
-        const alreadySelected = this.state.plant.habit.includes(id)
-
-        if (alreadySelected) {
-            const filtered = this.state.plant.habit.filter(item => item !== id)
-            this.setState({ habit: filtered })
-        } else {
-            this.setState({ habit: [...this.state.plant.habit, id] })
-        }
-    }
 
     renderForm() {
         if (this.state.plant && Object.keys(this.state.plant).length) {
@@ -261,13 +276,13 @@ export default class EditPlants extends Component {
                                 </div>
                             </div>
 
-                            <div className="col-12">
+                            <div className="col-6 mt-2 mb-2 mt-2">
+                                <label htmlFor="habit">Hábito de Crescimento</label>
                                 {
-                                    data.map(el => (
+                                    habits.map(el => (
                                         <FormGroup key={el.id} check onChange={e => this.handleChangeHabit(e)}>
                                             <Label key={el.id} check>
-                                                {/* this.state.plant.habit.includes(el.id); */}
-                                                <Input defaultChecked={true ? true : false} type="checkbox" value={el.id} name="habit" id="habit"></Input>
+                                                <Input defaultChecked={this.state.plant.habit.includes(el.id.toString()) ? true : false} type="checkbox" value={el.id} name="habit" id="habit" />
                                                 {el.name}{" "}
                                                 <span className="form-check-sign">
                                                     <span className="check"></span>
@@ -277,7 +292,22 @@ export default class EditPlants extends Component {
                                     ))
                                 }
                             </div>
-
+                            <div className="col-6 mt-2 mb-2 mt-2">
+                                <label htmlFor="mdtx">Tóxica, medicinal ou ambas?</label>
+                                {
+                                    mdtxs.map(el => (
+                                        <FormGroup key={el.id} check onChange={e => this.handleChangeMdTx(e)}>
+                                            <Label key={el.id} check>
+                                                <Input defaultChecked={this.state.plant.mdtx.includes(el.id.toString()) ? true : false} type="checkbox" value={el.id} name="mdtx" id="mdtx" />
+                                                {el.name}{" "}
+                                                <span className="form-check-sign">
+                                                    <span className="check"></span>
+                                                </span>
+                                            </Label>
+                                        </FormGroup>
+                                    ))
+                                }
+                            </div>
 
                             <div className="col-6">
                                 <div className="form-group">
@@ -302,11 +332,11 @@ export default class EditPlants extends Component {
                             <div className="col-12 d-flex justify-content-end">
                                 <button type="submit" className="btn btn-info" disabled={this.state.disabled}>
                                     Salvar
-                                        </button>
+                                </button>
                                 <button className="btn btn-secondary ml-2"
-                                    onClick={e => this.clear(e)}>
+                                    onClick={e => this.clear()}>
                                     Cancelar
-                                        </button>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -315,14 +345,18 @@ export default class EditPlants extends Component {
         }
     }
 
-    load(plant, id) {
+    async load(plant, id) {
+        await this.clear()
         let tableId = id.value
+        console.log(plant.habit)
+        console.log(plant.mdtx)
         this.setState({ plant, id: tableId })
         return window.location.href = "#root"
     }
 
     confirm(plant, id) {
-        this.setState({ modal2: true, plant, id })
+        let tableId = id.value
+        this.setState({ modal2: true, plant, id: tableId })
     }
 
     renderTable() {
@@ -334,6 +368,7 @@ export default class EditPlants extends Component {
                 </h1>
             )
         } else {
+
             const columns = [
                 {
                     Header: "Plantas",
