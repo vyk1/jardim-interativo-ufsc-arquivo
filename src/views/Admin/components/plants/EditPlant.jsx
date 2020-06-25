@@ -6,9 +6,10 @@ import Footer from '../template/Footer/Footer'
 import '../template/Tables/Tables.css'
 import config, { storage } from 'config'
 import { Alert, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, FormGroup, Label } from 'reactstrap'
-import TableS from '../table/Index'
 import habits from '../../../../data/HabCresc';
 import mdtxs from '../../../../data/MdTx';
+import firebase from 'firebase'
+import imageCompression from 'browser-image-compression'
 
 const headerProps = {
     icon: 'edit',
@@ -18,7 +19,6 @@ const headerProps = {
 }
 
 const initialState = {
-    plants: [],
     plant: {},
     image2: "",
     loaded: true,
@@ -38,14 +38,19 @@ export default class EditPlants extends Component {
         this.toggle = this.toggle.bind(this)
         this.toggle2 = this.toggle2.bind(this)
         this.clear = this.clear.bind(this)
-        this.erase = this.erase.bind(this)
     }
 
     componentDidMount() {
-        config.syncState('plantapedia', {
-            context: this,
-            state: 'plants',
-            asArray: true
+        const { id } = this.props.match.params
+        if (!id) {
+            window.location.replace('/')
+            return false;
+        }
+
+        const p = firebase.database().ref('plantapedia/' + id)
+        p.on('value', (snap) => {
+            let plant = snap.val()
+            this.setState({ plant })
         })
     }
 
@@ -69,6 +74,7 @@ export default class EditPlants extends Component {
 
     clear() {
         this.setState({ plant: initialState.plant, id: null })
+        return this.props.history.goBack()
     }
 
     handleChangeHabit(e) {
@@ -97,59 +103,35 @@ export default class EditPlants extends Component {
         }
     }
 
-    erase() {
-        this.setState({ loaded: false })
-        const { id, plant } = this.state
-        const image = plant.image
 
-        try {
-            const ref = storage.refFromURL(image)
-            ref.delete()
-                .then(() => {
-                    config.remove(`plantapedia/${id}`)
-                        .then(() => {
-                            return this.setState({ success: true })
-                        })
-                })
-
-        } catch (error) {
-            console.log(error)
-            return this.setState({ error: true })
-
-        } finally {
-            this.toggle2()
-            this.clear()
-            window.location.href = "#root"
-            return this.setState({ loaded: true, visible: true })
-        }
-
-    }
-
-    check(e) {
+    async check(e) {
         e.preventDefault()
-        console.log(this.state.plant);
 
         this.setState({ loaded: false })
 
-        const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep } = this.state.plant
+        const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep, habit, mdtx } = this.state
+
         const { id } = this.state
 
-        const data = { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep }
+        const data = { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep, habit, mdtx }
 
         const oldImage = e.target.imagemAntiga.value
+
+        var options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 1920,
+            useWebWorker: false
+        }
 
         // Se tiver imagem nova:
         if (e.target.image2.files[0]) {
             const newImage = e.target.image2.files[0]
-            console.log(newImage)
-            console.log(this.state.plant)
+            const compressedImage = await imageCompression(newImage, options)
 
             try {
                 const ref = storage.refFromURL(oldImage)
-                console.log(ref)
-                // config.updateDoc()
                 // Substitui a anterior
-                ref.put(newImage)
+                ref.put(compressedImage)
                     .then(img => {
                         img.ref.getDownloadURL()
                             .then(dURL => {
@@ -163,7 +145,6 @@ export default class EditPlants extends Component {
                                     .then(() => {
                                         return this.setState({ modal: true })
                                     })
-
                             })
                     })
 
@@ -188,28 +169,8 @@ export default class EditPlants extends Component {
                 return this.setState({ error: true, loaded: true, visible: true })
             }
         }
-
     }
 
-    displayActionItems = props => {
-        return (
-            <>
-                <Button
-                    className="btn btn-warning"
-                    onClick={() => this.load(props.row.original, props.cell)}
-                >
-                    <i className="now-ui-icons ui-1_settings-gear-63"></i>
-                </Button>
-
-                <Button
-                    className="btn btn-danger"
-                    onClick={() => this.confirm(props.row.original, props.cell)}
-                >
-                    <i className="now-ui-icons design_scissors"></i>
-                </Button>
-            </>
-        );
-    }
     updateField(event) {
         const plant = { ...this.state.plant }
         plant[event.target.name] = event.target.value
@@ -218,7 +179,7 @@ export default class EditPlants extends Component {
     }
 
     renderForm() {
-        if (this.state.plant && Object.keys(this.state.plant).length) {
+        if (Object.keys(this.state.plant).length) {
             return (
                 <div className="form" id="form">
                     <form onSubmit={this.check.bind(this)}>
@@ -351,8 +312,6 @@ export default class EditPlants extends Component {
     async load(plant, id) {
         await this.clear()
         let tableId = id.value
-        console.log(plant.habit)
-        console.log(plant.mdtx)
         this.setState({ plant, id: tableId })
         return window.location.href = "#root"
     }
@@ -360,78 +319,6 @@ export default class EditPlants extends Component {
     confirm(plant, id) {
         let tableId = id.value
         this.setState({ modal2: true, plant, id: tableId })
-    }
-
-    renderTable() {
-        const { loaded } = this.state
-        if (this.state.plants.length <= 0 || loaded === false) {
-            return (
-                <h1>
-                    <i className="now-ui-icons loader_gear spin"></i>
-                </h1>
-            )
-        } else {
-
-            const columns = [
-                {
-                    Header: "Plantas",
-                    columns: [
-                        {
-                            Header: "Nome Popular",
-                            accessor: "popularName",
-                            sortType: "basic"
-                        },
-                        {
-                            Header: "Nome Científico",
-                            accessor: "scientificName",
-                            sortType: "basic"
-                        },
-                        {
-                            Header: "Opções",
-                            accessor: d => d.key,
-                            Cell: props => this.displayActionItems(props),
-                            sortable: false,
-                        },
-                    ]
-                }
-            ];
-            return (
-                <TableS data={this.state.plants} columns={columns} />
-            )
-        }
-    }
-
-    renderRows() {
-        let count = 0
-
-        return Object.keys(this.state.plants)
-            .map(key => {
-                count++
-                if (count > this.state.limit) {
-                    return false
-                }
-                return (
-                    <tr key={key}>
-                        <td data-label="Nome Popular">{this.state.plants[key].popularName}</td>
-                        <td data-label="Nome Científico">{this.state.plants[key].scientificName}</td>
-                        <td data-label="Editar">
-                            <button className="btn btn-warning"
-                                onClick={() => this.load(this.state.plants[key], key)}>
-                                <i className="now-ui-icons ui-1_settings-gear-63"></i>
-                            </button>
-                        </td>
-                        <td data-label="Apagar">
-                            {/* 
-// https://stackoverflow.com/questions/47375945/delete-firebase-storage-image-url-with-download-url
-                             */}
-                            <button className="btn btn-danger"
-                                onClick={() => this.confirm(this.state.plants[key], key)}>
-                                <i className="now-ui-icons design_scissors"></i>
-                            </button>
-                        </td>
-                    </tr >
-                )
-            })
     }
 
     render() {
@@ -450,7 +337,6 @@ export default class EditPlants extends Component {
                             Ocorreu um erro, tente novamente mais tarde...
                         </Alert>
                     )}
-                    {/* modal */}
                     <div>
                         <Modal isOpen={this.state.modal} toggle={this.toggle} centered={true}>
                             <ModalHeader toggle={this.toggle}>Sucesso!</ModalHeader>
@@ -476,7 +362,6 @@ export default class EditPlants extends Component {
                         </Modal>
                     </div>
                     {this.renderForm()}
-                    {this.renderTable()}
                 </Main>
                 <Footer />
             </div>

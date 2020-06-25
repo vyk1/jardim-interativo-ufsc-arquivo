@@ -19,13 +19,17 @@ export default class Read extends React.Component {
     componentDidMount() {
         if (!this.props.match.params.id) {
             window.location.replace('/')
-            return false;
+            return false
         }
         const plants = firebase.database().ref('plantapedia/' + this.props.match.params.id)
         plants.on('value', (snap) => {
+            console.log(snap)
             let p = snap.val()
+            if (!p) {
+                window.location.replace('/')
+                return false
+            }
             this.setState({ result: p })
-
         })
     }
 

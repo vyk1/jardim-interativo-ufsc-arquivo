@@ -65,7 +65,7 @@ class Starter extends React.Component {
           <PrivateRoute exact path='/admin' component={Home} />
           <PrivateRoute path='/admin/plantas' component={AllPlants} />
           <PrivateRoute path='/admin/nova-planta' component={NewPlant} />
-          <PrivateRoute path='/admin/editar-planta' component={EditPlants} />
+          <PrivateRoute path='/admin/editar-planta/:id' component={EditPlants} />
           <PrivateRoute path='/admin/qrcode/:id' component={QRCodeClass} />
           <PrivateRoute path='/admin/logout' component={Logout} />
 

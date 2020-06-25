@@ -31,13 +31,10 @@ export default props => {
                     ) : (
                             <div className="options-menu">
                                 <Link to={element.main}>
-                                    <i className={`fa fa-leaf p-2`}></i>Listar
+                                    <i className={`fa fa-leaf p-2`}></i>Listar ++
                                 </Link>
                                 <Link to={element.add}>
                                     <i className={`fa fa-plus-circle p-2`}></i>Adicionar
-                                </Link>
-                                <Link to={element.edit}>
-                                    <i className={`fa fa-edit p-2`}></i>Editar ou Deletar
                                 </Link>
                             </div>
                         )

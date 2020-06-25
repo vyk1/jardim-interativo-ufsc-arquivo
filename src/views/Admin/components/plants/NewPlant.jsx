@@ -76,7 +76,7 @@ export default class NewPlant extends Component {
                             }
                             config.push('plantapedia', {
                                 data: plant
-                            }).then((s) => {
+                            }).then(() => {
                                 this.clear()
                                 return this.setState({ success: true, loaded: true, visible: true })
                             })
@@ -256,7 +256,6 @@ export default class NewPlant extends Component {
                         </Alert>
                     )}
                     {this.renderForm()}
-
                 </Main>
                 <Footer />
             </div>
