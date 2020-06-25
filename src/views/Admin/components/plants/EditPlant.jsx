@@ -129,7 +129,6 @@ export default class EditPlants extends Component {
         e.preventDefault()
         console.log(this.state.plant);
 
-        return
         this.setState({ loaded: false })
 
         const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep } = this.state.plant
@@ -139,20 +138,25 @@ export default class EditPlants extends Component {
 
         const oldImage = e.target.imagemAntiga.value
 
-        // SE TEM IMAGEM NOVA
+        // Se tiver imagem nova:
         if (e.target.image2.files[0]) {
             const newImage = e.target.image2.files[0]
+            console.log(newImage)
+            console.log(this.state.plant)
 
             try {
-                // solve storage 1st
                 const ref = storage.refFromURL(oldImage)
+                console.log(ref)
                 // config.updateDoc()
+                // Substitui a anterior
                 ref.put(newImage)
                     .then(img => {
                         img.ref.getDownloadURL()
                             .then(dURL => {
+                                // Pega a url nova
                                 data['image'] = dURL
 
+                                // E salva
                                 config.update(`plantapedia/${id}`, {
                                     data
                                 })
@@ -168,7 +172,7 @@ export default class EditPlants extends Component {
                 return this.setState({ error: true, loaded: true, visible: true })
             }
 
-            // SE NÃO TEM IMAGEM NOVA
+            // Se não tiver:
         } else {
             data['image'] = oldImage
 
@@ -383,7 +387,7 @@ export default class EditPlants extends Component {
                             sortType: "basic"
                         },
                         {
-                            Header: "Mais Informações",
+                            Header: "Opções",
                             accessor: d => d.key,
                             Cell: props => this.displayActionItems(props),
                             sortable: false,
@@ -466,7 +470,7 @@ export default class EditPlants extends Component {
                                 Atenção: Esta ação é irreversível
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onClick={this.erase}>Apagar</Button>
+                                <Button color="danger" onClick={this.erase}>Apagar</Button>
                                 <Button color="secondary" onClick={this.toggle2}>Cancelar</Button>
                             </ModalFooter>
                         </Modal>

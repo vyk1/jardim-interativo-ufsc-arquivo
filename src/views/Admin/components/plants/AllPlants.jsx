@@ -48,7 +48,7 @@ export default class AllPlants extends Component {
                     to={`/leitura/${props.cell.value}`}
                     tag={Link}
                     target="_blank"
-                >Info
+                ><i className="fa fa-info"></i>
                 </Button>
                 <Button
                     color="success"
@@ -56,7 +56,7 @@ export default class AllPlants extends Component {
                     className="mr-1"
                     tag={Link}
                     target="_blank"
-                >QR Code
+                ><i className="fa fa-qrcode"></i>
                 </Button>
             </>
         );
@@ -87,7 +87,7 @@ export default class AllPlants extends Component {
                         },
                         {
                             id: 'key',
-                            Header: "Mais Informações",
+                            Header: "Opções",
                             accessor: d => d.key,
                             Cell: props => this.displayActionItems(props),
                             sortable: false,
