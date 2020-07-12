@@ -246,7 +246,7 @@ export default class EditPlants extends Component {
                                 {
                                     habits.map(el => (
                                         <FormGroup key={el.id} check onChange={e => this.handleChangeHabit(e)}>
-                                            <Label key={el.id} check>
+                                            <Label check>
                                                 <Input defaultChecked={this.state.plant.habit.includes(el.id.toString()) ? true : false} type="checkbox" value={el.id} name="habit" id="habit" />
                                                 {el.name}{" "}
                                                 <span className="form-check-sign">
@@ -262,7 +262,7 @@ export default class EditPlants extends Component {
                                 {
                                     mdtxs.map(el => (
                                         <FormGroup key={el.id} check onChange={e => this.handleChangeMdTx(e)}>
-                                            <Label key={el.id} check>
+                                            <Label check>
                                                 <Input defaultChecked={this.state.plant.mdtx.includes(el.id.toString()) ? true : false} type="checkbox" value={el.id} name="mdtx" id="mdtx" />
                                                 {el.name}{" "}
                                                 <span className="form-check-sign">

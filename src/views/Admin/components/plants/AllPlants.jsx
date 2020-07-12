@@ -160,7 +160,7 @@ export default class AllPlants extends Component {
         } finally {
             this.toggle2()
             window.location.href = "#root"
-            return this.setState({ loaded: true, visible: true })
+            return this.setState({ loaded: true })
         }
 
     }
