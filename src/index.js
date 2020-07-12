@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 // styles for this kit
 import './views/Admin/main/App.css'
@@ -59,7 +59,7 @@ class Starter extends React.Component {
     }
 
     return (
-      <BrowserRouter>
+      <Router>
         <Switch>
           {/* Loop aqui */}
           <PrivateRoute exact path='/admin' component={Home} />
@@ -77,9 +77,9 @@ class Starter extends React.Component {
           <Route path='/pesquisa/:word' component={Search} />
           <Route path="/login" component={LoginPage} />
           <Redirect from="/" to="/index" />
-          <Redirect to="/index" />
+          {/* <Redirect to="/index" /> */}
         </Switch>
-      </BrowserRouter>
+      </Router>
     )
   }
 }
