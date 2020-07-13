@@ -50,6 +50,7 @@ export default class AllPlants extends Component {
         return (
             <>
                 <Button
+                className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
                     id="infoBtn"
                     color="info"
                     to={`/leitura/${props.cell.value}`}
@@ -58,6 +59,7 @@ export default class AllPlants extends Component {
                 ><i className="fa fa-info"></i>
                 </Button>
                 <Button
+                className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
                     id="qrcodeBtn"
                     color="success"
                     to={`/admin/qrcode/${props.cell.value}`}
@@ -66,6 +68,7 @@ export default class AllPlants extends Component {
                 ><i className="fa fa-qrcode"></i>
                 </Button>
                 <Button
+                className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
                     id="gearBtn"
                     color="warning"
                     to={`/admin/editar-planta/${props.cell.value}`}
@@ -74,6 +77,7 @@ export default class AllPlants extends Component {
                 ><i className="now-ui-icons ui-1_settings-gear-63"></i>
                 </Button>
                 <Button
+                className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
                     id="scissorsBtn"
                     color="danger"
                     onClick={() => this.confirm(props.row.original, props.cell)}
