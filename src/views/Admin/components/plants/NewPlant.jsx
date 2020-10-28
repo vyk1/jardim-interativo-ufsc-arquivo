@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Main from '../template/Main/Main'
 import Logo from '../template/Logo/Logo'
 import Nav from '../template/Nav/Nav'
-import Footer from '../template/Footer/Footer'
 import config, { storage } from 'config'
 import { Alert, FormGroup, Label, Input } from 'reactstrap'
 import imageCompression from 'browser-image-compression'
@@ -257,7 +256,6 @@ export default class NewPlant extends Component {
                     )}
                     {this.renderForm()}
                 </Main>
-                <Footer />
             </div>
 
         )

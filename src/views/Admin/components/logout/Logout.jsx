@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Main from '../template/Main/Main'
 import Logo from '../template/Logo/Logo'
 import Nav from '../template/Nav/Nav'
-import Footer from '../template/Footer/Footer'
 import LoadingCog from "views/LoadingCog";
 import { Redirect } from "react-router";
 import { auth } from "../../../../config";
@@ -35,7 +34,6 @@ export default class Logout extends Component {
                     </span>
                     <LoadingCog />
                 </Main>
-                <Footer />
             </div>
 
         );

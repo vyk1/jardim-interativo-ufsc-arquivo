@@ -2,6 +2,7 @@ import './Main.css'
 import React from 'react'
 import Header from '../Header/Header'
 import Options from './Options/Options'
+import Footer from '../Footer/Footer'
 
 export default props =>
     <React.Fragment>
@@ -11,5 +12,6 @@ export default props =>
                 <Options {...props} />
                 {props.children}
             </div>
+            <Footer />
         </main>
     </React.Fragment>

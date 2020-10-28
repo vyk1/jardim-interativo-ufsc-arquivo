@@ -13,13 +13,13 @@ import {
   InputGroup,
   Container,
   Col,
-  Alert
-} from "reactstrap"
+  Alert} from "reactstrap"
 
 import useLoginForm from '../Admin/customHooks/useLoginForm'
 // import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js"
 import { auth } from 'config'
 import LoadingCog from "views/LoadingCog"
+
 
 function LoginPage(props) {
   const [firstFocus, setFirstFocus] = React.useState(false)
@@ -48,7 +48,7 @@ function LoginPage(props) {
     }
   }
 
-  const { inputs, handleInputChange, handleSubmit } = useLoginForm({ email: "", password: "" }, login)
+  const { inputs, handleInputChange, handleSubmit } = useLoginForm({ email: "admin.jduniversitario@gmail.com", password: "Xiqu3Xiqu3Firestor3" }, login)
 
   React.useEffect(() => {
     console.log(isAuthenticated);
@@ -80,15 +80,17 @@ function LoginPage(props) {
               <Card className="card-login card-plain">
                 <Form onSubmit={handleSubmit}>
                   <CardHeader className="text-center pt-4">
-                    <h3 className="text-uppercase">administrativo</h3>
-                    {/*
+                    <h4 className="text-center text-uppercase">administrativo</h4>
                     <div className="logo-container" style={{ marginTop: "55px" }}>
-                       <img
-                        alt="..."
-                        src={require("assets/img/now-logo.png")}
-                      ></img> 
+                      {/* <img className="bg-white" src={image} alt="Jardim Unificado" /> */}
+
+                      {/* <img
+                        alt="Logo"
+                        // src={require("assets/img/plantIcon.svg")}
+                        src={require("assets/img/plantIcon.svg")}
+                      /> */}
                     </div>
-                      */}
+
                   </CardHeader>
                   {!loaded && (<LoadingCog />)}
                   {error && (

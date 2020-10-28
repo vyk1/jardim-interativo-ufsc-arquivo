@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import Main from '../template/Main/Main'
 import Logo from '../template/Logo/Logo'
 import Nav from '../template/Nav/Nav'
-import Footer from '../template/Footer/Footer'
 import '../template/Tables/Tables.css'
 
 import config, { storage } from 'config'
@@ -50,7 +49,7 @@ export default class AllPlants extends Component {
         return (
             <>
                 <Button
-                className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
+                    className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
                     id="infoBtn"
                     color="info"
                     to={`/leitura/${props.cell.value}`}
@@ -59,7 +58,7 @@ export default class AllPlants extends Component {
                 ><i className="fa fa-info"></i>
                 </Button>
                 <Button
-                className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
+                    className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
                     id="qrcodeBtn"
                     color="success"
                     to={`/admin/qrcode/${props.cell.value}`}
@@ -68,7 +67,7 @@ export default class AllPlants extends Component {
                 ><i className="fa fa-qrcode"></i>
                 </Button>
                 <Button
-                className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
+                    className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
                     id="gearBtn"
                     color="warning"
                     to={`/admin/editar-planta/${props.cell.value}`}
@@ -77,7 +76,7 @@ export default class AllPlants extends Component {
                 ><i className="now-ui-icons ui-1_settings-gear-63"></i>
                 </Button>
                 <Button
-                className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
+                    className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
                     id="scissorsBtn"
                     color="danger"
                     onClick={() => this.confirm(props.row.original, props.cell)}
@@ -186,9 +185,7 @@ export default class AllPlants extends Component {
                             <Button color="secondary" onClick={this.toggle2}>Cancelar</Button>
                         </ModalFooter>
                     </Modal>
-
                 </Main>
-                <Footer />
             </div>
         )
     }

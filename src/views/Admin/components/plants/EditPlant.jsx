@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Main from '../template/Main/Main'
 import Logo from '../template/Logo/Logo'
 import Nav from '../template/Nav/Nav'
-import Footer from '../template/Footer/Footer'
 import '../template/Tables/Tables.css'
 import config, { storage } from 'config'
 import { Alert, Modal, ModalHeader, ModalBody, ModalFooter, Button, Input, FormGroup, Label } from 'reactstrap'
@@ -363,7 +362,6 @@ export default class EditPlants extends Component {
                     </div>
                     {this.renderForm()}
                 </Main>
-                <Footer />
             </div>
         )
     }

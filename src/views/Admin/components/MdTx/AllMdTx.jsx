@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import Main from '../template/Main/Main'
 import Logo from '../template/Logo/Logo'
 import Nav from '../template/Nav/Nav'
-import Footer from '../template/Footer/Footer'
 import data from '../../../../data/MdTx';
 
 import TableS from '../table/Index'
@@ -60,7 +59,6 @@ export default class AllMdTx extends Component {
                 <Main {...headerProps}>
                     {this.renderTable()}
                 </Main>
-                <Footer />
             </div>
         )
     }

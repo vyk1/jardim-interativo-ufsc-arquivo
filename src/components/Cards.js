@@ -58,7 +58,7 @@ export default class Cards extends Component {
                     }
 
                     <div className="col-12">
-                        <h3 className="title" id="sobre">Catálogo <i className="fa fa-leaf"></i></h3>
+                        <h3 className="title" id="sobre">Espécimes <i className="fa fa-leaf"></i></h3>
                         <CardGroup>{rows}
                         </CardGroup>
                         {!this.state.disabled && (
