@@ -5,6 +5,7 @@ import Nav from '../template/Nav/Nav'
 import LoadingCog from "views/LoadingCog";
 import { Redirect } from "react-router";
 import { auth } from "../../../../config";
+import { Alert } from "reactstrap";
 
 const headerProps = {
     icon: 'sign-out',
@@ -17,9 +18,10 @@ export default class Logout extends Component {
         try {
             auth.signOut()
         } catch (error) {
-            console.log(error);
+            console.log(error)
+            this.setState({ error: "Ocorreu um erro..." })
         } finally {
-            return <Redirect to="/index" />
+            return <Redirect to="/" />
         }
 
     }
@@ -29,9 +31,14 @@ export default class Logout extends Component {
                 <Logo />
                 <Nav />
                 <Main {...headerProps}>
-                    <span>
-                        <b> Saindo...</b>
-                    </span>
+                    {
+                        this.state.error ?
+                            <Alert color="warning">{this.state.error}</Alert>
+                            :
+                            <span>
+                                <b> Saindo...</b>
+                            </span>
+                    }
                     <LoadingCog />
                 </Main>
             </div>

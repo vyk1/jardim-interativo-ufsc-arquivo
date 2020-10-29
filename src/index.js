@@ -10,6 +10,7 @@ import "./assets/demo/demo.css";
 import "./assets/demo/nucleo-icons-page-styles.css";
 // pages for this kit
 import Index from "./views/Index.js";
+import Catalog from "./views/Catalog.js";
 import LoginPage from "./views/examples/LoginPage.js";
 import Home from "./views/Admin/components/home/Home";
 import QRCodeClass from "./views/Admin/components/qrcode/QRCode";
@@ -72,12 +73,13 @@ class Starter extends React.Component {
           <PrivateRoute path='/admin/habitos-crescimento' component={AllHabCresc} />
           <PrivateRoute path='/admin/md-tx' component={AllMdTx} />
 
-          <Route path="/index" component={Index} />
+          <Route path="/" exact component={Index} />
           <Route path='/leitura/:id' component={Read} />
           <Route path='/pesquisa/:word' component={Search} />
           <Route path="/login" component={LoginPage} />
-          <Redirect from="/" to="/index" />
-          {/* <Redirect to="/index" /> */}
+          <Route path="/catalogo" component={Catalog} />
+          <Redirect to="/" />
+
         </Switch>
       </Router>
     )

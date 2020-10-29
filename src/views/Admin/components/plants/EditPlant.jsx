@@ -119,7 +119,7 @@ export default class EditPlants extends Component {
         var options = {
             maxSizeMB: 1,
             maxWidthOrHeight: 1920,
-            useWebWorker: false
+            useWebWorker: true
         }
 
         // Se tiver imagem nova:

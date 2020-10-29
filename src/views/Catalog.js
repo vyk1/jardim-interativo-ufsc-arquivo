@@ -1,0 +1,39 @@
+import React from "react";
+
+import {
+  Container,
+} from "reactstrap";
+
+// core components
+import Cards from "components/Cards.js";
+
+import FullNav from "./FullNav.js";
+import DefaultFooter from "../components/Footers/DefaultFooter.js";
+
+function Catalog() {
+  // const [] = React.useState("2");
+  React.useEffect(() => {
+    document.body.classList.add("profile-page");
+    document.body.classList.add("sidebar-collapse");
+    document.documentElement.classList.remove("nav-open");
+    return function cleanup() {
+      document.body.classList.remove("profile-page");
+      document.body.classList.remove("sidebar-collapse");
+    };
+  });
+  return (
+    <>
+      <FullNav />
+      <div className="wrapper">
+        <div className="section">
+          <Container>
+            <Cards />
+          </Container>
+        </div>
+        <DefaultFooter />
+      </div>
+    </>
+  );
+}
+
+export default Catalog;

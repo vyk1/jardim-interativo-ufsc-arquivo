@@ -7,6 +7,7 @@ import {
 import Items from "./Items.js"
 import config from "../config.js";
 import LoadingCog from "views/LoadingCog.js";
+import { Link } from "react-router-dom";
 
 export default class Cards extends Component {
 
@@ -26,12 +27,12 @@ export default class Cards extends Component {
         })
     }
 
-    onNextPage = async () => {
-        await this.setState({ limit: this.state.limit * 2 })
-        if (this.state.limit >= Object.keys(this.state.plants).length) {
-            return this.setState({ disabled: true })
-        }
-    }
+    // onNextPage = async () => {
+    //     await this.setState({ limit: this.state.limit * 2 })
+    //     if (this.state.limit >= Object.keys(this.state.plants).length) {
+    //         return this.setState({ disabled: true })
+    //     }
+    // }
     render() {
 
         if (this.state.plants.length <= 0) {
@@ -59,11 +60,14 @@ export default class Cards extends Component {
 
                     <div className="col-12">
                         <h3 className="title" id="sobre">Espécimes <i className="fa fa-leaf"></i></h3>
-                        <CardGroup>{rows}
+                        <CardGroup>
+                            {rows}
                         </CardGroup>
-                        {!this.state.disabled && (
+                        {!this.state.disabled && this.state.limit && (
                             <div className="d-flex flex-column-reverse">
-                                <Button color="info" size="lg" onClick={this.onNextPage}>Mais</Button>
+                                <Button tag={Link} to="/catalogo" color="info" size="lg">
+                                    Mais
+                                </Button>
                             </div>
                         )}
                     </div>

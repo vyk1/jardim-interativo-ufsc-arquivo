@@ -8,7 +8,7 @@ import '../template/Tables/Tables.css'
 import config, { storage } from 'config'
 
 import TableS from '../table/Index'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Badge, CardBody, Card, Alert } from 'reactstrap'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Badge } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import HabCresc from 'data/HabCresc'
 import MdTx from 'data/MdTx'
@@ -114,7 +114,6 @@ export default class AllPlants extends Component {
                 for (let index = 0; index < plant.habit.length; index++) {
                     const habit = plant.habit[index]
 
-                    counter[habit] = counter[habit]
                     isNaN(counter[habit]) ? counter[habit] = 1 : counter[habit]++
                 }
 
