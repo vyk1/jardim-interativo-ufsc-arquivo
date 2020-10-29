@@ -9,7 +9,7 @@ export default props =>
         </div>
         <div className="col">
             <span>
-                Desenvolvido por<a href="https://vyk1.github.io">Victoria Botelho Martins</a>
+                Desenvolvido por<a target="_blank" rel="noopener noreferrer" href="https://vyk1.github.io">Victoria Botelho Martins</a>
             </span>
         </div>
     </footer>

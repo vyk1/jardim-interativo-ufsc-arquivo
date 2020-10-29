@@ -8,8 +8,10 @@ import '../template/Tables/Tables.css'
 import config, { storage } from 'config'
 
 import TableS from '../table/Index'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Badge, CardBody, Card, Alert } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import HabCresc from 'data/HabCresc'
+import MdTx from 'data/MdTx'
 
 const headerProps = {
     icon: 'leaf',
@@ -55,7 +57,7 @@ export default class AllPlants extends Component {
                     to={`/leitura/${props.cell.value}`}
                     tag={Link}
                     target="_blank"
-                ><i className="fa fa-info"></i>
+                ><i className="fa fa-info" />
                 </Button>
                 <Button
                     className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
@@ -64,7 +66,7 @@ export default class AllPlants extends Component {
                     to={`/admin/qrcode/${props.cell.value}`}
                     tag={Link}
                     target="_blank"
-                ><i className="fa fa-qrcode"></i>
+                ><i className="fa fa-qrcode" />
                 </Button>
                 <Button
                     className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
@@ -73,37 +75,56 @@ export default class AllPlants extends Component {
                     to={`/admin/editar-planta/${props.cell.value}`}
                     tag={Link}
                 // onClick={() => this.load(props.row.original, props.cell)}
-                ><i className="now-ui-icons ui-1_settings-gear-63"></i>
+                ><i className="now-ui-icons ui-1_settings-gear-63" />
                 </Button>
                 <Button
                     className="col-sm-12 col-md-6 col-lg-4 col-xl-2"
                     id="scissorsBtn"
                     color="danger"
                     onClick={() => this.confirm(props.row.original, props.cell)}
-                ><i className="now-ui-icons design_scissors"></i>
+                ><i className="now-ui-icons design_scissors" />
                 </Button>
-                {/* <Tooltip placement="top" toggle={(e) => this.toggleInfo(e)} isOpen={false} target="infoBtn">Visitar</Tooltip>
-                <Tooltip placement="top" toggle={(e) => this.toggleQrCode(e)} isOpen={false} target="qrcodeBtn">Visitar</Tooltip>
-                <Tooltip placement="top" toggle={(e) => this.toggleGear(e)} isOpen={false} target="gearBtn">Visitar</Tooltip>
-                <Tooltip placement="top" toggle={(e) => this.toggleScissors(e)} isOpen={false} target="scissorsBtn">Visitar</Tooltip> */}
             </>
         );
     }
 
     confirm(plant, id) {
-        console.log(plant)
         let tableId = id.value
         this.setState({ modal2: true, plant, id: tableId })
     }
 
     renderTable() {
+
         if (this.state.plants.length <= 0 || this.state.loaded === false) {
             return (
                 <h1>
-                    <i className="now-ui-icons loader_gear spin"></i>
+                    <i className="now-ui-icons loader_gear spin" />
                 </h1>
             )
         } else {
+
+            let counter = []
+            let counter2 = []
+
+            for (let index = 0; index < this.state.plants.length; index++) {
+                // para cada planta
+                const plant = this.state.plants[index]
+
+                // conte hab cresc
+                for (let index = 0; index < plant.habit.length; index++) {
+                    const habit = plant.habit[index]
+
+                    counter[habit] = counter[habit]
+                    isNaN(counter[habit]) ? counter[habit] = 1 : counter[habit]++
+                }
+
+                // conte mdtx
+                for (let index = 0; index < plant.mdtx.length; index++) {
+                    const mdtx = plant.mdtx[index]
+
+                    isNaN(counter2[mdtx]) ? counter2[mdtx] = 1 : counter2[mdtx]++
+                }
+            }
 
             const columns = [
                 {
@@ -130,7 +151,21 @@ export default class AllPlants extends Component {
                 }
             ];
             return (
-                <TableS data={this.state.plants} columns={columns} />
+                <>
+                    {
+                        HabCresc.map(h => (
+                            <Badge key={h.name} color="primary">{h.name}: {counter[h.id] ? counter[h.id] : '-'}</Badge>
+                        ))
+                    }
+                    <br />
+                    {
+                        MdTx.map(m => (
+                            <Badge key={m.name} color="warning">{m.name}: {counter2[m.id] ? counter2[m.id] : '-'}</Badge>
+                        ))
+                    }
+
+                    <TableS data={this.state.plants} columns={columns} />
+                </>
             )
         }
     }
@@ -154,7 +189,14 @@ export default class AllPlants extends Component {
                         .then(() => {
                             return this.setState({ success: true })
                         })
+                        .catch(() => {
+                            return this.setState({ success: true })
+                        })
                 })
+                .catch(() => {
+                    return this.setState({ success: true })
+                })
+
 
         } catch (error) {
             console.log(error)
