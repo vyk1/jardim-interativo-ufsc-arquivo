@@ -23,19 +23,13 @@ export default class Cards extends Component {
         config.syncState('plantapedia', {
             context: this,
             state: 'plants',
-            asArray: false
+            asArray: true
         })
     }
 
-    // onNextPage = async () => {
-    //     await this.setState({ limit: this.state.limit * 2 })
-    //     if (this.state.limit >= Object.keys(this.state.plants).length) {
-    //         return this.setState({ disabled: true })
-    //     }
-    // }
     render() {
 
-        if (this.state.plants.length <= 0) {
+        if (!this.state.plants.length) {
             return (
                 <LoadingCog />
 

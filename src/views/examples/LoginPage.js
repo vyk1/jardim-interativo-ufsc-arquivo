@@ -16,10 +16,8 @@ import {
   Alert} from "reactstrap"
 
 import useLoginForm from '../Admin/customHooks/useLoginForm'
-// import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js"
 import { auth } from 'config'
 import LoadingCog from "views/LoadingCog"
-
 
 function LoginPage(props) {
   const [firstFocus, setFirstFocus] = React.useState(false)
@@ -66,7 +64,6 @@ function LoginPage(props) {
 
   return (
     <>
-      {/* <ExamplesNavbar /> */}
       <div className="page-header clear-filter" filter-color="green">
         <div
           className="page-header-image"

@@ -18,8 +18,7 @@ function DefaultFooter() {
                 </Link>
               </li>
               <li>
-                <Link to="/#sobre"
-                >
+                <Link to="/sobre">
                   Sobre
                 </Link>
               </li>

@@ -8,8 +8,12 @@ import "./assets/css/bootstrap.min.css";
 import "./assets/scss/now-ui-kit.scss";
 import "./assets/demo/demo.css";
 import "./assets/demo/nucleo-icons-page-styles.css";
+
+import { auth } from "./config";
+
 // pages for this kit
 import Index from "./views/Index.js";
+import About from "./views/About.js";
 import Catalog from "./views/Catalog.js";
 import LoginPage from "./views/examples/LoginPage.js";
 import Home from "./views/Admin/components/home/Home";
@@ -20,7 +24,6 @@ import Logout from "./views/Admin/components/logout/Logout";
 import Search from "./views/Search";
 import EditPlants from "./views/Admin/components/plants/EditPlant";
 import Read from "./views/Read";
-import { auth } from "./config";
 import LoadingCog from "./views/LoadingCog";
 import AllHabCresc from "./views/Admin/components/habCresc/AllHabCresc";
 import AllMdTx from "./views/Admin/components/MdTx/AllMdTx";
@@ -32,6 +35,8 @@ class Starter extends React.Component {
   }
 
   componentDidMount() {
+    // window.open("https://github.com/creativetimofficial/now-ui-kit-react")
+
     auth.onAuthStateChanged(user => {
       this.setState({
         isAuthenticated: !!user,
@@ -78,6 +83,7 @@ class Starter extends React.Component {
           <Route path='/pesquisa/:word' component={Search} />
           <Route path="/login" component={LoginPage} />
           <Route path="/catalogo" component={Catalog} />
+          <Route path="/sobre" component={About} />
           <Redirect to="/" />
 
         </Switch>

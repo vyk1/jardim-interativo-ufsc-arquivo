@@ -11,6 +11,7 @@ import {
   UncontrolledTooltip
 } from "reactstrap";
 import SearchBar from "components/SearchBar";
+import { Link } from "react-router-dom";
 
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
@@ -102,7 +103,20 @@ function IndexNavbar() {
                   <p className="d-lg-none d-xl-none">Instagram</p>
                 </NavLink>
                 <UncontrolledTooltip target="#instagram-tooltip">
-                Nos siga no Instagram
+                  Nos siga no Instagram
+                </UncontrolledTooltip>
+              </NavItem>
+              <NavItem>
+                <NavLink
+                  tag={Link}
+                  to="/sobre"
+                  id="about-tooltip"
+                >
+                  <i className="fas fa-info-circle"></i>
+                  <p className="d-lg-none d-xl-none">Sobre</p>
+                </NavLink>
+                <UncontrolledTooltip target="#about-tooltip">
+                  Sobre o Projeto
                 </UncontrolledTooltip>
               </NavItem>
             </Nav>
