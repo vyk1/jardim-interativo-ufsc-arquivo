@@ -46,7 +46,7 @@ function LoginPage(props) {
     }
   }
 
-  const { inputs, handleInputChange, handleSubmit } = useLoginForm({ email: "admin.jduniversitario@gmail.com", password: "Xiqu3Xiqu3Firestor3" }, login)
+  const { inputs, handleInputChange, handleSubmit } = useLoginForm({ email: "", password: "" }, login)
 
   React.useEffect(() => {
 
