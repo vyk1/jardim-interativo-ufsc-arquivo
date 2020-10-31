@@ -163,6 +163,8 @@ export default class AllPlants extends Component {
                         ))
                     }
 
+                    <br />
+                    <Badge color="info">Total de Plantas Cadastradas {this.state.plants.length}</Badge>
                     <TableS data={this.state.plants} columns={columns} />
                 </>
             )

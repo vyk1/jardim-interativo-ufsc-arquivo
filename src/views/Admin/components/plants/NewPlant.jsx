@@ -19,16 +19,19 @@ const headerProps = {
 const initialState = {
     loaded: true,
     visible: true,
-    scientificName: "",
     popularName: "",
+    scientificName: "",
     description: "",
     geoDistrib: "",
     regionForTreatment: "",
     activeIngredient: "",
-    utilizationAndPrep: "",
-    habit: [],
-    mdtx: [],
+    utilization: "",
+    toxicDose: "",
+    prepMode: "",
+    therapeuticDose: "",
     image: "",
+    mdtx: [],
+    habit: [],
 }
 
 export default class NewPlant extends Component {
@@ -43,7 +46,11 @@ export default class NewPlant extends Component {
         e.preventDefault()
         this.setState({ loaded: false })
 
-        const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep, habit, mdtx } = this.state
+        const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilization,
+            prepMode,
+            toxicDose,
+            therapeuticDose,
+            habit, mdtx } = this.state
         const image = e.target.image.files[0]
         const { name } = image
 
@@ -68,7 +75,10 @@ export default class NewPlant extends Component {
                                 geoDistrib,
                                 regionForTreatment,
                                 activeIngredient,
-                                utilizationAndPrep,
+                                utilization,
+                                prepMode,
+                                toxicDose,
+                                therapeuticDose,
                                 image: dURL,
                                 habit,
                                 mdtx
@@ -169,8 +179,8 @@ export default class NewPlant extends Component {
                             </div>
                             <div className="col-12">
                                 <div className="form-group">
-                                    <label htmlFor="regionForTreatment">Região Utilizada Para Tratamento</label>
-                                    <textarea placeholder="Digite a Região Utilizada Para Tratamento..." required name="regionForTreatment" id="regionForTreatment" cols="30" rows="10" className="form-control" onChange={e => this.setState({ regionForTreatment: e.target.value })} value={this.state.regionForTreatment}></textarea>
+                                    <label htmlFor="regionForTreatment">Parte da Planta com Efeito Terapêutico</label>
+                                    <textarea placeholder="Digite a Parte da Planta com Efeito Terapêutico..." required name="regionForTreatment" id="regionForTreatment" cols="30" rows="10" className="form-control" onChange={e => this.setState({ regionForTreatment: e.target.value })} value={this.state.regionForTreatment}></textarea>
                                 </div>
                             </div>
                             <div className="col-12">
@@ -181,8 +191,28 @@ export default class NewPlant extends Component {
                             </div>
                             <div className="col-12">
                                 <div className="form-group">
-                                    <label htmlFor="utilizationAndPrep">Utilização e Modos De Preparo</label>
-                                    <textarea placeholder="Digite a Utilização e Modos De Preparo..." required name="utilizationAndPrep" id="utilizationAndPrep" cols="30" rows="10" className="form-control" onChange={e => this.setState({ utilizationAndPrep: e.target.value })} value={this.state.utilizationAndPrep}></textarea>
+                                    <label htmlFor="utilization">Utilização</label>
+                                    <textarea placeholder="Digite a Utilização..." required name="utilization" id="utilization" cols="30" rows="10" className="form-control" onChange={e => this.setState({ utilization: e.target.value })} value={this.state.utilization}></textarea>
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="form-group">
+                                    <label htmlFor="prepMode"> Modos De Preparo</label>
+                                    <textarea placeholder="Digite os Modos De Preparo..." name="prepMode" id="prepMode" cols="30" rows="10" className="form-control" onChange={e => this.setState({ prepMode: e.target.value })} value={this.state.prepMode}></textarea>
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="form-group">
+                                    <label htmlFor="toxicDose">Dose Tóxica</label>
+                                    <textarea placeholder="Digite a Dose Tóxica..." name="toxicDose" id="toxicDose" cols="30" rows="10" className="form-control" onChange={e => this.setState({ toxicDose: e.target.value })} value={this.state.toxicDose}></textarea>
+
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="form-group">
+                                    <label htmlFor="therapeuticDose">Dose Terapêutica</label>
+                                    <textarea placeholder="Digite a Dose Terapêutica..." name="therapeuticDose" id="therapeuticDose" cols="30" rows="10" className="form-control" onChange={e => this.setState({ therapeuticDose: e.target.value })} value={this.state.therapeuticDose}></textarea>
+
                                 </div>
                             </div>
                             <div className="col-12">

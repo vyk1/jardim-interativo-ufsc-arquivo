@@ -108,12 +108,15 @@ export default class EditPlants extends Component {
 
         this.setState({ loaded: false })
 
-        const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep, habit, mdtx } = this.state
+        const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, prepMode, toxicDose, therapeuticDose, utilization, habit, mdtx } = this.state.plant
 
-        const { id } = this.state
+        const { id } = this.props.match.params
 
-        const data = { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilizationAndPrep, habit, mdtx }
+        const data = {
+            scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, prepMode, toxicDose, therapeuticDose, utilization, habit, mdtx
+        }
 
+        console.log(data)
         const oldImage = e.target.imagemAntiga.value
 
         var options = {
@@ -223,8 +226,8 @@ export default class EditPlants extends Component {
                             </div>
                             <div className="col-12">
                                 <div className="form-group">
-                                    <label htmlFor="regionForTreatment">Região Utilizada Para Tratamento</label>
-                                    <textarea placeholder="Digite a Região Utilizada Para Tratamento..." required name="regionForTreatment" id="regionForTreatment" cols="30" rows="10" className="form-control" onChange={e => this.updateField(e)} value={this.state.plant.regionForTreatment}></textarea>
+                                    <label htmlFor="regionForTreatment">Parte da Planta com Efeito Terapêutico</label>
+                                    <textarea placeholder="Digite a Parte da Planta com Efeito Terapêutico..." required name="regionForTreatment" id="regionForTreatment" cols="30" rows="10" className="form-control" onChange={e => this.updateField(e)} value={this.state.plant.regionForTreatment}></textarea>
                                 </div>
                             </div>
                             <div className="col-12">
@@ -235,8 +238,27 @@ export default class EditPlants extends Component {
                             </div>
                             <div className="col-12">
                                 <div className="form-group">
-                                    <label htmlFor="utilizationAndPrep">Utilização e Modos De Preparo</label>
-                                    <textarea placeholder="Digite a Utilização e Modos De Preparo..." required name="utilizationAndPrep" id="utilizationAndPrep" cols="30" rows="10" className="form-control" onChange={e => this.updateField(e)} value={this.state.plant.utilizationAndPrep}></textarea>
+                                    <label htmlFor="utilization">Utilização</label>
+                                    <textarea placeholder="Digite a Utilização..." required name="utilization" id="utilization" cols="30" rows="10" className="form-control" onChange={e => this.updateField(e)} value={this.state.plant.utilization}></textarea>
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="form-group">
+                                    <label htmlFor="prepMode"> Modos De Preparo</label>
+                                    <textarea placeholder="Digite os Modos De Preparo..." name="prepMode" id="prepMode" cols="30" rows="10" className="form-control" onChange={e => this.updateField(e)} value={this.state.plant.prepMode}></textarea>
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="form-group">
+                                    <label htmlFor="toxicDose">Dose Tóxica</label>
+                                    <textarea placeholder="Digite a Dose Tóxica..." name="toxicDose" id="toxicDose" cols="30" rows="10" className="form-control" onChange={e => this.updateField(e)} value={this.state.plant.toxicDose}></textarea>
+
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="form-group">
+                                    <label htmlFor="therapeuticDose">Dose Terapêutica</label>
+                                    <textarea placeholder="Digite a Dose Terapêutica..." name="therapeuticDose" id="therapeuticDose" cols="30" rows="10" className="form-control" onChange={e => this.updateField(e)} value={this.state.plant.therapeuticDose}></textarea>
                                 </div>
                             </div>
 
@@ -343,7 +365,7 @@ export default class EditPlants extends Component {
                                 Visitar a página?
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="info" onClick={() => { return this.props.history.push('/leitura/' + this.state.id) }}>Visitar</Button>{' '}
+                                <Button color="info" onClick={() => { return this.props.history.push('/leitura/' + this.props.match.params.id) }}>Visitar</Button>{' '}
                                 <Button color="secondary" onClick={() => { this.clear(); this.toggle(); this.setState({ loaded: true }) }}>Cancelar</Button>
                             </ModalFooter>
                         </Modal>

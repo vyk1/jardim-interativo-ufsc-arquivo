@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 // reactstrap components
 import {
     Button, CardGroup
-} from "reactstrap";
+} from "reactstrap"
 
 import Items from "./Items.js"
-import config from "../config.js";
-import LoadingCog from "views/LoadingCog.js";
-import { Link } from "react-router-dom";
+import config from "../config.js"
+import LoadingCog from "views/LoadingCog.js"
+import { Link } from "react-router-dom"
 
 export default class Cards extends Component {
 
@@ -16,20 +16,24 @@ export default class Cards extends Component {
 
         this.state = {
             plants: [],
-            limit: props.limit,
-            disabled: false
         }
-
+    }
+    componentDidMount() {
         config.syncState('plantapedia', {
             context: this,
             state: 'plants',
-            asArray: true
+            asArray: false,
+            queries: {
+                orderByChild: 'popularName'
+            }
         })
     }
 
     render() {
+        const length = Object.keys(this.state.plants).length
+        const { limit } = this.props
 
-        if (!this.state.plants.length) {
+        if (!length) {
             return (
                 <LoadingCog />
 
@@ -38,26 +42,23 @@ export default class Cards extends Component {
             let rows = []
             let count = 0
 
-            return (
-                <>
-                    {
-                        Object.keys(this.state.plants)
-                            .map(key => {
-                                count++
-                                if (count > this.state.limit) {
-                                    return false
-                                }
-                                rows.push(<Items key={key} ch={key} content={this.state.plants[key]} />)
-                                return true
-                            })
-                    }
-
+            if (limit) {
+                Object.keys(this.state.plants)
+                    .map(key => {
+                        count++
+                        if (count > length) {
+                            return false
+                        }
+                        rows.push(<Items key={key} ch={key} content={this.state.plants[key]} />)
+                        return true
+                    })
+                return (
                     <div className="col-12">
                         <h3 className="title" id="sobre">Espécimes <i className="fa fa-leaf"></i></h3>
                         <CardGroup>
                             {rows}
                         </CardGroup>
-                        {!this.state.disabled && this.state.limit && (
+                        {length > 3 && limit && (
                             <div className="d-flex flex-column-reverse">
                                 <Button tag={Link} to="/catalogo" color="info" size="lg">
                                     Mais
@@ -65,8 +66,23 @@ export default class Cards extends Component {
                             </div>
                         )}
                     </div>
-                </>
-            )
+                )
+            } else {
+                Object.keys(this.state.plants)
+                    .map(key => {
+                        count++
+                        rows.push(<Items key={key} ch={key} content={this.state.plants[key]} />)
+                        return true
+                    })
+                return (
+                    <div className="col-12">
+                        <h3 className="title" id="sobre">Espécimes <i className="fa fa-leaf"></i></h3>
+                        <CardGroup>
+                            {rows}
+                        </CardGroup>
+                    </div>
+                )
+            }
         }
     }
 }

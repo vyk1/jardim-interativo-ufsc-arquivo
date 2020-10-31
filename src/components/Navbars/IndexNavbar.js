@@ -50,15 +50,15 @@ function IndexNavbar() {
         <Container>
           <div className="navbar-translate">
             <NavbarBrand
-              href="/"
-              target="_blank"
+              tag={Link}
+              to="/"
               id="navbar-brand"
             >
               Jardim Unificado
             </NavbarBrand>
-            <UncontrolledTooltip target="#navbar-brand">
-              Layout by Creative Tim &amp; Invision<br /> Coded by Victoria Botelho Martins
-            </UncontrolledTooltip>
+            {/* <UncontrolledTooltip byontrolledTooltip target="#navbar-brand">
+               Creative Tim &amp; Invision<br /> Coded by Victoria Botelho Martins
+            </UncontrolledTooltip> */}
             <button
               className="navbar-toggler navbar-toggler"
               onClick={() => {

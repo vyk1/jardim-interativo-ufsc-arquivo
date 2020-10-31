@@ -16,7 +16,7 @@ export default [{
     icon: 'fa fa-seedling',
 },
 {
-    name: "Toxic.",
+    name: "Toxic./Med.",
     type: 'md-tx',
     main: '/admin/md-tx',
     // add: '/admin/novo-tipo',

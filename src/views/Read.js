@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase'
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Col, CardHeader, CardBody, FormGroup, Label, Input } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Col, CardHeader, CardBody, FormGroup, Label, Input, Badge } from 'reactstrap';
 import FullNav from './FullNav.js';
 import LoadingCog from './LoadingCog';
 import DefaultFooter from '../components/Footers/DefaultFooter.js';
@@ -23,7 +23,6 @@ export default class Read extends React.Component {
         }
         const plants = firebase.database().ref('plantapedia/' + this.props.match.params.id)
         plants.on('value', (snap) => {
-            console.log(snap)
             let p = snap.val()
             if (!p) {
                 window.location.replace('/')
@@ -39,6 +38,8 @@ export default class Read extends React.Component {
 
     render() {
         const { result } = this.state
+        console.log(result)
+
         if (!result) {
             return (
                 <LoadingCog />
@@ -54,6 +55,16 @@ export default class Read extends React.Component {
                             <p className="category">
                                 {result.popularName}
                                 <i>({result.scientificName})</i>
+                                {
+                                    result.mdtx.includes("1") && (
+                                        <Badge className="mx-1" color="success">Medicinal</Badge>
+                                    )
+                                }
+                                {
+                                    result.mdtx.includes("2") && (
+                                        <Badge className="mx-1" color="warning">Tóxica</Badge>
+                                    )
+                                }
                             </p>
 
                             <Card>
@@ -65,7 +76,7 @@ export default class Read extends React.Component {
                                         <NavItem>
                                             <NavLink
                                                 className={this.state.activeTab === "1" ? "active" : ""}
-                                                href="#pablo"
+                                                href="#"
                                                 onClick={e => {
                                                     e.preventDefault();
                                                     this.toggle("1");
@@ -77,7 +88,7 @@ export default class Read extends React.Component {
                                         <NavItem>
                                             <NavLink
                                                 className={this.state.activeTab === "2" ? "active" : ""}
-                                                href="#pablo"
+                                                href="#"
                                                 onClick={e => {
                                                     e.preventDefault();
                                                     this.toggle("2");
@@ -90,7 +101,7 @@ export default class Read extends React.Component {
                                         <NavItem>
                                             <NavLink
                                                 className={this.state.activeTab === "3" ? "active" : ""}
-                                                href="#pablo"
+                                                href="#"
                                                 onClick={e => {
                                                     e.preventDefault();
                                                     this.toggle("3");
@@ -100,6 +111,23 @@ export default class Read extends React.Component {
                                                 Uso
                                             </NavLink>
                                         </NavItem>
+                                        {
+                                            result.toxicDose || result.therapeuticDose && (
+                                                <NavItem>
+                                                    <NavLink
+                                                        className={this.state.activeTab === "4" ? "active" : ""}
+                                                        href="#"
+                                                        onClick={e => {
+                                                            e.preventDefault();
+                                                            this.toggle("4");
+                                                        }}
+                                                    >
+                                                        <i className="now-ui-icons files_paper"></i>
+                                                    Doses
+                                                </NavLink>
+                                                </NavItem>
+                                            )
+                                        }
                                     </Nav>
                                 </CardHeader>
                                 <CardBody>
@@ -161,17 +189,49 @@ export default class Read extends React.Component {
                                         </TabPane>
                                         <TabPane tabId="3">
                                             <h6>
-                                                Região para Tratamento:
+                                                Região Parte da Planta com Efeito Terapêutico:
                                             </h6>
                                             <p>
                                                 {result.regionForTreatment}
                                             </p>
                                             <h6>
-                                                Utilização e Preparo:
+                                                Utilização:
                                             </h6>
                                             <p>
-                                                {result.utilizationAndPrep}
+                                                {result.utilization}
                                             </p>
+                                            <h6>
+                                                Modo de Preparo:
+                                            </h6>
+                                            <p>
+                                                {result.prepMode}
+                                            </p>
+                                        </TabPane>
+                                        <TabPane tabId="4">
+                                            {
+                                                result.toxicDose && (
+                                                    <>
+                                                        <h6>
+                                                            Dose Tóxica
+                                            </h6>
+                                                        <p>
+                                                            {result.toxicDose}
+                                                        </p>
+                                                    </>
+                                                )
+                                            }
+                                            {
+                                                result.therapeuticDose && (
+                                                    <>
+                                                        <h6>
+                                                            Dose Terapêutica
+                                            </h6>
+                                                        <p>
+                                                            {result.therapeuticDose}
+                                                        </p>
+                                                    </>
+                                                )
+                                            }
                                         </TabPane>
                                     </TabContent>
                                 </CardBody>

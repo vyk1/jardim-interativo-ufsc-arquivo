@@ -58,7 +58,7 @@ function CarouselSection() {
             <div className="section" id="carousel">
                 <Container>
                     <div className="title">
-                        <h4>Carousel</h4>
+                        <h3>Fotos</h3>
                     </div>
                     <Row className="justify-content-center">
                         <Col lg="8" md="12">
@@ -89,7 +89,7 @@ function CarouselSection() {
                                 <a
                                     className="carousel-control-prev"
                                     data-slide="prev"
-                                    href="#pablo"
+                                    href="#n"
                                     onClick={(e) => {
                                         e.preventDefault();
                                         previous();
@@ -101,7 +101,7 @@ function CarouselSection() {
                                 <a
                                     className="carousel-control-next"
                                     data-slide="next"
-                                    href="#pablo"
+                                    href="#n"
                                     onClick={(e) => {
                                         e.preventDefault();
                                         next();

@@ -49,7 +49,6 @@ function LoginPage(props) {
   const { inputs, handleInputChange, handleSubmit } = useLoginForm({ email: "admin.jduniversitario@gmail.com", password: "Xiqu3Xiqu3Firestor3" }, login)
 
   React.useEffect(() => {
-    console.log(isAuthenticated);
 
     document.body.classList.add("login-page")
     document.body.classList.add("sidebar-collapse")

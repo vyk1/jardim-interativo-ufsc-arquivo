@@ -3,7 +3,6 @@ import Main from '../template/Main/Main'
 import Logo from '../template/Logo/Logo'
 import Nav from '../template/Nav/Nav'
 import LoadingCog from "views/LoadingCog";
-import { Redirect } from "react-router";
 import { auth } from "../../../../config";
 import { Alert } from "reactstrap";
 
@@ -13,15 +12,24 @@ const headerProps = {
     subtitle: 'Por favor, aguarde...'
 }
 
+const initialState = {
+    error: true,
+}
+
 export default class Logout extends Component {
+    constructor() {
+        super()
+        this.state = initialState
+    }
     async componentDidMount() {
         try {
             auth.signOut()
+            this.setState({ error: false })
         } catch (error) {
             console.log(error)
             this.setState({ error: "Ocorreu um erro..." })
         } finally {
-            return <Redirect to="/" />
+            return window.location.href = "/"
         }
 
     }
