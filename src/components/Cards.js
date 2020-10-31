@@ -32,7 +32,6 @@ export default class Cards extends Component {
     render() {
         const length = Object.keys(this.state.plants).length
         const { limit } = this.props
-
         if (!length) {
             return (
                 <LoadingCog />
@@ -46,12 +45,13 @@ export default class Cards extends Component {
                 Object.keys(this.state.plants)
                     .map(key => {
                         count++
-                        if (count > length) {
+                        if (count > limit) {
                             return false
+                        } else {
+                            return rows.push(<Items key={key} ch={key} content={this.state.plants[key]} />)
                         }
-                        rows.push(<Items key={key} ch={key} content={this.state.plants[key]} />)
-                        return true
                     })
+
                 return (
                     <div className="col-12">
                         <h3 className="title" id="sobre">Espécimes <i className="fa fa-leaf"></i></h3>

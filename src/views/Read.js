@@ -38,7 +38,6 @@ export default class Read extends React.Component {
 
     render() {
         const { result } = this.state
-        console.log(result)
 
         if (!result) {
             return (

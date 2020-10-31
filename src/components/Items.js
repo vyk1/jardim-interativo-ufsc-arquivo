@@ -18,7 +18,6 @@ const Items = props => {
                         className="btn btn-success"
                         to={`/leitura/${props.ch}`}
                         tag={Link}
-                        target="_blank"
                     >
                         <i className="fas fa-info"></i>
                     </Button>
