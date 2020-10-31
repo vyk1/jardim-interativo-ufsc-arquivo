@@ -1,96 +1,35 @@
 {
-    "plantapedia" : {
-      "-M04I7WqIVNt_znqnroX" : {
-        "activeIngredient" : "Gengirol",
-        "description" : "Também conhecida como black cohosh, é utilizada há séculos pelos povos da América do Norte.",
-        "geoDistrib" : "Originário da ilha de Java, da Índia e da China, de onde se difundiu pelas regiões tropicais do mundo",
-        "image" : "https://firebasestorage.googleapis.com/v0/b/jardim-universitario.appspot.com/o/natureza3.jpg?alt=media&token=b1406c25-44bc-42c6-a200-3f2250e25aba",
-        "popularName" : "Gengibrec",
-        "regionForTreatment" : "Toda a planta",
-        "scientificName" : "Zingiber officinales",
-        "utilizationAndPrep" : "Comestível (chá ou mascado)"
-      },
-      "-M04IKqr9sjfOwQ8g5PT" : {
-        "activeIngredient" : "Pilocarpina",
-        "description" : "É uma planta arbustiva que pode atingir até 1,5 metros de altura, originária do Brasil, adaptada às regiões de clima subtropical. É perinérvea, seu limbo é falciforme e seu bordo é liso. ",
-        "geoDistrib" : "O jaborandi ocorre originalmente na região Norte e Nordeste do Brasil, em especial nos Estados do Pará, Maranhão, Piauí e Ceará.",
-        "image" : "https://firebasestorage.googleapis.com/v0/b/jardim-universitario.appspot.com/o/natureza4.jpeg?alt=media&token=b0871cc8-4351-436d-af05-737d2cc08744",
-        "popularName" : "Jaborandinho",
-        "regionForTreatment" : "Caule",
-        "scientificName" : "Pilocarpus microphyllus",
-        "utilizationAndPrep" : "Chá e remédios"
-      },
-      "-M0LGBGOCgKE8WKJzePw" : {
-        "activeIngredient" : "Mentol",
-        "description" : "É uma planta herbácea perene muito variável com um aro. É uma planta herbácea perene muito variável com um aroma de hortelã. Como outras mentas, tem um rizoma, com caules de 40 a 120 cm de altura. As folhas são oblongo-elípticas a lanceoladas, 5 a 10 cm de comprimento e 1,5 a 3 cm de largura, numa camada fina densamente tomentoso. As flores têm 3 a 5 mm de comprimento, lilás, roxo ou branco, produzido em ramificações aglomeradas e densas no ápice; floração ocorre no fim do verão. Ele se brota pelas rizomas para formar colônias-clone.ma de hortelã. Como outras mentas, tem um rizoma, com caules de 40 a 120 cm de altura. As folhas são oblongo-elípticas a lanceoladas, 5 a 10 cm de comprimento e 1,5 a 3 cm de largura, numa camada fina densamente tomentoso. As flores têm 3 a 5 mm de comprimento, lilás, roxo ou branco, produzido em ramificações aglomeradas e densas no ápice; floração ocorre no fim do verão. Ele se brota pelas rizomas para formar colônias-clone.",
-        "geoDistrib" : "É ativa da Europa, da Ásia Ocidental e Central e do norte e do sul da África (áreas não-tropicais).",
-        "image" : "https://firebasestorage.googleapis.com/v0/b/jardim-universitario.appspot.com/o/menta.jpg?alt=media&token=a6700ccc-2827-435d-b570-148c57c60869",
-        "popularName" : "Hortelã-silvestre",
-        "regionForTreatment" : "Folhas secas",
-        "scientificName" : "Mentha longifolia",
-        "utilizationAndPrep" : "Chá, cápsula, decocção"
-      },
-      "-M0Oux99gFT0Z-ltehn9" : {
-        "activeIngredient" : "Iodo, potássio, fósforo, óleo, sais minerais, vitaminas, óleo essencial; glicosídeos, gliconastursídeo. Fermento (mirosina). Sais minerais, vitaminas, proteínas, carotenos, clorofila. ",
-        "description" : "Verdura de sabor ligeiramente amargo e bem popular na mesa brasileira. O agrião é um excelente anti-inflamatório das vias respiratórias, muito indicado nas bronquites crônicas. Ele também age contra um mal bem moderno: a nicotina - ainda que, claro, nenhuma planta apague de vez os seus estragos.",
-        "geoDistrib" : " É nativa da Europa e Ásia Central, onde cresce abundantemente nas margens dos rios e córregos",
-        "image" : "https://firebasestorage.googleapis.com/v0/b/jardim-universitario.appspot.com/o/sea.png?alt=media&token=d6d24366-71c9-4916-80b2-c46fb0b781f3",
-        "popularName" : "Agrião d'água",
-        "regionForTreatment" : "Toda a planta",
-        "scientificName" : "Nasturtium officinale",
-        "utilizationAndPrep" : "A simples digestão do agrião libera substâncias expectorantes que ajudam a limpar as vias respiratórias. Pode ser consumido em saladas, batido em sucos ou tomado em chás ( 1 colher de sopa de folhas secas para uma xícara de chá de água fervente, três vezes ao dia)"
-      },
-      "-M0xMRIbD1WPLLk7bHl7" : {
-        "activeIngredient" : "Monoterpenos: linalol, acetato de linalila, cineol, cânfora",
-        "description" : "Desde a Antiguidade, a planta era usada em banhos de imersão de gregos e romanos. Isso provavelmente porque suas flores têm um delicado aroma calmante. Seu óleo essencial carrega mais de 150 compostos que respondem por seus bons efeitos, que vão desde o combate à insônia até falta de apetite. Hoje sabe-se que a alfazema também é eficaz contra cistite, inflamação na bexiga comum em mulheres.",
-        "geoDistrib" : "Lavandas nativas são encontradas nas Canárias, norte e oeste da África, sul da Europa e no Mediterrâneo, Arábia e Índia. ",
-        "image" : "https://firebasestorage.googleapis.com/v0/b/jardim-universitario.appspot.com/o/%C3%ADndice.jpg?alt=media&token=35aae007-1295-41f2-bd7a-83cf51dd9a56",
-        "popularName" : "Alfazema",
-        "regionForTreatment" : "Toda a planta",
-        "scientificName" : "Lavandula spp",
-        "utilizationAndPrep" : "Misture 100 mililitros de óleo de amêndoa com 40 gotas de essência de alfazema. Use esse óleo para massagear o corpo - uma boa ideia é aplicá-lo antes de dormir."
-      },
-      "-M13YJBTP_zdV9OEFFUE" : {
-        "activeIngredient" : "Aponinas (glicirrizina), flavonóides, cumarinas, triterpenóides, esteróis",
-        "description" : "Planta fortemente adocicada conhecida há mais de três mil anos na Europa e na Ásia. Com seu sabor cerca de 15 vezes mais doce do que a cana, ela é usada há milênios tanto para combater aquela coceirinha na garganta que acompanha uma crise de tosse quanto pelos efeitos contra úlceras gástricas.",
-        "geoDistrib" : "Trata-se de uma espécie presente no território português, nomeadamente em Portugal Continental, onde é nativa.",
-        "image" : "https://firebasestorage.googleapis.com/v0/b/jardim-universitario.appspot.com/o/alcacuz_rdz.jpg?alt=media&token=b587da46-9c25-4101-a9ef-6217d4502d2d",
-        "popularName" : "Alcaçuz",
-        "regionForTreatment" : "Raíz",
-        "scientificName" : "Glycyrrhiza glabra",
-        "utilizationAndPrep" : "Use 3 gramas (1 ½ colher de sopa) da raiz seca do alcaçuz, cortada em pedaços pequenos. Esquente água para 1 xícara de chá. Desligue o fogo antes de atingir a fervura. Deixe a raiz na água durante 15 minutos. Faça essa decocção 2 vezes ao dia e beba antes das refeições.\n"
-      },
-      "-M13Zi36SrgbEjP6JUom" : {
-        "activeIngredient" : " Tanino, pineno e cânfora ",
-        "description" : "Na Grécia antiga, ele era erva para toda obra de cosméticos a incensos, passando por enfeite de coroas. Rico em óleos essenciais como limoneno e cânfora, hoje seu uso medicinal mais comum é em compressas para aliviar contusões e hematomas. Diminui as dores provocadas por doenças reumáticas e articulares",
-        "geoDistrib" : "Nativa da região do Mediterrâneo.",
-        "image" : "https://firebasestorage.googleapis.com/v0/b/jardim-universitario.appspot.com/o/alecrim.jpg?alt=media&token=2e341513-0bbf-4909-b59d-6dafe3346499",
-        "popularName" : "Alecrim",
-        "regionForTreatment" : "Folhas",
-        "scientificName" : "Rosmarinus officinalis",
-        "utilizationAndPrep" : "Dilua 1 colher de café de óleo essencial de alecrim em 1 xícara de azeite de oliva. Esfregue, então, o óleo na região dolorida com massagens suaves."
-      },
-      "-M1DZVyi0Y5QNGDcY2mo" : {
-        "activeIngredient" : "Alicina",
-        "description" : "O alho é tiro-e-queda contra o colesterol alto, atua como expectorante e antisséptico e, de quebra, é capaz de aumentar a imunidade e aliviar problemas circulatórios. Está lotado de vitaminas como A, B1, B2 e C, além de minerais como enxofre e iodo. Quando o bulbo é triturado, um de seus compostos, o aminoácido aliína, acaba resultando na produção da alicina, substância que dá o cheiro característico e que, acredita-se, seja uma das maiores responsáveis pelos seus propagados poderes.",
-        "geoDistrib" : "A maioria dos estudos indica a Ásia como local de origem do alho. Julga-se que tenha surgido no deserto da Sibéria, e levado para o Egito por tribos asiáticas nômades, dali tenha seguido para o extremo oriente através das rotas do comércio com a Índia, e depois tenha chegado à Europa.",
-        "image" : "https://firebasestorage.googleapis.com/v0/b/jardim-universitario.appspot.com/o/alho.png?alt=media&token=7773c641-7601-4fa1-a784-17e12b113b1f",
-        "popularName" : "Alho",
-        "regionForTreatment" : "Bulbo",
-        "scientificName" : "Allium sativum",
-        "utilizationAndPrep" : "Chás e macerado"
-      },
-      "-M2AVosnmAvwiC5cTVXW" : {
-        "activeIngredient" : "Kavapironas",
-        "description" : "É um arbusto que se desenvolve em altitudes que variam de 150 a 300 metros acima do nível do mar e cresce em solo pedregoso. Alcança uma altura de 2 a 2,5 metros, mas em condições especiais de temperatura, humidade e alta incidência solar pode alcançar 6 metros e apresentar copa extremamente densa. ",
-        "geoDistrib" : "Ilhas do Oceano Pacífic",
-        "habit" : 2,
-        "image" : "https://firebasestorage.googleapis.com/v0/b/jardim-universitario.appspot.com/o/kavakava.jpg?alt=media&token=d482bd8e-62c2-4f97-b20f-b8ee16a3cf31",
-        "popularName" : "Kava-kava",
-        "regionForTreatment" : "Raíz",
-        "scientificName" : "Piper methysticum",
-        "utilizationAndPrep" : "Pílula"
-      }
+  "plantapedia" : {
+    "-M1DZVyi0Y5QNGDcY2mo" : {
+      "activeIngredient" : "Alicina",
+      "description" : "O alho é tiro-e-queda contra o colesterol alto, atua como expectorante e antisséptico e, de quebra, é capaz de aumentar a imunidade e aliviar problemas circulatórios. Está lotado de vitaminas como A, B1, B2 e C, além de minerais como enxofre e iodo. Quando o bulbo é triturado, um de seus compostos, o aminoácido aliína, acaba resultando na produção da alicina, substância que dá o cheiro característico e que, acredita-se, seja uma das maiores responsáveis pelos seus propagados poderes.",
+      "geoDistrib" : "A maioria dos estudos indica a Ásia como local de origem do alho. Julga-se que tenha surgido no deserto da Sibéria, e levado para o Egito por tribos asiáticas nômades, dali tenha seguido para o extremo oriente através das rotas do comércio com a Índia, e depois tenha chegado à Europa.",
+      "habit" : [ "3" ],
+      "image" : "https://firebasestorage.googleapis.com/v0/b/jardim-unificado.appspot.com/o/alho.jpg?alt=media&token=570dcca6-dc62-4819-a698-654245bab2ef",
+      "mdtx" : [ "1" ],
+      "popularName" : "Alho",
+      "prepMode" : "Para chá deixar em infusão por 10min",
+      "regionForTreatment" : "Bulbo",
+      "scientificName" : "Allium sativum",
+      "therapeuticDose" : "10ml/g",
+      "toxicDose" : "",
+      "utilization" : "Chá e tempero",
+      "utilizationAndPrep" : "Chás e macerado"
+    },
+    "-MKw8gNNv1dzg3Uhu9ae" : {
+      "activeIngredient" : "Antraquinonas (aloína e aloe-emodina), resinas, taninos, polissacarídios, aloectina-B",
+      "description" : "Pode causar hepatite no tratamento via oral",
+      "geoDistrib" : "Cosmopolita",
+      "habit" : [ "2" ],
+      "image" : "https://firebasestorage.googleapis.com/v0/b/jardim-unificado.appspot.com/o/babosa.jpg?alt=media&token=161259ea-405b-4517-ad12-76a3cd0e19c7",
+      "mdtx" : [ "1" ],
+      "popularName" : "Babosa",
+      "prepMode" : "Sucos, gel, resina e tintura",
+      "regionForTreatment" : "Folhas",
+      "scientificName" : "Aloe vera",
+      "therapeuticDose" : "",
+      "toxicDose" : "",
+      "utilization" : "É utilizada no tratamento de psoríase, herpes genital, queimaduras e hiperglicemia. Possui atividade antineoplásica, antimicrobiana, anti-inflamatória e imunomodulatória (efeito estimulante no sistema imune)"
     }
   }
-  
+}

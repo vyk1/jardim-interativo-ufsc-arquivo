@@ -2,14 +2,14 @@ const firebase = require('firebase')
 const rebase = require('re-base')
 
 const config = {
-    apiKey: "AIzaSyCRZBRZ6E4ro-eHo1FwlXFi9iz5FIpyg0Q",
-    authDomain: "jardim-universitario.firebaseapp.com",
-    databaseURL: "https://jardim-universitario.firebaseio.com",
-    projectId: "jardim-universitario",
-    storageBucket: "jardim-universitario.appspot.com",
-    messagingSenderId: "24241088193",
-    appId: "1:24241088193:web:9d3e0c14777a718d13d640",
-    measurementId: "G-2RVMJHZMY9"
+    apiKey: "AIzaSyAtdKp7wgMYdXZb6nNBEN-R8YdFXbi4Bb8",
+    authDomain: "jardim-unificado.firebaseapp.com",
+    databaseURL: "https://jardim-unificado.firebaseio.com",
+    projectId: "jardim-unificado",
+    storageBucket: "jardim-unificado.appspot.com",
+    messagingSenderId: "345999096479",
+    appId: "1:345999096479:web:92d5cc33a296cb842840aa",
+    measurementId: "G-LV5X31RY7D"
 };
 
 const app = firebase.initializeApp(config);
