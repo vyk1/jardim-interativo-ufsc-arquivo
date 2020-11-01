@@ -188,7 +188,7 @@ export default class Read extends React.Component {
                                         </TabPane>
                                         <TabPane tabId="3">
                                             <h6>
-                                                Região Parte da Planta com Efeito Terapêutico:
+                                                Parte da Planta com Efeito Terapêutico:
                                             </h6>
                                             <p>
                                                 {result.regionForTreatment}
