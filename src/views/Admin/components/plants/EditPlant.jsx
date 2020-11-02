@@ -72,7 +72,7 @@ export default class EditPlants extends Component {
     }
 
     clear() {
-        this.setState({ plant: initialState.plant, id: null })
+        this.setState({ plant: initialState.plant, id: null, loaded: true })
         return this.props.history.goBack()
     }
 
@@ -111,8 +111,6 @@ export default class EditPlants extends Component {
         const { id } = this.props.match.params
 
         const data = new PlantSchema(this.state.plant)
-        console.log(data)
-        debugger
 
         const oldImage = e.target.imagemAntiga.value
 
@@ -240,7 +238,7 @@ export default class EditPlants extends Component {
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="info" onClick={() => { return this.props.history.push('/leitura/' + this.props.match.params.id) }}>Visitar</Button>{' '}
-                                <Button color="secondary" onClick={() => { this.clear(); this.toggle(); this.setState({ loaded: true }) }}>Cancelar</Button>
+                                <Button color="secondary" onClick={() => { this.clear(); this.toggle() }}>Cancelar</Button>
                             </ModalFooter>
                         </Modal>
                     </div>

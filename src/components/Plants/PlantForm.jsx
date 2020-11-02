@@ -5,8 +5,6 @@ import React from 'react'
 import { FormGroup, Label, Input } from 'reactstrap'
 
 const PlantForm = ({ editable, image2, updateField, plant, handleChangeHabit, handleChangeMdTx, check, clear }) => {
-    console.log(plant)
-    // if (editable) {
     return (
         <form onSubmit={check}>
             <div className="row">
@@ -48,17 +46,57 @@ const PlantForm = ({ editable, image2, updateField, plant, handleChangeHabit, ha
                         <textarea placeholder="Digite a Distribuição Geográfica..." required name="geoDistrib" id="geoDistrib" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.geoDistrib}></textarea>
                     </div>
                 </div>
-                <div className="col-12">
-                    <div className="form-group">
-                        <label htmlFor="regionForTreatment">Parte da Planta com Efeito Terapêutico</label>
-                        <textarea placeholder="Digite a Parte da Planta com Efeito Terapêutico..." required name="regionForTreatment" id="regionForTreatment" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.regionForTreatment}></textarea>
-                    </div>
+                <div className="col-sm-12 col-md-6">
+                    <fieldset>
+                        <legend>Medicinal</legend>
+                        <div className="col-12">
+                            <div className="form-group">
+                                <label htmlFor="regionForTreatment">Parte da Planta com Efeito Terapêutico</label>
+                                <textarea placeholder="Digite a Parte da Planta com Efeito Terapêutico..." name="regionForTreatment" id="regionForTreatment" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.regionForTreatment}></textarea>
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <div className="form-group">
+                                <label htmlFor="activeIngredient">Princípios Ativos</label>
+                                <textarea placeholder="Digite os Princípios Ativos..." name="activeIngredient" id="activeIngredient" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.activeIngredient}></textarea>
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <div className="form-group">
+                                <label htmlFor="therapeuticDose">Dose Terapêutica</label>
+                                <textarea placeholder="Digite a Dose Terapêutica..." name="therapeuticDose" id="therapeuticDose" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.therapeuticDose}></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
-                <div className="col-12">
-                    <div className="form-group">
-                        <label htmlFor="activeIngredient">Princípios Ativos</label>
-                        <textarea placeholder="Digite os Princípios Ativos..." required name="activeIngredient" id="activeIngredient" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.activeIngredient}></textarea>
-                    </div>
+                <div className="col-sm-12 col-md-6">
+                    <fieldset>
+                        <legend>Tóxica</legend>
+                        <div className="col-12">
+                            <div className="form-group">
+                                <label htmlFor="regionForPoison">Parte da Planta que leva a Intoxicação</label>
+                                <textarea placeholder="Digite a Parte da Planta com Efeito Terapêutico..." name="regionForPoison" id="regionForPoison" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.regionForPoison}></textarea>
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <div className="form-group">
+                                <label htmlFor="toxicIngredient">Princípios Tóxicos</label>
+                                <textarea placeholder="Digite os Princípios Tóxicos..." name="toxicIngredient" id="toxicIngredient" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.toxicIngredient}></textarea>
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <div className="form-group">
+                                <label htmlFor="toxicDose">Dose Tóxica</label>
+                                <textarea placeholder="Digite a Dose Tóxica..." name="toxicDose" id="toxicDose" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.toxicDose}></textarea>
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <div className="form-group">
+                                <label htmlFor="possibleWounds">Possíveis Lesões</label>
+                                <textarea placeholder="Digite a Dose Tóxica..." name="possibleWounds" id="possibleWounds" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.possibleWounds}></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
                 </div>
                 <div className="col-12">
                     <div className="form-group">
@@ -68,21 +106,20 @@ const PlantForm = ({ editable, image2, updateField, plant, handleChangeHabit, ha
                 </div>
                 <div className="col-12">
                     <div className="form-group">
-                        <label htmlFor="prepMode"> Modos De Preparo</label>
-                        <textarea placeholder="Digite os Modos De Preparo..." name="prepMode" id="prepMode" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.prepMode}></textarea>
+                        <label htmlFor="prepMode"> Modo de Preparo</label>
+                        <textarea placeholder="Digite os Modo de Preparo..." required name="prepMode" id="prepMode" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.prepMode}></textarea>
                     </div>
                 </div>
                 <div className="col-12">
                     <div className="form-group">
-                        <label htmlFor="toxicDose">Dose Tóxica</label>
-                        <textarea placeholder="Digite a Dose Tóxica..." name="toxicDose" id="toxicDose" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.toxicDose}></textarea>
-
+                        <label htmlFor="effects">Efeitos</label>
+                        <textarea placeholder="Digite os Efeitos..." name="effects" id="effects" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.effects}></textarea>
                     </div>
                 </div>
                 <div className="col-12">
                     <div className="form-group">
-                        <label htmlFor="therapeuticDose">Dose Terapêutica</label>
-                        <textarea placeholder="Digite a Dose Terapêutica..." name="therapeuticDose" id="therapeuticDose" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.therapeuticDose}></textarea>
+                        <label htmlFor="observations">Observações</label>
+                        <textarea placeholder="Digite as Observações..." name="observations" id="observations" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.observations}></textarea>
                     </div>
                 </div>
 

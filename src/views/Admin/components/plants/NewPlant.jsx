@@ -54,8 +54,6 @@ export default class NewPlant extends Component {
             useWebWorker: false
         }
         const schema = new PlantSchema(this.state)
-        console.log(schema)
-        debugger
 
         try {
             const compressedImage = await imageCompression(image, options)

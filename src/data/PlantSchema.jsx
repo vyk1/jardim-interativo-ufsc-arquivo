@@ -20,6 +20,7 @@ export default class PlantSchema {
         possibleWounds
     }) {
 
+        // Common & req
         this.popularName = popularName
         this.image = image
         this.scientificName = scientificName
@@ -28,20 +29,21 @@ export default class PlantSchema {
         this.mdtx = mdtx
         this.geoDistrib = geoDistrib
 
-        this.prepMode = prepMode
-        this.utilization = utilization
-        this.observations = observations
-        this.effects = effects
+        // Common & not req
+        this.prepMode = prepMode ? prepMode : ""
+        this.utilization = utilization ? utilization : ""
+        this.effects = effects ? effects : ""
+        this.observations = observations ? observations : ""
 
         // para medicinais
-        this.activeIngredient = activeIngredient
-        this.regionForTreatment = regionForTreatment
-        this.therapeuticDose = therapeuticDose
+        this.activeIngredient = activeIngredient ? activeIngredient : ""
+        this.regionForTreatment = regionForTreatment ? regionForTreatment : ""
+        this.therapeuticDose = therapeuticDose ? therapeuticDose : ""
 
         // para tóxicas:
-        this.toxicIngredient = toxicIngredient
-        this.regionForPoison = regionForPoison
-        this.toxicDose = toxicDose
-        this.possibleWounds = possibleWounds
+        this.toxicIngredient = toxicIngredient ? toxicIngredient : ""
+        this.regionForPoison = regionForPoison ? regionForPoison : ""
+        this.toxicDose = toxicDose ? toxicDose : ""
+        this.possibleWounds = possibleWounds ? possibleWounds : ""
     }
 }
