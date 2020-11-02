@@ -3,11 +3,10 @@ import Main from '../template/Main/Main'
 import Logo from '../template/Logo/Logo'
 import Nav from '../template/Nav/Nav'
 import config, { storage } from 'config'
-import { Alert, FormGroup, Label, Input } from 'reactstrap'
+import { Alert } from 'reactstrap'
 import imageCompression from 'browser-image-compression'
-import habits from '../../../../data/HabCresc';
-import mdtxs from '../../../../data/MdTx';
-
+import PlantForm from 'components/Plants/PlantForm'
+import PlantSchema from 'data/PlantSchema'
 
 const headerProps = {
     icon: 'plus-circle',
@@ -46,11 +45,6 @@ export default class NewPlant extends Component {
         e.preventDefault()
         this.setState({ loaded: false })
 
-        const { scientificName, popularName, description, geoDistrib, regionForTreatment, activeIngredient, utilization,
-            prepMode,
-            toxicDose,
-            therapeuticDose,
-            habit, mdtx } = this.state
         const image = e.target.image.files[0]
         const { name } = image
 
@@ -59,6 +53,9 @@ export default class NewPlant extends Component {
             maxWidthOrHeight: 1920,
             useWebWorker: false
         }
+        const schema = new PlantSchema(this.state)
+        console.log(schema)
+        debugger
 
         try {
             const compressedImage = await imageCompression(image, options)
@@ -69,19 +66,8 @@ export default class NewPlant extends Component {
                     img.ref.getDownloadURL()
                         .then(dURL => {
                             const plant = {
-                                scientificName,
-                                popularName,
-                                description,
-                                geoDistrib,
-                                regionForTreatment,
-                                activeIngredient,
-                                utilization,
-                                prepMode,
-                                toxicDose,
-                                therapeuticDose,
+                                ...schema,
                                 image: dURL,
-                                habit,
-                                mdtx
                             }
                             config.push('plantapedia', {
                                 data: plant
@@ -126,6 +112,9 @@ export default class NewPlant extends Component {
             this.setState({ mdtx: [...this.state.mdtx, id] })
         }
     }
+    updateField(event) {
+        this.setState({ [event.target.name]: event.target.value })
+    }
 
     renderForm() {
         if (!this.state.loaded) {
@@ -137,133 +126,14 @@ export default class NewPlant extends Component {
         } else {
             return (
                 <div className="form">
-                    <form onSubmit={this.check.bind(this)}>
-                        <div className="row">
-                            <div className="col-lg-6 col-sm-12">
-                                <div className="form-group">
-                                    <label htmlFor="popularName">Nome Popular</label>
-                                    <input type="text" className="form-control"
-                                        name="popularName"
-                                        id="popularName"
-                                        required
-                                        value={this.state.popularName}
-                                        onChange={e => this.setState({ popularName: e.target.value })}
-                                        placeholder="Digite o nome popular..." />
-                                </div>
-                            </div>
-
-                            <div className="col-lg-6 col-sm-12">
-                                <div className="form-group">
-                                    <label htmlFor="scientificName">Nome Científico</label>
-                                    <input type="text" className="form-control"
-                                        name="scientificName"
-                                        id="scientificName"
-                                        required
-                                        value={this.state.scientificName}
-                                        onChange={e => this.setState({ scientificName: e.target.value })}
-                                        placeholder="Digite o nome popular..." />
-                                </div>
-                            </div>
-
-                            <div className="col-12">
-                                <div className="form-group">
-                                    <label htmlFor="description">Descrição</label>
-                                    <textarea placeholder="Digite a Descrição..." required name="description" id="description" cols="30" rows="10" className="form-control" onChange={e => this.setState({ description: e.target.value })} value={this.state.description}></textarea>
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <div className="form-group">
-                                    <label htmlFor="geoDistrib">Distribuição Geográfica</label>
-                                    <textarea placeholder="Digite a Distribuição Geográfica..." required name="geoDistrib" id="geoDistrib" cols="30" rows="10" className="form-control" onChange={e => this.setState({ geoDistrib: e.target.value })} value={this.state.geoDistrib}></textarea>
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <div className="form-group">
-                                    <label htmlFor="regionForTreatment">Parte da Planta com Efeito Terapêutico</label>
-                                    <textarea placeholder="Digite a Parte da Planta com Efeito Terapêutico..." required name="regionForTreatment" id="regionForTreatment" cols="30" rows="10" className="form-control" onChange={e => this.setState({ regionForTreatment: e.target.value })} value={this.state.regionForTreatment}></textarea>
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <div className="form-group">
-                                    <label htmlFor="activeIngredient">Princípios Ativos</label>
-                                    <textarea placeholder="Digite os Princípios Ativos..." required name="activeIngredient" id="activeIngredient" cols="30" rows="10" className="form-control" onChange={e => this.setState({ activeIngredient: e.target.value })} value={this.state.activeIngredient}></textarea>
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <div className="form-group">
-                                    <label htmlFor="utilization">Utilização</label>
-                                    <textarea placeholder="Digite a Utilização..." required name="utilization" id="utilization" cols="30" rows="10" className="form-control" onChange={e => this.setState({ utilization: e.target.value })} value={this.state.utilization}></textarea>
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <div className="form-group">
-                                    <label htmlFor="prepMode"> Modos De Preparo</label>
-                                    <textarea placeholder="Digite os Modos De Preparo..." name="prepMode" id="prepMode" cols="30" rows="10" className="form-control" onChange={e => this.setState({ prepMode: e.target.value })} value={this.state.prepMode}></textarea>
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <div className="form-group">
-                                    <label htmlFor="toxicDose">Dose Tóxica</label>
-                                    <textarea placeholder="Digite a Dose Tóxica..." name="toxicDose" id="toxicDose" cols="30" rows="10" className="form-control" onChange={e => this.setState({ toxicDose: e.target.value })} value={this.state.toxicDose}></textarea>
-
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <div className="form-group">
-                                    <label htmlFor="therapeuticDose">Dose Terapêutica</label>
-                                    <textarea placeholder="Digite a Dose Terapêutica..." name="therapeuticDose" id="therapeuticDose" cols="30" rows="10" className="form-control" onChange={e => this.setState({ therapeuticDose: e.target.value })} value={this.state.therapeuticDose}></textarea>
-
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <label htmlFor="habit">Hábito de Crescimento</label>
-                                {
-                                    habits.map(el => (
-                                        <FormGroup key={el.id} check onChange={e => this.handleChangeHabit(e)}>
-                                            <Label key={el.id} check>
-                                                <Input type="checkbox" value={el.id} name="habit" id="habit"></Input>
-                                                {el.name}{" "}
-                                                <span className="form-check-sign">
-                                                    <span className="check"></span>
-                                                </span>
-                                            </Label>
-                                        </FormGroup>
-                                    ))
-                                }
-                            </div>
-
-                            <div className="col-12 mt-2 mb-2 mt-2">
-                                <label htmlFor="mdtx">Tóxica, medicinal ou ambas?</label>
-                                {
-                                    mdtxs.map(el => (
-                                        <FormGroup key={el.id} check onChange={e => this.handleChangeMdTx(e)}>
-                                            <Label key={el.id} check>
-                                                <Input type="checkbox" value={el.id} name="mdtx" id="mdtx"></Input>
-                                                {el.name}{" "}
-                                                <span className="form-check-sign">
-                                                    <span className="check"></span>
-                                                </span>
-                                            </Label>
-                                        </FormGroup>
-                                    ))
-                                }
-                            </div>
-                            <div className="col-12 mt-2 mb-2 mt-2">
-                                {/* <input accept="image/*" type="file" name="image" id="image" name="image" placeholder="Selecione a imagem" onChange={e => this.setState({ image: e.target.value })} value={this.state.image} required ref={(ref) => this.image = ref} /> */}
-                                <input accept="image/*" type="file" name="image" id="image" placeholder="Selecione a imagem" onChange={e => this.setState({ image: e.target.value })} value={this.state.image} required />
-                            </div>
-
-                            <div className="col-12 d-flex justify-content-end">
-                                <button type="submit" className="btn btn-primary">
-                                    Salvar
-                                        </button>
-                                <button className="btn btn-secondary ml-2"
-                                    onClick={e => this.clear(e)}>
-                                    Limpar
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    <PlantForm
+                        check={this.check.bind(this)}
+                        updateField={this.updateField.bind(this)}
+                        handleChangeHabit={this.handleChangeHabit.bind(this)}
+                        handleChangeMdTx={this.handleChangeMdTx.bind(this)}
+                        clear={this.clear.bind(this)}
+                        plant={this.state}
+                    />
                 </div>
             )
         }

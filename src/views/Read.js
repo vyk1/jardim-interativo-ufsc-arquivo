@@ -45,6 +45,8 @@ export default class Read extends React.Component {
             )
         }
 
+        const hasDoses = Boolean(result.toxicDose) || Boolean(result.therapeuticDose)
+
         return (
             <>
                 <FullNav />
@@ -111,7 +113,7 @@ export default class Read extends React.Component {
                                             </NavLink>
                                         </NavItem>
                                         {
-                                            result.toxicDose || result.therapeuticDose && (
+                                            hasDoses && (
                                                 <NavItem>
                                                     <NavLink
                                                         className={this.state.activeTab === "4" ? "active" : ""}
