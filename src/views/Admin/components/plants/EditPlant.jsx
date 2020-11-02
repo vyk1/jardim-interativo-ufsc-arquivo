@@ -13,7 +13,7 @@ import PlantSchema from 'data/PlantSchema'
 const headerProps = {
     icon: 'edit',
     title: 'Edição de Planta',
-    subtitle: 'Clique na opção desejada.',
+    subtitle: 'Preencha o formulário.',
     type: 'planta',
 }
 
