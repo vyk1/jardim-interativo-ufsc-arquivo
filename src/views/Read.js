@@ -129,6 +129,23 @@ export default class Read extends React.Component {
                                                 </NavItem>
                                             )
                                         }
+                                        {
+                                            result.references && (
+                                                <NavItem>
+                                                    <NavLink
+                                                        className={this.state.activeTab === "5" ? "active" : ""}
+                                                        href="#"
+                                                        onClick={e => {
+                                                            e.preventDefault();
+                                                            this.toggle("5");
+                                                        }}
+                                                    >
+                                                        <i className="now-ui-icons files_single-copy-04"></i>
+                                                    Doses
+                                                </NavLink>
+                                                </NavItem>
+                                            )
+                                        }
                                     </Nav>
                                 </CardHeader>
                                 <CardBody>
@@ -233,6 +250,14 @@ export default class Read extends React.Component {
                                                     </>
                                                 )
                                             }
+                                        </TabPane>
+                                        <TabPane tabId="5">
+                                            <h6>
+                                                Referências Bibliográficas
+                                            </h6>
+                                            <p>
+                                                {result.references}
+                                            </p>
                                         </TabPane>
                                     </TabContent>
                                 </CardBody>

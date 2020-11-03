@@ -93,7 +93,7 @@ const PlantForm = ({ editable, image2, updateField, plant, handleChangeHabit, ha
                         <div className="col-12">
                             <div className="form-group">
                                 <label htmlFor="possibleWounds">Possíveis Lesões</label>
-                                <textarea placeholder="Digite a Dose Tóxica..." name="possibleWounds" id="possibleWounds" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.possibleWounds}></textarea>
+                                <textarea placeholder="Digite as Possíveis Lesões..." name="possibleWounds" id="possibleWounds" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.possibleWounds}></textarea>
                             </div>
                         </div>
                     </fieldset>
@@ -101,13 +101,13 @@ const PlantForm = ({ editable, image2, updateField, plant, handleChangeHabit, ha
                 <div className="col-12">
                     <div className="form-group">
                         <label htmlFor="utilization">Utilização</label>
-                        <textarea placeholder="Digite a Utilização..." required name="utilization" id="utilization" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.utilization}></textarea>
+                        <textarea placeholder="Digite a Utilização..." name="utilization" id="utilization" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.utilization}></textarea>
                     </div>
                 </div>
                 <div className="col-12">
                     <div className="form-group">
                         <label htmlFor="prepMode"> Modo de Preparo</label>
-                        <textarea placeholder="Digite os Modo de Preparo..." required name="prepMode" id="prepMode" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.prepMode}></textarea>
+                        <textarea placeholder="Digite os Modo de Preparo..." name="prepMode" id="prepMode" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.prepMode}></textarea>
                     </div>
                 </div>
                 <div className="col-12">
@@ -120,6 +120,13 @@ const PlantForm = ({ editable, image2, updateField, plant, handleChangeHabit, ha
                     <div className="form-group">
                         <label htmlFor="observations">Observações</label>
                         <textarea placeholder="Digite as Observações..." name="observations" id="observations" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.observations}></textarea>
+                    </div>
+                </div>
+                <div className="col-12">
+                    <div className="form-group">
+                        <label htmlFor="references">Referências Bibliográficas</label>
+                        <span className="text-muted">Dica: Pressione Shift + Enter para quebrar a linha entre referências</span>
+                        <textarea placeholder="Digite as Referências Bibliográficas..." name="references" id="references" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.references}></textarea>
                     </div>
                 </div>
 

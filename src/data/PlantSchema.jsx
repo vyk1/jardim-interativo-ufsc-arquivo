@@ -10,6 +10,7 @@ export default class PlantSchema {
         prepMode,
         utilization,
         observations,
+        references,
         effects,
         activeIngredient,
         regionForTreatment,
@@ -34,6 +35,7 @@ export default class PlantSchema {
         this.utilization = utilization ? utilization : ""
         this.effects = effects ? effects : ""
         this.observations = observations ? observations : ""
+        this.references = references ? references : ""
 
         // para medicinais
         this.activeIngredient = activeIngredient ? activeIngredient : ""

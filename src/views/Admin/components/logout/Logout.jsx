@@ -13,7 +13,7 @@ const headerProps = {
 }
 
 const initialState = {
-    error: true,
+    error: false,
 }
 
 export default class Logout extends Component {
