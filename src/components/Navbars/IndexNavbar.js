@@ -82,7 +82,7 @@ function IndexNavbar() {
               <SearchBar />
               <NavItem>
                 <NavLink
-                  href="#"
+                  href="https://www.facebook.com/labopaveufsc"
                   target="_blank"
                   id="facebook-tooltip"
                 >
@@ -95,7 +95,8 @@ function IndexNavbar() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href="#"
+                  href="https://www.instagram.com/labopave/?hl=pt-br"
+                  rel="noopener noreferrer"
                   target="_blank"
                   id="instagram-tooltip"
                 >

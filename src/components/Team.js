@@ -1,5 +1,5 @@
-import TeamData from 'data/TeamData';
-import React from 'react';
+import TeamData from 'data/TeamData'
+import React from 'react'
 import '../assets/academicons-1.9.0/css/academicons.min.css'
 
 const Team = () => {
@@ -10,19 +10,18 @@ const Team = () => {
                     <div className="col-12">
                         <section className="team-section text-center my-5">
 
-                            <h2 className="h1-responsive font-weight-bold my-5">Nossa Equipe</h2>
-                            {/* <p className="grey-text w-responsive mx-auto mb-5">Conheça-nos</p> */}
+                            <h3 className="h1-responsive font-weight-bold my-5">Nossa Equipe</h3>
 
                             <div className="row">
 
                                 {
                                     TeamData.map((t, i) => (
-                                        <div key={i} className="col-lg-3 col-md-6 mb-lg-0 mb-5">
+                                        <div key={i} className="col-lg-4 col-md-6 mb-lg-0 mb-5">
                                             <div className="avatar mx-auto">
-                                                <img src="https://picsum.photos/250" className="rounded-circle z-depth-1"
-                                                    alt="Sample avatar" />
+                                                <img src={t.img} className="rounded-circle z-depth-1"
+                                                    alt={t.name} />
                                             </div>
-                                            <h5 className="font-weight-bold mt-4 mb-3">{t.name}</h5>
+                                            <h5 className="font-weight-regular mt-4 mb-3">{t.name}</h5>
                                             <p className="text-uppercase"><strong>{t.profession}</strong></p>
                                             <ul className="list-unstyled mb-0">
                                                 {
@@ -35,14 +34,14 @@ const Team = () => {
                                                 {
                                                     t.facebook && (
                                                         <a href={t.lattes} target="_blank" rel="noopener noreferrer" className="p-2 fa-lg fb-ic">
-                                                            <i className="fab fa-facebook-f"> </i>
+                                                            <i className="fab fa-facebook-f" aria-hidden="true"></i>
                                                         </a>
                                                     )
                                                 }
                                                 {
                                                     t.instagram && (
                                                         <a href={t.lattes} target="_blank" rel="noopener noreferrer" className="p-2 fa-lg fb-ic">
-                                                            <i className="fab fa-instagram"> </i>
+                                                            <i className="fab fa-instagram" aria-hidden="true"></i>
                                                         </a>
                                                     )
                                                 }
@@ -51,15 +50,13 @@ const Team = () => {
 
                                     ))
                                 }
-
                             </div>
-
                         </section>
                     </div>
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default Team;
+export default Team
