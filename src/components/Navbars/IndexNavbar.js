@@ -54,7 +54,7 @@ function IndexNavbar() {
               to="/"
               id="navbar-brand"
             >
-              Jardim Unificado
+              Jardim Interativo
             </NavbarBrand>
             {/* <UncontrolledTooltip byontrolledTooltip target="#navbar-brand">
                Creative Tim &amp; Invision<br /> Coded by Victoria Botelho Martins

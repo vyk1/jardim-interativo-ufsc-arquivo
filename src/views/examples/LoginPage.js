@@ -78,7 +78,7 @@ function LoginPage(props) {
                   <CardHeader className="text-center pt-4">
                     <h4 className="text-center text-uppercase">administrativo</h4>
                     <div className="logo-container" style={{ marginTop: "55px" }}>
-                      {/* <img className="bg-white" src={image} alt="Jardim Unificado" /> */}
+                      {/* <img className="bg-white" src={image} alt="Jardim Interativo" /> */}
 
                       {/* <img
                         alt="Logo"

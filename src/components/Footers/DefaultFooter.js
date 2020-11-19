@@ -14,7 +14,7 @@ function DefaultFooter() {
           <ul>
             <li>
               <Link to="/">
-                Jardim Unificado
+                Jardim Interativo
                 </Link>
             </li>
             <li>

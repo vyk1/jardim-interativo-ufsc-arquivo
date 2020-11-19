@@ -40,7 +40,7 @@ function ProfilePageHeader() {
           </div>
         </div>
         <Container>
-          <h3 className="title">Jardim Unificado</h3>
+          <h3 className="title">Jardim Interativo</h3>
           <p className="category">Um projeto UFSC</p>
          
         </Container>

@@ -1,6 +1,9 @@
 {
-  "name": "jardim-unificado-ufsc",
+  "name": "jardim-interativo-ufsc",
   "version": "2.0.0",
+  "author": {
+    "name": "Victoria Botelho Martins"
+  },
   "private": true,
   "dependencies": {
     "bootstrap": "^4.4.1",

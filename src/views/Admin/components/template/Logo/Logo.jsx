@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import image from '../../../../../assets/img/plantIcon.svg'
 
 const LogoImg = () => (
-    <img src={image} alt="Jardim Unificado" style={{ width: '80px' }} />
+    <img src={image} alt="Jardim Interativo" style={{ width: '80px' }} />
 )
 
 export default props =>
