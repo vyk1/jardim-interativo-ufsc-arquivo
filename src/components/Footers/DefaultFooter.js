@@ -13,6 +13,11 @@ function DefaultFooter() {
         <nav>
           <ul>
             <li>
+              <Link href="https://ufsc.br" rel="noopener noreferrer" target="_blank">
+                <img width={20} src={image1} />
+              </Link>
+            </li>
+            <li>
               <Link to="/">
                 Jardim Interativo
                 </Link>
@@ -23,17 +28,16 @@ function DefaultFooter() {
                 </Link>
             </li>
             <li>
+              <Link to="/catalogo">
+                Catálogo
+                </Link>
+            </li>
+            <li>
               <Link to="/admin"
               >
                 Á. Rest.
                 </Link>
             </li>
-            {/* <li>
-              <Link href="https://ufsc.br" rel="noopener noreferrer" target="_blank">
-                A<img className="w-25" src={image1} />
-              </Link>
-            </li> */}
-
           </ul>
         </nav>
         <div className="copyright" id="copyright">

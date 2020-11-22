@@ -26,7 +26,6 @@ export default class Logout extends Component {
             auth.signOut()
             this.setState({ error: false })
         } catch (error) {
-            console.log(error)
             this.setState({ error: "Ocorreu um erro..." })
         } finally {
             return window.location.href = "/"

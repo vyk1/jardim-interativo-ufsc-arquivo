@@ -99,7 +99,6 @@ export default class NewPlant extends Component {
                         })
                 })
         } catch (error) {
-            console.log(error)
             return this.setState({ error: true, loaded: true, visible: true })
         }
     }

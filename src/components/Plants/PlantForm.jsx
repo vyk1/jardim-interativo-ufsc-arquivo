@@ -181,7 +181,7 @@ const PlantForm = ({ editable, previewImg, updateField, plant, handleChangeHabit
                                     {plant.image2 && (
                                         <>
                                             <p>Imagem Carregada:</p>
-                                            <img src={previewImg} />
+                                            <img alt="img-preview" src={previewImg} />
                                         </>
                                     )}
                                     <input accept="image/*" type="file" id="image2" name="image2" placeholder="Selecione a imagem" onChange={updateField} value={plant.image2} />
@@ -194,7 +194,7 @@ const PlantForm = ({ editable, previewImg, updateField, plant, handleChangeHabit
                             {plant.image && (
                                 <>
                                     <p>Imagem Carregada:</p>
-                                    <img src={previewImg} />
+                                    <img alt="img-preview" src={previewImg} />
                                 </>
                             )}
                             <input accept="image/*" type="file" name="image" id="image" placeholder="Selecione a imagem" onChange={updateField} value={plant.image} required />

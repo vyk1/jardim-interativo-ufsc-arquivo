@@ -167,7 +167,6 @@ export default class EditPlants extends Component {
                     })
 
             } catch (error) {
-                console.log(error)
                 this.setState({ error: true, visible: true })
             } finally {
                 this.setState({ loaded: true })
@@ -185,7 +184,6 @@ export default class EditPlants extends Component {
                         return this.setState({ modal: true })
                     })
             } catch (error) {
-                console.log(error)
                 return this.setState({ error: true, visible: true })
             } finally {
                 this.setState({ loaded: true })

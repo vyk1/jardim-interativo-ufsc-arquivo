@@ -13,7 +13,8 @@ import {
   InputGroup,
   Container,
   Col,
-  Alert} from "reactstrap"
+  Alert
+} from "reactstrap"
 
 import useLoginForm from '../Admin/customHooks/useLoginForm'
 import { auth } from 'config'
@@ -39,8 +40,6 @@ function LoginPage(props) {
       return props.history.push("/admin")
 
     } catch (err) {
-      console.log("err")
-      console.log(err)
       setError(true)
       setLoaded(true)
     }

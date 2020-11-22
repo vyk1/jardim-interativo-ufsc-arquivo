@@ -200,7 +200,6 @@ export default class AllPlants extends Component {
 
 
         } catch (error) {
-            console.log(error)
             return this.setState({ error: true })
 
         } finally {

@@ -23,8 +23,8 @@ export default class PlantSchema {
 
         // Common & req
         this.popularName = popularName
-        this.image = image
         this.scientificName = scientificName
+        this.image = image
         this.description = description
         this.habit = habit
         this.mdtx = mdtx
