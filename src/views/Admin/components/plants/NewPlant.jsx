@@ -43,7 +43,7 @@ export default class NewPlant extends Component {
 
     async check(e) {
         e.preventDefault()
-        this.setState({ loaded: false })
+        this.setState({ loaded: false, success: false, error: false, validationError: false })
 
         const image = e.target.image.files[0]
         const { name } = image
@@ -53,6 +53,29 @@ export default class NewPlant extends Component {
             maxWidthOrHeight: 1920,
             useWebWorker: false
         }
+
+        const obj = {
+            popularName: this.state.popularName,
+            scientificName: this.state.scientificName,
+            description: this.state.description,
+            geoDistrib: this.state.geoDistrib,
+            image: this.state.image,
+        }
+
+        const isEmpty = Object.values(obj).some(x => (x == null || x == ''))
+
+        if (isEmpty) {
+            return this.setState({ loaded: true, validationError: "Há campos necessários não preenchidos. Por favor, verifique o formulário." })
+        }
+
+        if (!this.state.habit.length) {
+            return this.setState({ loaded: true, validationError: "Por favor, preencha o campo 'Hábitos de Crescimento'." })
+        }
+        if (!this.state.mdtx.length) {
+            return this.setState({ loaded: true, validationError: "Por favor, preencha se a planta é tóxica ou medicinal." })
+
+        }
+
         const schema = new PlantSchema(this.state)
 
         try {
@@ -150,6 +173,11 @@ export default class NewPlant extends Component {
                     {this.state.error && (
                         <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
                             Ocorreu um erro, tente novamente mais tarde...
+                        </Alert>
+                    )}
+                    {this.state.validationError && (
+                        <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
+                            {this.state.validationError}
                         </Alert>
                     )}
                     {this.renderForm()}

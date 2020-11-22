@@ -125,7 +125,7 @@ const PlantForm = ({ editable, image2, updateField, plant, handleChangeHabit, ha
                 <div className="col-12">
                     <div className="form-group">
                         <label htmlFor="references">Referências Bibliográficas</label>
-                        <span className="text-muted">Dica: Pressione Shift + Enter para quebrar a linha entre referências</span>
+                        <p className="text-muted">Dica: Pressione Shift + Enter para quebrar a linha entre referências</p>
                         <textarea placeholder="Digite as Referências Bibliográficas..." name="references" id="references" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.references}></textarea>
                     </div>
                 </div>
@@ -134,7 +134,7 @@ const PlantForm = ({ editable, image2, updateField, plant, handleChangeHabit, ha
                     <label htmlFor="habit">Hábito de Crescimento</label>
                     {
                         HabCresc.map(el => (
-                            <FormGroup key={el.id} check onChange={handleChangeHabit}>
+                            <FormGroup key={el.id} check onChange={handleChangeHabit} required>
                                 <Label check>
                                     <Input defaultChecked={plant.habit.includes(el.id.toString()) ? true : false} type="checkbox" value={el.id} name="habit" id="habit" />
                                     {el.name}{" "}
@@ -150,7 +150,7 @@ const PlantForm = ({ editable, image2, updateField, plant, handleChangeHabit, ha
                     <label htmlFor="mdtx">Tóxica, medicinal ou ambas?</label>
                     {
                         MdTx.map(el => (
-                            <FormGroup key={el.id} check onChange={handleChangeMdTx}>
+                            <FormGroup key={el.id} check onChange={handleChangeMdTx} required>
                                 <Label check>
                                     <Input defaultChecked={plant.mdtx.includes(el.id.toString()) ? true : false} type="checkbox" value={el.id} name="mdtx" id="mdtx" />
                                     {el.name}{" "}

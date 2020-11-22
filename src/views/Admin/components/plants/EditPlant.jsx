@@ -83,9 +83,9 @@ export default class EditPlants extends Component {
 
         if (alreadySelected) {
             const filtered = this.state.plant.habit.filter(item => item !== id)
-            this.setState({ habit: filtered })
+            this.setState({ plant: { ...this.state.plant, habit: filtered } })
         } else {
-            this.setState({ habit: [...this.state.plant.habit, id] })
+            this.setState({ plant: { ...this.state.plant, habit: [...this.state.plant.habit, id] } })
         }
     }
 
@@ -96,9 +96,9 @@ export default class EditPlants extends Component {
 
         if (alreadySelected) {
             const filtered = this.state.plant.mdtx.filter(item => item !== id)
-            this.setState({ mdtx: filtered })
+            this.setState({ plant: { ...this.state.plant, mdtx: filtered } })
         } else {
-            this.setState({ mdtx: [...this.state.plant.mdtx, id] })
+            this.setState({ plant: { ...this.state.plant, mdtx: [...this.state.plant.mdtx, id] } })
         }
     }
 
@@ -119,6 +119,27 @@ export default class EditPlants extends Component {
             maxWidthOrHeight: 1920,
             useWebWorker: true
         }
+        const obj = {
+            popularName: this.state.plant.popularName,
+            scientificName: this.state.plant.scientificName,
+            description: this.state.plant.description,
+            geoDistrib: this.state.plant.geoDistrib,
+            image: this.state.plant.image,
+        }
+
+        const isEmpty = Object.values(obj).some(x => (x == null || x == ''))
+
+        if (isEmpty) {
+            return this.setState({ loaded: true, validationError: "Há campos necessários não preenchidos. Por favor, verifique o formulário." })
+        }
+
+        if (!this.state.plant.habit.length) {
+            return this.setState({ loaded: true, validationError: "Por favor, preencha o campo 'Hábitos de Crescimento'." })
+        }
+        if (!this.state.plant.mdtx.length) {
+            return this.setState({ loaded: true, validationError: "Por favor, preencha se a planta é tóxica ou medicinal." })
+        }
+
 
         // Se tiver imagem nova:
         if (e.target.image2.files[0]) {
