@@ -48,7 +48,7 @@ export default class NewPlant extends Component {
         const image = e.target.image.files[0]
         const { name } = image
 
-        var options = {
+        let options = {
             maxSizeMB: 1,
             maxWidthOrHeight: 1920,
             useWebWorker: false
@@ -62,7 +62,7 @@ export default class NewPlant extends Component {
             image: this.state.image,
         }
 
-        const isEmpty = Object.values(obj).some(x => (x == null || x == ''))
+        const isEmpty = Object.values(obj).some(x => (x === null || x === ''))
 
         if (isEmpty) {
             return this.setState({ loaded: true, validationError: "Há campos necessários não preenchidos. Por favor, verifique o formulário." })
@@ -71,9 +71,9 @@ export default class NewPlant extends Component {
         if (!this.state.habit.length) {
             return this.setState({ loaded: true, validationError: "Por favor, preencha o campo 'Hábitos de Crescimento'." })
         }
+
         if (!this.state.mdtx.length) {
             return this.setState({ loaded: true, validationError: "Por favor, preencha se a planta é tóxica ou medicinal." })
-
         }
 
         const schema = new PlantSchema(this.state)
@@ -134,6 +134,9 @@ export default class NewPlant extends Component {
         }
     }
     updateField(event) {
+        if (event.target.name === 'image') {
+            this.setState({ previewImg: URL.createObjectURL(event.target.files[0]) })
+        }
         this.setState({ [event.target.name]: event.target.value })
     }
 
@@ -149,6 +152,7 @@ export default class NewPlant extends Component {
                 <div className="form">
                     <PlantForm
                         check={this.check.bind(this)}
+                        previewImg={this.state.previewImg}
                         updateField={this.updateField.bind(this)}
                         handleChangeHabit={this.handleChangeHabit.bind(this)}
                         handleChangeMdTx={this.handleChangeMdTx.bind(this)}

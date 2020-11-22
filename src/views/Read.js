@@ -46,6 +46,7 @@ export default class Read extends React.Component {
         }
 
         const hasDoses = Boolean(result.toxicDose) || Boolean(result.therapeuticDose)
+        const hasThird = Boolean(result.prepMode) || Boolean(result.regionForTreatment) || Boolean(result.utilization)
 
         return (
             <>
@@ -99,19 +100,24 @@ export default class Read extends React.Component {
                                                 Mais Detalhes
                                             </NavLink>
                                         </NavItem>
-                                        <NavItem>
-                                            <NavLink
-                                                className={this.state.activeTab === "3" ? "active" : ""}
-                                                href="#"
-                                                onClick={e => {
-                                                    e.preventDefault();
-                                                    this.toggle("3");
-                                                }}
-                                            >
-                                                <i className="now-ui-icons design-2_ruler-pencil"></i>
-                                                Uso
-                                            </NavLink>
-                                        </NavItem>
+                                        {
+                                            hasThird && (
+                                                <NavItem>
+                                                    <NavLink
+                                                        className={this.state.activeTab === "3" ? "active" : ""}
+                                                        href="#"
+                                                        onClick={e => {
+                                                            e.preventDefault();
+                                                            this.toggle("3");
+                                                        }}
+                                                    >
+                                                        <i className="now-ui-icons design-2_ruler-pencil"></i>
+                                                    Uso
+                                                </NavLink>
+                                                </NavItem>
+
+                                            )
+                                        }
                                         {
                                             hasDoses && (
                                                 <NavItem>

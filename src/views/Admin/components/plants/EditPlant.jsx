@@ -19,7 +19,6 @@ const headerProps = {
 
 const initialState = {
     plant: {},
-    image2: "",
     loaded: true,
     sucess: false,
     error: false,
@@ -108,17 +107,9 @@ export default class EditPlants extends Component {
 
         this.setState({ loaded: false })
 
+        const newImage = e.target.image2.files[0]
         const { id } = this.props.match.params
 
-        const data = new PlantSchema(this.state.plant)
-
-        const oldImage = e.target.imagemAntiga.value
-
-        var options = {
-            maxSizeMB: 1,
-            maxWidthOrHeight: 1920,
-            useWebWorker: true
-        }
         const obj = {
             popularName: this.state.plant.popularName,
             scientificName: this.state.plant.scientificName,
@@ -127,7 +118,7 @@ export default class EditPlants extends Component {
             image: this.state.plant.image,
         }
 
-        const isEmpty = Object.values(obj).some(x => (x == null || x == ''))
+        const isEmpty = Object.values(obj).some(x => (x === null || x === ''))
 
         if (isEmpty) {
             return this.setState({ loaded: true, validationError: "Há campos necessários não preenchidos. Por favor, verifique o formulário." })
@@ -136,17 +127,26 @@ export default class EditPlants extends Component {
         if (!this.state.plant.habit.length) {
             return this.setState({ loaded: true, validationError: "Por favor, preencha o campo 'Hábitos de Crescimento'." })
         }
+
         if (!this.state.plant.mdtx.length) {
             return this.setState({ loaded: true, validationError: "Por favor, preencha se a planta é tóxica ou medicinal." })
         }
 
+        const oldImage = e.target.imagemAntiga.value
+
+        let options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 1920,
+            useWebWorker: true
+        }
+
+        const data = new PlantSchema(this.state.plant)
 
         // Se tiver imagem nova:
-        if (e.target.image2.files[0]) {
-            const newImage = e.target.image2.files[0]
-            const compressedImage = await imageCompression(newImage, options)
+        if (e.target.image2.files[0]?.length) {
 
             try {
+                const compressedImage = await imageCompression(newImage, options)
                 const ref = storage.refFromURL(oldImage)
                 // Substitui a anterior
                 ref.put(compressedImage)
@@ -168,7 +168,7 @@ export default class EditPlants extends Component {
 
             } catch (error) {
                 console.log(error)
-                return this.setState({ error: true, visible: true })
+                this.setState({ error: true, visible: true })
             } finally {
                 this.setState({ loaded: true })
             }
@@ -196,6 +196,10 @@ export default class EditPlants extends Component {
     updateField(event) {
         const plant = { ...this.state.plant }
         plant[event.target.name] = event.target.value
+
+        if (event.target.name === 'image2') {
+            this.setState({ previewImg: URL.createObjectURL(event.target.files[0]) })
+        }
         this.setState({ plant })
     }
 
@@ -208,13 +212,13 @@ export default class EditPlants extends Component {
             )
         }
         return (
-            <div className="form" id="form">
+            <div className="form">
                 <PlantForm
                     check={this.check.bind(this)}
                     updateField={this.updateField.bind(this)}
                     handleChangeHabit={this.handleChangeHabit.bind(this)}
                     handleChangeMdTx={this.handleChangeMdTx.bind(this)}
-                    image2={this.state.image2}
+                    previewImg={this.state.previewImg}
                     editable={true}
                     clear={this.clear.bind(this)}
                     plant={this.state.plant}
