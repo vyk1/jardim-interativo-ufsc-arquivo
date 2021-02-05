@@ -6,6 +6,7 @@ import LoadingCog from './LoadingCog';
 import DefaultFooter from '../components/Footers/DefaultFooter.js';
 import habits from '../data/HabCresc';
 import mdtxs from '../data/MdTx';
+import MDTXBadge from 'components/MDTXBadge.js';
 
 export default class Read extends React.Component {
     constructor(props) {
@@ -301,16 +302,7 @@ export default class Read extends React.Component {
                             <p className="category">
                                 {result.popularName}
                                 <i>({result.scientificName})</i>
-                                {
-                                    result.mdtx.includes("1") && (
-                                        <Badge className="mx-1" color="success">Medicinal</Badge>
-                                    )
-                                }
-                                {
-                                    result.mdtx.includes("2") && (
-                                        <Badge className="mx-1" color="warning">Tóxica</Badge>
-                                    )
-                                }
+                                <MDTXBadge mdtx={result.mdtx} />
                             </p>
 
                             {this.renderInfo()}

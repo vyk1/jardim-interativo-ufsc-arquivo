@@ -1,1 +1,20 @@
 linear-gradient(#4be87f, #c2c 80%)
+
+Logo Labopave
+1. onde?
+
+2. widget para o local (localização)
+
+3. divulgação
+
+4. imagens 2yxy (ou react wxh) object fit
+
+5. referÊnciar na imagem
+
+6. badge na lista
+
+7. imagem marca da agua (labopave - ufsc)
+
+8. terceiras input imagem
+
+9. array de imagens

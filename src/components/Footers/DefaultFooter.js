@@ -13,9 +13,9 @@ function DefaultFooter() {
         <nav>
           <ul>
             <li>
-              <Link href="https://ufsc.br" rel="noopener noreferrer" target="_blank">
+              <a href="https://ufsc.br" rel="noopener noreferrer" target="_blank">
                 <img width={20} src={image1} />
-              </Link>
+              </a>
             </li>
             <li>
               <Link to="/">

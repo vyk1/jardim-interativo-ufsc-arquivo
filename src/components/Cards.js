@@ -18,6 +18,7 @@ export default class Cards extends Component {
             plants: [],
         }
     }
+    
     componentDidMount() {
         config.syncState('plantapedia', {
             context: this,
