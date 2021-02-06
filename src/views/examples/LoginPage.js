@@ -23,7 +23,7 @@ import LoadingCog from "views/LoadingCog"
 function LoginPage(props) {
   const [firstFocus, setFirstFocus] = React.useState(false)
   const [lastFocus, setLastFocus] = React.useState(false)
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false)
+  const [, setIsAuthenticated] = React.useState(false)
   const [error, setError] = React.useState(false)
   const [loaded, setLoaded] = React.useState(true)
   const [visible, setVisible] = React.useState(true)
