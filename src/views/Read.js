@@ -228,7 +228,7 @@ export default class Read extends React.Component {
                                 result.toxicIngredient && (
                                     <>
                                         <h6>
-                                            Dose Tóxica
+                                            Princípios Tóxicos
                                             </h6>
                                         <p>
                                             {result.toxicIngredient}
@@ -240,7 +240,7 @@ export default class Read extends React.Component {
                                 result.regionForPoison && (
                                     <>
                                         <h6>
-                                            Dose Tóxica
+                                            Parte da Planta com Efeito Tóxico
                                             </h6>
                                         <p>
                                             {result.regionForPoison}
@@ -264,7 +264,7 @@ export default class Read extends React.Component {
                                 result.possibleWounds && (
                                     <>
                                         <h6>
-                                            Dose Tóxica
+                                            Possíveis Lesões
                                             </h6>
                                         <p>
                                             {result.possibleWounds}

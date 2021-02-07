@@ -75,7 +75,7 @@ const PlantForm = ({ editable, previewImg, updateField, plant, handleChangeHabit
                         <div className="col-12">
                             <div className="form-group">
                                 <label htmlFor="regionForPoison">Parte da Planta que leva a Intoxicação</label>
-                                <textarea placeholder="Digite a Parte da Planta com Efeito Terapêutico..." name="regionForPoison" id="regionForPoison" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.regionForPoison}></textarea>
+                                <textarea placeholder="Digite a Parte da Planta com Efeito Tóxico..." name="regionForPoison" id="regionForPoison" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.regionForPoison}></textarea>
                             </div>
                         </div>
                         <div className="col-12">
