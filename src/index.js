@@ -15,18 +15,18 @@ import { auth } from "./config";
 import Index from "./views/Index.js";
 import About from "./views/About.js";
 import Catalog from "./views/Catalog.js";
-import LoginPage from "./views/examples/LoginPage.js";
-import Home from "./views/Admin/components/home/Home";
-import QRCodeClass from "./views/Admin/components/qrcode/QRCode";
-import AllPlants from "./views/Admin/components/plants/AllPlants";
-import NewPlant from "./views/Admin/components/plants/NewPlant";
-import Logout from "./views/Admin/components/logout/Logout";
+import LoginPage from "./views/LoginPage.js";
+import Home from "./views/Admin/Home";
+import QRCodeClass from "./views/Admin/QRCode";
+import AllPlants from "./views/Admin/AllPlants";
+import NewPlant from "./views/Admin/NewPlant";
+import Logout from "./views/Admin/Logout";
 import Search from "./views/Search";
-import EditPlants from "./views/Admin/components/plants/EditPlant";
+import EditPlants from "./views/Admin/EditPlant";
 import Read from "./views/Read";
 import LoadingCog from "./views/LoadingCog";
-import AllHabCresc from "./views/Admin/components/habCresc/AllHabCresc";
-import AllMdTx from "./views/Admin/components/MdTx/AllMdTx";
+import AllHabCresc from "./views/Admin/AllHabCresc";
+import AllMdTx from "./views/Admin/AllMdTx";
 
 class Starter extends React.Component {
   constructor(props) {
@@ -54,8 +54,8 @@ class Starter extends React.Component {
           this.state.isAuthenticated ? (
             <Component {...props} />
           ) : (
-              <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
-            )
+            <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+          )
         }
       />
     )

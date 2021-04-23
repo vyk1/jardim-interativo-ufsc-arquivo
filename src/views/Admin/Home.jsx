@@ -1,7 +1,7 @@
 import React from 'react'
-import Main from '../template/Main/Main'
-import Logo from '../template/Logo/Logo'
-import Nav from '../template/Nav/Nav'
+import Main from './components/template/Main/Main'
+import Logo from './components/template/Logo/Logo'
+import Nav from './components/template/Nav/Nav'
 
 export default props =>
     <div className="app">

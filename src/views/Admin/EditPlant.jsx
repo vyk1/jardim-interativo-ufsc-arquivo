@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import Main from '../template/Main/Main'
-import Logo from '../template/Logo/Logo'
-import Nav from '../template/Nav/Nav'
-import '../template/Tables/Tables.css'
-import config, { storage } from 'config'
+import './components/template/Tables/Tables.css'
 import { Alert, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
+
+import Main from './components/template/Main/Main'
+import Logo from './components/template/Logo/Logo'
+import Nav from './components/template/Nav/Nav'
+
+import config, { storage } from 'config'
 import firebase from 'firebase'
 import imageCompression from 'browser-image-compression'
 import PlantForm from 'components/Plants/PlantForm'

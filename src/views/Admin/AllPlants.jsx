@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-
-import Main from '../template/Main/Main'
-import Logo from '../template/Logo/Logo'
-import Nav from '../template/Nav/Nav'
-import '../template/Tables/Tables.css'
-
 import config, { storage } from 'config'
-
-import TableS from '../table/Index'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Badge } from 'reactstrap'
 import { Link } from 'react-router-dom'
+
+import './components/template/Tables/Tables.css'
+
+import Main from './components/template/Main/Main'
+import Logo from './components/template/Logo/Logo'
+import Nav from './components/template/Nav/Nav'
+
+import TableS from './components/table/Index'
+
 import HabCresc from 'data/HabCresc'
 import MdTx from 'data/MdTx'
 

@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import Main from '../template/Main/Main'
-import Logo from '../template/Logo/Logo'
-import Nav from '../template/Nav/Nav'
-import config, { storage } from 'config'
 import { Alert } from 'reactstrap'
 import imageCompression from 'browser-image-compression'
-import PlantForm from 'components/Plants/PlantForm'
-import PlantSchema from 'data/PlantSchema'
+import config, { storage } from 'config'
+
+import Main from './components/template/Main/Main'
+import Logo from './components/template/Logo/Logo'
+import Nav from './components/template/Nav/Nav'
+import PlantForm from '../../components/Plants/PlantForm'
+import PlantSchema from '../../data/PlantSchema'
 
 const headerProps = {
     icon: 'plus-circle',

@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 
-import Main from '../template/Main/Main'
-import Logo from '../template/Logo/Logo'
-import Nav from '../template/Nav/Nav'
-import TableS from '../table/Index'
-import data from '../../../../data/HabCresc';
+import Main from './components/template/Main/Main'
+import Logo from './components/template/Logo/Logo'
+import Nav from './components/template/Nav/Nav'
+
+import TableS from './components/table/Index'
+
+import data from '../../data/MdTx';
 
 const headerProps = {
-    icon: 'seedling',
-    title: 'Todos os hábitos de crescimento',
-    subtitle: 'Aqui estão listados todos os hábitos de crescimento.',
-    type: 'habCresc',
+    icon: 'medkit',
+    title: 'Todas as categorizações de medi/toxicidade',
+    subtitle: 'Aqui estão listados todas as categorizações de medi/toxicidade.',
+    type: 'md-tx',
     show: true
 }
 
@@ -18,7 +20,7 @@ const initialState = {
     loaded: true,
 }
 
-export default class AllHabCresc extends Component {
+export default class AllMdTx extends Component {
 
     constructor(props) {
         super(props)
@@ -27,7 +29,6 @@ export default class AllHabCresc extends Component {
     }
 
     renderTable() {
-
 
         const columns = [
             {

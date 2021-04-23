@@ -16,7 +16,7 @@ import {
   Alert
 } from "reactstrap"
 
-import useLoginForm from '../Admin/customHooks/useLoginForm'
+import useLoginForm from './Admin/customHooks/useLoginForm'
 import { auth } from 'config'
 import LoadingCog from "views/LoadingCog"
 
