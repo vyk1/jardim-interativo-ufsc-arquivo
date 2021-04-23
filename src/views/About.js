@@ -3,6 +3,7 @@ import React from "react";
 import Team from '../components/Team';
 import FullNav from "../components/FullNav.js";
 import DefaultFooter from "../components/Footers/DefaultFooter.js";
+import JHelmet from "components/Helmet/JHelmet";
 
 function About() {
   React.useEffect(() => {
@@ -16,6 +17,7 @@ function About() {
   });
   return (
     <>
+      <JHelmet title="Sobre" description={"Saiba mais sobre o nosso projeto e membros"} />
       <FullNav />
       <div className="wrapper">
         <div className="section">

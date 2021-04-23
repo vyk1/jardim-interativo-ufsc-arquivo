@@ -7,6 +7,7 @@ import DefaultFooter from '../components/Footers/DefaultFooter.js';
 import habits from '../data/HabCresc';
 import mdtxs from '../data/MdTx';
 import MDTXBadge from 'components/MDTXBadge.js';
+import JHelmet from 'components/Helmet/JHelmet.jsx';
 
 export default class Read extends React.Component {
     constructor(props) {
@@ -295,6 +296,7 @@ export default class Read extends React.Component {
         }
         return (
             <>
+                <JHelmet title={result.popularName} description={"Saiba mais sobre " + result.popularName + "/" + result.scientificName} />
                 <FullNav />
                 <div className="wrapper">
                     <div className="section">

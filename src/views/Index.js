@@ -9,9 +9,9 @@ import Cards from "components/Cards.js";
 
 import FullNav from "../components/FullNav.js";
 import DefaultFooter from "../components/Footers/DefaultFooter.js";
+import JHelmet from "components/Helmet/JHelmet.jsx";
 
 function Index() {
-  // const [] = React.useState("2");
   React.useEffect(() => {
     document.body.classList.add("profile-page");
     document.body.classList.add("sidebar-collapse");
@@ -23,6 +23,7 @@ function Index() {
   });
   return (
     <>
+      <JHelmet title="Início" />
       <FullNav />
       <div className="wrapper">
         <div className="section">

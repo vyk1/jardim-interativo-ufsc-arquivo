@@ -5,6 +5,7 @@ import Logo from './components/template/Logo/Logo'
 import Nav from './components/template/Nav/Nav'
 import TableS from './components/table/Index'
 import data from '../../data/HabCresc';
+import AdminHelmet from 'components/Helmet/AdminHelmet'
 
 const headerProps = {
     icon: 'seedling',
@@ -54,6 +55,7 @@ export default class AllHabCresc extends Component {
     render() {
         return (
             <div className="app">
+                <AdminHelmet title={headerProps.title} />
                 <Logo />
                 <Nav />
                 <Main {...headerProps}>

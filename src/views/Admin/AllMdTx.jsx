@@ -7,6 +7,7 @@ import Nav from './components/template/Nav/Nav'
 import TableS from './components/table/Index'
 
 import data from '../../data/MdTx';
+import AdminHelmet from 'components/Helmet/AdminHelmet'
 
 const headerProps = {
     icon: 'medkit',
@@ -55,6 +56,7 @@ export default class AllMdTx extends Component {
     render() {
         return (
             <div className="app">
+                <AdminHelmet title={headerProps.title} />
                 <Logo />
                 <Nav />
                 <Main {...headerProps}>

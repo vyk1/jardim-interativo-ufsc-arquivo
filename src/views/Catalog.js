@@ -4,14 +4,13 @@ import {
   Container,
 } from "reactstrap";
 
-// core components
 import Cards from "components/Cards.js";
 
 import FullNav from "../components/FullNav.js";
 import DefaultFooter from "../components/Footers/DefaultFooter.js";
+import JHelmet from "components/Helmet/JHelmet.jsx";
 
 function Catalog() {
-  // const [] = React.useState("2");
   React.useEffect(() => {
     document.body.classList.add("profile-page");
     document.body.classList.add("sidebar-collapse");
@@ -23,6 +22,7 @@ function Catalog() {
   });
   return (
     <>
+      <JHelmet title="Catálogo" description={"Veja nosso Catálogo de Espécimes"} />
       <FullNav />
       <div className="wrapper">
         <div className="section">

@@ -5,6 +5,7 @@ import Nav from './components/template/Nav/Nav'
 import LoadingCog from "../../components/LoadingCog";
 import { auth } from "../../config";
 import { Alert } from "reactstrap";
+import AdminHelmet from "components/Helmet/AdminHelmet";
 
 const headerProps = {
     icon: 'sign-out',
@@ -35,6 +36,7 @@ export default class Logout extends Component {
     render() {
         return (
             <div className="app">
+                <AdminHelmet title={headerProps.title + " ... " + headerProps.subtitle} />
                 <Logo />
                 <Nav />
                 <Main {...headerProps}>

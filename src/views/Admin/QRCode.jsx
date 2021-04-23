@@ -1,3 +1,4 @@
+import AdminHelmet from 'components/Helmet/AdminHelmet';
 
 var QRCode = require('qrcode.react');
 var React = require('react');
@@ -44,6 +45,7 @@ export default class QRCodeClass extends React.Component {
     render() {
         return (
             <div className="d-flex align-items-center min-vh-100">
+                <AdminHelmet title={"Geração de QR Code"} />
                 <div className="container text-center">
                     <h1> Toque na Imagem P/ Download
                         <QRCode

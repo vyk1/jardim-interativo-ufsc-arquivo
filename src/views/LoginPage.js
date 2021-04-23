@@ -19,6 +19,7 @@ import {
 import useLoginForm from './Admin/customHooks/useLoginForm'
 import { auth } from 'config'
 import LoadingCog from "components/LoadingCog"
+import AdminHelmet from "components/Helmet/AdminHelmet"
 
 function LoginPage(props) {
   const [firstFocus, setFirstFocus] = React.useState(false)
@@ -62,6 +63,8 @@ function LoginPage(props) {
 
   return (
     <>
+      <AdminHelmet title="Login" />
+
       <div className="page-header clear-filter" filter-color="green">
         <div
           className="page-header-image"

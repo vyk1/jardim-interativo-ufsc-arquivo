@@ -5,6 +5,7 @@ import { CardDeck } from 'reactstrap';
 import Items from 'components/Items';
 import LoadingCog from '../components/LoadingCog';
 import DefaultFooter from 'components/Footers/DefaultFooter';
+import AdminHelmet from 'components/Helmet/AdminHelmet';
 
 export default class Search extends React.Component {
     constructor(props) {
@@ -78,8 +79,8 @@ export default class Search extends React.Component {
             )
         }
         return (
-
             <div>
+                <AdminHelmet title={"Busca para " + this.state.word} />
                 <FullNav />
                 <div className="container">
                     <h2>Resultados da busca para: "{this.state.word}"</h2>

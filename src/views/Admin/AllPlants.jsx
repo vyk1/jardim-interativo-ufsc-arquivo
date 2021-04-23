@@ -13,6 +13,7 @@ import TableS from './components/table/Index'
 
 import HabCresc from 'data/HabCresc'
 import MdTx from 'data/MdTx'
+import AdminHelmet from 'components/Helmet/AdminHelmet'
 
 const headerProps = {
     icon: 'leaf',
@@ -214,6 +215,7 @@ export default class AllPlants extends Component {
     render() {
         return (
             <div className="app">
+                <AdminHelmet title={headerProps.title} />
                 <Logo />
                 <Nav />
                 <Main {...headerProps}>

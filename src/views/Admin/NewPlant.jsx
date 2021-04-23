@@ -8,6 +8,7 @@ import Logo from './components/template/Logo/Logo'
 import Nav from './components/template/Nav/Nav'
 import PlantForm from '../../components/Plants/PlantForm'
 import PlantSchema from '../../data/PlantSchema'
+import AdminHelmet from 'components/Helmet/AdminHelmet'
 
 const headerProps = {
     icon: 'plus-circle',
@@ -166,6 +167,7 @@ export default class NewPlant extends Component {
     render() {
         return (
             <div className="app">
+                <AdminHelmet title={headerProps.title} />
                 <Logo />
                 <Nav />
                 <Main {...headerProps}>

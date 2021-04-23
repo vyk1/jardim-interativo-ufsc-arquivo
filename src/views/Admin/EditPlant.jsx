@@ -11,6 +11,7 @@ import Nav from './components/template/Nav/Nav'
 import config, { storage } from 'config'
 import PlantForm from '../../components/Plants/PlantForm'
 import PlantSchema from 'data/PlantSchema'
+import AdminHelmet from 'components/Helmet/AdminHelmet'
 
 const headerProps = {
     icon: 'edit',
@@ -242,6 +243,7 @@ export default class EditPlants extends Component {
     render() {
         return (
             <div className="app">
+                <AdminHelmet title={headerProps.title} />
                 <Logo />
                 <Nav />
                 <Main {...headerProps}>
