@@ -13,6 +13,10 @@ function JHelmet({ title, description, meta, lang }) {
             titleTemplate={`${title} | Jardim Interativo`}
             meta={[
                 {
+                    name: `keywords`,
+                    content: `projeto jardim interativo, jardim interativo, jardim, interativo, ufsc, projeto, extensão, conhecimento, plantas, compartilhar, toxicidade, medicina das plantas, medicina veterinária, tratamento, aplicabilidade de plantas`
+                },
+                {
                     name: `robots`,
                     content: `index, follow`
                 },
