@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Main from './components/template/Main/Main'
 import Logo from './components/template/Logo/Logo'
 import Nav from './components/template/Nav/Nav'
-import LoadingCog from "views/LoadingCog";
+import LoadingCog from "../../components/LoadingCog";
 import { auth } from "../../config";
 import { Alert } from "reactstrap";
 

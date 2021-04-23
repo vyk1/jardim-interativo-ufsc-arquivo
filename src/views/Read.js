@@ -1,8 +1,8 @@
 import React from 'react';
 import firebase from 'firebase'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Col, CardHeader, CardBody, FormGroup, Label, Input } from 'reactstrap';
-import FullNav from './FullNav.js';
-import LoadingCog from './LoadingCog';
+import FullNav from '../components/FullNav.js';
+import LoadingCog from '../components/LoadingCog';
 import DefaultFooter from '../components/Footers/DefaultFooter.js';
 import habits from '../data/HabCresc';
 import mdtxs from '../data/MdTx';

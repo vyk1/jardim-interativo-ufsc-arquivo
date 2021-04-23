@@ -6,7 +6,7 @@ import {
 
 import Items from "./Items.js"
 import config from "../config.js"
-import LoadingCog from "views/LoadingCog.js"
+import LoadingCog from "../components/LoadingCog.js"
 import { Link } from "react-router-dom"
 
 export default class Cards extends Component {
@@ -18,7 +18,7 @@ export default class Cards extends Component {
             plants: [],
         }
     }
-    
+
     componentDidMount() {
         config.syncState('plantapedia', {
             context: this,

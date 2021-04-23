@@ -1,9 +1,9 @@
 import React from 'react';
 import firebase from 'firebase'
-import FullNav from './FullNav';
+import FullNav from '../components/FullNav';
 import { CardDeck } from 'reactstrap';
 import Items from 'components/Items';
-import LoadingCog from './LoadingCog';
+import LoadingCog from '../components/LoadingCog';
 import DefaultFooter from 'components/Footers/DefaultFooter';
 
 export default class Search extends React.Component {

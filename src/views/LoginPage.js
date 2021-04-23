@@ -18,7 +18,7 @@ import {
 
 import useLoginForm from './Admin/customHooks/useLoginForm'
 import { auth } from 'config'
-import LoadingCog from "views/LoadingCog"
+import LoadingCog from "components/LoadingCog"
 
 function LoginPage(props) {
   const [firstFocus, setFirstFocus] = React.useState(false)

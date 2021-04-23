@@ -24,7 +24,7 @@ import Logout from "./views/Admin/Logout";
 import Search from "./views/Search";
 import EditPlants from "./views/Admin/EditPlant";
 import Read from "./views/Read";
-import LoadingCog from "./views/LoadingCog";
+import LoadingCog from "./components/LoadingCog";
 import AllHabCresc from "./views/Admin/AllHabCresc";
 import AllMdTx from "./views/Admin/AllMdTx";
 

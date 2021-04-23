@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import './components/template/Tables/Tables.css'
 import { Alert, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap'
+import imageCompression from 'browser-image-compression'
+import firebase from 'firebase'
 
 import Main from './components/template/Main/Main'
 import Logo from './components/template/Logo/Logo'
 import Nav from './components/template/Nav/Nav'
 
 import config, { storage } from 'config'
-import firebase from 'firebase'
-import imageCompression from 'browser-image-compression'
-import PlantForm from 'components/Plants/PlantForm'
+import PlantForm from '../../components/Plants/PlantForm'
 import PlantSchema from 'data/PlantSchema'
 
 const headerProps = {

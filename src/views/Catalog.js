@@ -7,7 +7,7 @@ import {
 // core components
 import Cards from "components/Cards.js";
 
-import FullNav from "./FullNav.js";
+import FullNav from "../components/FullNav.js";
 import DefaultFooter from "../components/Footers/DefaultFooter.js";
 
 function Catalog() {

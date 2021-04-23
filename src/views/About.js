@@ -1,7 +1,7 @@
 import React from "react";
 
 import Team from '../components/Team';
-import FullNav from "./FullNav.js";
+import FullNav from "../components/FullNav.js";
 import DefaultFooter from "../components/Footers/DefaultFooter.js";
 
 function About() {
