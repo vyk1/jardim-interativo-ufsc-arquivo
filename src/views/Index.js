@@ -10,6 +10,7 @@ import Cards from "components/Cards.js";
 import FullNav from "../components/FullNav.js";
 import DefaultFooter from "../components/Footers/DefaultFooter.js";
 import JHelmet from "components/Helmet/JHelmet.jsx";
+import CarouselSection from "components/Carousel.js";
 
 function Index() {
   React.useEffect(() => {
@@ -28,6 +29,7 @@ function Index() {
       <div className="wrapper">
         <div className="section">
           <Container>
+            <CarouselSection />
             <Cards limit={3} />
           </Container>
         </div>

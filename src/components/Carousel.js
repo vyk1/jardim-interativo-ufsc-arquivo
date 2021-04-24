@@ -14,19 +14,24 @@ import {
 
 const items = [
     {
-        src: "https://via.placeholder.com/750",
-        altText: "Nature, United States",
-        caption: "Nature, United States",
+        src: require("../assets/img/carousel/1.jpeg"),
+        altText: "carousel-1",
     },
     {
-        src: "https://via.placeholder.com/750",
-        altText: "Somewhere Beyond, United States",
-        caption: "Somewhere Beyond, United States",
+        src: require("../assets/img/carousel/2.jpeg"),
+        altText: "carousel-2",
     },
     {
-        src: "https://via.placeholder.com/750",
-        altText: "Yellowstone National Park, United States",
-        caption: "Yellowstone National Park, United States",
+        src: require("../assets/img/carousel/3.jpeg"),
+        altText: "carousel-3",
+    },
+    {
+        src: require("../assets/img/carousel/4.jpeg"),
+        altText: "carousel-4",
+    },
+    {
+        src: require("../assets/img/carousel/5.jpeg"),
+        altText: "carousel-5",
     },
 ];
 
@@ -56,64 +61,59 @@ function CarouselSection() {
     return (
         <>
             <div className="section" id="carousel">
-                <Container>
-                    <div className="title">
-                        <h3>Fotos</h3>
-                    </div>
-                    <Row className="justify-content-center">
-                        <Col lg="8" md="12">
-                            <Carousel
+                <h3 className="title" id="sobre">
+                    Fotos <i className="fa fa-camera"></i>
+                </h3>
+                <Row className="justify-content-center">
+                    <Col lg="8" md="12">
+                        <Carousel
+                            activeIndex={activeIndex}
+                            next={next}
+                            previous={previous}
+                        >
+                            <CarouselIndicators
+                                items={items}
                                 activeIndex={activeIndex}
-                                next={next}
-                                previous={previous}
+                                onClickHandler={goToIndex}
+                            />
+                            {items.map((item) => {
+                                return (
+                                    <CarouselItem
+                                        onExiting={onExiting}
+                                        onExited={onExited}
+                                        key={item.src}
+                                    >
+                                        <img src={item.src} alt={item.altText} />
+                                    </CarouselItem>
+                                );
+                            })}
+                            <a
+                                className="carousel-control-prev"
+                                data-slide="prev"
+                                href="#n"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    previous();
+                                }}
+                                role="button"
                             >
-                                <CarouselIndicators
-                                    items={items}
-                                    activeIndex={activeIndex}
-                                    onClickHandler={goToIndex}
-                                />
-                                {items.map((item) => {
-                                    return (
-                                        <CarouselItem
-                                            onExiting={onExiting}
-                                            onExited={onExited}
-                                            key={item.src}
-                                        >
-                                            <img src={item.src} alt={item.altText} />
-                                            <div className="carousel-caption d-none d-md-block">
-                                                <h5>{item.caption}</h5>
-                                            </div>
-                                        </CarouselItem>
-                                    );
-                                })}
-                                <a
-                                    className="carousel-control-prev"
-                                    data-slide="prev"
-                                    href="#n"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        previous();
-                                    }}
-                                    role="button"
-                                >
-                                    <i className="now-ui-icons arrows-1_minimal-left"></i>
-                                </a>
-                                <a
-                                    className="carousel-control-next"
-                                    data-slide="next"
-                                    href="#n"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        next();
-                                    }}
-                                    role="button"
-                                >
-                                    <i className="now-ui-icons arrows-1_minimal-right"></i>
-                                </a>
-                            </Carousel>
-                        </Col>
-                    </Row>
-                </Container>
+                                <i className="now-ui-icons arrows-1_minimal-left"></i>
+                            </a>
+                            <a
+                                className="carousel-control-next"
+                                data-slide="next"
+                                href="#n"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    next();
+                                }}
+                                role="button"
+                            >
+                                <i className="now-ui-icons arrows-1_minimal-right"></i>
+                            </a>
+                        </Carousel>
+                    </Col>
+                </Row>
             </div>
         </>
     );

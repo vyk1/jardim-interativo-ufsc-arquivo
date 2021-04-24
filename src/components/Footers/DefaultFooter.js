@@ -14,7 +14,7 @@ function DefaultFooter() {
           <ul>
             <li>
               <a href="https://ufsc.br" rel="noopener noreferrer" target="_blank">
-                <img width={20} src={image1} />
+                <img width={20} alt="LogoUFSC" src={image1} />
               </a>
             </li>
             <li>

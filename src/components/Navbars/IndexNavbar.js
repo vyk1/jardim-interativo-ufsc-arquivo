@@ -83,6 +83,7 @@ function IndexNavbar() {
               <NavItem>
                 <NavLink
                   href="https://www.facebook.com/labopaveufsc"
+                  rel="noopener"
                   target="_blank"
                   id="facebook-tooltip"
                 >

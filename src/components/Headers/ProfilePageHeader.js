@@ -29,20 +29,15 @@ function ProfilePageHeader() {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/garden.jpg") + ")"
+            backgroundImage: "url(" + require("assets/img/initial.jpg") + ")"
           }}
           ref={pageHeader}
         >
-           <div className="d-flex flex-row-reverse">
-            <div className="d-flex flex-column-reverse">
-              <small className="mutted">Photo by icon0.com from Pexels</small>
-            </div>
-          </div>
         </div>
         <Container>
           <h3 className="title">Jardim Interativo</h3>
           <p className="category">Um projeto UFSC</p>
-         
+
         </Container>
       </div>
     </>
