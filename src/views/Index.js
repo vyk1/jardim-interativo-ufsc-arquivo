@@ -27,7 +27,7 @@ function Index() {
       <JHelmet title="Início" />
       <FullNav />
       <div className="wrapper">
-        <div className="section">
+        <div className="section pt-0">
           <Container>
             <CarouselSection />
             <Cards limit={3} />

@@ -2,3 +2,7 @@
     max-height: 180px;
     object-fit: cover;
 }
+
+.section {
+    position: relative;
+}

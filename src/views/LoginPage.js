@@ -20,6 +20,7 @@ import useLoginForm from './Admin/customHooks/useLoginForm'
 import { auth } from 'config'
 import LoadingCog from "components/LoadingCog"
 import AdminHelmet from "components/Helmet/AdminHelmet"
+import { Link } from "react-router-dom"
 
 function LoginPage(props) {
   const [firstFocus, setFirstFocus] = React.useState(false)
@@ -69,26 +70,28 @@ function LoginPage(props) {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/burlemarx.jpg") + ")"
+            backgroundImage: "url(" + require("assets/img/login.jpg") + ")"
           }}
         ></div>
+        <div class="position-relative">
+          <div class="position-absolute top-0 start-0 ml-2">
+            <Button
+              className="btn-round"
+              color="warning"
+              size="lg"
+              to={`/`}
+              tag={Link}
+            >&#8592; Voltar</Button>
+          </div>
+        </div>
         <div className="content">
           <Container>
             <Col className="ml-auto mr-auto" md="4">
               <Card className="card-login card-plain">
+
                 <Form onSubmit={handleSubmit}>
                   <CardHeader className="text-center pt-4">
                     <h4 className="text-center text-uppercase">administrativo</h4>
-                    <div className="logo-container" style={{ marginTop: "55px" }}>
-                      {/* <img className="bg-white" src={image} alt="Jardim Interativo" /> */}
-
-                      {/* <img
-                        alt="Logo"
-                        // src={require("assets/img/plantIcon.svg")}
-                        src={require("assets/img/plantIcon.svg")}
-                      /> */}
-                    </div>
-
                   </CardHeader>
                   {!loaded && (<LoadingCog />)}
                   {error && (
