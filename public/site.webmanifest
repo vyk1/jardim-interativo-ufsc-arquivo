@@ -2,7 +2,6 @@
     "lang": "pt-BR",
     "name": "Jardim Interativo",
     "short_name": "Jardim Interativo",
-    "orientation": "portrait",
     "description": "Esse website visa disponibilizar informações acerca das plantas medicinais e tóxicas dentro da veterinária a população",
     "icons": [
         {
@@ -23,6 +22,6 @@
     ],
     "start_url": ".",
     "display": "standalone",
-    "theme_color": "#f0f0f0",
+    "theme_color": "#4be87f",
     "background_color": "#4be87f"
 }
