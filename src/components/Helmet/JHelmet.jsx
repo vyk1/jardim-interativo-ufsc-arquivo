@@ -25,6 +25,22 @@ function JHelmet({ title, description, meta, lang }) {
                     content: description,
                 },
                 {
+                    name: `charset`,
+                    content: `UTF-8`,
+                },
+                {
+                    property: `og:site_name`,
+                    content: `Jardim Interativo`,
+                },
+                {
+                    property: `og:locale`,
+                    content: `pt_BR`,
+                },
+                {
+                    property: `og:url`,
+                    content: `https://jardim-interativo.web.app`,
+                },
+                {
                     property: `og:title`,
                     content: title,
                 },
