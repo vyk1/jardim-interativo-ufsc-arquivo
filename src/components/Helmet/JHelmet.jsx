@@ -42,7 +42,7 @@ function JHelmet({ title, description, meta, lang }) {
                 },
                 {
                     property: `og:title`,
-                    content: title,
+                    content: `${title} | Jardim Interativo`,
                 },
                 {
                     property: `og:description`,
