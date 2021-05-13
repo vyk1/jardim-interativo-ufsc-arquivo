@@ -289,29 +289,28 @@ export default class Read extends React.Component {
     render() {
         const { result } = this.state
 
-        if (!result) {
-            return (
-                <LoadingCog />
-            )
-        }
         return (
             <>
                 <JHelmet title={result.popularName} description={"Saiba mais sobre " + result.popularName + "/" + result.scientificName} />
-                <FullNav />
-                <div className="wrapper">
-                    <div className="section">
-                        <Col className="ml-auto mr-auto" md="10" xl="6">
-                            <p className="category">
-                                {result.popularName}
-                                <i>({result.scientificName})</i>
-                                <MDTXBadge mdtx={result.mdtx} />
-                            </p>
+                {!result ? <LoadingCog /> :
+                    <>
+                        <FullNav />
+                        <div className="wrapper">
+                            <div className="section">
+                                <Col className="ml-auto mr-auto" md="10" xl="6">
+                                    <p className="category">
+                                        {result.popularName}
+                                        <i>({result.scientificName})</i>
+                                        <MDTXBadge mdtx={result.mdtx} />
+                                    </p>
 
-                            {this.renderInfo()}
-                        </Col>
-                    </div>
-                    <DefaultFooter />
-                </div>
+                                    {this.renderInfo()}
+                                </Col>
+                            </div>
+                            <DefaultFooter />
+                        </div>
+                    </>
+                }
             </>
         )
     }

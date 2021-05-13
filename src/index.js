@@ -35,7 +35,6 @@ class Starter extends React.Component {
   }
 
   componentDidMount() {
-    // window.open("https://github.com/creativetimofficial/now-ui-kit-react")
 
     auth.onAuthStateChanged(user => {
       this.setState({

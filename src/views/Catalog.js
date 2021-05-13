@@ -22,7 +22,7 @@ function Catalog() {
   });
   return (
     <>
-      <JHelmet title="Catálogo" description={"Veja nosso Catálogo de Espécimes"} />
+      <JHelmet title="Catálogo" description="Acesse nosso Catálogo de Espécimes" />
       <FullNav />
       <div className="wrapper">
         <div className="section">

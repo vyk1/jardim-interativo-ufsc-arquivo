@@ -9,12 +9,12 @@ function JHelmet({ title, description, meta, lang }) {
             htmlAttributes={{
                 lang,
             }}
-            title={title}
+            title={`${title} | Jardim Interativo`}
             titleTemplate={`${title} | Jardim Interativo`}
             meta={[
                 {
                     name: `keywords`,
-                    content: `projeto jardim interativo, jardim interativo, jardim, interativo, ufsc, projeto, extensão, conhecimento, plantas, compartilhar, toxicidade, medicina das plantas, medicina veterinária, tratamento, aplicabilidade de plantas`
+                    content: `projeto jardim interativo ufsc, jardim interativo, ufsc, universidade federal de santa catarina, projeto de extensão, base de conhecimento de plantas, compartilhar, toxicidade, medicina das plantas, medicina veterinária, tratamento, aplicabilidade de plantas`
                 },
                 {
                     name: `robots`,
