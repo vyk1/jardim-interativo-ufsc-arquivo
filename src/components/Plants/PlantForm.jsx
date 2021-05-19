@@ -1,3 +1,4 @@
+import ImageCarouselUploader from 'components/ImageCarouselUploader'
 import HabCresc from 'data/HabCresc'
 import MdTx from 'data/MdTx'
 import React from 'react'
@@ -166,24 +167,25 @@ const PlantForm = ({ editable, previewImg, updateField, plant, handleChangeHabit
                 {
                     editable ?
                         <React.Fragment>
-                            <legend>Imagens</legend>
+                            <legend className="ml-2 mt-2">Imagem Principal</legend>
                             <div className="col-6">
                                 <div className="form-group">
-                                    <label htmlFor="pImage" className="btn btn-danger disabled">Preview da Imagem Anterior</label>
+                                    <p htmlFor="pImage" className="border border-primary p-2 rounded-pill">Preview da Imagem Anterior:</p>
                                     <br />
                                     <img src={plant.image} alt={plant.popularName} />
                                 </div>
                             </div>
 
                             <div className="col-6">
+                                {plant.image2 && (
+                                    <>
+                                        <p className="border border-warning p-2 rounded-pill">Preview da Imagem Carregada:</p>
+                                        <img alt="img-preview" src={previewImg} />
+                                    </>
+                                )}
                                 <div className="form-group">
-                                    <label htmlFor="image2" className="btn btn-primary">Seleção da Nova Imagem</label>
-                                    {plant.image2 && (
-                                        <>
-                                            <p>Imagem Carregada:</p>
-                                            <img alt="img-preview" src={previewImg} />
-                                        </>
-                                    )}
+
+                                    <label htmlFor="image2" className="btn btn-primary">Clique aqui para adicionar uma nova imagem</label>
                                     <input accept="image/*" type="file" id="image2" name="image2" placeholder="Selecione a imagem" onChange={updateField} value={plant.image2} />
                                     <input type="hidden" name="imagemAntiga" id="imagemAntiga" value={plant.image} />
                                 </div>
@@ -200,6 +202,7 @@ const PlantForm = ({ editable, previewImg, updateField, plant, handleChangeHabit
                             <input accept="image/*" type="file" name="image" id="image" placeholder="Selecione a imagem" onChange={updateField} value={plant.image} required />
                         </div>
                 }
+                <ImageCarouselUploader />
 
                 <div className="col-12 d-flex justify-content-end">
                     <button type="submit" className="btn btn-info">
