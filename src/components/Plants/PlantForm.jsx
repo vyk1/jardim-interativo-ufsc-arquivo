@@ -1,10 +1,12 @@
+import ImageCarouselUploader from 'components/ImageCarouselUploader'
+import MainImageUploader from 'components/MainImageUploader'
 import HabCresc from 'data/HabCresc'
 import MdTx from 'data/MdTx'
 import React from 'react'
 
 import { FormGroup, Label, Input } from 'reactstrap'
 
-const PlantForm = ({ editable, previewImg, updateField, plant, handleChangeHabit, handleChangeMdTx, check, clear }) => {
+const PlantForm = ({ newImagesPropArray, imagesPropArray, fileSelectedHandler, handleDelete, editable, previewImg, updateField, plant, handleChangeHabit, handleChangeMdTx, check, clear }) => {
     return (
         <form onSubmit={check}>
             <div className="row">
@@ -125,7 +127,7 @@ const PlantForm = ({ editable, previewImg, updateField, plant, handleChangeHabit
                 <div className="col-12">
                     <div className="form-group">
                         <label htmlFor="references">Referências Bibliográficas</label>
-                        <p className="text-muted">Dica: Pressione Shift + Enter para quebrar a linha entre referências</p>
+                        <p className="text-muted">Dica: Pressione a tecla Enter para quebrar a linha entre referências</p>
                         <textarea placeholder="Digite as Referências Bibliográficas..." name="references" id="references" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.references}></textarea>
                     </div>
                 </div>
@@ -163,43 +165,23 @@ const PlantForm = ({ editable, previewImg, updateField, plant, handleChangeHabit
                     }
                 </div>
 
-                {
-                    editable ?
-                        <React.Fragment>
-                            <legend>Imagens</legend>
-                            <div className="col-6">
-                                <div className="form-group">
-                                    <label htmlFor="pImage" className="btn btn-danger disabled">Preview da Imagem Anterior</label>
-                                    <br />
-                                    <img src={plant.image} alt={plant.popularName} />
-                                </div>
-                            </div>
+                <MainImageUploader
+                    previewImg={previewImg}
+                    editable={editable}
+                    loadedImg={plant.image2}
+                    popularName={plant.popularName}
+                    image={plant.image}
+                    updateField={updateField}
+                />
 
-                            <div className="col-6">
-                                <div className="form-group">
-                                    <label htmlFor="image2" className="btn btn-primary">Seleção da Nova Imagem</label>
-                                    {plant.image2 && (
-                                        <>
-                                            <p>Imagem Carregada:</p>
-                                            <img alt="img-preview" src={previewImg} />
-                                        </>
-                                    )}
-                                    <input accept="image/*" type="file" id="image2" name="image2" placeholder="Selecione a imagem" onChange={updateField} value={plant.image2} />
-                                    <input type="hidden" name="imagemAntiga" id="imagemAntiga" value={plant.image} />
-                                </div>
-                            </div>
-                        </React.Fragment>
-                        :
-                        <div className="col-12 mt-2 mb-2 mt-2">
-                            {plant.image && (
-                                <>
-                                    <p>Imagem Carregada:</p>
-                                    <img alt="img-preview" src={previewImg} />
-                                </>
-                            )}
-                            <input accept="image/*" type="file" name="image" id="image" placeholder="Selecione a imagem" onChange={updateField} value={plant.image} required />
-                        </div>
-                }
+                <ImageCarouselUploader
+                    editable={editable}
+                    fileSelectedHandler={fileSelectedHandler}
+                    handleDelete={handleDelete}
+                    imagesPropArray={imagesPropArray}
+                    oldImages={imagesPropArray}
+                    newImagesPropArray={newImagesPropArray}
+                />
 
                 <div className="col-12 d-flex justify-content-end">
                     <button type="submit" className="btn btn-info">

@@ -8,6 +8,8 @@ import habits from '../data/HabCresc';
 import mdtxs from '../data/MdTx';
 import MDTXBadge from 'components/MDTXBadge.js';
 import JHelmet from 'components/Helmet/JHelmet.jsx';
+import { DB_URL } from 'config.js';
+import CarouselComponent from 'components/CarouselComponent.js';
 
 export default class Read extends React.Component {
     constructor(props) {
@@ -23,7 +25,7 @@ export default class Read extends React.Component {
             window.location.replace('/')
             return false
         }
-        const plants = firebase.database().ref('plantapedia/' + this.props.match.params.id)
+        const plants = firebase.database().ref(DB_URL + this.props.match.params.id)
         plants.on('value', (snap) => {
             let p = snap.val()
             if (!p) {
@@ -45,6 +47,7 @@ export default class Read extends React.Component {
         const hasFifth = Boolean(result.activeIngredient) || Boolean(result.regionForTreatment) || Boolean(result.therapeuticDose)
         const hasSixth = Boolean(result.toxicIngredient) || Boolean(result.toxicDose) || Boolean(result.possibleWounds) || Boolean(result.regionForPoison)
         const hasReferences = Boolean(result.references)
+        const hasCarouselImgs = Boolean(result.carouselImgs)
 
         const arr = [
             { condition: true, iconClassname: "now-ui-icons business_badge", title: "Informações Gerais" },
@@ -87,7 +90,14 @@ export default class Read extends React.Component {
                         className="text-center">
                         <TabPane tabId="1">
                             <p>
-                                <img src={result.image} alt={result.popularName} />
+                                {
+                                    hasCarouselImgs ?
+                                        <CarouselComponent
+                                            items={[result.image, ...result.carouselImgs]}
+                                        />
+                                        :
+                                        <img src={result.image} alt={result.popularName} />
+                                }
                             </p>
                             <h6>
                                 Descrição:
@@ -276,9 +286,9 @@ export default class Read extends React.Component {
 
                         </TabPane>
                         <TabPane tabId="7">
-                            <p>
-                                {result.references}
-                            </p>
+                            {result.references.split("\n").map((i, key) => {
+                                return <p key={key}>{i}</p>;
+                            })}
                         </TabPane>
                     </TabContent>
                 </CardBody>

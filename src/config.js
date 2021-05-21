@@ -17,8 +17,16 @@ const app = firebase.initializeApp(config);
 const firebaseConfig = rebase.createClass(app.database())
 const firestore = app.firestore()
 
+export const DB_URL = "plantapedia/"
+// export const DB_URL = "teste/"
 export const storage = app.storage()
 export const base = rebase.createClass(firestore)
 export const auth = app.auth()
+
+export const compressionOptions = {
+    maxSizeMB: 1,
+    maxWidthOrHeight: 1920,
+    useWebWorker: true
+}
 
 export default firebaseConfig

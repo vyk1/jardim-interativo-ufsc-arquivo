@@ -5,7 +5,7 @@ import {
 } from "reactstrap"
 
 import Items from "./Items.js"
-import config from "../config.js"
+import config, { DB_URL } from "../config.js"
 import LoadingCog from "../components/LoadingCog.js"
 import { Link } from "react-router-dom"
 
@@ -20,25 +20,34 @@ export default class Cards extends Component {
     }
 
     componentDidMount() {
-        config.syncState('plantapedia', {
+        config.syncState(DB_URL, {
             context: this,
             state: 'plants',
             asArray: false,
             queries: {
                 orderByChild: 'popularName'
-            }
+            },
+            then: (() => {
+                this.setState({ loaded: true })
+            }),
+            onFailure: (() => {
+                this.setState({ loaded: true, plants: [] })
+            })
         })
     }
 
     render() {
         const length = Object.keys(this.state.plants).length
         const { limit } = this.props
-        if (!length) {
+        if (!this.state.loaded) {
             return (
                 <LoadingCog />
 
             )
         } else {
+            if (!length) {
+                return <></>
+            }
             let rows = []
             let count = 0
 

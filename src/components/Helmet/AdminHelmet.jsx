@@ -17,6 +17,10 @@ function AdminHelmet({ title, description, meta, lang }) {
                     content: `noindex, nofollow`
                 },
                 {
+                    name: `author`,
+                    content: `Victoria Botelho Martins`
+                },
+                {
                     name: `description`,
                     content: description,
                 },
@@ -40,7 +44,6 @@ function AdminHelmet({ title, description, meta, lang }) {
 AdminHelmet.defaultProps = {
     title: `Jardim Interativo`,
     description: `Admin`,
-    author: `Victoria Botelho Martins`,
     lang: `pt-br`,
     meta: []
 }

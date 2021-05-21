@@ -6,6 +6,7 @@ import Items from 'components/Items';
 import LoadingCog from '../components/LoadingCog';
 import DefaultFooter from 'components/Footers/DefaultFooter';
 import AdminHelmet from 'components/Helmet/AdminHelmet';
+import { DB_URL } from 'config';
 
 export default class Search extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ export default class Search extends React.Component {
         let capital = split.join("")
 
         //igual
-        const plantsEqualTo = firebase.database().ref('plantapedia/').orderByChild('popularName').equalTo(capital)
+        const plantsEqualTo = firebase.database().ref(DB_URL).orderByChild('popularName').equalTo(capital)
         plantsEqualTo.on('value', (snap) => {
             let p = snap.val()
             if (!p) {
@@ -34,7 +35,7 @@ export default class Search extends React.Component {
                 // podemos pensar em um sistema de busca "inteligente"
                 // se não achar pega a primeira letra, sei lá
 
-                const plantsStartAt = firebase.database().ref('plantapedia/').orderByChild('popularName').startAt(capital)
+                const plantsStartAt = firebase.database().ref(DB_URL).orderByChild('popularName').startAt(capital)
                 plantsStartAt.on('value', (snap) => {
                     let p = snap.val()
                     if (!p) {
@@ -50,7 +51,7 @@ export default class Search extends React.Component {
         // começando por 
 
 
-        // const plants = firebase.database().ref('plantapedia/').orderByChild('popularName').startAt(word).endAt(word + "\uf8ff")
+        // const plants = firebase.database().ref(DB_URL).orderByChild('popularName').startAt(word).endAt(word + "\uf8ff")
     }
     componentDidMount() {
         this.getCards()
