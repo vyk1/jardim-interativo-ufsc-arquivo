@@ -1,8 +1,5 @@
 import ImageCarouselUploader from 'components/ImageCarouselUploader'
-<<<<<<< HEAD
-=======
 import MainImageUploader from 'components/MainImageUploader'
->>>>>>> 12d9870ee5c3d2e3de6286bf002b24323338120e
 import HabCresc from 'data/HabCresc'
 import MdTx from 'data/MdTx'
 import React from 'react'
@@ -168,47 +165,6 @@ const PlantForm = ({ newImagesPropArray, imagesPropArray, fileSelectedHandler, h
                     }
                 </div>
 
-<<<<<<< HEAD
-                {
-                    editable ?
-                        <React.Fragment>
-                            <legend className="ml-2 mt-2">Imagem Principal</legend>
-                            <div className="col-6">
-                                <div className="form-group">
-                                    <p htmlFor="pImage" className="border border-primary p-2 rounded-pill">Preview da Imagem Anterior:</p>
-                                    <br />
-                                    <img src={plant.image} alt={plant.popularName} />
-                                </div>
-                            </div>
-
-                            <div className="col-6">
-                                {plant.image2 && (
-                                    <>
-                                        <p className="border border-warning p-2 rounded-pill">Preview da Imagem Carregada:</p>
-                                        <img alt="img-preview" src={previewImg} />
-                                    </>
-                                )}
-                                <div className="form-group">
-
-                                    <label htmlFor="image2" className="btn btn-primary">Clique aqui para adicionar uma nova imagem</label>
-                                    <input accept="image/*" type="file" id="image2" name="image2" placeholder="Selecione a imagem" onChange={updateField} value={plant.image2} />
-                                    <input type="hidden" name="imagemAntiga" id="imagemAntiga" value={plant.image} />
-                                </div>
-                            </div>
-                        </React.Fragment>
-                        :
-                        <div className="col-12 mt-2 mb-2 mt-2">
-                            {plant.image && (
-                                <>
-                                    <p>Imagem Carregada:</p>
-                                    <img alt="img-preview" src={previewImg} />
-                                </>
-                            )}
-                            <input accept="image/*" type="file" name="image" id="image" placeholder="Selecione a imagem" onChange={updateField} value={plant.image} required />
-                        </div>
-                }
-                <ImageCarouselUploader />
-=======
                 <MainImageUploader
                     previewImg={previewImg}
                     editable={editable}
@@ -226,7 +182,6 @@ const PlantForm = ({ newImagesPropArray, imagesPropArray, fileSelectedHandler, h
                     oldImages={imagesPropArray}
                     newImagesPropArray={newImagesPropArray}
                 />
->>>>>>> 12d9870ee5c3d2e3de6286bf002b24323338120e
 
                 <div className="col-12 d-flex justify-content-end">
                     <button type="submit" className="btn btn-info">
@@ -238,7 +193,7 @@ const PlantForm = ({ newImagesPropArray, imagesPropArray, fileSelectedHandler, h
                     </button>
                 </div>
             </div>
-        </form>
+        </form >
     )
 }
 
