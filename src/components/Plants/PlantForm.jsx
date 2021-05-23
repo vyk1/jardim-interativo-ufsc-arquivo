@@ -1,11 +1,15 @@
 import ImageCarouselUploader from 'components/ImageCarouselUploader'
+<<<<<<< HEAD
+=======
+import MainImageUploader from 'components/MainImageUploader'
+>>>>>>> 12d9870ee5c3d2e3de6286bf002b24323338120e
 import HabCresc from 'data/HabCresc'
 import MdTx from 'data/MdTx'
 import React from 'react'
 
 import { FormGroup, Label, Input } from 'reactstrap'
 
-const PlantForm = ({ editable, previewImg, updateField, plant, handleChangeHabit, handleChangeMdTx, check, clear }) => {
+const PlantForm = ({ newImagesPropArray, imagesPropArray, fileSelectedHandler, handleDelete, editable, previewImg, updateField, plant, handleChangeHabit, handleChangeMdTx, check, clear }) => {
     return (
         <form onSubmit={check}>
             <div className="row">
@@ -126,7 +130,7 @@ const PlantForm = ({ editable, previewImg, updateField, plant, handleChangeHabit
                 <div className="col-12">
                     <div className="form-group">
                         <label htmlFor="references">Referências Bibliográficas</label>
-                        <p className="text-muted">Dica: Pressione Shift + Enter para quebrar a linha entre referências</p>
+                        <p className="text-muted">Dica: Pressione a tecla Enter para quebrar a linha entre referências</p>
                         <textarea placeholder="Digite as Referências Bibliográficas..." name="references" id="references" cols="30" rows="10" className="form-control" onChange={updateField} value={plant.references}></textarea>
                     </div>
                 </div>
@@ -164,6 +168,7 @@ const PlantForm = ({ editable, previewImg, updateField, plant, handleChangeHabit
                     }
                 </div>
 
+<<<<<<< HEAD
                 {
                     editable ?
                         <React.Fragment>
@@ -203,6 +208,25 @@ const PlantForm = ({ editable, previewImg, updateField, plant, handleChangeHabit
                         </div>
                 }
                 <ImageCarouselUploader />
+=======
+                <MainImageUploader
+                    previewImg={previewImg}
+                    editable={editable}
+                    loadedImg={plant.image2}
+                    popularName={plant.popularName}
+                    image={plant.image}
+                    updateField={updateField}
+                />
+
+                <ImageCarouselUploader
+                    editable={editable}
+                    fileSelectedHandler={fileSelectedHandler}
+                    handleDelete={handleDelete}
+                    imagesPropArray={imagesPropArray}
+                    oldImages={imagesPropArray}
+                    newImagesPropArray={newImagesPropArray}
+                />
+>>>>>>> 12d9870ee5c3d2e3de6286bf002b24323338120e
 
                 <div className="col-12 d-flex justify-content-end">
                     <button type="submit" className="btn btn-info">

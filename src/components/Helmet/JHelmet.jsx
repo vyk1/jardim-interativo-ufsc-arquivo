@@ -21,12 +21,28 @@ function JHelmet({ title, description, meta, lang }) {
                     content: `index, follow`
                 },
                 {
+                    name: `author`,
+                    content: `Victoria Botelho Martins`
+                },
+                {
                     name: `description`,
                     content: description,
                 },
                 {
                     name: `charset`,
                     content: `UTF-8`,
+                },
+                {
+                    property: `og:title`,
+                    content: `${title} | Jardim Interativo`,
+                },
+                {
+                    property: `og:description`,
+                    content: description,
+                },
+                {
+                    property: `og:type`,
+                    content: `website`,
                 },
                 {
                     property: `og:site_name`,
@@ -40,18 +56,6 @@ function JHelmet({ title, description, meta, lang }) {
                     property: `og:url`,
                     content: `https://jardim-interativo.web.app`,
                 },
-                {
-                    property: `og:title`,
-                    content: `${title} | Jardim Interativo`,
-                },
-                {
-                    property: `og:description`,
-                    content: description,
-                },
-                {
-                    property: `og:type`,
-                    content: `website`,
-                }
             ].concat(meta)}
         />
     )
@@ -60,7 +64,6 @@ function JHelmet({ title, description, meta, lang }) {
 JHelmet.defaultProps = {
     title: `Jardim Interativo`,
     description: `Esse website visa disponibilizar informações acerca das plantas medicinais e tóxicas dentro da veterinária a população`,
-    author: `Victoria Botelho Martins`,
     lang: `pt-br`,
     meta: []
 }

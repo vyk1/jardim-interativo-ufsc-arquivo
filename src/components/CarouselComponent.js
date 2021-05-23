@@ -9,34 +9,12 @@ import {
     CarouselIndicators,
 } from "reactstrap";
 
-// core components
 
-const items = [
-    {
-        src: require("../assets/img/carousel/1.jpeg"),
-        altText: "carousel-1",
-    },
-    {
-        src: require("../assets/img/carousel/2.jpeg"),
-        altText: "carousel-2",
-    },
-    {
-        src: require("../assets/img/carousel/3.jpeg"),
-        altText: "carousel-3",
-    },
-    {
-        src: require("../assets/img/carousel/4.jpeg"),
-        altText: "carousel-4",
-    },
-    {
-        src: require("../assets/img/carousel/5.jpeg"),
-        altText: "carousel-5",
-    },
-];
+function CarouselComponent({ items }) {
 
-function CarouselSection() {
     const [activeIndex, setActiveIndex] = React.useState(0);
     const [animating, setAnimating] = React.useState(false);
+
     const onExiting = () => {
         setAnimating(true);
     };
@@ -57,12 +35,10 @@ function CarouselSection() {
         if (animating) return;
         setActiveIndex(newIndex);
     };
+
     return (
         <>
             <div className="section" id="carousel">
-                <h3 className="title" id="sobre">
-                    Fotos <i className="fa fa-camera"></i>
-                </h3>
                 <Row className="justify-content-center">
                     <Col lg="8" md="12">
                         <Carousel
@@ -75,14 +51,13 @@ function CarouselSection() {
                                 activeIndex={activeIndex}
                                 onClickHandler={goToIndex}
                             />
-                            {items.map((item) => {
+                            {items.map((item, i) => {
                                 return (
                                     <CarouselItem
                                         onExiting={onExiting}
                                         onExited={onExited}
-                                        key={item.src}
-                                    >
-                                        <img src={item.src} alt={item.altText} />
+                                        key={i}>
+                                        <img src={item} alt={'img' + i} />
                                     </CarouselItem>
                                 );
                             })}
@@ -118,4 +93,5 @@ function CarouselSection() {
     );
 }
 
-export default CarouselSection;
+export default CarouselComponent;
+

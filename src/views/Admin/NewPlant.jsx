@@ -9,6 +9,8 @@ import Nav from './components/template/Nav/Nav'
 import PlantForm from '../../components/Plants/PlantForm'
 import PlantSchema from '../../data/PlantSchema'
 import AdminHelmet from 'components/Helmet/AdminHelmet'
+import { setFilename } from 'utils'
+import { DB_URL, compressionOptions } from 'config'
 
 const headerProps = {
     icon: 'plus-circle',
@@ -33,28 +35,16 @@ const initialState = {
     image: "",
     mdtx: [],
     habit: [],
+    imagesPropArray: []
 }
 
 export default class NewPlant extends Component {
     state = { ...initialState }
 
-    onDismiss() {
-        let newView = !(this.state.visible)
-        this.setState({ visible: newView })
-    }
-
     async check(e) {
         e.preventDefault()
         this.setState({ loaded: false, success: false, error: false, validationError: false })
 
-        const image = e.target.image.files[0]
-        const { name } = image
-
-        let options = {
-            maxSizeMB: 1,
-            maxWidthOrHeight: 1920,
-            useWebWorker: false
-        }
 
         const obj = {
             popularName: this.state.popularName,
@@ -63,7 +53,6 @@ export default class NewPlant extends Component {
             geoDistrib: this.state.geoDistrib,
             image: this.state.image,
         }
-
         const isEmpty = Object.values(obj).some(x => (x === null || x === ''))
 
         if (isEmpty) {
@@ -81,26 +70,62 @@ export default class NewPlant extends Component {
         const schema = new PlantSchema(this.state)
 
         try {
-            const compressedImage = await imageCompression(image, options)
-            const ref = storage.ref(name)
+            // Se houver imagens para carrosel
+            if (this.state.imagesPropArray.length) {
 
-            ref.put(compressedImage)
-                .then(img => {
-                    img.ref.getDownloadURL()
-                        .then(dURL => {
-                            const plant = {
-                                ...schema,
-                                image: dURL,
-                            }
-                            config.push('plantapedia', {
-                                data: plant
-                            }).then(() => {
-                                this.clear()
-                                return this.setState({ success: true, loaded: true, visible: true })
-                            })
-                        })
+                let carrouselURLArr = []
+
+                for (let index = 0; index < this.state.imagesPropArray.length; index++) {
+                    const im = this.state.imagesPropArray[index]
+                    const name = setFilename(obj.popularName, index)
+
+                    const ref = storage.ref(name)
+
+                    // [File, "blob:http..."]
+                    let compressedCarouselImage = await imageCompression(im[0], compressionOptions)
+
+                    let uploaded = await ref.put(compressedCarouselImage)
+                    let url = await uploaded.ref.getDownloadURL()
+                    await carrouselURLArr.push(url)
+                }
+
+                const name = setFilename(obj.popularName)
+                const ref = storage.ref(name)
+                const compressedImage = await imageCompression(obj.image[0], compressionOptions)
+
+                let uploaded = await ref.put(compressedImage)
+                let url = await uploaded.ref.getDownloadURL()
+                const plant = {
+                    ...schema,
+                    image: url,
+                    carouselImgs: carrouselURLArr
+                }
+                await config.push(DB_URL, {
+                    data: plant
                 })
+
+            } else {
+
+                const name = setFilename(obj.popularName)
+                const ref = storage.ref(name)
+                const compressedImage = await imageCompression(obj.image[0], compressionOptions)
+
+                let uploaded = await ref.put(compressedImage)
+                let url = await uploaded.ref.getDownloadURL()
+                const plant = {
+                    ...schema,
+                    image: url,
+                }
+                await config.push(DB_URL, {
+                    data: plant
+                })
+            }
+
+            this.clear()
+            this.setState({ success: true, loaded: true, visible: true })
+
         } catch (error) {
+            console.log(error)
             return this.setState({ error: true, loaded: true, visible: true })
         }
     }
@@ -134,11 +159,30 @@ export default class NewPlant extends Component {
             this.setState({ mdtx: [...this.state.mdtx, id] })
         }
     }
+
+    fileSelectedHandler(e) {
+        if (this.state.imagesPropArray.length < 5) {
+            this.setState({ imagesPropArray: [...this.state.imagesPropArray, [...e.target.files, URL.createObjectURL(...e.target.files)]] })
+        }
+    }
+
+    handleDelete(index) {
+        let aux = this.state.imagesPropArray
+        aux.splice(index, 1)
+        this.setState({ imagesPropArray: [...aux] })
+    }
+
+    onDismiss() {
+        let newView = !(this.state.visible)
+        this.setState({ visible: newView })
+    }
+
     updateField(event) {
         if (event.target.name === 'image') {
-            this.setState({ previewImg: URL.createObjectURL(event.target.files[0]) })
+            this.setState({ previewImg: URL.createObjectURL(event.target.files[0]), image: [...event.target.files] })
+        } else {
+            this.setState({ [event.target.name]: event.target.value })
         }
-        this.setState({ [event.target.name]: event.target.value })
     }
 
     renderForm() {
@@ -153,17 +197,22 @@ export default class NewPlant extends Component {
                 <div className="form">
                     <PlantForm
                         check={this.check.bind(this)}
-                        previewImg={this.state.previewImg}
+                        fileSelectedHandler={this.fileSelectedHandler.bind(this)}
+                        handleDelete={this.handleDelete.bind(this)}
+                        imagesPropArray={this.state.imagesPropArray}
                         updateField={this.updateField.bind(this)}
                         handleChangeHabit={this.handleChangeHabit.bind(this)}
                         handleChangeMdTx={this.handleChangeMdTx.bind(this)}
+                        previewImg={this.state.previewImg}
                         clear={this.clear.bind(this)}
                         plant={this.state}
+                        editable={false}
                     />
                 </div>
             )
         }
     }
+
     render() {
         return (
             <div className="app">

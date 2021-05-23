@@ -14,6 +14,8 @@ import TableS from './components/table/Index'
 import HabCresc from 'data/HabCresc'
 import MdTx from 'data/MdTx'
 import AdminHelmet from 'components/Helmet/AdminHelmet'
+import { DB_URL } from 'config'
+import Alert from 'reactstrap/lib/Alert'
 
 const headerProps = {
     icon: 'leaf',
@@ -25,9 +27,8 @@ const headerProps = {
 const initialState = {
     plants: [],
     plant: {},
-    loaded: true,
-    disabled2: false,
-    modal2: false
+    loaded: false,
+    modal: false
 }
 
 export default class AllPlants extends Component {
@@ -37,15 +38,22 @@ export default class AllPlants extends Component {
 
         this.state = initialState
 
-        this.toggle2 = this.toggle2.bind(this)
+        this.toggle = this.toggle.bind(this)
         this.erase = this.erase.bind(this)
     }
 
     componentDidMount() {
-        config.syncState('plantapedia', {
+        config.syncState(DB_URL, {
             context: this,
             state: 'plants',
-            asArray: true
+            asArray: true,
+            then: (() => {
+                this.setState({ loaded: true })
+            }),
+            onFailure: (() => {
+                this.setState({ loaded: true, plants: [], error: true })
+            }),
+
         })
     }
 
@@ -92,12 +100,12 @@ export default class AllPlants extends Component {
 
     confirm(plant, id) {
         let tableId = id.value
-        this.setState({ modal2: true, plant, id: tableId })
+        this.setState({ modal: true, plant, id: tableId })
     }
 
     renderTable() {
 
-        if (this.state.plants.length <= 0 || this.state.loaded === false) {
+        if (!this.state.loaded) {
             return (
                 <h1>
                     <i className="now-ui-icons loader_gear spin" />
@@ -139,7 +147,8 @@ export default class AllPlants extends Component {
                         {
                             Header: "Nome Científico",
                             accessor: "scientificName",
-                            sortType: "basic"
+                            sortType: "basic",
+                            Cell: ({ value }) => <i>{value}</i>
                         },
                         {
                             id: 'key',
@@ -167,47 +176,49 @@ export default class AllPlants extends Component {
 
                     <br />
                     <Badge color="info">Total de Plantas Cadastradas {this.state.plants.length}</Badge>
+                    <p className="text-muted">Clique abaixo em <u>Nome Popular</u> ou <u>Nome Científico</u> para ordenar a tabela</p>
                     <TableS data={this.state.plants} columns={columns} />
                 </>
             )
         }
     }
 
-    toggle2() {
+    toggle() {
         this.setState({
-            modal2: !this.state.modal2
+            modal: !this.state.modal
         })
     }
 
-    erase() {
+    async erase() {
 
-        this.setState({ loaded: false })
+        this.setState({ loaded: false, success: false, error: false, modal: false })
         const { id, plant } = this.state
-        const image = plant.image
+        const { image } = plant
         try {
-            const ref = storage.refFromURL(image)
-            ref.delete()
-                .then(() => {
-                    config.remove(`plantapedia/${id}`)
-                        .then(() => {
-                            return this.setState({ success: true })
-                        })
-                        .catch(() => {
-                            return this.setState({ success: true })
-                        })
-                })
-                .catch(() => {
-                    return this.setState({ success: true })
-                })
+            let ref = storage.refFromURL(image)
+            await ref.delete()
+                .catch(e => { })
 
+            if (plant.carouselImgs) {
+                for (let index = 0; index < plant.carouselImgs.length; index++) {
+                    const element = plant.carouselImgs[index];
+                    const refElement = storage.refFromURL(element)
+                    await refElement.delete()
+                        .catch(e => { })
+                }
+            }
+
+            await config.remove(`${DB_URL}${id}`)
+
+            this.setState({ success: true })
 
         } catch (error) {
-            return this.setState({ error: true })
+            this.setState({ error: true })
 
         } finally {
-            this.toggle2()
+            this.toggle()
             window.location.href = "#root"
-            return this.setState({ loaded: true })
+            this.setState({ loaded: true })
         }
 
     }
@@ -219,15 +230,25 @@ export default class AllPlants extends Component {
                 <Logo />
                 <Nav />
                 <Main {...headerProps}>
+                    {this.state.success && (
+                        <Alert color="success" isOpen={this.state.success}>
+                            Operação Concluída com Sucesso!
+                        </Alert>
+                    )}
+                    {this.state.error && (
+                        <Alert color="danger" isOpen={this.state.error}>
+                            Ocorreu um erro!
+                        </Alert>
+                    )}
                     {this.renderTable()}
-                    <Modal isOpen={this.state.modal2} toggle={this.toggle2} centered={true}>
-                        <ModalHeader toggle={this.toggle2}>Apagar Planta</ModalHeader>
+                    <Modal isOpen={this.state.modal} toggle={this.toggle} centered={true}>
+                        <ModalHeader toggle={this.toggle}>Apagar Planta</ModalHeader>
                         <ModalBody>Deseja apagar "{this.state.plant.popularName}"?<br />
                                 Atenção: Esta ação é irreversível
                             </ModalBody>
                         <ModalFooter>
                             <Button color="danger" onClick={this.erase}>Apagar</Button>
-                            <Button color="secondary" onClick={this.toggle2}>Cancelar</Button>
+                            <Button color="secondary" onClick={this.toggle}>Cancelar</Button>
                         </ModalFooter>
                     </Modal>
                 </Main>
