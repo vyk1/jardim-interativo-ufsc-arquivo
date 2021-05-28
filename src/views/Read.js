@@ -286,7 +286,7 @@ export default class Read extends React.Component {
 
                         </TabPane>
                         <TabPane tabId="7">
-                            {result.references.split("\n").map((i, key) => {
+                            {result?.references?.split("\n").map((i, key) => {
                                 return <p key={key}>{i}</p>;
                             })}
                         </TabPane>
