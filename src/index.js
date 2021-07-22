@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // styles for this kit
 import './views/Admin/main/App.css'
@@ -64,7 +64,7 @@ class Starter extends React.Component {
     }
 
     return (
-      <Router>
+      <BrowserRouter>
         <Switch>
           {/* Loop aqui */}
           <PrivateRoute exact path='/admin' component={Home} />
@@ -86,7 +86,7 @@ class Starter extends React.Component {
           <Redirect to="/" />
 
         </Switch>
-      </Router>
+      </BrowserRouter>
     )
   }
 }
