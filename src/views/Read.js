@@ -101,7 +101,7 @@ export default class Read extends React.Component {
                             </p>
                             <h6>
                                 Descrição:
-                                            </h6>
+                            </h6>
                             <p>{result.description}</p>
                         </TabPane>
                         <TabPane tabId="2">
@@ -176,7 +176,7 @@ export default class Read extends React.Component {
                                     <>
                                         <h6>
                                             Efeitos
-                                            </h6>
+                                        </h6>
                                         <p>
                                             {result.effects}
                                         </p>
@@ -188,7 +188,7 @@ export default class Read extends React.Component {
                                     <>
                                         <h6>
                                             Observações
-                                            </h6>
+                                        </h6>
                                         <p>
                                             {result.observations}
                                         </p>
@@ -202,7 +202,7 @@ export default class Read extends React.Component {
                                     <>
                                         <h6>
                                             Ingrediente Ativo
-                                            </h6>
+                                        </h6>
                                         <p>
                                             {result.activeIngredient}
                                         </p>
@@ -214,7 +214,7 @@ export default class Read extends React.Component {
                                     <>
                                         <h6>
                                             Parte da Planta com Efeito Terapêutico
-                                            </h6>
+                                        </h6>
                                         <p>
                                             {result.regionForTreatment}
                                         </p>
@@ -226,7 +226,7 @@ export default class Read extends React.Component {
                                     <>
                                         <h6>
                                             Dose Terapêutica
-                                            </h6>
+                                        </h6>
                                         <p>
                                             {result.therapeuticDose}
                                         </p>
@@ -240,7 +240,7 @@ export default class Read extends React.Component {
                                     <>
                                         <h6>
                                             Princípios Tóxicos
-                                            </h6>
+                                        </h6>
                                         <p>
                                             {result.toxicIngredient}
                                         </p>
@@ -252,7 +252,7 @@ export default class Read extends React.Component {
                                     <>
                                         <h6>
                                             Parte da Planta com Efeito Tóxico
-                                            </h6>
+                                        </h6>
                                         <p>
                                             {result.regionForPoison}
                                         </p>
@@ -264,7 +264,7 @@ export default class Read extends React.Component {
                                     <>
                                         <h6>
                                             Dose Tóxica
-                                            </h6>
+                                        </h6>
                                         <p>
                                             {result.toxicDose}
                                         </p>
@@ -276,7 +276,7 @@ export default class Read extends React.Component {
                                     <>
                                         <h6>
                                             Possíveis Lesões
-                                            </h6>
+                                        </h6>
                                         <p>
                                             {result.possibleWounds}
                                         </p>
