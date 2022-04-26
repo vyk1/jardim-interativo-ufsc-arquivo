@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://jardim-interativo.web.app">
-    <img alt="Jardim Interativo UFSC" src="/src/images/plantIcon.png" width="300" />
+    <img alt="Jardim Interativo UFSC" src="src/images/plantIcon.png" width="150" />
   </a>
 </p>
 
