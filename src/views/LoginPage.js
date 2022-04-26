@@ -73,8 +73,8 @@ function LoginPage(props) {
             backgroundImage: "url(" + require("assets/img/login.jpg") + ")"
           }}
         ></div>
-        <div class="position-relative">
-          <div class="position-absolute top-0 start-0 ml-2">
+        <div className="position-relative">
+          <div className="position-absolute top-0 start-0 ml-2">
             <Button
               className="btn-round"
               color="warning"
