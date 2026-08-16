@@ -1,0 +1,57 @@
+backend:
+  name: github
+  repo: vyk1/jardim-interativo-ufsc-arquivo
+  branch: master
+  # OAuth de produção: usamos a Netlify só como provedor OAuth (login com
+  # GitHub), sem hospedar o site lá — ver docs/decap-cms.md. base_url é o
+  # valor padrão do Decap para este backend; deixado explícito por clareza.
+  base_url: https://api.netlify.com
+
+# ativa o modo de proxy local (npx decap-server) — só tem efeito em localhost,
+# não interfere no OAuth de produção acima
+local_backend: true
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "plantapedia"
+    label: "Plantas"
+    label_singular: "Planta"
+    folder: "content/plantapedia"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: popularName
+    fields:
+      - { label: "Nome Popular", name: "popularName", widget: "string" }
+      - { label: "Nome Científico", name: "scientificName", widget: "string" }
+      - { label: "Descrição", name: "description", widget: "text" }
+      - label: "Hábitos de Crescimento"
+        name: "habit"
+        widget: "select"
+        multiple: true
+        options: ["Árvore", "Arbusto", "Herbácea", "Liana", "Trepadeira"]
+      - label: "Tóxica, medicinal ou ambas?"
+        name: "mdtx"
+        widget: "select"
+        multiple: true
+        options: ["Medicinal", "Tóxica"]
+      - { label: "Distribuição Geográfica", name: "geoDistrib", widget: "string", required: false }
+      - { label: "Modos De Preparo", name: "prepMode", widget: "text", required: false }
+      - { label: "Utilização", name: "utilization", widget: "text", required: false }
+      - { label: "Observações", name: "observations", widget: "text", required: false }
+      - { label: "Efeitos", name: "effects", widget: "text", required: false }
+      - { label: "Princípios Ativos", name: "activeIngredient", widget: "text", required: false }
+      - { label: "Parte da Planta com Efeito Terapêutico", name: "regionForTreatment", widget: "string", required: false }
+      - { label: "Dose Terapêutica", name: "therapeuticDose", widget: "string", required: false }
+      - { label: "Parte da Planta que leva a intoxicação", name: "regionForPoison", widget: "string", required: false }
+      - { label: "Princípios Tóxicos", name: "toxicIngredient", widget: "text", required: false }
+      - { label: "Dose Tóxica", name: "toxicDose", widget: "string", required: false }
+      - { label: "Possíveis Lesões", name: "possibleWounds", widget: "text", required: false }
+      - { label: "Referências", name: "references", widget: "text", required: false }
+      - { label: "Imagem Principal", name: "image", widget: "image", required: false }
+      - label: "Imagens do Carrossel"
+        name: "carouselImgs"
+        widget: "list"
+        required: false
+        field: { label: "Imagem", name: "image", widget: "image" }

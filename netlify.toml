@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "12"
+
+# SPA client-side routing (react-router BrowserRouter) — equivalente ao
+# rewrite "**" -> "/index.html" já usado no firebase.json
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

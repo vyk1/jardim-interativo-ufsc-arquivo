@@ -13,6 +13,9 @@
 
 #documentação
 /Documentation
+
+# material de trabalho da migração Firebase -> Decap CMS (não é conteúdo final do site)
+/migration
 # misc
 .DS_Store
 .env.local
