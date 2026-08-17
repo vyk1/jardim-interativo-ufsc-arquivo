@@ -1,5 +1,4 @@
 import React from 'react';
-import firebase from 'firebase'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Col, CardHeader, CardBody, FormGroup, Label, Input } from 'reactstrap';
 import FullNav from '../components/FullNav.js';
 import LoadingCog from '../components/LoadingCog';
@@ -8,32 +7,23 @@ import habits from '../data/HabCresc';
 import mdtxs from '../data/MdTx';
 import MDTXBadge from 'components/MDTXBadge.js';
 import JHelmet from 'components/Helmet/JHelmet.jsx';
-import { DB_URL } from 'config.js';
 import CarouselComponent from 'components/CarouselComponent.js';
+import plants from '../data/plantapedia.generated.json';
 
 export default class Read extends React.Component {
     constructor(props) {
         super(props)
+        const result = plants.find(p => p.slug === this.props.match.params.id) || null
         this.state = {
-            result: "",
+            result,
             activeTab: '1'
         }
     }
 
     componentDidMount() {
-        if (!this.props.match.params.id) {
+        if (!this.state.result) {
             window.location.replace('/')
-            return false
         }
-        const plants = firebase.database().ref(DB_URL + this.props.match.params.id)
-        plants.on('value', (snap) => {
-            let p = snap.val()
-            if (!p) {
-                window.location.replace('/')
-                return false
-            }
-            this.setState({ result: p })
-        })
     }
 
     toggle = tab => {
@@ -121,7 +111,7 @@ export default class Read extends React.Component {
                                     habits.map(el => (
                                         <FormGroup aria-disabled key={el.id} check>
                                             <Label key={el.id} check>
-                                                <Input disabled defaultChecked={result.habit.includes(el.id.toString()) ? true : false} type="checkbox" value={el.id} name="habit" id="habit" />
+                                                <Input disabled defaultChecked={(result.habit || []).includes(el.name) ? true : false} type="checkbox" value={el.id} name="habit" id="habit" />
                                                 {el.name}{" "}
                                                 <span className="form-check-sign">
                                                     <span className="check"></span>
@@ -137,7 +127,7 @@ export default class Read extends React.Component {
                                     mdtxs.map(el => (
                                         <FormGroup aria-disabled key={el.id} check>
                                             <Label key={el.id} check>
-                                                <Input disabled defaultChecked={result.mdtx.includes(el.id.toString()) ? true : false} type="checkbox" value={el.id} name="mdtx" id="mdtx" />
+                                                <Input disabled defaultChecked={(result.mdtx || []).includes(el.name) ? true : false} type="checkbox" value={el.id} name="mdtx" id="mdtx" />
                                                 {el.name}{" "}
                                                 <span className="form-check-sign">
                                                     <span className="check"></span>
@@ -299,28 +289,28 @@ export default class Read extends React.Component {
     render() {
         const { result } = this.state
 
+        if (!result) {
+            return <LoadingCog />
+        }
+
         return (
             <>
                 <JHelmet title={result.popularName} description={"Saiba mais sobre " + result.popularName + "/" + result.scientificName} />
-                {!result ? <LoadingCog /> :
-                    <>
-                        <FullNav />
-                        <div className="wrapper">
-                            <div className="section">
-                                <Col className="ml-auto mr-auto" md="10" xl="6">
-                                    <p className="category">
-                                        {result.popularName}
-                                        <i>({result.scientificName})</i>
-                                        <MDTXBadge mdtx={result.mdtx} />
-                                    </p>
+                <FullNav />
+                <div className="wrapper">
+                    <div className="section">
+                        <Col className="ml-auto mr-auto" md="10" xl="6">
+                            <p className="category">
+                                {result.popularName}
+                                <i>({result.scientificName})</i>
+                                <MDTXBadge mdtx={result.mdtx} />
+                            </p>
 
-                                    {this.renderInfo()}
-                                </Col>
-                            </div>
-                            <DefaultFooter />
-                        </div>
-                    </>
-                }
+                            {this.renderInfo()}
+                        </Col>
+                    </div>
+                    <DefaultFooter />
+                </div>
             </>
         )
     }

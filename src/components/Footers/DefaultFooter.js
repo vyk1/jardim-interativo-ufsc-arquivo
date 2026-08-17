@@ -8,7 +8,7 @@ import { Container } from "reactstrap";
 
 function DefaultFooter() {
   return (
-    <footer className="footer footer-default">
+    <footer className="footer footer-default" style={{ marginTop: "40px" }}>
       <Container>
         <nav>
           <ul>
@@ -30,12 +30,6 @@ function DefaultFooter() {
             <li>
               <Link to="/catalogo">
                 Catálogo
-                </Link>
-            </li>
-            <li>
-              <Link to="/admin"
-              >
-                Á. Rest.
                 </Link>
             </li>
           </ul>

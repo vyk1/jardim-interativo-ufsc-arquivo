@@ -14,24 +14,29 @@ function SearchBar() {
 
     return (
         <Col lg="10" sm="10" style={{ marginTop: '12px' }}>
-            <InputGroup className={rightFocus ? "input-group-focus" : ""} style={{ height: "20px" }}>
-                <Input
-                    style={{ backgroundColor: "#fff" }}
-                    placeholder="Buscar por nome popular"
-                    type="text"
-                    value={word}
-                    onFocus={() => setRightFocus(true)}
-                    onBlur={() => setRightFocus(false)}
-                    onChange={e => setWord(e.target.value)}
-                />
-                <InputGroupAddon addonType="append" style={{ maxHeight: "38px" }}>
-                    <InputGroupText>
-                        <a href={`/pesquisa/${word}`}>
-                            < i style={{ margin: "3px", color: "black", height: '20px' }} className="fas fa-search"></i>
-                        </a>
-                    </InputGroupText>
-                </InputGroupAddon>
-            </InputGroup >
+            <form onSubmit={e => {
+                e.preventDefault()
+                window.location.href = `/pesquisa/${word}`
+            }}>
+                <InputGroup className={rightFocus ? "input-group-focus" : ""}>
+                    <Input
+                        style={{ backgroundColor: "#fff", padding: "6px 14px", fontSize: "14px", lineHeight: "20px" }}
+                        placeholder="Buscar por nome popular ou científico"
+                        type="text"
+                        value={word}
+                        onFocus={() => setRightFocus(true)}
+                        onBlur={() => setRightFocus(false)}
+                        onChange={e => setWord(e.target.value)}
+                    />
+                    <InputGroupAddon addonType="append">
+                        <InputGroupText style={{ backgroundColor: "#fff", padding: "6px 14px" }}>
+                            <a href={`/pesquisa/${word}`} style={{ color: "#333", lineHeight: "20px", display: "block" }}>
+                                <i className="fas fa-search"></i>
+                            </a>
+                        </InputGroupText>
+                    </InputGroupAddon>
+                </InputGroup >
+            </form>
         </Col >
     )
 }

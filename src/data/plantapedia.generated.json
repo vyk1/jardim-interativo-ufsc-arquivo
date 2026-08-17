@@ -1,0 +1,911 @@
+[
+  {
+    "slug": "alecrim",
+    "popularName": "Alecrim",
+    "scientificName": "Rosmarinus officinalis",
+    "description": "Arbusto perene aromático chega até 2m, folhas verde-escuras semelhantes a agulhas",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Nativa do Mediterrâneo cultiva em todo mundo",
+    "prepMode": "Óleo, tintura e infusão",
+    "utilization": "Estimula a circulação portanto auxiliando na elevação da pressão arterial em paciente com pressão baixa, impulsionando o fluxo sanguíneo para a cabeça, aliviando enxaqueca e dores de cabeça, promovendo o crescimento e a saúde capilar (humanos). Pesquisas mostraram que os diterpenos estimula o fator de crescimento neural, sugerindo que a planta pode estimular a reparação dos nervos. ",
+    "observations": "",
+    "effects": "Tônico, estimulante, adstringente, calmante, anti-inflamatório, antioxidante",
+    "activeIngredient": "Óleo volátil compostos por borneol, canfeno, cânfora e cineol. Flavonoides (apigenina e diosmina), taninos, ácido rosmarínico, diterpenos (ácido carnósico e carnosol)",
+    "regionForTreatment": "Folhas",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "O Grande Livro das Plantes Medicinais",
+    "image": "/images/uploads/whatsapp-image-2020-11-17-at-19-21-55.jpeg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "azaleia",
+    "popularName": "Azaleia",
+    "scientificName": "Rhododendron spp.",
+    "description": "É um arbusto lenhoso de fácil cultivo, ideal para as regiões temperadas do Brasil, com temperaturas mais baixas durante o inverno. Tem a forma arredondada e pode crescer até 2,0 metros de altura, mas seu crescimento é lento. Pode formar grandes maciços, podendo ser usado para cerca viva. As folhas são pequenas e de textura áspera. As flores são de formato tubular na ponta dos ramos nas cores branca, várias semitons de rosa, magenta e púrpura. Em algumas regiões a floração é tão grande que as folhas ficam escondidas no meio das flores, tornando-se um espetáculo. Floresce na do meio do inverno até a primavera.",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Regiões temperadas dos Estados Unidos, Europa e Brasil",
+    "prepMode": "Não se aplica",
+    "utilization": "Não se aplica",
+    "observations": "As principais espécies afetadas são caninos e felinos",
+    "effects": "Não se aplica",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Folhas e flores",
+    "toxicIngredient": "Andromedotixina",
+    "toxicDose": "20g/kg (bovinos)\n15g/kg (ovinos)",
+    "possibleWounds": "",
+    "references": "",
+    "image": "/images/uploads/azaleia.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "babosa",
+    "popularName": "Babosa",
+    "scientificName": "Aloe vera",
+    "description": "Planta da família Xanthorrhoeaceae, utilizada em diversas partes do mundo por seus fins medicinais e cosméticos. ",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Cosmopolita",
+    "prepMode": "Gel, resina e tintura",
+    "utilization": "Possui atividade antineoplásica, antimicrobiana, anti-inflamatória e imunomodulatória (efeito estimulante no sistema imune) e pode ser utilizada no tratamento de queimaduras",
+    "observations": "",
+    "effects": "",
+    "activeIngredient": "Antraquinonas (aloína e aloe-emodina), resinas, taninos, polissacarídios, aloectina-B",
+    "regionForTreatment": "Folhas",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "",
+    "image": "/images/uploads/babosa.jpg",
+    "carouselImgs": [
+      "/images/uploads/babosa-0.jpg"
+    ]
+  },
+  {
+    "slug": "baccharidastrum",
+    "popularName": "Baccharidastrum",
+    "scientificName": "Baccharidastrum triplinervium",
+    "description": "Baccharidastrum triplinervium é um subarbusto da família Asteraceae, mede de 1,5 a 2 metros de altura, possuí folhas alternadas, trinervadas, de 5,5 a 11 cm de comprimento por 1,3 a 4 cm de largura",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Sul do Brasil, Paraguai, Uruguai e nordeste da Argentina até o Delta e as margens do Rio da Plata",
+    "prepMode": "",
+    "utilization": "",
+    "observations": "Casos de intoxicação foram descritos em bovinos ",
+    "effects": "Em baixas quantidades provoca somente distúrbios gastrointestinais leves, grandes quantidades podem levar a morte",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "Desconhecido ",
+    "toxicDose": "A partir de 20g/kg ",
+    "possibleWounds": "Avermelhamento da mucosa do rúmen, retículo, abomaso e omaso, fígado de coloração pálida, leve acentuação do padrão lobular e múltiplas áreas de hemorragia na superfície capsular. Sufusões na mucosa do íleo, sufusões subepicárdicas e subendocárdicas, edema pulmonar moderado",
+    "references": "1.\nLangohr IM, Gava A, Claudio S.L. Barros. Intoxicação por Baccharidastrum triplinervium (Asteraceae) em bovinos. Pesquisa Veterinaria Brasileira. 2005;25(4):235-238.\n‌",
+    "image": "/images/uploads/baccharidastrum.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "camomila-romana-macela",
+    "popularName": "Camomila-romana, Macela",
+    "scientificName": "Chamaemelum nobile sin. Anthemis nobilis",
+    "description": "Planta aromática perene, cega a 50 cm de altura, folhas em forma de pena e inflorescências do tipo capítulo",
+    "habit": [
+      "Herbácea",
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Nativa do oeste europeu, atualmente é cultivadas em diversas áreas temperadas",
+    "prepMode": "",
+    "utilization": "Utilizada contra enjoo, vômito, indigestão e perda de apetite, cólicas e câimbras. Estimula as secreções digestivas e relaxa a musculatura intestinal normalizando a função digestiva. Utilizada também para tratamento de dor de cabeça e enxaqueca, e em casos de pele irritada",
+    "observations": "Não ingerir o óleo essencial",
+    "effects": "Antiemético, sedativo, antiespasmódica e levemente analgésica, anti-inflamatório, anti-alérgico. ",
+    "activeIngredient": "Óleo essencial composto de ésteres dos ácidos tíglico e angélico, camazuleno e outras lactonas sesquiterpênicas, além de flavonoides, cumarinas e ácidos fenólicos",
+    "regionForTreatment": "Flores e óleo essencial",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "O Grande Livro das Plantes Medicinais",
+    "image": "/images/uploads/whatsapp-image-2020-11-17-at-19-26-34.jpeg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "capim-limao",
+    "popularName": "Capim-limão",
+    "scientificName": "Cymbopogon  citratus",
+    "description": "Erva cespitosa quase caule, com folhas longas, estreitas, laminadas e aromáticas. Flores raras e estéreis em nossas condições. Cresce até 1,5 metros.",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Originária do Velho Mundo (sul da Índia) e cultivada em todos os países tropicais",
+    "prepMode": "Óleo, chá e cataplasma",
+    "utilization": "Relaxante muscular (estomacal e intestinal), artrite e micose, antiparasitária",
+    "observations": "",
+    "effects": "Antiparasitária, relaxante muscular, antitérmico",
+    "activeIngredient": "Óleo volátil com citral (70%) e citronelal",
+    "regionForTreatment": "Folhas",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "",
+    "image": "/images/uploads/capim-limao.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "citronela",
+    "popularName": "Citronela",
+    "scientificName": "Cymbopogon winterianus",
+    "description": "Erva aromática, com cerca de 1 m de altura, formada por folhas longas. Flores são raras. Seu cultivo permite até 4 cortes por ano, multiplicando-se por separação da touceira e replantada diretamente no campo (LORENZI; MATOS;2008)",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Originária no velho mundo e cultivada nos países tropicais",
+    "prepMode": "Óleo ",
+    "utilization": "Repelente e inseticida",
+    "observations": "",
+    "effects": "",
+    "activeIngredient": "Citronelal",
+    "regionForTreatment": "Folhas",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "",
+    "image": "/images/uploads/citronela.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "coerana-amarela",
+    "popularName": "Coerana amarela",
+    "scientificName": "Cestrum corymbosum",
+    "description": "Arbusto perene e reto, com um a dois metros de altura e intensa ramificação. Possuí folha coriáceas e luzidias, podendo ser lanceoladas, eliptícas ou elíptico-ovaladas, as flores possuem corola tubulosa e cor amarelo-ouro. A floração é abundante e ocorre entre a primavera e outono. Os frutos são bagas ovoides de cor escura",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Ocorre no Estado de Santa Catarina, tendo como habitat capoeiras",
+    "prepMode": "",
+    "utilization": "",
+    "observations": "Relatos de intoxicações naturais e experimentais somente em bovinos ",
+    "effects": "Leva a casos de insuficiência hepática aguda em bovinos ",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Folhas",
+    "toxicIngredient": "Desconhecido",
+    "toxicDose": "35g/kg ingerido de uma única vez",
+    "possibleWounds": "Fígado com coloração levemente amarelada, com áreas arredondadas de hemorragias subcapsulares e moderado aspecto de noz-moscada, mais evidente na superfície de corte. Edema em parede de vesícula biliar. Sufusões na serosa do rúmen, omaso e intestino.",
+    "references": "TOKARNIA, C. H.; DÖBEREINER, J.; PEIXOTO,. P. V. Plantas tóxicas do Brasil. 1. ed. Rio de. Janeiro: Helianthus, 2000, 310p.\n\nBLUM, Cristopher Thomas et al. Propagação de Cestrum corymbosum por sementes e estaquia. 2013.",
+    "image": "/images/uploads/coerana-2.jpg",
+    "carouselImgs": [
+      "/images/uploads/coerana-0.jpg",
+      "/images/uploads/coerana-1.jpg"
+    ]
+  },
+  {
+    "slug": "coerana-mata-boi",
+    "popularName": "Coerana, Mata-boi",
+    "scientificName": "Cestrum intermedium",
+    "description": "Arbusto da família Solanaceae,  habitante de áreas férteis e úmidas, principalmente capoeiras, campos abandonados, beiras de cercas e estradas",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Região Oeste de Santa Catarina, Noroeste do Rio Grande do Sul, Sudeste do Paraná e Norte da Argentina",
+    "prepMode": "",
+    "utilization": "",
+    "observations": "",
+    "effects": "Leva a casos de insuficiência hepática aguda em bovinos. ",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Folhas",
+    "toxicIngredient": "Desconhecido",
+    "toxicDose": "25g/kg em dose única ",
+    "possibleWounds": "Fígado de coloração alaranjada e aspecto de noz-moscada, edema na parede da vesícula biliar e da porção inicial do duodeno, ressecamento do conteúdo do omaso, cólon e reto, equimoses e sufusões no epicárdio e endocárdio, nas fáscias musculares e na mucosa do intestino grosso.",
+    "references": "TOKARNIA, C. H.; DÖBEREINER, J.; PEIXOTO,. P. V. Plantas tóxicas do Brasil. 1. ed. Rio de. Janeiro: Helianthus, 2000, 310p.",
+    "image": "/images/uploads/coerana.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "comigo-niguem-pode",
+    "popularName": "Comigo-niguém-pode",
+    "scientificName": "Dieffenbachia picta",
+    "description": "Planta herbácea perene, de altura variável. Se estiver plantada em vaso pode atingir até 2,0 m, subindo por apoios. As folhas são largas e de cerca de 0,50 m de comprimento, verdes salpicadas de creme com pecíolo longo inseridas no caule de forma imbricada. As flores são em inflorescência do tipo espádice e em regiões de climas mais quentes esta planta floresce, mas suas flores têm importância ornamental secundária.",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Todo o Brasil",
+    "prepMode": "Não se aplica",
+    "utilization": "Não se aplica",
+    "observations": "As principais espécies afetadas são caninos e felinos e bovinos",
+    "effects": "Não se aplica",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Caules e folhas",
+    "toxicIngredient": "Cristais de oxalato de cálcio, saponinas",
+    "toxicDose": "4.8g/kg (bovinos)",
+    "possibleWounds": "Úlceras no trato gastrintestinal",
+    "references": "",
+    "image": "/images/uploads/comigo-ninguem-pode.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "copo-de-leite",
+    "popularName": "Copo-de-leite",
+    "scientificName": "Zantedeschia aethiopica",
+    "description": "Planta herbácea perene, rizomatosa e entouceirada, de altura em torno de 1,0 metros, com folhas grandes de longo pecíolo, forma sagitada com a página superior em verde brilhante. As flores são em grandes espádices brancos (Zantedeschia aethiopica) ou coloridos (Zantedeschia rehmannii e híbridos). Floresce da primavera ao verão em cultivo aberto (STUMPF, M. 2017)",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Bahia, Espírito Santo, Minas Gerais, Rio de Janeiro, São Paulo, Paraná e Santa Catarina",
+    "prepMode": "Não se aplica",
+    "utilization": "Não se aplica",
+    "observations": "As principais espécies afetadas são caninos e felinos",
+    "effects": "Não se aplica",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Folha e flores",
+    "toxicIngredient": "Cristais de oxalato de cálcio, saponinas",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "",
+    "image": "/images/uploads/copo-de-leite.jpg",
+    "carouselImgs": [
+      "/images/uploads/copo-de-leite-0.jpg",
+      "/images/uploads/copo-de-leite-1.jpg"
+    ]
+  },
+  {
+    "slug": "dedaleira",
+    "popularName": "Dedaleira",
+    "scientificName": "Digitalis purpurea",
+    "description": "Planta herbácea bienal ou perene, ereta, pouco ramificada ou ramificada apenas na base, de 60-90 cm de altura. Plantas inicialmente acaules, com folhas dispostas em roseta e com desenvolvimento da planta tornam-se caulescentes, com folhas de textura membranácea e ásperas de 6-19 cm de comprimento. Flores róseas, vermelhas, purpúreas ou brancas, com a forma de um dedal, disposta no ápice das hastes com longo racemo. Multiplica-se apenas por sementes.",
+    "habit": [
+      "Arbusto",
+      "Árvore"
+    ],
+    "mdtx": [
+      "Medicinal",
+      "Tóxica"
+    ],
+    "geoDistrib": "Europa e norte da África. Sul e Sudeste do Brasil",
+    "prepMode": "Extrato das folhas secas e moídas",
+    "utilization": "Insuficiência cardíaca, arritmias, hidropsia",
+    "observations": "",
+    "effects": "",
+    "activeIngredient": "Digitalina",
+    "regionForTreatment": "Folhas e flores",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "",
+    "image": "/images/uploads/dedaleira.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "erva-cidreira-brasileira",
+    "popularName": "Erva-cidreira-brasileira",
+    "scientificName": "Lippia spp.",
+    "description": "Também chamada de sálvia e alecrim-do-campo. É um subarbusto de morfologia variável, alcançando até um 1,5 m, nativa do Brasil. Seus ramos são finos, esbranquiçados, arqueados, longos e quebradiços.  As folhas são inteiras, opostas, de bordos serreados e ápice agudo, de 3-6 cm de comprimento. Flores azul-arroxeadas, reunidas em inflorescências axilares capituliformes de eixo curto e tamanho variável. Os frutos são drupas globosas de cor róseo-arroxeada. Pode ser cultivada a partir de semente ou estaca. As concentrações dos componentes variam conforme a espécie de Lippia e características do solo e ambiente. ",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Américas do Sul e Central e parte dos EUA",
+    "prepMode": "Óleo e chá",
+    "utilization": "Antimicrobiana, antiparasitária, anti-inflamatória, analgésica, anestésica e antitumoral em animais. Para humanos é usada para resfriado, bronquite, tosse, hipertensão e pra TGI superior. Já foi realizado estudo dessa espécie contra leishmaniose visceral, Hemonchus contortus e Rhiphicephalus sanguineus.",
+    "observations": "",
+    "effects": "",
+    "activeIngredient": "Timol, carvacrol, geranial, linalol, p-cimeno, carvona e citral, neral, limoneno, β-cariofileno, óxido cariofileno, mirceno e γ-terpineno.",
+    "regionForTreatment": "Folhas",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "",
+    "image": "/images/uploads/lippia-alba-02.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "erva-cidreira-melissa",
+    "popularName": "Erva-cidreira, Melissa",
+    "scientificName": "Melissa officinalis",
+    "description": "Planta perene chega 1,5m, flores brancas bem pequenas e folhas denteadas com nervuras",
+    "habit": [
+      "Herbácea"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Nativo do sul da Europa, oeste da Ásia e Norte da África, atualmente cresce em todo mundo",
+    "prepMode": "Óleo, infusão, tintura, loção, suco e pomada",
+    "utilization": "A atividade antiviral principal é contra o herpes labial. Inibe a função da tireoide. Aplicada na cicatrização de feridas, alívio de palpitações e relaxamento do coração, e no tratamento da dor no dente. Atua como tônico relaxante para ansiedade, depressão leve, insônia e irritabilidade. Muitas vezes desacelera os batimentos cardíacos quando de origem nervosa. A aplicação tópica é feita em casos de cortes e picadas de insetos. ",
+    "observations": "A planta é contraindicada para uso crônico em caso de hipotireoidismo",
+    "effects": "Relaxante, antiespasmódica, aumento da sudorese, carminativa, antiviral, tônico para sistema nervoso, sedativo, cicatrizante",
+    "activeIngredient": "Óleo volátil composto por citral, óxido de cariofileno, linalol, citronelal, além de flavonoides, triterpenos, polifenois e taninos",
+    "regionForTreatment": "Partes aéreas",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "O Grande Livro das Plantes Medicinais",
+    "image": "/images/uploads/whatsapp-image-2020-11-17-at-19-18-59.jpeg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "espada-de-sao-jorge",
+    "popularName": "Espada de São Jorge",
+    "scientificName": "Sansevieria Zeylanica/Trifasciata",
+    "description": "Planta herbácea sem caule, folhas de consistência suculenta, largas e achatadas surgindo direto do rizoma, com altura variável até 1,0 m ou mais. São de cor verde-azuladas com manchas transversais em verde escuro e borda amarela. Algumas folhas, porém, se apresentam somente verdes com as listras em verde escuro. As flores são branco-amareladas, perfumadas e pequenas e reúnem-se em inflorescência ereta. A floração ocorre em geral no verão, mas não tem importância ornamental (STUMPF, M. 2017)",
+    "habit": [
+      "Herbácea"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Todo o Brasil",
+    "prepMode": "",
+    "utilization": "",
+    "observations": "As principais espécies afetadas são caninos e felinos",
+    "effects": "A ingestão provoca irritações, obstrução da garganta e da glote, e pode ocasionar dermatites ",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Folhas, raízes e frutos",
+    "toxicIngredient": "Saponinas, oxalatos de cálcio e alcalóides",
+    "toxicDose": "",
+    "possibleWounds": "Inflamação das mucosas do trato gastrointestinal ",
+    "references": "SANTOS, Flavio Alves Araújo dos. Intoxicação de canídeo doméstico por ingestão de Espada de São Jorge. 2022. 22 f. TCC (Graduação) - Curso de Medicina Veterinária, Centro Universitário de Brasília, Brasília, 2022. \nBOTELHO, Ana Flávia Machado et al. Plantas tóxicas ornamentais para cães e gatos. Jataí: Dos Autores, 2022. 27 p.",
+    "image": "/images/uploads/espada.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "flor-roxa-lingua-de-vaca",
+    "popularName": "Flor-roxa, língua-de-vaca",
+    "scientificName": "Echium plantagineum ",
+    "description": "Planta herbácea pertencente a família Borraginaceae, invasora de cultura e de pastagens no primeiro ano de implantação. Cresce a partir do outono e floresce na primavera",
+    "habit": [
+      "Herbácea"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Ocorre na região Sul do Brasil",
+    "prepMode": "",
+    "utilization": "",
+    "observations": "A planta é palatável para bovinos, que a consomem normalmente ",
+    "effects": "Leva a casos de insuficiência hepática crônica em bovinos ",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Todas as partes da planta são tóxicas, tanto verde quanto dessecadas",
+    "toxicIngredient": "Alcalóides do grupo das pirrolizidinas",
+    "toxicDose": "Dessecada e moída 2,77g/kg/dia durante 80 dias; Em fase de crescimento 4,2g/kg/dia durante 76 dias",
+    "possibleWounds": "Diminuição do tamanho do fígado e aumento da consistência, edema na parede da vesícula biliar, edemas no mesentério, abomaso e intestino, liquido seroso nas cavidades\n\n",
+    "references": "TOKARNIA, C. H.; DÖBEREINER, J.; PEIXOTO,. P. V. Plantas tóxicas do Brasil. 1. ed. Rio de. Janeiro: Helianthus, 2000, 310p.",
+    "image": "/images/uploads/flor-roxa.jpg",
+    "carouselImgs": [
+      "/images/uploads/flor-roxa-0.jpg"
+    ]
+  },
+  {
+    "slug": "gengibre",
+    "popularName": "Gengibre",
+    "scientificName": "Zingiber officinale",
+    "description": "Planta perene, cresce até 60 cm. Folhas lanceoladas e espigas de flores brancas ou amarelas",
+    "habit": [
+      "Herbácea"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Nativo da Ásia, cresce em regiões tropicais",
+    "prepMode": "Decocção, óleo essencial, cápsulas, tintura, suco. ",
+    "utilization": "Acelera o esvaziamento gástrico e auxilia na absorção de nutrientes no trato digestório. Combate de náusea e vômito. Alívio de dor muscular pós-exercícios. Estimula a circulação sanguínea. Combate de tosses e resfriados. ",
+    "observations": "",
+    "effects": "Anti-inflamatório, estimulante da circulação, antiemético, antiviral e estimulante digestivo",
+    "activeIngredient": "Óleo volátil com zingibereno. Oleorresina (gingeróis e shogaóis)",
+    "regionForTreatment": "Rizoma",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "O grande livro das plantas medicinais",
+    "image": "/images/uploads/whatsapp-image-2020-11-17-at-19-22-30.jpeg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "hortela-pimenta",
+    "popularName": "Hortelã-pimenta",
+    "scientificName": "Mentha. aquatica e Mentha spicata",
+    "description": "Erva aromática, anual, ou perene de aproximadamente 30 cm de altura, semireta, com ramos de cor verde escura a roxa-purpúrea. Folhas elíptico-acuminadas, denteadas, pubescentes. ",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Originária da Europa, presente em todo o Brasil",
+    "prepMode": "Óleo, loção, infusão, tintura e cápsulas",
+    "utilization": "Antiespasmódica, estimula sudorese, antimicrobiana, analgésica e carminativa",
+    "observations": "",
+    "effects": "",
+    "activeIngredient": "Óleo volátil (mentol e mentona), flavonoides (luteolina e mentoside), ácidos fenólicos e triterpenos",
+    "regionForTreatment": "Folhas",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "",
+    "image": "/images/uploads/hortela-pimenta.jpg",
+    "carouselImgs": [
+      "/images/uploads/hortela-pimenta-0.jpg"
+    ]
+  },
+  {
+    "slug": "jurubeba-joa-preto",
+    "popularName": "Jurubeba, Joá-preto",
+    "scientificName": "Solanum fastigiatum",
+    "description": "Solanum fastigiatum é uma planta pertencente a família Solanaceae, atinge até 1 metro de altura e possuí folhas largas e flores brancas. É considerada uma invasora de pastagens e terrenos abandonados",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Região Sul do Brasil e Uruguai",
+    "prepMode": "",
+    "utilization": "",
+    "observations": "A principal espécie afetada são os bovinos",
+    "effects": "Leva a sintomatologia nervosa do tipo epileptiforme ",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Folhas, flores e frutos",
+    "toxicIngredient": "Desconhecido",
+    "toxicDose": "1,5 a 2g/kg/dia por longos períodos",
+    "possibleWounds": "\nMicroscopicamente visualiza-se vacuolização, degeneração e desaparecimento das células de Purkinje, numerosos esferóides axonais na camada granular e substância branca. Áreas de microcavitações e gliose",
+    "references": "RECH, Raquel R. et al. Intoxicação por Solanum fastigiatum (Solanaceae) em bovinos: epidemiologia, sinais clínicos e morfometria das lesões cerebelares. Pesquisa Veterinária Brasileira, [S.L.], v. 26, n. 3, p. 183-189, set. 2006. ",
+    "image": "/images/uploads/jurubeba.jpg",
+    "carouselImgs": [
+      "/images/uploads/jurubeba-0.jpg"
+    ]
+  },
+  {
+    "slug": "lantana-cambara-camara",
+    "popularName": "Lantana, Cambará, Camará",
+    "scientificName": "Lantana spp.",
+    "description": "Arbusto perene pertencente a família Verbenaceae, medindo de 1,5 a 3 metros de altura, habitante de áreas cultiváveis, pastagens e terrenos abandonados. Possuí folhas ovaladas, bordas serrilhadas e  ásperas, apresenta flores durante o ano todo, as inflorescências medem até 2 cm de diâmetro e podem chegar a ter 20 a 25 pequenas flores, de cores variadas. O frutos são drupas, com 4 a 5 mm de diâmetro e cor verde azulada, tornando-se preto azulados quando maduros",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Encontradas desde a Amazônia até o Rio Grande do Sul",
+    "prepMode": "",
+    "utilization": "",
+    "observations": "Bovinos são a principal espécie afetada, pode ocorrer em ovinos e caprinos",
+    "effects": "Anorexia, diminuição ou parada dos movimentos ruminais, animais procuram sombras e apresentam lesões sob a forma de eritema, edema e necrose das partes despigmentadas da pele, inquietação, urina de coloração marrom escura",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Folhas frescas ou dessecadas, frutos quando verdes",
+    "toxicIngredient": "Triterpenos Lantadeno A e Lantadeno B ",
+    "toxicDose": "40 g de folhas frescas/kg de peso vivo, para bovinos",
+    "possibleWounds": "Causam fotossensibilização em partes despigmentadas da pele",
+    "references": "TOKARNIA, C. H.; DÖBEREINER, J.; PEIXOTO,. P. V. Plantas tóxicas do Brasil. 1. ed. Rio de. Janeiro: Helianthus, 2000, 310p.\nINTOXICAÇÃO POR LANTANA SPP. EM BOVINOS DE MONTE CASTELO, SC. Florianópolis: Revista Agropecuária Catarinese, v. 25, n. 2, 2012.\nD'OLIVEIRA, Pérsio Sandir et al. Plantas tóxicas em pastagens: Camará (Lantana Camara L.) - Família Verbenaceae. 87. ed. Juiz de Fora: Embrapa, 2018. 10 p.\n‌",
+    "image": "/images/uploads/lantana.jpg",
+    "carouselImgs": [
+      "/images/uploads/lantana-0.jpg",
+      "/images/uploads/lantana-1.jpg",
+      "/images/uploads/lantana-2.jpg"
+    ]
+  },
+  {
+    "slug": "lirio-da-paz",
+    "popularName": "Lírio da Paz ",
+    "scientificName": "Spathiphyllum wallisii",
+    "description": "O Lírio da Paz é uma planta herbácea pertencente à família Araceae, possuí folhas lanceoladas oblongas, curvas, verdes escuras e brilhantes, flores pequenas em forma de espiga envolvidas por uma bráctea branca, ligeiramente perfumada e de longa duração. Mede de 20 a 90 cm de altura.  ",
+    "habit": [
+      "Arbusto",
+      "Herbácea"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Bahia, São Paulo, Paraná e Santa Catarina",
+    "prepMode": "",
+    "utilization": "",
+    "observations": "As principais espécies afetadas são caninos e felinos",
+    "effects": "Cães: apenas sinais gastrointestinais leves. Gatos: nefrotóxica",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Flores, estames, caule, folhas e raiz",
+    "toxicIngredient": "Cristais de oxalato de cálcio",
+    "toxicDose": "",
+    "possibleWounds": "Leva a injúria renal aguda nos felinos por desencadear necrose tubular aguda, sobretudo nos túbulos proximais renais",
+    "references": "JARDIM, Mariana Palha de Brito. Intoxicação em gatos domésticos no Brasil - Caracterização dos principais agentes tóxicos e descrição do conhecimento dos tutores. 2019. 86 f. Dissertação (Doutorado) - Curso de Medicina Veterinária, Universidade Federal Rural do Rio de Janeiro, Seropédica, 2019.\n\n BRAGA, Cristina. Lírio da paz – Spathiphyllum wallisii. Disponível em: https://www.floresefolhagens.com.br/lirio-da-paz-spathiphyllum-wallisii/. ",
+    "image": "/images/uploads/lirio.png",
+    "carouselImgs": []
+  },
+  {
+    "slug": "mamona",
+    "popularName": "Mamona",
+    "scientificName": "Ricinus communis",
+    "description": "Também chamada de carrapateira, óleo-de-castor e palma-de-cristo. Arbustos até pequenas árvores, monoico diclino, perene, 1–5 m de altura, copa em forma de taça; ramos verdes até avermelhados quando jovens, coberto por tricomas simples ou glabro, estípula 0.2–1.5 cm, por vezes amplexicaule, glandular. Folhas alternas, simples; pecíolo 3-35 cm, fistuloso, cilíndrico, com glândulas na face adaxial, glabro; lâmina 4–45 × 3.5–38 cm, peltadas, lobadas, 4–10 lobos, margem denteada e glandular, venação palmada. Panicula ereta, 8–35 cm, terminal ou pseudo-axilar, oposta às folhas; flores estaminadas reunidas em glomérulos proximal e flores pistiladas dispostas em glomérulos distal. Flor estaminada pedicelada, monoclamídea, actinomorfa, valvar; sépala 3–5, 2–5 × 1–2 mm, lanceolada, glabra, verde-amarelada; pétala ausente; estames 30–1,000, livres, amarelos, pólen esferoidal, 3-colporado; flor pistilada pedicelada, monoclamídea, actinomorfa, valvar; sépala 5, 2–6 × 1–2.5 mm, lanceolada, glabra; pétala ausente, ovário súpero, trilocular, uniovulado, glabro, muricado (-liso), verde ou avermelhado; estiletes três, unidos na base, estigma laciniado, papiloso. Cápsula esquizocarpa,  2–3 cm, globosa a ovoide, superfície muricada a lisa, dividindo-se em três valvas, columela persistente; semente 0.8–1.5 cm, oblonga, lisa, carunculada (Ricinus. 2020)",
+    "habit": [
+      "Arbusto",
+      "Árvore"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Todo o Brasil",
+    "prepMode": "Não se aplica",
+    "utilization": "Não se aplica",
+    "observations": "As principais espécies afetadas são caninos, equinos e bovinos",
+    "effects": "Não se aplica",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Folha, frutos e sementes",
+    "toxicIngredient": "Ricina e glicoproteínas alergizantes",
+    "toxicDose": "Equino 0,1g/kg  \nBovinos 20 g/kg (folhas)",
+    "possibleWounds": "Folhas: efeitos neurológicos (torpor, epilepsia, edema cerebral, coma). Sementes: sinais digestivos (náuseas, êmese, diarreia mucosanguilonenta, gastroenterite hemorrágica, dor abdominal), hemoaglutinação e hipertemia.",
+    "references": "",
+    "image": "/images/uploads/mamona.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "manjericao",
+    "popularName": "Manjericão",
+    "scientificName": "Ocimum basilicum",
+    "description": "Planta anual muito aromática de até 50 cm de altura, folhas ovais brilhantes, caule quadrado e pequenas flores brancas em verticilos",
+    "habit": [
+      "Herbácea"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Nativo da Índia e atualmente cultivada em diversos países",
+    "prepMode": "Aplicação externa e suco.",
+    "utilization": "Age em sistema digestório e nervoso aliviando flatulência, cólicas estomacais e indigestão. Utilizado no tratamento de irritabilidade nervosa, ansiedade e insônia. Aumenta a produção de leite materno. Aplicadas externamente pode ser usado como repelente. ",
+    "observations": "Não ingerir o óleo essencial",
+    "effects": "Antiemético, vermífugo, sedativo, antibacteriano.",
+    "activeIngredient": "Óleo volátil constituído de linalol e metil-chavicol, cinamato de metila, cineol e outros terpenos",
+    "regionForTreatment": "Folhas, sumidades floridas, óleo essencial",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "O Grande Livro das Plantes Medicinais",
+    "image": "/images/uploads/whatsapp-image-2020-11-17-at-19-20-14.jpeg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "maracuja",
+    "popularName": "Maracujá",
+    "scientificName": "Passiflora incarnata e P. caerulea*",
+    "description": "Também chamada de flor-da-paixão. Possui flores perfumadas de cor branca na parte interna das pétalas e azul-clara ou rosada na corona. Folhas simples, alternas, profundamente trilobadas, pecioladas, serradas e finamente pubescentes, tendo axilas estípulas e gavinhas. Frutos ovalados de cor verde-clara com polpa branca. ",
+    "habit": [
+      "Herbácea",
+      "Trepadeira"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Sul dos Estados  Unidos até a Argentina. Presente no sul do Brasil.",
+    "prepMode": "Chá das folhas e suco dos frutos",
+    "utilization": "Sedativo, calmante, antiespasmódico e tônico dos nervos, atividade neuroléptica (tranquilizante)",
+    "observations": "",
+    "effects": "",
+    "activeIngredient": "Alcalóide  harmano (passiflorina), glicosídeos cianogênicos (cianocardina, tetrafilina e ginocandina), flavonoide (crisina)",
+    "regionForTreatment": "Frutos, folhas, flores e sementes",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "",
+    "image": "/images/uploads/flor-da-paixao.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "maria-mole-flor-das-almas",
+    "popularName": "Maria-mole, Flor das almas",
+    "scientificName": "Senecio brasilienses",
+    "description": "Subarbusto, pode chegar até 1,6 m de altura, encontrada em bordas de mata, campo alterado e campo seco de restinga. As inflorescências apresentam uma coloração amarela. Sua propagação se dá através das sementes dispersas pelo vento.",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Sul do Brasil",
+    "prepMode": "",
+    "utilization": "",
+    "observations": "Afeta as seguintes espécies: bovinos, búfalos, ovinos, caprinos e equinos. Ratos e frangos (experimentalmente)",
+    "effects": "",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Todas as partes",
+    "toxicIngredient": "Alcalóides pirrolizidínicos",
+    "toxicDose": "Bovino: 75 a 150g/kg (crônica). Na dose de 180 g/kg de S. heterotrichius e S. selloi foi letal. Equinos: 0,87% do PC (necrose hepática)",
+    "possibleWounds": "Hepática (aumentado, fibroso com áreas multifocais a coalescentes brancacentas, por vezes fígado em padrão de noz moscada), encefalica, edema do mesentério, das dobras do abomaso e da parede da vesícula biliar, ascite, icterícia",
+    "references": "FLORA CAMPESTRE (Rio Grande do Sul). Senecio brasiliensis. Disponível em: https://www.ufrgs.br/floracampestre/senecio-brasiliensis/. Acesso em: 31 mar. 2022.",
+    "image": "/images/uploads/maria-mole.jpg",
+    "carouselImgs": [
+      "/images/uploads/maria-mole-0.jpg",
+      "/images/uploads/maria-mole-1.jpg"
+    ]
+  },
+  {
+    "slug": "mio-mio",
+    "popularName": "Mio-mio",
+    "scientificName": "Baccharis coridifolia ",
+    "description": "Subarbusto pertencente a família Asteraceae, com folhas em formato de agulhas. Espécie infestante de pastagens",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "No Brasil é encontrada nos Estados do Rio Grande do Sul, principalmente na região da fronteira entre Uruguai e Argentina, Santa Catarina, Paraná e São Paulo",
+    "prepMode": "",
+    "utilization": "",
+    "observations": "Espécies afetadas são bovinos, ovinos, equinos e suínos",
+    "effects": "Levam a lesões no tubo digestivo",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Todas as partes da planta",
+    "toxicIngredient": "Tricotecenos macrocíclicos",
+    "toxicDose": "Em época de brotação 2g/kg da planta fresca, quando em floração e frutificação de 0,25 a 0,5g/kg ",
+    "possibleWounds": "Congestão de mucosa e edema de parede de rúmen e retículo, congestão e petéquias na mucosa do abomaso e intestino delgado, fígado com coloração mais clara",
+    "references": "TOKARNIA, C. H.; DÖBEREINER, J.; PEIXOTO,. P. V. Plantas tóxicas do Brasil. 1. ed. Rio de. Janeiro: Helianthus, 2000, 310p. ",
+    "image": "/images/uploads/mio-mio.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "oleandro-espirradeira",
+    "popularName": "Oleandro, Espirradeira ",
+    "scientificName": "Nerium oleander ",
+    "description": "Arbusto pouco lactescente, com folhas simples,  linear-lanceoladas, verticiladas\nem três ou quatro, e flores róseas odoríferas, em panículas terminais.",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Clima Tropical, Subtropical e Mediterrâneo ",
+    "prepMode": "",
+    "utilization": "",
+    "observations": "",
+    "effects": "A  ingestão provoca problemas digestivos bem como problemas cardiológicos ",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Todas as partes da planta são tóxicas",
+    "toxicIngredient": "Glicosídeos cardioativos, sendo o principal a oleandrina",
+    "toxicDose": "Bovinos: 0,5 a 1,0g/kg",
+    "possibleWounds": "Petéquias e equimoses no epicárdio, coágulos e hemorragias no endocárdio, espuma na porção final da traqueia e brônquios, fígado de coloração vermelho-escura, rins pálidos e avermelhamento da mucosa do rúmen, abomaso e retículo.",
+    "references": "PEDROSO, Pedro M. O. et al. Intoxicação natural e experimental por Nerium oleander (Apocynaceae) em bovinos no Rio Grande do Sul. Pesquisa Veterinária Brasileira, Porto Alegre, v. 5, n. 29, p. 404-408, maio 2009. \nCosta, Jeferson Miranda. “Guia Ilustrado Das Plantas Tóxicas Do Herbário Do IFPA – Campus Abaetetuba (Atena Editora).” Educapes.capes.gov.br, 1 Sept. 2021, educapes.capes.gov.br/handle/capes/602492. Accessed 12 Sept. 2023.",
+    "image": "/images/uploads/oleandro.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "oregano",
+    "popularName": "Orégano",
+    "scientificName": "Origanum vulgare",
+    "description": "Planta ereta perene, chega a 80 cm de altura, tem talos vermelhos e quadrados, folhas elípticas e agrupamentos de flores de um rosa intenso",
+    "habit": [
+      "Herbácea"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Nativo da Europa e adaptado ao Oriente Médio",
+    "prepMode": "",
+    "utilization": "Antibacterianos e antifúngicos, infecções crônicas em trato gastrintestinal e respiratório (gastrenterite, disenteria, bronquite, tosse)",
+    "observations": "Desenvolve-se em solos calcários próximos ao mar. O óleo inibe a flora intestinal podendo levar a quadros de disbiose.\nNão utilizar como recurso terapêutico na gravidez (humanos).\nO uso externo pode causar irritação na pele.\nNão ingerir o óleo essencial",
+    "effects": "Antisséptico",
+    "activeIngredient": "Oléo volátil (carvacrol, timol, beta-bisaboleno, cariofileno, tinalol, borneol), taninos, resina, esteróis e flavonoides",
+    "regionForTreatment": "Partes aéreas",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "O Grande Livro das Plantes Medicinais",
+    "image": "/images/uploads/whatsapp-image-2020-11-17-at-19-22-11.jpeg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "pessegueiro-bravo",
+    "popularName": "Pessegueiro bravo",
+    "scientificName": "Prunus myrtifolia e P. sphaerocarpa",
+    "description": "Também chamada pessegueiro-do-mato, é uma árvore mediana de folhagem perene, podendo atingir de 6 a 15m de altura. As folhas são simples, alternadas, cartáceas, glabras,  oblongas e com nervuras amareladas. As flores se agrupam em inflorescências racemosas contendo até 20 flores pequenas, com 5 pétalas estreitas, longas e brancas. Os frutos são arredondados e de cor roxo-escuro quando maduros",
+    "habit": [
+      "Árvore"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Presente nas regiões Sudeste e Sul do Brasil",
+    "prepMode": "Não se aplica",
+    "utilization": "Não se aplica",
+    "observations": "As principais espécies afetadas são bovinos e caprinos.\nGava et al. observaram que com a brotação houve positividade ao teste do papel picrosódico, nas folhas maduras não. O tratamento pode ser feito com solução de tiossulfato de sódio e nitrito de sódio IV.",
+    "effects": "Não se aplica",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Casca, frutas e sementes",
+    "toxicIngredient": "Glicosídios cianogênicos que libera cianeto por hidrólise (amigdalina)",
+    "toxicDose": "Bovinos (dose letal): 3,5 a 5 g/kg",
+    "possibleWounds": "",
+    "references": "",
+    "image": "/images/uploads/pessegueiro-bravo.jpg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "pulmonaria",
+    "popularName": "Pulmonaria",
+    "scientificName": "Pulmonaria officinalis",
+    "description": "Planta perene que alcança até 30 cm de altura. Possui folhais basais largas, pequenas folhas superiores manchadas com pontos brancos e agrupamentos de flores roxas rosadas.",
+    "habit": [
+      "Herbácea",
+      "Arbusto"
+    ],
+    "mdtx": [],
+    "geoDistrib": "Nativa da Europa e do Cáucaso. ",
+    "prepMode": "",
+    "utilization": "Tratamento em bronquite crônica, tosse crônica e asma. Folhas aplicadas externamente para estancar sangramentos.",
+    "observations": "Presença de alcaloides pirrolizidínicos nas raízes, e nas folhas minimamente. ",
+    "effects": "",
+    "activeIngredient": "Alantoína, flavonoides, taninos, mucilagem e saponinas. ",
+    "regionForTreatment": "Folhas",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "O grande livro das plantas medicinais",
+    "image": "/images/uploads/whatsapp-image-2020-11-17-at-19-18-49.jpeg",
+    "carouselImgs": []
+  },
+  {
+    "slug": "samambaia",
+    "popularName": "Samambaia",
+    "scientificName": "Pteridium arachnoideum",
+    "description": "Arbustos cujas as menores espécies têm apenas poucos centímetros de altura. As maiores chegam a medir entre 10 e 25 metros de altura. As folhas novas nascem enroladas. Conforme crescem e se desenrolam, lembram a parte espiralada que fica no fim do braço do violino.",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Tóxica"
+    ],
+    "geoDistrib": "Cosmopolita",
+    "prepMode": "",
+    "utilization": "",
+    "observations": "São plantas no geral adaptadas a solos ácidos e bem drenados e que possuem maior crescimento quando presentes em áreas com pouca competição. Além disso, são produtoras de esporos, os quais percorrem longas distâncias e colonizam outros ambientes.\nAs principais espécies sensíveis naturalmente são bovinos, búfalos, ovinos, equinos e suínos. Experimentalmente em camundongos, ratos, cobaias e codornas.\nToxicidade maior na brotação. Apresentam 3 formas/quadros.\nO tratamento depende a espécie e os sinais clínicos, mas em alguns casos pode ser utilizado tiamina",
+    "effects": "",
+    "activeIngredient": "",
+    "regionForTreatment": "",
+    "therapeuticDose": "",
+    "regionForPoison": "Brotos e rizoma",
+    "toxicIngredient": "Tiaminase do tipo I,tanino; quercetina; ácido chiquímico; prumasina; ptaquilosideo; aquilideo A e canferol",
+    "toxicDose": "Aguda (bovinos): 10 a 30 g/kg durante semanas. Hematúria enzoótica (bovinos): 10 g/kg/dia durante meses a anos. CCE: doses baixas por tempo prolongado (anos)",
+    "possibleWounds": "Edema no trato digestivo,hemorragias no baço,trato digestório e bexiga, úlceras nas mucosas do abomaso e intestino delgado, hemorragias em diversos órgãos e tecidos",
+    "references": "",
+    "image": "/images/uploads/image.png",
+    "carouselImgs": []
+  },
+  {
+    "slug": "teste",
+    "popularName": "Teste",
+    "scientificName": "Phaseolus vulgaris",
+    "description": "O nome científico do feijão-comum (como o carioca e o preto) é Phaseolus vulgaris L.. Outras espécies comuns no Brasil também possuem nomes próprios, como o feijão-de-corda ou frade (Vigna unguiculata).",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Mundo",
+    "prepMode": "Ingredientes (4 porções) · feijão carioca 1 xícara (chá) de feijão-carioquinha cru (170 g) · água 4 xícaras (chá) de água (800 ml) · tempero 1 sachê de tempero ...",
+    "utilization": "Chá, feijoada, etc",
+    "observations": "Deixar de molho no mínimo 24h antes de cozinhar",
+    "effects": "Inchaço",
+    "activeIngredient": "Faseolamina",
+    "image": "/images/uploads/azaleia.jpg"
+  },
+  {
+    "slug": "tomilho",
+    "popularName": "Tomilho",
+    "scientificName": "Thymus vulgaris",
+    "description": "Arbusto aromático, chega a 40 cm, tem talos lenhosos, folhas pequenas e flores rosa.",
+    "habit": [
+      "Arbusto"
+    ],
+    "mdtx": [
+      "Medicinal"
+    ],
+    "geoDistrib": "Nativo do Sul da Europa e cultivado em todo mundo",
+    "prepMode": "Óleo, infusão, xarope",
+    "utilization": "Mostrou-se eficaz contra a Helicobacter pylori, bactéria com frequência associada a úlceras gástricas. Alívio de câimbras musculares. Receitado com outras plantas no combate de asma e rinite alérgica. Aplicado na pele em casos de ferroadas e picadas, usado para dor isquiática e reumática. ",
+    "observations": "Gestantes não devem utilizar externamente e nem ingerir o óleo volatil",
+    "effects": "Antisséptica, antifúngica, antibacteriana, tônica, alívio espasmos musculares, expectorante, combate parasitoses, antioxidante",
+    "activeIngredient": "Óleo volátil (timol e carvacrol). Flavonoides e ácidos fenólicos",
+    "regionForTreatment": "Partes aéreas",
+    "therapeuticDose": "",
+    "regionForPoison": "",
+    "toxicIngredient": "",
+    "toxicDose": "",
+    "possibleWounds": "",
+    "references": "O Grande Livro das Plantes Medicinais",
+    "image": "/images/uploads/whatsapp-image-2020-11-17-at-19-19-59.jpeg",
+    "carouselImgs": []
+  }
+]
