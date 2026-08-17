@@ -72,6 +72,18 @@ Depois disso, abrir `/admin/` na URL de produção (Firebase Hosting ou
 Netlify — não localhost, lá quem manda é o `local_backend`) mostra o botão
 "Login with GitHub" funcionando de verdade.
 
+### Pegadinha: 404 em `api.netlify.com/auth` fora do domínio da Netlify
+
+O `site_id` que o Decap manda pra Netlify na hora do login é, por padrão, o
+**hostname atual da página** — funciona liso quando o `/admin/` é aberto no
+próprio domínio `.netlify.app`, mas dá 404 quando é aberto em qualquer outro
+domínio (Firebase Hosting, por exemplo), porque a Netlify não reconhece esse
+domínio como dono do provider OAuth configurado.
+
+Fix: fixar o `site_domain` no `config.yml` com o domínio real do projeto
+Netlify (`jardim-interativo.netlify.app`) — assim o `site_id` enviado é
+sempre o mesmo, não importa de onde o `/admin/` foi aberto.
+
 ## Hospedagem paralela no Netlify (experimento)
 
 Decisão: **Firebase Hosting continua sendo a produção real.** O projeto
