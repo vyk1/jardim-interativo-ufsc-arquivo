@@ -3,14 +3,12 @@ import AdminHelmet from 'components/Helmet/AdminHelmet';
 var QRCode = require('qrcode.react');
 var React = require('react');
 
-// TODO: live update demo
 export default class QRCodeClass extends React.Component {
     constructor(props) {
         super(props)
 
         var protocol = window.location.protocol;
         var slashes = protocol.concat("//");
-        // var host = slashes.concat(window.location.host);
         var host = slashes.concat(window.location.host);
 
         this.state = {
