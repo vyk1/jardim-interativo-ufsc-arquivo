@@ -37,7 +37,7 @@ export default class Read extends React.Component {
         const hasFifth = Boolean(result.activeIngredient) || Boolean(result.regionForTreatment) || Boolean(result.therapeuticDose)
         const hasSixth = Boolean(result.toxicIngredient) || Boolean(result.toxicDose) || Boolean(result.possibleWounds) || Boolean(result.regionForPoison)
         const hasReferences = Boolean(result.references)
-        const hasCarouselImgs = Boolean(result.carouselImgs)
+        const hasCarouselImgs = Boolean(result.carouselImgs && result.carouselImgs.length > 0)
 
         const arr = [
             { condition: true, iconClassname: "now-ui-icons business_badge", title: "Informações Gerais" },
@@ -79,7 +79,7 @@ export default class Read extends React.Component {
                     <TabContent activeTab={this.state.activeTab}
                         className="text-center">
                         <TabPane tabId="1">
-                            <p>
+                            <div>
                                 {
                                     hasCarouselImgs ?
                                         <CarouselComponent
@@ -88,8 +88,8 @@ export default class Read extends React.Component {
                                         :
                                         <img src={result.image} alt={result.popularName} />
                                 }
-                            </p>
-                            <h6>
+                            </div>
+                            <h6 style={{ marginTop: '1rem' }}>
                                 Descrição:
                             </h6>
                             <p>{result.description}</p>

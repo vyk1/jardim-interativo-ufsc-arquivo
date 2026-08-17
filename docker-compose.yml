@@ -1,6 +1,7 @@
 services:
-  app:
+  apx:
     build: .
+    container_name: jardim-app
     ports:
       - "3000:3000"
     volumes:
@@ -10,3 +11,18 @@ services:
       - CHOKIDAR_USEPOLLING=true
       - WDS_SOCKET_PORT=0
     stdin_open: true
+
+  # CLI do Firebase (deploy do Hosting) — precisa de Node >=20, por isso vive
+  # num serviço separado do "app" (que fica preso no Node 12 do projeto).
+  fb:
+    build:
+      context: .
+      dockerfile: Dockerfile.firebase
+    volumes:
+      - .:/app
+      - firebase-config:/root/.config
+    stdin_open: true
+    tty: true
+
+volumes:
+  firebase-config:

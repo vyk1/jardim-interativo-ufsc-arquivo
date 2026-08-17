@@ -5,7 +5,8 @@ description: "Planta perene que alcança até 30 cm de altura. Possui folhais ba
 habit: 
   - "Herbácea"
   - "Arbusto"
-mdtx: []
+mdtx: 
+  - "Medicinal"
 geoDistrib: "Nativa da Europa e do Cáucaso. "
 prepMode: ""
 utilization: "Tratamento em bronquite crônica, tosse crônica e asma. Folhas aplicadas externamente para estancar sangramentos."
