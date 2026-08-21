@@ -1,16 +1,8 @@
 backend:
-  name: github
-  repo: vyk1/jardim-interativo-ufsc-arquivo
+  name: git-gateway
   branch: master
-  # OAuth de produção: usamos a Netlify só como provedor OAuth (login com
-  # GitHub) — ver docs/decap-cms.md. base_url é o valor padrão do Decap para
-  # este backend; deixado explícito por clareza.
-  base_url: https://api.netlify.com
-  # sem isso, o site_id enviado pra api.netlify.com/auth é o hostname atual da
-  # página (Firebase Hosting, Netlify experimento, etc.) — e só o domínio
-  # .netlify.app abaixo tem o provider OAuth instalado. Fixando aqui garante
-  # que o login funcione a partir de QUALQUER domínio onde o /admin/ for aberto.
-  site_domain: jardim-interativo.netlify.app
+  # login por e-mail/senha ou Google via Netlify Identity — não exige mais
+  # conta no GitHub. Ver docs/decap-cms.md.
 
 # ativa o modo de proxy local (npx decap-server) — só tem efeito em localhost,
 # não interfere no OAuth de produção acima

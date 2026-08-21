@@ -22,67 +22,54 @@ qualquer edição manual de arquivo. Você ainda precisa `git add` / `commit` /
 `push` normalmente (ou deixar o Decap fazer isso quando o backend real de
 produção estiver configurado — ver abaixo).
 
-## Produção (backend `github`, sem `local_backend`)
+## Produção (backend `git-gateway`, sem `local_backend`)
 
-Quando o site for acessado numa URL de produção (não localhost), o Decap usa
-o backend declarado (`backend.name: github` no config.yml, apontando pro repo
-`vyk1/jardim-interativo-ufsc-arquivo`). Aí sim aparece a tela **"Login with
-GitHub"**, e o fluxo é OAuth:
+**Histórico:** a primeira versão desse setup usava o backend `github`
+(login "Login with GitHub" via OAuth, com a Netlify só como intermediária
+pra trocar o code por token). Funcionava, mas exigia que todo mundo que
+fosse editar conteúdo tivesse conta no GitHub. Trocamos pro backend
+`git-gateway`, que usa o **Netlify Identity** — login por e-mail/senha ou
+Google, sem precisar de GitHub.
 
-1. Usuário clica em "Login with GitHub" no `/admin/`.
-2. Decap redireciona pro GitHub (`github.com/login/oauth/authorize`).
-3. Usuário autoriza o app OAuth.
-4. GitHub redireciona de volta com um `code` de uso único.
-5. **Algum servidor intermediário troca esse `code` por um access token** —
-   isso é o "OAuth provider" / `base_url` do backend. Sem essa peça, o botão
-   de login não funciona.
-6. O token fica salvo no navegador (localStorage) e o Decap passa a chamar a
-   API do GitHub diretamente para ler/escrever arquivos e criar commits.
+Como funciona:
 
-Quem consegue de fato salvar mudanças depois de logado é quem tiver
-permissão de escrita (collaborator) no repositório GitHub — o OAuth só
-autentica a pessoa, a permissão de verdade é a do GitHub.
+1. `admin/index.html` carrega o script do Netlify Identity Widget
+   (`identity.netlify.com/v1/netlify-identity-widget.js`).
+2. Usuário loga (e-mail/senha que ele mesmo define, ou "Sign in with
+   Google") direto na tela do Decap — sem redirecionar pra lugar nenhum.
+3. O Netlify Identity autentica a pessoa e emite um token.
+4. O **Git Gateway** (serviço da Netlify) usa esse token pra autorizar
+   chamadas à API do GitHub em nome do site — ele guarda um token de
+   acesso ao repo internamente, ninguém precisa ter permissão direta no
+   GitHub.
 
-### O OAuth provider: Netlify (gratuito)
+Ou seja: quem edita não precisa de conta no GitHub — só precisa ser
+convidada pelo Netlify Identity.
 
-O Decap **não inclui** o servidor do passo 5 — usamos o provedor gratuito da
-Netlify pra essa etapa. O `config.yml` já está apontando pra isso
-(`backend.base_url: https://api.netlify.com`, valor padrão do backend
-`github` do Decap).
+### Cadastro: somente convite
 
-Passo a passo pra habilitar (feito uma vez só):
+Configurado como **Invite only** (não é cadastro aberto — ninguém cria
+conta sozinho). Passo a passo (uma vez só):
 
-1. **GitHub → criar um OAuth App**: `github.com` → avatar → Settings →
-   Developer settings → OAuth Apps → New OAuth App.
-   - Homepage URL: qualquer uma (ex: a URL do Firebase Hosting) — não é
-     validada de verdade.
-   - **Authorization callback URL**: `https://api.netlify.com/auth/done`
-     — precisa ser exatamente essa.
-   - Depois de criar, copiar o **Client ID** e gerar/copiar um **Client
-     Secret** (só aparece uma vez).
-2. **Netlify → criar um projeto ligado ao mesmo repo**:
-   `app.netlify.com` → Add new project → Import an existing project →
-   GitHub → `vyk1/jardim-interativo-ufsc-arquivo`. Esse mesmo projeto Netlify
-   também é o que faz o deploy experimental — ver seção abaixo.
-3. No projeto criado: **Project configuration → Access & security →
-   OAuth → Authentication Providers → Install provider → GitHub**, cola
-   o Client ID e o Client Secret do passo 1, salva.
+1. **Netlify → Project configuration → Identity → Enable Identity.**
+2. **Identity → Registration → Invite only** (confirmar que não está em
+   "Open").
+3. **Identity → Registration → External providers → Enable Google**
+   (permite logar com conta Google além de e-mail/senha).
+4. **Identity → Services → Git Gateway → Enable Git Gateway** — autentica
+   com o GitHub e gera o token que o Git Gateway usa por trás.
+5. **Identity → Invite users** → digita o e-mail de quem vai editar. A
+   pessoa recebe um e-mail, clica, define senha (ou entra com Google) e
+   já cai logada no fluxo — só falta abrir `/admin/`.
 
-Depois disso, abrir `/admin/` na URL de produção (Firebase Hosting ou
-Netlify — não localhost, lá quem manda é o `local_backend`) mostra o botão
-"Login with GitHub" funcionando de verdade.
+### Pegadinha herdada do setup antigo (não se aplica mais)
 
-### Pegadinha: 404 em `api.netlify.com/auth` fora do domínio da Netlify
-
-O `site_id` que o Decap manda pra Netlify na hora do login é, por padrão, o
-**hostname atual da página** — funciona liso quando o `/admin/` é aberto no
-próprio domínio `.netlify.app`, mas dá 404 quando é aberto em qualquer outro
-domínio (Firebase Hosting, por exemplo), porque a Netlify não reconhece esse
-domínio como dono do provider OAuth configurado.
-
-Fix: fixar o `site_domain` no `config.yml` com o domínio real do projeto
-Netlify (`jardim-interativo.netlify.app`) — assim o `site_id` enviado é
-sempre o mesmo, não importa de onde o `/admin/` foi aberto.
+O backend `github` antigo tinha um problema de 404 quando `/admin/` era
+aberto fora do domínio `.netlify.app` (a Netlify não reconhecia o
+`site_id`). O `git-gateway` **não tem esse problema** — a autenticação
+acontece toda via Netlify Identity, sem depender de qual domínio está
+servindo a página. `/admin/` funciona igual no Firebase Hosting, na
+Netlify ou em qualquer outro domínio.
 
 ## Hospedagem paralela no Netlify (experimento)
 
@@ -123,18 +110,12 @@ automático no projeto Netlify (comportamento padrão de projeto importado do
 GitHub). A URL do deploy fica visível no dashboard do projeto
 (`app.netlify.com`), formato tipo `nome-aleatorio.netlify.app`.
 
-### Cuidado: Firebase ainda é chamado em runtime
+### Firebase não é mais chamado em runtime
 
-Até a Fase 4 da migração (trocar as leituras do RTDB por leitura estática
-dos arquivos de `content/`) sair do papel, o app ainda faz chamadas reais ao
-Firebase (Auth/RTDB/Storage) direto do navegador — em qualquer domínio onde
-estiver rodando, incluindo o do Netlify.
-
-Isso importa porque a API key do Firebase está restrita por referrer HTTP só
-aos domínios `jardim-interativo.web.app` e `jardim-interativo.firebaseapp.com`
-(ver decisão de segurança tomada à parte). Ou seja: **o site rodando no
-domínio do Netlify vai ter as chamadas ao Firebase bloqueadas** até essa
-restrição ser ajustada pra incluir o domínio `*.netlify.app` gerado. Se for
-testar o experimento Netlify e algo que depende de Firebase não funcionar,
-é esperado — é só adicionar o domínio à lista de referrers permitidos na
-API key.
+A Fase 4 da migração já saiu do papel: o app lê o conteúdo de
+`content/plantapedia/*.md` (via `src/data/plantapedia.generated.json`,
+gerado em build) em vez de consultar o RTDB, e o admin antigo
+(Auth/Storage) foi removido. O pacote `firebase` nem está mais nas
+dependências do projeto — então o site funciona igual em qualquer domínio
+(Firebase Hosting, Netlify, etc.), sem nenhuma restrição de referrer de
+API key entrando no caminho.

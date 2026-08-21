@@ -1,7 +1,7 @@
 services:
   apx:
     build: .
-    container_name: jardim-app
+    container_name: jardim-app-2
     ports:
       - "3000:3000"
     volumes:
