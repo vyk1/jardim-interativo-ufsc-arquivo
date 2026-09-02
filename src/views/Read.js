@@ -303,7 +303,7 @@ export default class Read extends React.Component {
                         <Col className="ml-auto mr-auto" md="10" xl="6">
                             <p className="category">
                                 {result.popularName}
-                                <i>({result.scientificName})</i>
+                                <i style={{ textTransform: 'none' }}>({result.scientificName})</i>
                                 <MDTXBadge mdtx={result.mdtx} />
                             </p>
                             <p className="text-center">
