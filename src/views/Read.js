@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Col, CardHeader, CardBody, FormGroup, Label, Input } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Col, CardHeader, CardBody, FormGroup, Label, Input, Button } from 'reactstrap';
 import FullNav from '../components/FullNav.js';
 import LoadingCog from '../components/LoadingCog';
 import DefaultFooter from '../components/Footers/DefaultFooter.js';
@@ -307,10 +307,10 @@ export default class Read extends React.Component {
                                 <MDTXBadge mdtx={result.mdtx} />
                             </p>
                             <p className="text-center">
-                                <Link to={`/qrcode/${result.slug}`}>
+                                <Button tag={Link} to={`/qrcode/${result.slug}`} color="success" className="btn-round">
                                     <i className="fas fa-qrcode mr-1"></i>
                                     Gerar QR Code desta planta
-                                </Link>
+                                </Button>
                             </p>
 
                             {this.renderInfo()}
