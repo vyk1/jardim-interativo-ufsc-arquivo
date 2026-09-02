@@ -17,6 +17,11 @@ jobs:
         with:
           node-version: '12'
       - run: npm ci && npm run build
+      # o passo abaixo roda firebase-tools por dentro, que exige Node >=20 —
+      # troca a versão ativa só pro deploy, depois do build já pronto
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
