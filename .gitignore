@@ -16,6 +16,10 @@
 
 # material de trabalho da migração Firebase -> Decap CMS (não é conteúdo final do site)
 /migration
+
+# gerado a partir de content/plantapedia/*.md pelo scripts/build-plants-json.js
+# (roda via prestart/prebuild) — nunca editar direto, sempre reproduzível
+/src/data/plantapedia.generated.json
 # misc
 .DS_Store
 .env.local

@@ -1,6 +1,7 @@
 services:
   apx:
     build: .
+    container_name: jardim-dev-server
     ports:
       - "3000:3000"
     volumes:
@@ -17,6 +18,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.firebase
+    ports:
+      - "9005:9005"
     volumes:
       - .:/app
       - firebase-config:/root/.config
