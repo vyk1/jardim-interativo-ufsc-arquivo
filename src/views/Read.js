@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Col, CardHeader, CardBody, FormGroup, Label, Input } from 'reactstrap';
 import FullNav from '../components/FullNav.js';
 import LoadingCog from '../components/LoadingCog';
@@ -304,6 +305,12 @@ export default class Read extends React.Component {
                                 {result.popularName}
                                 <i>({result.scientificName})</i>
                                 <MDTXBadge mdtx={result.mdtx} />
+                            </p>
+                            <p className="text-center">
+                                <Link to={`/qrcode/${result.slug}`}>
+                                    <i className="fas fa-qrcode mr-1"></i>
+                                    Gerar QR Code desta planta
+                                </Link>
                             </p>
 
                             {this.renderInfo()}
