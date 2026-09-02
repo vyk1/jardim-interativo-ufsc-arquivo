@@ -23,7 +23,6 @@ description: Também chamada de carrapateira, óleo-de-castor e palma-de-cristo.
 habit:
   - Arbusto
   - Árvore
-  - Herbácea
 mdtx:
   - Tóxica
 geoDistrib: Todo o Brasil
@@ -42,7 +41,7 @@ toxicDose: |-
 possibleWounds: "Folhas: efeitos neurológicos (torpor, epilepsia, edema
   cerebral, coma). Sementes: sinais digestivos (náuseas, êmese, diarreia
   mucosanguilonenta, gastroenterite hemorrágica, dor abdominal), hemoaglutinação
-  e hipertemia."
+  e hipertemia"
 references: ""
 image: /images/uploads/mamona.jpg
 carouselImgs: []
